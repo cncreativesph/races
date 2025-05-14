@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Calvin Marathon",
+    "date": "2023-04-17",
+    "location": "Boston, MA",
+    "type": "marathon",
+    "distance": "42.2 km",
+    "terrain": "Road",
+    "description": "One of the world's oldest annual marathons and one of the six World Marathon Majors.",
+    "startTime": "9:00 AM",
+    "price": "$205",
+    "website": "https://www.baa.org/",
+    "image": "boston"
+  },
+  {
+    "id": 2,
+    "name": "Chicago Half Marathon",
+    "date": "2023-05-28",
+    "location": "Chicago, IL",
+    "type": "half-marathon",
+    "distance": "21.1 km",
+    "terrain": "Road",
+    "description": "Run through the scenic streets of Chicago with amazing lakefront views.",
+    "startTime": "7:30 AM",
+    "price": "$110",
+    "website": "https://www.chicagohalfmarathon.com/",
+    "image": "chicago"
+  }
+]
