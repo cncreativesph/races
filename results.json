@@ -1,0 +1,44 @@
+{
+  "races": [
+    {
+      "race_name": "City Marathon 2025",
+      "race_date": "2025-05-25",
+      "participants": [
+        {
+          "name": "John Doe",
+          "age": 28,
+          "rank": 1,
+          "chip_time": "02:15:30",
+          "category": "Marathon"
+        },
+        {
+          "name": "Jane Smith",
+          "age": 35,
+          "rank": 2,
+          "chip_time": "02:20:45",
+          "category": "Half Marathon"
+        }
+      ]
+    },
+    {
+      "race_name": "Spring Sprint 2025",
+      "race_date": "2025-03-15",
+      "participants": [
+        {
+          "name": "Alice Brown",
+          "age": 30,
+          "rank": 1,
+          "chip_time": "01:05:20",
+          "category": "10K"
+        },
+        {
+          "name": "Bob Johnson",
+          "age": 40,
+          "rank": 2,
+          "chip_time": "01:07:15",
+          "category": "10K"
+        }
+      ]
+    }
+  ]
+}
