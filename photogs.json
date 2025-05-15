@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Sante Barley Trilogy Run Asia - Manila Leg 2",
+        "date": 1747526400000,
+        "location": "SM Mall of Asia, Pasay City",
+        "distance": "21KM / 10KM / 5KM",
+        "resultsURL": "https://raceroster.com/events/2025/99063/sante-barley-trilogy-run-asia-manila-leg-2/results",
+        "listOfPhotogs": ["CN Creatives", "AR Sports PH", "Humble Runner"],
+        "photogsURL": [
+            "https://photos.cncreatives.com/admin/photos",
+            "https://photos.arsportsph.com/admin/photos",
+            "https://photos.humblerunnerphoto.com/admin/photos"
+        ]
+    },
+    {
+        "name": "Lazada Run Philippines - Manila",
+        "date": 1748736000000,
+        "location": "SM Mall of Asia, Pasay City",
+        "distance": "21KM / 10KM / 5KM",
+        "resultsURL": "https://raceroster.com/events/2025/80118/lazada-run-philippines-manila/results",
+        "listOfPhotogs": ["CN Creatives", "AR Sports PH", "Humble Runner"],
+        "photogsURL": [
+            "https://photos.cncreatives.com/admin/photos",
+            "https://photos.arsportsph.com/admin/photos",
+            "https://photos.humblerunnerphoto.com/admin/photos"
+        ]
+    },
+    {
+        "name": "BPI #BestLife Run Corporate Race 2025",
+        "date": 1749340800000,
+        "location": "Ayala Avenue, Makati City",
+        "distance": "21KM / 10KM / 5KM / 3KM",
+        "resultsURL": "https://raceroster.com/events/2025/102444/bpi-number-bestliferun-corporate-race-2025/results",
+        "listOfPhotogs": ["CN Creatives", "AR Sports PH", "Humble Runner"],
+        "photogsURL": [
+            "https://photos.cncreatives.com/admin/photos",
+            "https://photos.arsportsph.com/admin/photos",
+            "https://photos.humblerunnerphoto.com/admin/photos"
+        ]
+    },
+    {
+        "name": "EastWest Dream Run 2025 - Filinvest",
+        "date": 1749945600000,
+        "location": "Filinvest, Alabang",
+        "distance": "30KM / 10KM / 5KM / 2KM / 1KM",
+        "resultsURL": "https://raceroster.com/events/2025/97105/eastwest-dream-run-2025-filvest/results",
+        "listOfPhotogs": ["CN Creatives", "AR Sports PH", "Humble Runner"],
+        "photogsURL": [
+            "https://photos.cncreatives.com/admin/photos",
+            "https://photos.arsportsph.com/admin/photos",
+            "https://photos.humblerunnerphoto.com/admin/photos"
+        ]
+    },
+    {
+        "name": "RUNRIO Pride Run 2025 – Manila",
+        "date": 1751155200000,
+        "location": "SM MOA Complex, Pasay City",
+        "distance": "5KM / 10KM / 21KM",
+        "resultsURL": "https://raceroster.com/events/2025/103059/runrio-pride-run-2025/results",
+        "listOfPhotogs": ["CN Creatives", "AR Sports PH", "Humble Runner"],
+        "photogsURL": [
+            "https://photos.cncreatives.com/admin/photos",
+            "https://photos.arsportsph.com/admin/photos",
+            "https://photos.humblerunnerphoto.com/admin/photos"
+        ]
+    }
+]
