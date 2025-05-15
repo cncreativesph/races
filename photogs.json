@@ -4,23 +4,20 @@
     "distanceP": "42KM,21KM,10KM,5KM,3KM",
     "locationP": "Clark, Pampanga",
     "organizerP": "Smoke10 Events Management",
-    "dateP": "May 2, 2025",
-    "listOfPhotogs": ["CN Creatives","AR Sports PH","Humble Runner"]
+    "dateP": "May 2, 2025"
   },
   {
     "nameP": "SANTE BARLEY TRILOGY RUN ASIA - LEG 2",
     "distanceP": "21KM,10KM,5KM",
     "locationP": "Mall of Asia",
     "organizerP": "RUNRIO",
-    "dateP": "May 1, 2025",
-    "listOfPhotogs": ["CN Creatives","AR Sports PH","Humble Runner"]
+    "dateP": "May 1, 2025"
   },
   {
     "nameP": "Calvin TRILOGY RUN ASIA - LEG 3",
     "distanceP": "21KM,10KM,5KM",
     "locationP": "Mall of Asia",
     "organizerP": "RUNRIO",
-    "dateP": "May 1, 2025",
-    "listOfPhotogs": ["CN Creatives","AR Sports PH","Humble Runner"]
+    "dateP": "May 1, 2025"
   }
 ]
