@@ -5,11 +5,7 @@
       "distanceP": "42KM,21KM,10KM,5KM,3KM",
       "locationP": "Clark, Pampanga",
       "dateP": "May 18, 2024",
-      "listOfPhotogs": [
-        "CN Creatives",
-        "AR Sports PH",
-        "Humble Runner"
-      ],
+      "listOfPhotogs": ["CN Creatives", "AR Sports PH", "Humble Runner"],
       "photogsURL": [
         "https://photos.cncreatives.com/admin/photos",
         "https://photos.arsportsph.com/admin/photos",
@@ -21,16 +17,12 @@
       "distanceP": "21KM,10KM,5KM",
       "locationP": "Mall of Asia",
       "dateP": "May 18, 2024",
-      "listOfPhotogs": [
-        "CN Creatives",
-        "AR Sports PH",
-        "Humble Runner"
-      ],
+      "listOfPhotogs": ["CN Creatives", "AR Sports PH", "Humble Runner"],
       "photogsURL": [
         "https://photos.cncreatives.com/admin/photos",
         "https://photos.arsportsph.com/admin/photos",
         "https://photos.humblerunnerphoto.com/admin/photos"
-      ]        
+      ]
     },
     {
       "nameP": "PINOY FITNESS 21K CHALLENGE",
