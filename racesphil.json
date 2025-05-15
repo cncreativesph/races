@@ -52,5 +52,50 @@
     "date": "June 8, 2025",
     "website": "https://greenmediaevents.myruntime.com/register/apo-race-to-reforest-2025-pampanga",
     "status": "Register"
+  },
+  {
+    "name": "EASTWEST DREAM RUN",
+    "distance": "30KM,10KM,5KM,2KM,1KM",
+    "location": "Filinvest, Alabang",
+    "organizer": "RUNRIO",
+    "date": "June 15, 2025",
+    "website": "https://raceroster.com/events/2025/97105/eastwest-dream-run-2025-filinvest",
+    "status": "Register"
+  },
+  {
+    "name": "SOUTHSTAR DRUG X MAXICARE RUN FOR WELLNESS",
+    "distance": "10KM,5KM,3KM",
+    "location": "UP Diliman",
+    "organizer": "RUNRIO",
+    "date": "June 22, 2025",
+    "website": "https://raceroster.com/events/2025/105328/southstar-drug-x-maxicare-run-for-wellness-2025-maxicare",
+    "status": "Register"
+  },
+  {
+    "name": "CABALEN HALF MARATHON",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Clark, Pampanga",
+    "organizer": "Smoke10 Events Management",
+    "date": "June 29, 2025",
+    "website": "https://smoke10events.myruntime.com/register/cabalen-half-marathon-2025",
+    "status": "Register"
+  },
+  {
+    "name": "PRIDE RUN",
+    "distance": "10KM,5KM,3KM,1KM Dog",
+    "location": "Mall of Asia",
+    "organizer": "RUNRIO",
+    "date": "June 29, 2025",
+    "website": "https://raceroster.com/events/2025/101575/runrio-pride-run-2025-manila",
+    "status": "Register"
+  },
+  {
+    "name": "THE GREEN RUN",
+    "distance": "21KM,10KM,5KM,3KM,1KM",
+    "location": "Vermosa, Cavite",
+    "organizer": "PINOY FITNESS & PEP SQUAD EVENTS",
+    "date": "June 29, 2025",
+    "website": "https://ayalaland.myruntime.com/register",
+    "status": "Register"
   }
 ]
