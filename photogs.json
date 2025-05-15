@@ -1,19 +1,19 @@
 [
   {
-    "nameP": "ONE BIG RUN CLARK MARATHON",
-    "distanceP": "42KM,21KM,10KM,5KM,3KM",
-    "locationP": "Clark, Pampanga",
-    "organizerP": "Smoke10 Events Management",
-    "dateP": "May 2, 2025",
+    "nameP": "REXONA 10-MILER LEG 2",
+    "distanceP": "16KM,10KM,5KM",
+    "locationP": "Mall of Asia",
+    "organizerP": "RUNRIO",
+    "dateP": "May 4, 2025",
     "listOfPhotogs": [
         "CN Creatives",
-        "AR Sports PH",
+        "Genuine Sole",
         "Humble Runner"
       ],
       "photogsURL": [
-        "https://photos.cncreatives.com/admin/photos",
-        "https://photos.arsportsph.com/admin/photos",
-        "https://photos.humblerunnerphoto.com/admin/photos"
+        "https://www.facebook.com/rexona10miler",
+        "https://photos.genuinesole.com/galleries/rexona-10-miler-pasay-by-gsp",
+        "https://photos.humblerunnerphoto.com/galleries/Leg2RexonaByHR"
       ]
   },
   {
