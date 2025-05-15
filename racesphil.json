@@ -6,13 +6,10 @@
         "location": "SM Mall of Asia, Pasay City",
         "distance": "21KM / 10KM / 5KM",
         "organizer": "RUNRIO",
-        "type": "marathon",
-        "terrain": "Mixed",
         "description": "Experience the thrill of a challenging trail with breathtaking scenery.",
-        "startTime": "6:00 AM",
         "price": "$1000",
-        "image": "london",
-        "website": "https://raceroster.com/events/2025/99063/sante-barley-trilogy-run-asia-manila-leg-2"
+        "website": "https://raceroster.com/events/2025/99063/sante-barley-trilogy-run-asia-manila-leg-2",
+        "status": "Register"
     },
     {
         "id": 2,
@@ -21,13 +18,10 @@
         "location": "SM Mall of Asia, Pasay City",
         "distance": "21KM / 10KM / 5KM",
         "organizer": "RUNRIO",
-        "type": "ultra-marathon",
-        "terrain": "Mixed",
         "description": "Run through the scenic streets with amazing lakefront views.",
-        "startTime": "5:30 AM",
         "price": "$750",
-        "image": "tokyo",
-        "website": "https://raceroster.com/events/2025/80118/lazada-run-philippines-manila"
+        "website": "https://raceroster.com/events/2025/80118/lazada-run-philippines-manila",
+        "status": "Event is Full"
     },
     {
         "id": 3,
@@ -36,13 +30,10 @@
         "location": "Ayala Avenue, Makati City",
         "distance": "21KM / 10KM / 5KM / 3KM",
         "organizer": "RUNRIO",
-        "type": "ultra-marathon",
-        "terrain": "Road",
         "description": "Run through the scenic streets with amazing lakefront views.",
-        "startTime": "7:30 AM",
         "price": "$750",
-        "image": "newyork",
-        "website": "https://raceroster.com/events/2025/102444/bpi-number-bestliferun-corporate-race-2025"
+        "website": "https://raceroster.com/events/2025/102444/bpi-number-bestliferun-corporate-race-2025",
+        "status": "Register"
     },
     {
         "id": 4,
@@ -51,28 +42,22 @@
         "location": "Filinvest, Alabang",
         "distance": "30KM / 10KM / 5KM / 2KM / 1KM",
         "organizer": "RUNRIO",
-        "type": "half-marathon",
-        "terrain": "Mixed",
         "description": "Take on the ultimate test of endurance in a mixed-terrain course.",
-        "startTime": "8:00 AM",
         "price": "$500",
-        "image": "chicago",
-        "website": "https://raceroster.com/events/2025/97105/eastwest-dream-run-2025-fil"
+        "website": "https://raceroster.com/events/2025/97105/eastwest-dream-run-2025-fil",
+        "status": "Opening Soon"
     },
     {
         "id": 14,
-        "name": "RUNRIO Pride Run 2025 \u2013 Manila",
+        "name": "RUNRIO Pride Run 2025 – Manila",
         "date": 1751155200000,
         "location": "SM MOA Complex, Pasay City",
         "distance": "5KM / 10KM / 21KM",
         "organizer": "RUNRIO",
-        "type": "marathon",
-        "terrain": "Mixed",
         "description": "Take on the ultimate test of endurance in a mixed-terrain course.",
-        "startTime": "6:00 AM",
         "price": "$750",
-        "image": "newyork",
-        "website": "https://raceroster.com/events/2025/103059/runrio-pride-run-2025"
+        "website": "https://raceroster.com/events/2025/103059/runrio-pride-run-2025",
+        "status": "Register"
     },
     {
         "id": 5,
@@ -81,13 +66,10 @@
         "location": "New Clark City, Capas, Tarlac",
         "distance": "75KM / 50KM / 25KM",
         "organizer": "SMOKE10 EVENTS MANAGEMENT",
-        "type": "ultra-marathon",
-        "terrain": "Mixed",
         "description": "Experience the thrill of a challenging trail with breathtaking scenery.",
-        "startTime": "7:30 AM",
         "price": "$750",
-        "image": "boston",
-        "website": "https://smoke10events.myruntime.com/register/cabalen-ultramarathon-2025"
+        "website": "https://smoke10events.myruntime.com/register/cabalen-ultramarathon-2025",
+        "status": "Register"
     },
     {
         "id": 6,
@@ -96,13 +78,10 @@
         "location": "Guimba, Nueva Ecija",
         "distance": "42KM / 21KM / 10KM / 5KM / KIDS",
         "organizer": "RACE CREW PH",
-        "type": "ultra-marathon",
-        "terrain": "Road",
         "description": "Experience the thrill of a challenging trail with breathtaking scenery.",
-        "startTime": "7:30 AM",
         "price": "$750",
-        "image": "chicago",
-        "website": "https://www.racemeister.com/pages/2025/nueva-ecija-marathon"
+        "website": "https://www.racemeister.com/pages/2025/nueva-ecija-marathon",
+        "status": "Event is Full"
     },
     {
         "id": 7,
@@ -111,28 +90,22 @@
         "location": "Bridgetowne Destination Estate, Pasig City",
         "distance": "10KM / 5KM",
         "organizer": "TEAM EVENTISM 22 CORPORATION",
-        "type": "marathon",
-        "terrain": "Mixed",
         "description": "Run through the scenic streets with amazing lakefront views.",
-        "startTime": "7:30 AM",
         "price": "$750",
-        "image": "boston",
-        "website": "https://www.pinoyfitness.com/2025/02/robinsons-supermarket-17th-fit-and-fun-wellness-buddy-run-2025/"
+        "website": "https://www.pinoyfitness.com/2025/02/robinsons-supermarket-17th-fit-and-fun-wellness-buddy-run-2025/",
+        "status": "Register"
     },
     {
         "id": 16,
-        "name": "Sante Barley Trilogy Run Asia 2025 \u2013 Leg 3 (Manila)",
+        "name": "Sante Barley Trilogy Run Asia 2025 – Leg 3 (Manila)",
         "date": 1752364800000,
         "location": "MOA Concert Grounds, Pasay City",
         "distance": "5KM / 10KM / 21KM / 32KM",
         "organizer": "Sante Barley",
-        "type": "ultra-marathon",
-        "terrain": "Mixed",
         "description": "Take on the ultimate test of endurance in a mixed-terrain course.",
-        "startTime": "7:30 AM",
         "price": "$500",
-        "image": "newyork",
-        "website": "https://raceroster.com/events/2025/97759/sante-barley-trilogy-run-asia-2025"
+        "website": "https://raceroster.com/events/2025/97759/sante-barley-trilogy-run-asia-2025",
+        "status": "Opening Soon"
     },
     {
         "id": 8,
@@ -141,13 +114,10 @@
         "location": "Mall of Asia, Pasay City",
         "distance": "18KM / 10KM / 5KM",
         "organizer": "GREEN MEDIA EVENTS",
-        "type": "marathon",
-        "terrain": "Trail",
         "description": "Run through the scenic streets with amazing lakefront views.",
-        "startTime": "6:00 AM",
         "price": "$500",
-        "image": "newyork",
-        "website": "https://greenmediaevents.myruntime.com/register/takbo-para-sa-kalikasan-2025-series"
+        "website": "https://greenmediaevents.myruntime.com/register/takbo-para-sa-kalikasan-2025-series",
+        "status": "Register"
     },
     {
         "id": 15,
@@ -156,13 +126,10 @@
         "location": "Bridgetowne, Pasig City",
         "distance": "1KM / 3KM / 5KM / 10KM",
         "organizer": "Tzu Chi Foundation",
-        "type": "marathon",
-        "terrain": "Road",
         "description": "Take on the ultimate test of endurance in a mixed-terrain course.",
-        "startTime": "5:30 AM",
         "price": "$1500",
-        "image": "tokyo",
-        "website": "https://raceroster.com/events/2025/104991/tzu-chi-charity-run-2025"
+        "website": "https://raceroster.com/events/2025/104991/tzu-chi-charity-run-2025",
+        "status": "Event is Full"
     },
     {
         "id": 9,
@@ -171,13 +138,10 @@
         "location": "Clark Parade Grounds, Pampanga",
         "distance": "32KM / 21KM / 10KM / 5KM",
         "organizer": "SMOKE10 EVENTS MANAGEMENT",
-        "type": "marathon",
-        "terrain": "Road",
         "description": "Experience the thrill of a challenging trail with breathtaking scenery.",
-        "startTime": "8:00 AM",
         "price": "$1000",
-        "image": "newyork",
-        "website": "https://smoke10events.myruntime.com/register/fit-to-run-2025-leg-2"
+        "website": "https://smoke10events.myruntime.com/register/fit-to-run-2025-leg-2",
+        "status": "Register"
     },
     {
         "id": 12,
@@ -186,13 +150,10 @@
         "location": "Clark Parade Grounds, Pampanga",
         "distance": "32KM / 21KM / 10KM / 5KM",
         "organizer": "SMOKE10 EVENTS MANAGEMENT",
-        "type": "ultra-marathon",
-        "terrain": "Road",
         "description": "Take on the ultimate test of endurance in a mixed-terrain course.",
-        "startTime": "7:30 AM",
         "price": "$1000",
-        "image": "boston",
-        "website": "https://smoke10events.myruntime.com/register/fit-to-run-2025-leg-2"
+        "website": "https://smoke10events.myruntime.com/register/fit-to-run-2025-leg-2",
+        "status": "Opening Soon"
     },
     {
         "id": 10,
@@ -201,13 +162,10 @@
         "location": "SM Mall of Asia Complex, Pasay City",
         "distance": "15KM / 10KM / 5KM / 3KM / 1KM",
         "organizer": "HYVESPORTS",
-        "type": "ultra-marathon",
-        "terrain": "Mixed",
         "description": "Experience the thrill of a challenging trail with breathtaking scenery.",
-        "startTime": "8:00 AM",
         "price": "$1100",
-        "image": "boston",
-        "website": "https://colorfest.asia/rev-electric-nightrun"
+        "website": "https://colorfest.asia/rev-electric-nightrun",
+        "status": "Register"
     },
     {
         "id": 17,
@@ -216,13 +174,10 @@
         "location": "SM Mall of Asia, Pasay City",
         "distance": "1KM / 3KM / 5KM / 10KM / 15KM",
         "organizer": "Real LIFE Foundation",
-        "type": "half-marathon",
-        "terrain": "Mixed",
         "description": "Experience the thrill of a challenging trail with breathtaking scenery.",
-        "startTime": "7:30 AM",
         "price": "$1500",
-        "image": "boston",
-        "website": "https://registration.hyvesport.com/register/race-for-life-2025-virtual"
+        "website": "https://registration.hyvesport.com/register/race-for-life-2025-virtual",
+        "status": "Event is Full"
     },
     {
         "id": 18,
@@ -231,13 +186,10 @@
         "location": "Panglao Island, Bohol",
         "distance": "5KM / 10KM / 21KM / 42KM",
         "organizer": "BIM",
-        "type": "ultra-marathon",
-        "terrain": "Mixed",
         "description": "Run through the scenic streets with amazing lakefront views.",
-        "startTime": "5:30 AM",
         "price": "$1500",
-        "image": "chicago",
-        "website": "https://megatechph.com/events/bim-2025"
+        "website": "https://megatechph.com/events/bim-2025",
+        "status": "Register"
     },
     {
         "id": 19,
@@ -246,13 +198,10 @@
         "location": "UP Diliman, Quezon City",
         "distance": "3KM / 5KM / 10KM",
         "organizer": "RUNRIO",
-        "type": "half-marathon",
-        "terrain": "Trail",
         "description": "Run through the scenic streets with amazing lakefront views.",
-        "startTime": "6:00 AM",
         "price": "$1100",
-        "image": "chicago",
-        "website": "https://raceroster.com/events/2025/97500/the-great-up-run-2025"
+        "website": "https://raceroster.com/events/2025/97500/the-great-up-run-2025",
+        "status": "Opening Soon"
     },
     {
         "id": 20,
@@ -261,13 +210,10 @@
         "location": "SM Mall of Asia, Pasay City",
         "distance": "3KM / 5KM / 10KM / 25KM",
         "organizer": "Hyve Sports",
-        "type": "ultra-marathon",
-        "terrain": "Road",
         "description": "Run through the scenic streets with amazing lakefront views.",
-        "startTime": "8:00 AM",
         "price": "$1000",
-        "image": "newyork",
-        "website": "https://registration.hyvesport.com/register/lufthansa-technik-philippines-aviation-run-2025"
+        "website": "https://registration.hyvesport.com/register/lufthansa-technik-philippines-aviation-run-2025",
+        "status": "Register"
     },
     {
         "id": 21,
@@ -276,28 +222,22 @@
         "location": "Clark Parade Grounds, Pampanga",
         "distance": "5KM / 10KM / 21KM / 42KM",
         "organizer": "SMOKE10 Events Management",
-        "type": "half-marathon",
-        "terrain": "Mixed",
         "description": "Experience the thrill of a challenging trail with breathtaking scenery.",
-        "startTime": "8:00 AM",
         "price": "$1500",
-        "image": "london",
-        "website": "https://smoke10events.myruntime.com/register/pampanga-marathon-2025"
+        "website": "https://smoke10events.myruntime.com/register/pampanga-marathon-2025",
+        "status": "Event is Full"
     },
     {
         "id": 22,
-        "name": "Takbo Para sa Kalikasan \u2013 Air Run",
+        "name": "Takbo Para sa Kalikasan – Air Run",
         "date": 1758931200000,
         "location": "MOA Concert Grounds, Pasay City",
         "distance": "5KM / 10KM / 21KM",
         "organizer": "Green Media Events",
-        "type": "ultra-marathon",
-        "terrain": "Mixed",
         "description": "Take on the ultimate test of endurance in a mixed-terrain course.",
-        "startTime": "6:00 AM",
         "price": "$500",
-        "image": "boston",
-        "website": "https://greenmediaevents.myruntime.com/register/takbo-para-sa-kalikasan-2025-series"
+        "website": "https://greenmediaevents.myruntime.com/register/takbo-para-sa-kalikasan-2025-series",
+        "status": "Opening Soon"
     },
     {
         "id": 23,
@@ -306,13 +246,10 @@
         "location": "SM Mall of Asia, Pasay City",
         "distance": "3KM / 5KM / 10KM / 16KM",
         "organizer": "Hyve Sports",
-        "type": "half-marathon",
-        "terrain": "Road",
         "description": "Take on the ultimate test of endurance in a mixed-terrain course.",
-        "startTime": "8:00 AM",
         "price": "$1000",
-        "image": "tokyo",
-        "website": "https://registration.yakult10miler.com/register"
+        "website": "https://registration.yakult10miler.com/register",
+        "status": "Register"
     },
     {
         "id": 24,
@@ -321,13 +258,10 @@
         "location": "UP Diliman, Quezon City",
         "distance": "1KM Kids / 5KM / 10KM",
         "organizer": "FCC",
-        "type": "half-marathon",
-        "terrain": "Road",
-        "description": "Run through the scenic streets with amazing lakefront views.",
-        "startTime": "7:30 AM",
+                "description": "Run through the scenic streets with amazing lakefront views.",
         "price": "$750",
-        "image": "newyork",
-        "website": "https://raceroster.com/events/2025/95194/fcc-womens-run-ph"
+        "website": "https://raceroster.com/events/2025/95194/fcc-womens-run-ph",
+        "status": "Register"
     },
     {
         "id": 25,
@@ -336,88 +270,70 @@
         "location": "Filinvest City, Alabang",
         "distance": "3KM / 5KM / 10KM",
         "organizer": "Pinoy Fitness",
-        "type": "ultra-marathon",
-        "terrain": "Mixed",
         "description": "Run through the scenic streets with amazing lakefront views.",
-        "startTime": "5:30 AM",
         "price": "$1500",
-        "image": "london",
-        "website": "https://pinoyfitness.myruntime.com/"
+        "website": "https://pinoyfitness.myruntime.com/",
+        "status": "Opening Soon"
     },
     {
         "id": 26,
-        "name": "Garmin Run Asia 2025 \u2013 Philippines",
+        "name": "Garmin Run Asia 2025 – Philippines",
         "date": 1761436800000,
         "location": "Filinvest City, Alabang",
         "distance": "5KM / 10KM / 21KM",
         "organizer": "Hyve Sports",
-        "type": "ultra-marathon",
-        "terrain": "Mixed",
         "description": "Experience the thrill of a challenging trail with breathtaking scenery.",
-        "startTime": "6:00 AM",
         "price": "$1000",
-        "image": "tokyo",
-        "website": "https://registration.hyvesport.com/register/2025-garmin-run-asia-philippines"
+        "website": "https://registration.hyvesport.com/register/2025-garmin-run-asia-philippines",
+        "status": "Register"
     },
     {
         "id": 27,
-        "name": "Fit to Run 2025 \u2013 Leg 3",
+        "name": "Fit to Run 2025 – Leg 3",
         "date": 1762646400000,
         "location": "Clark Parade Grounds, Pampanga",
         "distance": "5KM / 10KM / 21KM / 42KM",
         "organizer": "Smoke10 Events Management",
-        "type": "half-marathon",
-        "terrain": "Mixed",
         "description": "Take on the ultimate test of endurance in a mixed-terrain course.",
-        "startTime": "6:00 AM",
         "price": "$750",
-        "image": "newyork",
-        "website": "https://smoke10events.myruntime.com/register/fit-to-run-2025-leg-3"
+        "website": "https://smoke10events.myruntime.com/register/fit-to-run-2025-leg-3",
+        "status": "Register"
     },
     {
         "id": 28,
-        "name": "Sante Barley Trilogy Run Asia 2025 \u2013 Finals",
+        "name": "Sante Barley Trilogy Run Asia 2025 – Finals",
         "date": 1762646400000,
         "location": "SM Mall of Asia, Pasay City",
         "distance": "5KM / 10KM / 21KM / 42KM",
         "organizer": "Sante Barley",
-        "type": "half-marathon",
-        "terrain": "Road",
         "description": "Take on the ultimate test of endurance in a mixed-terrain course.",
-        "startTime": "7:30 AM",
         "price": "$500",
-        "image": "chicago",
-        "website": "https://raceroster.com/events/2025/97759/sante-barley-trilogy-run-asia-2025"
+        "website": "https://raceroster.com/events/2025/97759/sante-barley-trilogy-run-asia-2025",
+        "status": "Register"
     },
     {
         "id": 29,
-        "name": "Takbo Para Sa Kalikasan \u2013 Earth Run",
+        "name": "Takbo Para Sa Kalikasan – Earth Run",
         "date": 1763164800000,
         "location": "Quirino Grandstand, Manila",
         "distance": "5KM / 10KM / 25KM",
         "organizer": "Green Media Events",
-        "type": "marathon",
-        "terrain": "Road",
         "description": "Run through the scenic streets with amazing lakefront views.",
-        "startTime": "8:00 AM",
         "price": "$1000",
-        "image": "london",
-        "website": "https://greenmediaevents.myruntime.com/register/takbo-para-sa-kalikasan-2025-series"
+        "website": "https://greenmediaevents.myruntime.com/register/takbo-para-sa-kalikasan-2025-series",
+        "status": "Register"
     },
     {
         "id": 30,
-        "name": "Rexona Metro Manila 10 Miler \u2013 Makati",
+        "name": "Rexona Metro Manila 10 Miler – Makati",
         "date": 1763856000000,
         "location": "Makati City",
         "distance": "5KM / 10KM / 16KM",
         "organizer": "RUNRIO",
-        "type": "half-marathon",
-        "terrain": "Trail",
         "description": "Run through the scenic streets with amazing lakefront views.",
-        "startTime": "8:00 AM",
         "price": "$1100",
-        "image": "newyork",
-        "website": "https://raceroster.com/events/2025/99625/rexona-metro-manila-10-miler-manila-city"
+        "website": "https://raceroster.com/events/2025/99625/rexona-metro-manila-10-miler-manila-city",
+        "status": "Register"
     },
     {
         "id": 31,
@@ -426,13 +342,10 @@
         "location": "SM Mall of Asia, Pasay City",
         "distance": "3KM / 5KM / 10KM / 21KM",
         "organizer": "Pinoy Fitness & Pep Squad Events",
-        "type": "half-marathon",
-        "terrain": "Trail",
         "description": "Run through the scenic streets with amazing lakefront views.",
-        "startTime": "7:30 AM",
         "price": "$500",
-        "image": "tokyo",
-        "website": "https://mannypacquiaorun.myruntime.com/register"
+        "website": "https://mannypacquiaorun.myruntime.com/register",
+        "status": "Register"
     },
     {
         "id": 32,
@@ -441,12 +354,10 @@
         "location": "Manila City",
         "distance": "5KM / 10KM / 21KM / 42KM",
         "organizer": "Ironman Group / Sunrise Events",
-        "type": "marathon",
-        "terrain": "Trail",
         "description": "Run through the scenic streets with amazing lakefront views.",
-        "startTime": "8:00 AM",
         "price": "$1100",
-        "image": "boston",
-        "website": "https://www.runrocknroll.com/manila"
+        "website": "https://www.runrocknroll.com/manila",
+        "status": "Register"
     }
 ]
+
