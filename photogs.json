@@ -1,60 +1,20 @@
-{
-  "events": [
-    {
-      "nameP": "ONE BIG RUN CLARK MARATHON",
-      "distanceP": "42KM,21KM,10KM,5KM,3KM",
-      "locationP": "Clark, Pampanga",
-      "dateP": "May 18, 2024",
 
-    },
-    {
-      "nameP": "SANTE BARLEY TRILOGY RUN ASIA - LEG 2",
-      "distanceP": "21KM,10KM,5KM",
-      "locationP": "Mall of Asia",
-      "dateP": "May 18, 2024",
-
-    },
-    {
-      "nameP": "PINOY FITNESS 21K CHALLENGE",
-      "distanceP": "21KM",
-      "locationP": "Vermosa, Cavite",
-      "dateP": "May 24, 2024",
-
-    },
-    {
-      "nameP": "LAZADA RUN PHILIPPINES",
-      "distanceP": "21KM,10KM,5KM",
-      "locationP": "Mall of Asia",
-      "dateP": "June 1, 2025",
-
-    },
-    {
-      "nameP": "BPI #BESTLIFERUN",
-      "distanceP": "21KM,10KM,5KM,3KM",
-      "locationP": "Ayala, Makati",
-      "dateP": "June 8, 2025",
-
-    },
-    {
-      "nameP": "RACE TO REFOREST APO HALF MARATHON",
-      "distanceP": "21KM,10KM,5KM",
-      "locationP": "Clark, Pampanga",
-      "dateP": "June 8, 2025",
-
-    },
-    {
-      "nameP": "EASTWEST DREAM RUN",
-      "distanceP": "30KM,10KM,5KM,2KM,1KM",
-      "locationP": "Filinvest, Alabang",
-      "dateP": "June 15, 2025",
-
-    },
-    {
-      "nameP": "SOUTHSTAR DRUG X MAXICARE RUN FOR WELLNESS",
-      "distanceP": "10KM,5KM,3KM",
-      "locationP": "UP Diliman",
-      "dateP": "June 22, 2025",
-
-    }
-  ]
-}
+  {
+    "nameP": "ONE BIG RUN CLARK MARATHON",
+    "distanceP": "42KM,21KM,10KM,5KM,3KM",
+    "locationP": "Clark, Pampanga",
+    "organizerP": "Smoke10 Events Management",
+    "dateP": "May 2, 2025",
+    "websiteP": "https://smoke10events.myruntime.com/register/one-big-run-2025-clark-marathon",
+    "statusP": "Event is Full"
+  },
+  {
+    "nameP": "SANTE BARLEY TRILOGY RUN ASIA - LEG 2",
+    "distanceP": "21KM,10KM,5KM",
+    "locationP": "Mall of Asia",
+    "organizerP": "RUNRIO",
+    "dateP": "May 1, 2025",
+    "websiteP": "https://raceroster.com/events/2025/97759/sante-barley-trilogy-run-asia-2025",
+    "statusP": "Register"
+  }
+]
