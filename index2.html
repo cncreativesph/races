@@ -1484,6 +1484,14 @@
                         return false;
                     }
                 }
+				
+				if (state.filters.year && state.filters.year.length > 0 && date) {
+				  const itemDate = new Date(date);
+				  if (!isNaN(itemDate.getTime())) {
+					const y = itemDate.getFullYear().toString();
+					if (!state.filters.year.includes(y)) return false;
+				  }
+				}
                 
                 // Search term filter
                 if (state.searchTerm) {
