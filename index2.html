@@ -1281,7 +1281,7 @@ body {
                 detailsSection.className = 'action-section';
                 
                 const raceName = document.createElement('h3');
-                raceName.className = 'race-name';
+                raceName.className = 'race-name poppins-black';
                 raceName.textContent = photo.nameP ? photo.nameP.toUpperCase() : 'UNNAMED RACE';
                 detailsSection.appendChild(raceName);
                 
@@ -1315,12 +1315,8 @@ body {
 				// Add photographers section
                 if (photo.listOfPhotogs && Array.isArray(photo.listOfPhotogs) && photo.listOfPhotogs.length > 0) {
                     const photographersLabel = document.createElement('div');
-                    photographersLabel.className = 'photographers-title';
+                    photographersLabel.className = 'race-name poppins-black mt-2';
                     photographersLabel.textContent = 'LIST OF PHOTOGRAPHERS';
-					
-	            const photographersLabelBelow = document.createElement('div');
-		    photographersLabelBelow.className = 'photographers-title-below';
-                    photographersLabelBelow.textContent = 'Click the photographer's name to view photos';
                     
                     const photographersContainer = document.createElement('div');
                     photographersContainer.className = 'flex flex-wrap mt-1';
@@ -1358,7 +1354,6 @@ body {
                     const photographersSection = document.createElement('div');
                     photographersSection.className = 'mt-2';
                     photographersSection.appendChild(photographersLabel);
-                    photographersSection.appendChild(photographersLabelBelow);
                     photographersSection.appendChild(photographersContainer);
                     card.appendChild(photographersSection);
                 }
@@ -1384,7 +1379,7 @@ body {
                     // Results button
                     const resultsButton = document.createElement('button');
                     resultsButton.className = 'register-button results';
-                    resultsButton.textContent = 'RESULTS';
+                    resultsButton.textContent = 'VIEW RESULTS';
                     
                     // If there's a resultsURL, make the button open it
                     if (photo.resultsURL) {
@@ -1715,6 +1710,7 @@ body {
 
   </div>
 </body></html>
+
 
 
 
