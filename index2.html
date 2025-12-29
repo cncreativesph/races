@@ -1529,10 +1529,19 @@
                                 `${paddedMonth}-${paddedDay}-${year}`,
                                 `${paddedMonth}-${paddedDay}-${shortYear}`
                             );
-                            
-                            matchesDate = dateFormats.some(format => 
-                                searchLower.includes(format.toLowerCase())
-                            );
+							
+                            dateFormats.push(
+								`${year}`,
+								`${shortYear}`
+							);
+                            matchesDate = dateFormats.some(format =>
+							format.toLowerCase().includes(searchLower)
+							);
+							
+							// Allow searching by just the year (e.g., "2026")
+							if (`${year}`.includes(searchLower) || `${shortYear}` === searchLower) {
+							matchesDate = true;
+							}
                             
                             // Also check if search is just the month name
                             if (monthNames[month].includes(searchLower) || shortMonthNames[month].includes(searchLower)) {
