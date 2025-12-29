@@ -190,6 +190,14 @@
         color: white;
         text-transform: uppercase;
 		}
+		
+		.photographers-instruct {
+        font-size: 10px;
+        font-weight: 600;
+		font-style: italic;
+        color: red;
+        text-transform: uppercase;
+		}
 
         .register-button {
             border-radius: 12px;
@@ -1349,6 +1357,12 @@
                     photographersLabel.className = 'photographers-title poppins-black';
                     photographersLabel.textContent = 'LIST OF PHOTOGRAPHERS';
                     
+					
+					photographers-instruct
+					const photographersInstruct = document.createElement('div');
+                    photographersInstruct.className = 'photographers-instruct poppins-black';
+                    photographersInstruct.textContent = 'Click the photographer\'s name to view photos';
+					
                     const photographersContainer = document.createElement('div');
                     photographersContainer.className = 'flex flex-wrap mt-1';
                     
@@ -1385,6 +1399,7 @@
                     const photographersSection = document.createElement('div');
                     photographersSection.className = 'mt-2';
                     photographersSection.appendChild(photographersLabel);
+					photographersSection.appendChild(photographersInstruct);
                     photographersSection.appendChild(photographersContainer);
                     card.appendChild(photographersSection);
                 }
