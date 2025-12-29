@@ -213,12 +213,12 @@
         }
 
         .register-button.full {
-            background-color: #ff3b30;
-            color: white;
+            background-color: #faf31e;
+            color: black;
         }
 
         .register-button.soon {
-            background-color: #ff9500;
+            background-color: #fc650c;
             color: black;
             opacity: 0.7;
             pointer-events: none;
@@ -640,6 +640,7 @@
             if (name.includes('RUNRIO')) return 'RUNRIO';
             if (name.includes('GREEN MEDIA')) return 'GREEN MEDIA';
 			if (name.includes('HYVESPORTS')) return 'HYVESPORTS';
+			if (name.includes('PINOY FITNESS')) return 'PINOY FITNESS';
             return name;
         }
 
@@ -673,7 +674,7 @@
                 // Process organizers (only for races)
                 if (!isPhotos && item.organizer) {
                     const normalizedOrg = normalizeOrganizerName(item.organizer);
-                    if (['RUNRIO', 'SMOKE10', 'GREEN MEDIA', 'HYVESPORTS'].includes(normalizedOrg)) {
+                    if (['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA'].includes(normalizedOrg)) {
                         organizers.add(normalizedOrg);
                     } else {
                         organizers.add('Others');
@@ -789,7 +790,7 @@
                 organizerFilters.appendChild(allChip);
                 
                 // Add specific organizers
-                ['RUNRIO', 'SMOKE10', 'GREEN MEDIA', 'HYVESPORTS', 'Others'].forEach(organizer => {
+                ['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA', 'Others'].forEach(organizer => {
                     const chip = document.createElement('div');
                     chip.className = `filter-chip ${state.filters.organizer.includes(organizer) ? 'active' : ''}`;
                     chip.textContent = organizer;
@@ -1595,7 +1596,7 @@
                     const normalizedOrganizer = normalizeOrganizerName(organizer);
                     
                     if (state.filters.organizer.includes('Others')) {
-                        if (['RUNRIO', 'SMOKE10', 'GREEN MEDIA', 'HYVESPORTS'].includes(normalizedOrganizer) && 
+                        if (['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA'].includes(normalizedOrganizer) && 
                             !state.filters.organizer.includes(normalizedOrganizer)) {
                             return false;
                         }
