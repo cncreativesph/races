@@ -1,28 +1,27 @@
 [
   {
-    "nameP": "REXONA 10-MILER LEG 2",
-    "distanceP": "16KM,10KM,5KM",
-    "locationP": "Mall of Asia",
-    "organizerP": "RUNRIO",
-    "dateP": "May 4, 2025"
-
-  },
+    "nameP": "CAPAS MARATHON",
+    "distanceP": "42KM,21KM,10KM,5KM",
+    "locationP": "New Clark City, Tarlac",
+    "organizerP": "Smoke10 Events Management",
+    "dateP": "December 14, 2025",
+	"resultsURL": "https://smoke10events.myruntime.com/results/capas-marathon-2025"
+  }
   {
-    "nameP": "CNCNSANTE BARLEY TRILOGY RUN ASIA - LEG 2",
+    "nameP": "PUMA CLARK CITY HALF MARATHON",
     "distanceP": "21KM,10KM,5KM",
-    "locationP": "Mall of Asia",
+    "locationP": "Clark, Pampanga",
     "organizerP": "RUNRIO",
-    "dateP": "May 1, 2025",
+    "dateP": "December 14, 2025",
     "listOfPhotogs": [
         "CN Creatives",
-        "AR Sports PH",
         "Humble Runner"
       ],
       "photogsURL": [
-        "https://photos.cncreatives.com/admin/photos",
-        "https://photos.arsportsph.com/admin/photos",
-        "https://photos.humblerunnerphoto.com/admin/photos"
-      ]
+        "https://photos.cncreatives.com/galleries/puma-clark-city-half-marathon",
+        "https://photos.humblerunnerphoto.com/galleries/puma-clark-city-half-marathon"
+      ],
+	"resultsURL": "https://results.raceroster.com/v3/events/mrb56faz3q55xg9d"
   },
   {
     "nameP": "C TRILOGY RUN ASIA - LEG 3",
@@ -39,7 +38,8 @@
         "https://photos.cncreatives.com/admin/photos",
         "https://photos.arsportsph.com/admin/photos",
         "https://photos.humblerunnerphoto.com/admin/photos"
-      ]
+      ],
+	 "resultsURL": ""
   },
   {
     "nameP": "D TRILOGY RUN ASIA - LEG 3",
@@ -59,7 +59,4 @@
       ]
   }
 ]
-
-
-
 
