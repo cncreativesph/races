@@ -155,9 +155,9 @@
         }
 
         .race-name {
-            font-size: 15px;
-            font-weight: 900;
-  	    letter-spacing: 0.05em;
+            font-size: 16px;
+            font-weight: 950;
+  	        letter-spacing: 0.05em;
             color: white; /* Changed for better contrast on dark green */
             overflow: hidden;
             text-overflow: ellipsis;
@@ -308,7 +308,7 @@
     
 /* Smaller header for photographers */
 .photographers-title {
-  font-size: 0.80rem;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.05em;
   opacity: 0.7;
@@ -1380,7 +1380,7 @@
                 if (photo.listOfPhotogs && Array.isArray(photo.listOfPhotogs) && photo.listOfPhotogs.length > 0) {
                     const photographersLabel = document.createElement('div');
                     photographersLabel.className = 'race-name poppins-black mt-2';
-                    photographersLabel.textContent = 'LIST OF PHOTOGRAPHERS';
+                    photographersLabel.textContent = 'LIST OF PHOTOGRAPHERS (Click each button to view photos)';
                     
                     const photographersContainer = document.createElement('div');
                     photographersContainer.className = 'flex flex-wrap mt-1';
@@ -1860,6 +1860,7 @@
 </button>
 
 </body></html>
+
 
 
 
