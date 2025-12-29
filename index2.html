@@ -304,7 +304,26 @@
         .cat-2km { background-color: #5ac8fa; }
         .cat-1km { background-color: #4cd964; }
         .cat-other { background-color: #8e8e93; }
-    
+
+		/* Smaller header for photographers */
+		.photographers-title {
+		  font-size: 14px;
+		  font-weight: 600;
+		  letter-spacing: 0.05em;
+		  opacity: 0.7;
+		  margin-top: 6px;
+		  margin-bottom: 4px;
+
+		.photographers-title-below {
+		  font-size: 10px;
+		  font-weight: 400;
+		  font-style: italic;
+		  color: red;
+		  letter-spacing: 0.05em;
+		  opacity: 0.7;
+		  margin-top: 6px;
+		  margin-bottom: 4px;
+			
 /* App shell: fixed viewport height, scroll content area */
 html, body {
   height: 100%;
@@ -1360,11 +1379,12 @@ body {
 				// Add photographers section
                 if (photo.listOfPhotogs && Array.isArray(photo.listOfPhotogs) && photo.listOfPhotogs.length > 0) {
                     const photographersLabel = document.createElement('div');
-                    photographersLabel.className = 'race-name poppins-black mt-2';
+                    photographersLabel.className = 'photographers-title';
                     photographersLabel.textContent = 'LIST OF PHOTOGRAPHERS';
-                    
-                    const photographersContainer = document.createElement('div');
-                    photographersContainer.className = 'flex flex-wrap mt-1';
+					
+	                const photographersLabelBelow = document.createElement('div');
+		            photographersLabelBelow.className = 'photographers-title-below';
+                    photographersLabelBelow.textContent = 'Click the photographer's name to view photos';
                     
                     // Sort photographers according to the specified hierarchy
                     const photographerOrder = {
@@ -1399,6 +1419,7 @@ body {
                     const photographersSection = document.createElement('div');
                     photographersSection.className = 'mt-2';
                     photographersSection.appendChild(photographersLabel);
+					photographersSection.appendChild(photographersLabelBelow);
                     photographersSection.appendChild(photographersContainer);
                     card.appendChild(photographersSection);
                 }
@@ -1424,7 +1445,7 @@ body {
                     // Results button
                     const resultsButton = document.createElement('button');
                     resultsButton.className = 'register-button results';
-                    resultsButton.textContent = 'RESULTS';
+                    resultsButton.textContent = 'VIEW RESULTS';
                     
                     // If there's a resultsURL, make the button open it
                     if (photo.resultsURL) {
@@ -1755,6 +1776,7 @@ body {
 
   </div>
 </body></html>
+
 
 
 
