@@ -1054,7 +1054,14 @@
                     suggestions.add(month);
                 }
             });
-            
+			
+			const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+			dayNames.forEach(day => {
+				if (day.toLowerCase().includes(searchTerm)) {
+					suggestions.add(day);
+				}
+			});
+						
             data.forEach(item => {
                 const name = state.view === 'photos' ? item.nameP : item.name;
                 const location = state.view === 'photos' ? item.locationP : item.location;
@@ -1095,19 +1102,25 @@
                         const shortMonthName = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(itemDate);
                         const day = itemDate.getDate();
                         const year = itemDate.getFullYear();
+						const weekdayName = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(itemDate);
                         
                         const formattedDate = `${monthName} ${day}, ${year}`;
                         
-                        if (monthName.toLowerCase().includes(searchTerm) || 
-                            shortMonthName.toLowerCase().includes(searchTerm) ||
-                            formattedDate.toLowerCase().includes(searchTerm)) {
-                            suggestions.add(formattedDate);
-                            // Also add just the month name for easier searching
-                            suggestions.add(monthName);
+                        if (
+							monthName.toLowerCase().includes(searchTerm) ||
+							shortMonthName.toLowerCase().includes(searchTerm) ||
+							formattedDate.toLowerCase().includes(searchTerm) ||
+							weekdayName.toLowerCase().includes(searchTerm)
+						) {
+							suggestions.add(formattedDate);
+							suggestions.add(monthName);
 							suggestions.add(year);
-                        }
+							suggestions.add(weekdayName);
+						}
                     }
                 }
+				
+				
             });
             
             // Limit suggestions to 5
