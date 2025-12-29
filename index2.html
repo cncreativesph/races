@@ -1475,11 +1475,18 @@
                 // Search term filter
                 if (state.searchTerm) {
                     const searchLower = state.searchTerm.toLowerCase();
+					
+					const dayNames = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+					const dayName = date && !isNaN(new Date(date).getTime())
+						? dayNames[new Date(date).getDay()]
+						: '';
+							  
                     const matchesSearch = 
                         (name && name.toLowerCase().includes(searchLower)) ||
                         (location && location.toLowerCase().includes(searchLower)) ||
                         (organizer && organizer.toLowerCase().includes(searchLower)) ||
-                        (distance && distance.toLowerCase().includes(searchLower));
+                        (distance && distance.toLowerCase().includes(searchLower)) ||
+						(dayName && dayName.includes(searchLower));
                     
                     // Check for date matches in various formats
                     let matchesDate = false;
@@ -1491,6 +1498,7 @@
                                               'july', 'august', 'september', 'october', 'november', 'december'];
                             const shortMonthNames = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 
                                                    'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+
                             
                             const month = itemDate.getMonth();
                             const day = itemDate.getDate();
