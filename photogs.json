@@ -5,16 +5,7 @@
     "locationP": "Mall of Asia",
     "organizerP": "RUNRIO",
     "dateP": "May 4, 2025",
-    "listOfPhotogs": [
-        "CN Creatives",
-        "Genuine Sole",
-        "Humble Runner"
-      ],
-      "photogsURL": [
-        "https://www.facebook.com/rexona10miler",
-        "https://photos.genuinesole.com/galleries/rexona-10-miler-pasay-by-gsp",
-        "https://photos.humblerunnerphoto.com/galleries/Leg2RexonaByHR"
-      ]
+
   },
   {
     "nameP": "CNCNSANTE BARLEY TRILOGY RUN ASIA - LEG 2",
@@ -68,5 +59,6 @@
       ]
   }
 ]
+
 
 
