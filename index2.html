@@ -984,17 +984,24 @@
 
         // Format date string
         function formatDate(dateStr) {
-            const date = new Date(dateStr);
-            if (isNaN(date.getTime())) return dateStr;
-            
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            const formattedDate = date.toLocaleDateString('en-US', options);
-            
-            const day = date.getDay();
-            const dayName = day === 6 ? 'Saturday' : day === 0 ? 'Sunday' : '';
-            
-            return dayName ? `${formattedDate} (${dayName})` : formattedDate;
-        }
+			if (!dateStr) return '';
+
+			// Force a safe parse: "May 1, 2026" → "2026-05-01"
+			const parsed = dateStr.replace(/(\w+)\s(\d+),\s(\d+)/, '$1 $2 $3');
+			const date = new Date(parsed + ' 00:00:00');
+
+			if (isNaN(date.getTime())) return dateStr;
+
+			const formattedDate = date.toLocaleDateString('en-US', {
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric'
+			});
+
+			const dayName = date.toLocaleDateString('en-US', { weekday: 'long' });
+
+			return `${formattedDate} (${dayName})`;
+		}
 
         // Get category color class
         function getCategoryColorClass(category) {
