@@ -1855,8 +1855,8 @@ function renderRaces() {
         // Toggle view between photos and calendar
 			function toggleView() {
             state.view = state.view === 'photos' ? 'calendar' : 'photos';
-            headerTitle.textContent = state.view === 'photos' ? 'Race Photos & Results' : 'Race Calendar';
-            toggleViewButton.textContent = state.view === 'photos' ? 'Race Calendar' : 'Race Photos & Results';
+            headerTitle.textContent = state.view === 'photos' ? 'Race Photos & Results' : 'Race Calendar - PixHero';
+            toggleViewButton.textContent = state.view === 'photos' ? 'Race Calendar - PixHero' : 'Race Photos & Results';
             toggleViewButton.className = state.view === 'photos' ? 'toggle-button calendar flex items-center' : 'toggle-button photos flex items-center';
             
             // Show/hide filters based on view
