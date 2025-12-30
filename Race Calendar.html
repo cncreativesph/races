@@ -1935,19 +1935,34 @@ function renderRaces() {
             generateSearchSuggestions();
         });
         
-        searchInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                state.searchTerm = searchInput.value;
-                searchSuggestions.classList.add('hidden');
-                
-                // If in photos view, fetch fresh data when searching
-                if (state.view === 'photos') {
-                    loadPhotoData();
-                } else {
-                    renderCurrentView();
-                }
-            }
-        });
+		searchInput.addEventListener('keydown', (e) => {
+		  if (e.key === 'Enter') {
+			// Reset all filters to "All"
+			state.filters = {
+			  distance: [],
+			  organizer: [],
+			  month: [],
+			  year: [],
+			  day: []
+			};
+
+			// optional but recommended: reset to first page after a new search
+			if (state.pagination) state.pagination.page = 1;
+
+			updateFilters(); // refresh chip UI (All becomes active)
+
+			// Apply search term
+			state.searchTerm = searchInput.value.trim();
+			searchSuggestions.classList.add('hidden');
+
+			// Re-render
+			if (state.view === 'photos') {
+			  loadPhotoData();
+			} else {
+			  renderCurrentView();
+			}
+		  }
+		});
         
         // Close suggestions when clicking outside
         document.addEventListener('click', (e) => {
