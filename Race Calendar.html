@@ -509,6 +509,7 @@
 
         // DOM elements
         const headerTitle = document.querySelector('.header h1');
+		headerTitle.textContent = 'Race Calendar';
         //const toggleViewButton = document.getElementById('toggleViewButton');
         const refreshButton = document.getElementById('refreshButton');
         const searchInput = document.getElementById('searchInput');
@@ -1654,7 +1655,7 @@
         }
 
         // Toggle view between photos and calendar
-function toggleView() {
+			function toggleView() {
             state.view = state.view === 'photos' ? 'calendar' : 'photos';
             headerTitle.textContent = state.view === 'photos' ? 'Race Photos & Results' : 'Race Calendar';
             toggleViewButton.textContent = state.view === 'photos' ? 'Race Calendar' : 'Race Photos & Results';
