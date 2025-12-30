@@ -120,14 +120,27 @@
             padding: 0.5rem 0;
 			padding-top: 2px;
 			padding-bottom: 2px;
+			margin-bottom: 8px; 
             cursor: pointer;
         }
+		
+		.filter-chip,
+		.filter-content > * {
+		  cursor: pointer;
+		}
 
         .filter-content {
             padding-bottom: 0.5rem;
             overflow: hidden;
             transition: max-height 0.3s ease;
         }
+		
+		body {
+		  -webkit-user-select: none; /* Safari */
+		  -moz-user-select: none;    /* Firefox */
+		  -ms-user-select: none;     /* IE/Edge */
+		  user-select: none;         /* Standard */
+		}
 
         .filter-chip {
             background-color: var(--secondary-color);
@@ -662,7 +675,7 @@
                 </svg>
             </div>
             <div class="filter-content" id="organizerFilters">
-                <div class="skeleton h-5 w-20 mr-2 mb-1"></div>
+                <div class="skeleton h-5 w-20 mr-2 "></div>
 
             </div>
         </div>
@@ -676,7 +689,7 @@
                 </svg>
             </div>
             <div class="filter-content" id="monthFilters">
-                <div class="skeleton h-5 w-16 mr-2 mb-1"></div>
+                <div class="skeleton h-5 w-16 mr-2 "></div>
 
             </div>
         </div>
@@ -690,7 +703,7 @@
                 </svg>
             </div>
             <div class="filter-content" id="yearFilters">
-                <div class="skeleton h-5 w-16 mr-2 mb-1"></div>
+                <div class="skeleton h-5 w-16 mr-2 "></div>
             </div>
         </div>
         
@@ -703,7 +716,7 @@
                 </svg>
             </div>
             <div class="filter-content" id="dayFilters">
-                <div class="skeleton h-5 w-16 mr-2 mb-1"></div>
+                <div class="skeleton h-5 w-16 mr-2 "></div>
             </div>
         </div>
         
@@ -751,7 +764,7 @@
             },
             suggestions: [],
             hiddenFilters: new Set(), // Track which filters should remain hidden
-            pagination: { page: 1, perPage: 50 }
+            pagination: { page: 1, perPage: 25 }
         };
 
         // DOM elements
@@ -1196,7 +1209,7 @@
                 dayFilters.appendChild(allDayChip);
                 
                 // Add individual day options
-                const orderedDays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+                const orderedDays = ['Saturday','Sunday'];
 				orderedDays.filter(d => days.has(d)).forEach(day => {
                     const chip = document.createElement('div');
                     chip.className = `filter-chip ${state.filters.day.includes(day) ? 'active' : ''}`;
@@ -1363,7 +1376,7 @@
                 }
             });
 			
-			const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+			const dayNames = ['Sunday', 'Saturday'];
 			dayNames.forEach(day => {
 				if (day.toLowerCase().includes(searchTerm)) {
 					suggestions.add(day);
@@ -1479,7 +1492,7 @@
 			  paginationContainer.innerHTML = '';
 
 			  const label = document.createElement('div');
-			  label.textContent = 'PixHero app';
+			  label.textContent = 'Thank you for using the PixHero app';
 
 			  const animations = [
 				  'pixhero-fade',
@@ -1928,7 +1941,7 @@ function renderRaces() {
                 if (state.searchTerm) {
                     const searchLower = state.searchTerm.toLowerCase();
 					
-					const dayNames = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+					const dayNames = ['sunday','saturday'];
 					const dayName = date && !isNaN(new Date(date).getTime())
 						? dayNames[new Date(date).getDay()]
 						: '';
