@@ -530,7 +530,7 @@
         </div>
         
         <!-- Toggle All Filters -->
-        <div class="flex justify-center items-center mt-1 mb-1">
+        <div class="flex justify-center items-center mb-1">
             <button id="toggleFiltersButton" class="text-xs bg-blue-500 text-white px-3 py-1 rounded-full flex items-center">
                 <span>Hide All Filters</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1251,7 +1251,10 @@
         function setCalendarPage(p) {
             state.pagination.page = p;
             renderRaces();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            paginationContainer.scrollIntoView({
+			behavior: 'smooth',
+			block: 'start'
+		});
         }
 
         function renderCalendarPagination(totalItems) {
@@ -1463,7 +1466,10 @@ function renderRaces() {
 			goTopBtn.className = 'go-top-btn';
 
 			goTopBtn.addEventListener('click', () => {
-				window.scrollTo({ top: 0, behavior: 'smooth' });
+				paginationContainer.scrollIntoView({
+					behavior: 'smooth',
+					block: 'start'
+				});
 			});
 
 			raceList.appendChild(goTopBtn);
