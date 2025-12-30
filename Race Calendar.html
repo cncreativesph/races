@@ -1376,12 +1376,12 @@ function renderRaces() {
                     registerButton.className = `register-button ${buttonType}`;
 					
                     if (buttonType === 'full') {
-						button.innerHTML = `
+						registerButton.innerHTML = `
 							<div class="btn-main-text">${buttonText}</div>
 							<div class="btn-sub-text">(View Details)</div>
 						`;
 					} else {
-						button.textContent = buttonText;
+						registerButton.textContent = buttonText;
 					}
                     
                     if (race.website && buttonType !== 'soon') {
