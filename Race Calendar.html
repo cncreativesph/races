@@ -217,6 +217,18 @@
             color: black;
         }
 
+		.btn-main-text {
+			font-weight: bold; /* keeps original style */
+		}
+
+		.btn-sub-text {
+			font-size: 10px;
+			font-style: italic;
+			font-weight: normal;
+			margin-top: 2px;
+			line-height: 1;
+		}
+		
         .register-button.soon {
             background-color: #fc650c;
             color: black;
@@ -1362,7 +1374,15 @@ function renderRaces() {
                     }
                     
                     registerButton.className = `register-button ${buttonType}`;
-                    registerButton.textContent = buttonText;
+					
+                    if (buttonType === 'full') {
+						button.innerHTML = `
+							<div class="btn-main-text">${buttonText}</div>
+							<div class="btn-sub-text">(View Details)</div>
+						`;
+					} else {
+						button.textContent = buttonText;
+					}
                     
                     if (race.website && buttonType !== 'soon') {
                         registerButton.addEventListener('click', () => {
