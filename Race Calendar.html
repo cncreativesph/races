@@ -344,6 +344,23 @@
 		cursor: not-allowed;
 	}
 
+	.go-top-btn {
+		display: block;
+		margin: 20px auto 16px;
+		padding: 10px 18px;
+		font-size: 14px;
+
+		color: #0a5f38;
+		background-color: transparent;
+		border: 1px solid #0a5f38;
+		border-radius: 6px;
+
+		cursor: pointer;
+	}
+
+	.go-top-btn:hover {
+		background-color: rgba(10, 95, 56, 0.12);
+	}
         .skeleton {
             background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
             background-size: 200% 100%;
@@ -1439,6 +1456,18 @@ function renderRaces() {
                 raceList.appendChild(card);
             });
 			
+			const goTopBtn = document.createElement('button');
+			goTopBtn.textContent = 'Go to the top';
+			goTopBtn.className = 'go-top-btn';
+
+			goTopBtn.addEventListener('click', () => {
+				paginationContainer.scrollIntoView({
+					behavior: 'smooth',
+					block: 'start'
+				});
+			});
+
+			raceList.appendChild(goTopBtn);
 			
         }
 
