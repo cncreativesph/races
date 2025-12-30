@@ -797,6 +797,13 @@
                 }
             });
             
+			function clearSearchOnFilterChange() {
+			  state.searchTerm = '';
+			  searchInput.value = '';
+			  searchSuggestions.classList.add('hidden');
+			}
+			
+			
             // Hide Distance filter for Photos view
             distanceFilterContainer.classList.toggle('hidden', isPhotos);
             state.hiddenFilters.delete('distance');
@@ -828,6 +835,7 @@
                 allChip.className = `filter-chip ${state.filters.distance.length === 0 ? 'active' : ''}`;
                 allChip.textContent = 'All';
                 allChip.addEventListener('click', () => {
+					clearSearchOnFilterChange();
                     state.filters.distance = [];
                     updateFilters();
                     renderCurrentView();
@@ -840,6 +848,7 @@
                     chip.className = `filter-chip ${state.filters.distance.includes(distance) ? 'active' : ''}`;
                     chip.textContent = distance;
                     chip.addEventListener('click', () => {
+						clearSearchOnFilterChange();
                         if (state.filters.distance.includes(distance)) {
                             state.filters.distance = state.filters.distance.filter(d => d !== distance);
                         } else {
@@ -866,6 +875,7 @@
                 allChip.className = `filter-chip ${state.filters.organizer.length === 0 ? 'active' : ''}`;
                 allChip.textContent = 'All';
                 allChip.addEventListener('click', () => {
+					clearSearchOnFilterChange();
                     state.filters.organizer = [];
                     updateFilters();
                     renderCurrentView();
@@ -878,6 +888,7 @@
                     chip.className = `filter-chip ${state.filters.organizer.includes(organizer) ? 'active' : ''}`;
                     chip.textContent = organizer;
                     chip.addEventListener('click', () => {
+						clearSearchOnFilterChange();
                         if (state.filters.organizer.includes(organizer)) {
                             state.filters.organizer = state.filters.organizer.filter(o => o !== organizer);
                         } else {
@@ -902,6 +913,7 @@
             allMonthChip.className = `filter-chip ${state.filters.month.length === 0 ? 'active' : ''}`;
             allMonthChip.textContent = 'All';
             allMonthChip.addEventListener('click', () => {
+				clearSearchOnFilterChange();
                 state.filters.month = [];
                 updateFilters();
                 renderCurrentView();
@@ -914,6 +926,7 @@
                 chip.className = `filter-chip ${state.filters.month.includes(month) ? 'active' : ''}`;
                 chip.textContent = month;
                 chip.addEventListener('click', () => {
+					clearSearchOnFilterChange();
                     if (state.filters.month.includes(month)) {
                         state.filters.month = state.filters.month.filter(m => m !== month);
                     } else {
@@ -941,6 +954,7 @@
                 allYearChip.className = `filter-chip ${state.filters.year.length === 0 ? 'active' : ''}`;
                 allYearChip.textContent = 'All';
                 allYearChip.addEventListener('click', () => {
+					clearSearchOnFilterChange();
                     state.filters.year = [];
                     updateFilters();
                     renderCurrentView();
@@ -953,6 +967,7 @@
                     chip.className = `filter-chip ${state.filters.year.includes(year) ? 'active' : ''}`;
                     chip.textContent = year;
                     chip.addEventListener('click', () => {
+						clearSearchOnFilterChange();
                         if (state.filters.year.includes(year)) {
                             state.filters.year = state.filters.year.filter(y => y !== year);
                         } else {
@@ -974,6 +989,7 @@
                 allDayChip.className = `filter-chip ${state.filters.day.length === 0 ? 'active' : ''}`;
                 allDayChip.textContent = 'All';
                 allDayChip.addEventListener('click', () => {
+					clearSearchOnFilterChange();
                     state.filters.day = [];
                     updateFilters();
                     renderCurrentView();
@@ -987,6 +1003,7 @@
                     chip.className = `filter-chip ${state.filters.day.includes(day) ? 'active' : ''}`;
                     chip.textContent = day;
                     chip.addEventListener('click', () => {
+						clearSearchOnFilterChange();
                         if (state.filters.day.includes(day)) {
                             state.filters.day = state.filters.day.filter(d => d !== day);
                         } else {
