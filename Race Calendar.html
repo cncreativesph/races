@@ -1164,6 +1164,14 @@
                 }
             });
 			
+			// Region suggestions
+				const regionNames = ["Metro Manila", "Luzon", "Visayas", "Mindanao"];
+				regionNames.forEach(region => {
+				  if (region.toLowerCase().includes(searchTerm)) {
+					suggestions.add(region);
+				  }
+				});
+			
 			const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 			dayNames.forEach(day => {
 				if (day.toLowerCase().includes(searchTerm)) {
@@ -1229,6 +1237,8 @@
                     }
                 }
 				
+				
+								
 				
             });
             
@@ -1311,6 +1321,46 @@
             paginationContainer.appendChild(next);
         }
     
+	// --- Region keyword search support ---
+	const REGION_LOCATIONS = {
+	  "metro manila": [
+		"makati", "mall of asia", "alabang", "filinvest", "manila", "quirino grandstand",
+		"ayala", "bridgetowne", "pasig", "up diliman", "quezon city", "parqal",
+		"paranaque", "bgc", "taguig"
+	  ],
+	  "luzon": [
+		// Metro Manila locations included automatically (we’ll merge below)
+		"pampanga", "new clark city", "tarlac", "pangasinan", "subic", "bataan",
+		"naga", "bicol", "palawan"
+	  ],
+	  "visayas": ["cebu", "iloilo", "aklan", "bohol"],
+	  "mindanao": ["cagayan de oro", "davao", "siargao"]
+	};
+
+	// Merge Metro Manila into Luzon (so Luzon = Metro Manila + extra Luzon)
+	REGION_LOCATIONS["luzon"] = [
+	  ...REGION_LOCATIONS["metro manila"],
+	  ...REGION_LOCATIONS["luzon"]
+	];
+
+	function normalizeText(s) {
+	  return (s || "")
+		.toLowerCase()
+		.replace(/\s+/g, " ")
+		.trim();
+	}
+
+	function locationMatchesRegion(searchLower, locationStr) {
+	  const s = normalizeText(searchLower);
+	  const loc = normalizeText(locationStr);
+
+	  // If user didn’t type a region keyword, don’t match by region
+	  if (!REGION_LOCATIONS[s]) return false;
+
+	  // Match if location contains any of the region’s keywords (partial allowed)
+	  return REGION_LOCATIONS[s].some(k => loc.includes(normalizeText(k)));
+	}
+
 function renderRaces() {
             const filteredRaces = filterData(state.races, false);
 			
@@ -1515,12 +1565,13 @@ function renderRaces() {
                 const searchLower = state.searchTerm.toLowerCase();
                 photosToDisplay = state.photos.filter(photo => {
                     return (
-                        (photo.nameP && photo.nameP.toLowerCase().includes(searchLower)) ||
-                        (photo.locationP && photo.locationP.toLowerCase().includes(searchLower)) ||
-                        (photo.dateP && formatDate(photo.dateP).toLowerCase().includes(searchLower)) ||
-                        (photo.distanceP && photo.distanceP.toLowerCase().includes(searchLower)) ||
-                        (photo.listOfPhotogs && photo.listOfPhotogs.some(p => p.toLowerCase().includes(searchLower)))
-                    );
+					  (photo.nameP && photo.nameP.toLowerCase().includes(searchLower)) ||
+					  (photo.locationP && photo.locationP.toLowerCase().includes(searchLower)) ||
+					  (photo.locationP && locationMatchesRegion(searchLower, photo.locationP)) ||
+					  (photo.dateP && formatDate(photo.dateP).toLowerCase().includes(searchLower)) ||
+					  (photo.distanceP && photo.distanceP.toLowerCase().includes(searchLower)) ||
+					  (photo.listOfPhotogs && photo.listOfPhotogs.some(p => p.toLowerCase().includes(searchLower)))
+					);
                 });
             }
             
@@ -1730,12 +1781,13 @@ function renderRaces() {
 						? dayNames[new Date(date).getDay()]
 						: '';
 							  
-                    const matchesSearch = 
-                        (name && name.toLowerCase().includes(searchLower)) ||
-                        (location && location.toLowerCase().includes(searchLower)) ||
-                        (organizer && organizer.toLowerCase().includes(searchLower)) ||
-                        (distance && distance.toLowerCase().includes(searchLower)) ||
-						(dayName && dayName.includes(searchLower));
+                    const matchesSearch =
+						  (name && name.toLowerCase().includes(searchLower)) ||
+						  (location && location.toLowerCase().includes(searchLower)) ||
+						  (organizer && organizer.toLowerCase().includes(searchLower)) ||
+						  (distance && distance.toLowerCase().includes(searchLower)) ||
+						  (dayName && dayName.includes(searchLower)) ||
+						  (location && locationMatchesRegion(searchLower, location));
                     
                     // Check for date matches in various formats
                     let matchesDate = false;
