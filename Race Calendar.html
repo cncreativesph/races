@@ -1642,6 +1642,21 @@ function renderRaces() {
                 
                 
                 raceList.appendChild(card);
+				
+			const goTopBtn = document.createElement('button');
+			goTopBtn.type = 'button'; // 🔥 IMPORTANT
+			goTopBtn.textContent = 'Go to the top';
+			goTopBtn.className = 'go-top-btn';
+
+			goTopBtn.addEventListener('click', () => {
+				paginationContainer.scrollIntoView({
+					behavior: 'smooth',
+					block: 'start'
+				});
+			});
+
+			raceList.appendChild(goTopBtn);
+			
             });
         }
 
