@@ -1460,21 +1460,7 @@ function renderRaces() {
                 raceList.appendChild(card);
             });
 			
-			// --- Go to Top button ---
-			const goTopBtn = document.createElement('button');
-			goTopBtn.textContent = 'Go to the top';
-			goTopBtn.className = 'go-top-btn';
 
-			goTopBtn.addEventListener('click', () => {
-				paginationContainer.scrollIntoView({
-					behavior: 'smooth',
-					block: 'start'
-				});
-			});
-
-			raceList.appendChild(goTopBtn);
-
-        }
 
         // Render photos - show all data without filtering
         function renderPhotos() {
