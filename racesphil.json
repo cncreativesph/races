@@ -19,7 +19,7 @@
   },
   {
     "name": "AYALA TACBO",
-    "distance": "10KM,5KM,3KM,1KM,KM DOG",
+    "distance": "10KM,5KM,3KM,1KM,1KM DOG",
     "location": "Ayala, Makati",
     "organizer": "RUNRIO",
     "date": "January 18, 2026",
@@ -172,7 +172,7 @@
   },
   {
     "name": "PRIDE RUN",
-    "distance": "10KM,5KM,3KM,1KM Dog",
+    "distance": "10KM,5KM,3KM,1KM DOG",
     "location": "Mall of Asia",
     "organizer": "RUNRIO",
     "date": "June 29, 2025",
