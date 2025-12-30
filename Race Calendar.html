@@ -305,7 +305,7 @@
 		#paginationContainer {
 		font-size: 12px;
 		color: #0a5f38;
-		margin-top: 8px;     /* space above pagination */
+		margin-top: 12px;     /* space above pagination */
 		margin-bottom: 4px;   /* tight gap to first race */
 		padding: 0;
 	}
@@ -342,6 +342,24 @@
 	#paginationContainer .pagination-button:disabled {
 		opacity: 0.4;
 		cursor: not-allowed;
+	}
+	
+	.go-top-btn {
+		display: block;
+		margin: 24px auto 16px;
+		padding: 10px 18px;
+		font-size: 14px;
+
+		color: #0a5f38;
+		background-color: transparent;
+		border: 1px solid #0a5f38;
+		border-radius: 6px;
+
+		cursor: pointer;
+	}
+
+	.go-top-btn:hover {
+		background-color: rgba(10, 95, 56, 0.12);
 	}
 
         .skeleton {
@@ -1438,6 +1456,18 @@ function renderRaces() {
                 
                 raceList.appendChild(card);
             });
+			
+			// --- Go to Top button ---
+			const goTopBtn = document.createElement('button');
+			goTopBtn.textContent = 'Go to the top';
+			goTopBtn.className = 'go-top-btn';
+
+			goTopBtn.addEventListener('click', () => {
+				window.scrollTo({ top: 0, behavior: 'smooth' });
+			});
+
+			raceList.appendChild(goTopBtn);
+
         }
 
         // Render photos - show all data without filtering
