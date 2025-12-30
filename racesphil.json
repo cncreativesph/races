@@ -11,7 +11,7 @@
   {
     "name": "DAILYFIX POWER RUN",
     "distance": "10KM,5KM,3KM,1KM DOG",
-    "location": "Mall of Asia",
+    "location": "Mall of Asia, Pasay City",
     "organizer": "RUNRIO",
     "date": "January 11, 2026",
     "website": "https://raceroster.com/events/2026/108942/dailyfix-power-run-2026",
@@ -20,7 +20,7 @@
   {
     "name": "AYALA TACBO",
     "distance": "10KM,5KM,3KM,1KM,1KM DOG",
-    "location": "Ayala, Makati",
+    "location": "Ayala, Makati City",
     "organizer": "RUNRIO",
     "date": "January 18, 2026",
     "website": "https://raceroster.com/events/2026/112577/tacbo-2026",
@@ -38,7 +38,7 @@
   {
     "name": "MEOWSHIE RUN",
     "distance": "10KM,5KM",
-    "location": "Fort Santiago, Intramuros, Manila",
+    "location": "Fort Santiago, Intramuros, Manila City",
     "organizer": "SPEARHEAD EVENTS",
     "date": "January 25, 2026",
     "website": "https://spearheadevents.myruntime.com/register/meowshie-run",
@@ -47,7 +47,7 @@
   {
     "name": "HOME CREDIT TAKBO PARA SA LIFE",
     "distance": "10KM,5KM,3KM,1KM",
-    "location": "Mall of Asia",
+    "location": "Mall of Asia, Pasay City",
     "organizer": "RUNRIO",
     "date": "February 1, 2026",
     "website": "https://raceroster.com/events/2026/110197/home-credit-takbo-para-sa-life-2026",
@@ -56,7 +56,7 @@
   {
     "name": "RUN 7-ELEVEN",
     "distance": "42KM,32KM,21KM,16KM,10KM,7KM,5KM,3KM,711M",
-    "location": "Filinvest, Alabang",
+    "location": "Filinvest, Alabang, Muntinlupa City",
     "organizer": "7-ELEVEN",
     "date": "February 1, 2026",
     "website": "https://www.run711.com",
@@ -65,7 +65,7 @@
   {
     "name": "ARMYNAVY RUN",
     "distance": "21KM,10KM,5KM",
-    "location": "Ayala, Makati",
+    "location": "Ayala, Makati City",
     "organizer": "RUNRIO",
     "date": "February 8, 2026",
     "website": "https://raceroster.com/events/2026/111574/armynavy-run-2026",
@@ -83,7 +83,7 @@
   {
     "name": "THE BULL RUNNER DREAM MARATHON",
     "distance": "42KM",
-    "location": "Filinvest, Alabang",
+    "location": "Filinvest, Alabang, Muntinlupa City",
     "organizer": "TBR DREAM TEAM",
     "date": "February 15, 2026",
     "website": "https://www.tbrdream.com/race-info/race-details/",
@@ -92,16 +92,16 @@
   {
     "name": "DORAEMON RUN",
     "distance": "10KM,5KM,3KM,1KM",
-    "location": "Mall of Asia",
+    "location": "Mall of Asia, Pasay City",
     "organizer": "RUNRIO",
     "date": "February 15, 2026",
-    "website": "https://raceroster.com/events/2026/112481/doraemon-run-2026-manila",
+    "website": "https://raceroster.com/events/2026/112481/doraemon-run-2026-Manila City",
     "status": "Register"
   },
   {
     "name": "AYALA PHILIPPINE MARATHON",
     "distance": "42KM,21KM,10KM,5KM",
-    "location": "Ayala, Makati",
+    "location": "Ayala, Makati City",
     "organizer": "RUNRIO",
     "date": "February 22, 2026",
     "website": "https://raceroster.com/events/2026/112415/ayala-philippine-marathon",
@@ -128,16 +128,16 @@
   {
     "name": "WATSONS X UNILAB: SHARE THE ALAGA RUN",
     "distance": "10KM,5KM,3KM,1KM",
-    "location": "Mall of Asia",
+    "location": "Mall of Asia, Pasay City",
     "organizer": "HYVESPORTS",
     "date": "February 22, 2026",
     "website": "https://www.facebook.com/CNCreativesPH/posts/pfbid0263N39vqjzR6p36z4XhuyDa4hovwyK15j8nLtwHNv9RwyBVsoKVaAFgRJnbzb9vtrl",
     "status": "Register"
   },
   {
-    "name": "THE MUSIC RUN MANILA",
+    "name": "THE MUSIC RUN Manila City",
     "distance": "10KM,5KM",
-    "location": "Filinvest, Alabang",
+    "location": "Filinvest, Alabang, Muntinlupa City",
     "organizer": "HYVESPORTS",
     "date": "February 28, 2026",
     "website": "https://registration.hyvesport.com/register/the-music-run-manila-2026",
@@ -146,7 +146,7 @@
   {
     "name": "PINOY FITNESS SUB1 10K CHALLENGE",
     "distance": "10KM",
-    "location": "Vermosa, Cavite",
+    "location": "Vermosa, Cavite City",
     "organizer": "PINOY FITNESS & PEP SQUAD EVENTS",
     "date": "March 7, 2026",
     "website": "https://pinoyfitness.myruntime.com/register/pf-sub1-10k-challenge-2026",
@@ -155,7 +155,7 @@
   {
     "name": "FCC WOMEN’S RUN PH",
     "distance": "16KM,10KM,5KM",
-    "location": "Mall of Asia",
+    "location": "Mall of Asia, Pasay City",
     "organizer": "RUNRIO",
     "date": "March 8, 2026",
     "website": "https://raceroster.com/events/2026/107165/fcc-womens-run-ph-2026",
@@ -173,7 +173,7 @@
   {
     "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 1",
     "distance": "16KM,10KM,5KM",
-    "location": "Mall of Asia",
+    "location": "Mall of Asia, Pasay City",
     "organizer": "RUNRIO",
     "date": "March 15, 2026",
     "website": "https://raceroster.com/events/2026/113730/sante-barley-trilogy-run-asia-2026-manila-leg-1",
@@ -182,7 +182,7 @@
   {
     "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 2",
     "distance": "21KM,10KM,5KM",
-    "location": "Mall of Asia",
+    "location": "Mall of Asia, Pasay City",
     "organizer": "RUNRIO",
     "date": "May 17, 2026",
     "website": "https://raceroster.com/events/2026/113730/sante-barley-trilogy-run-asia-2026-manila-leg-1",
@@ -191,7 +191,7 @@
   {
     "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 3",
     "distance": "32KM,21KM,10KM,5KM",
-    "location": "Mall of Asia",
+    "location": "Mall of Asia, Pasay City",
     "organizer": "RUNRIO",
     "date": "September 6, 2026",
     "website": "https://raceroster.com/events/2026/113730/sante-barley-trilogy-run-asia-2026-manila-leg-1",
@@ -200,7 +200,7 @@
   {
     "name": "SANTE BARLEY TRILOGY RUN ASIA - NATIONAL FINALS",
     "distance": "42KM,21KM,10KM,5KM",
-    "location": "Mall of Asia",
+    "location": "Mall of Asia, Pasay City",
     "organizer": "RUNRIO",
     "date": "November 8, 2026",
     "website": "https://raceroster.com/events/2026/113730/sante-barley-trilogy-run-asia-2026-manila-leg-1",
@@ -209,7 +209,7 @@
   {
     "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 1",
     "distance": "16KM,10KM,5KM",
-    "location": "Iloilo",
+    "location": "Iloilo City",
     "organizer": "RUNRIO",
     "date": "March 1, 2026",
     "website": "https://raceroster.com/events/2026/113788/sante-barley-trilogy-run-asia-2026-iloilo-leg-1",
@@ -218,7 +218,7 @@
  {
     "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 2",
     "distance": "21KM,10KM,5KM",
-    "location": "Iloilo",
+    "location": "Iloilo City",
     "organizer": "RUNRIO",
     "date": "May 31, 2026",
     "website": "https://raceroster.com/events/2026/113788/sante-barley-trilogy-run-asia-2026-iloilo-leg-1",
@@ -227,7 +227,7 @@
  {
     "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 3",
     "distance": "32KM,21KM,10KM,5KM",
-    "location": "Iloilo",
+    "location": "Iloilo City",
     "organizer": "RUNRIO",
     "date": "August 23, 2026",
     "website": "https://raceroster.com/events/2026/113788/sante-barley-trilogy-run-asia-2026-iloilo-leg-1",
@@ -237,7 +237,7 @@
   {
     "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 1",
     "distance": "16KM,10KM,5KM",
-    "location": "Cagayan de Oro",
+    "location": "Cagayan de Oro City",
     "organizer": "RUNRIO",
     "date": "March 8, 2026",
     "website": "https://raceroster.com/events/2026/113787/sante-barley-trilogy-run-asia-2026-cagayan-de-oro-leg-1",
@@ -246,7 +246,7 @@
   {
     "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 2",
     "distance": "21KM,10KM,5KM",
-    "location": "Cagayan de Oro",
+    "location": "Cagayan de Oro City",
     "organizer": "RUNRIO",
     "date": "June 7, 2026",
     "website": "https://raceroster.com/events/2026/113787/sante-barley-trilogy-run-asia-2026-cagayan-de-oro-leg-1",
@@ -255,7 +255,7 @@
   {
     "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 3",
     "distance": "32KM,21KM,10KM,5KM",
-    "location": "Cagayan de Oro",
+    "location": "Cagayan de Oro City",
     "organizer": "RUNRIO",
     "date": "September 20, 2026",
     "website": "https://raceroster.com/events/2026/113787/sante-barley-trilogy-run-asia-2026-cagayan-de-oro-leg-1",
@@ -264,7 +264,7 @@
   {
     "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 1",
     "distance": "16KM,10KM,5KM",
-    "location": "Cebu",
+    "location": "Cebu City",
     "organizer": "RUNRIO",
     "date": "March 22, 2026",
     "website": "https://raceroster.com/events/2026/113793/sante-barley-trilogy-run-asia-2026-cebu-leg-1",
@@ -273,7 +273,7 @@
   {
     "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 2",
     "distance": "21KM,10KM,5KM",
-    "location": "Cebu",
+    "location": "Cebu City",
     "organizer": "RUNRIO",
     "date": "June 21, 2026",
     "website": "https://raceroster.com/events/2026/113793/sante-barley-trilogy-run-asia-2026-cebu-leg-1",
@@ -282,7 +282,7 @@
   {
     "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 3",
     "distance": "32KM,21KM,10KM,5KM",
-    "location": "Cebu",
+    "location": "Cebu City",
     "organizer": "RUNRIO",
     "date": "September 13, 2026",
     "website": "https://raceroster.com/events/2026/113793/sante-barley-trilogy-run-asia-2026-cebu-leg-1",
@@ -318,7 +318,7 @@
   {
     "name": "APO HALF MARATHON",
     "distance": "21KM,10KM,5KM",
-    "location": "Mall of Asia",
+    "location": "Mall of Asia, Pasay City",
     "organizer": "GREEN MEDIA EVENTS",
     "date": "March 22, 2026",
     "website": "https://greenmediaevents.myruntime.com/register/race-to-serve-apo-half-marathon-2026",
@@ -327,7 +327,7 @@
   {
     "name": "GCASH RUN",
     "distance": "10KM,5KM,3KM,1KM DOG",
-    "location": "Ayala, Makati",
+    "location": "Ayala, Makati City",
     "organizer": "RUNRIO",
     "date": "March 22, 2026",
     "website": "https://ayalaland.myruntime.com/register",
@@ -336,7 +336,7 @@
    {
     "name": "ALL WOMEN’S RUN ASIA: SHINE HALF MARATHON",
     "distance": "21KM,10KM,5KM,3KM,1KM,500M",
-    "location": "Filinvest, Alabang",
+    "location": "Filinvest, Alabang, Muntinlupa City",
     "organizer": "HYVESPORTS",
     "date": "March 29, 2026",
     "website": "https://registration.hyvesport.com/register/awr-asia-year-4-shine-half-marathon",
@@ -345,16 +345,16 @@
     {
     "name": "REXONA 10 MILER - PASAY",
     "distance": "16KM,10KM,5KM",
-    "location": "Mall of Asia",
+    "location": "Mall of Asia, Pasay City",
     "organizer": "RUNRIO",
     "date": "March 29, 2026",
     "website": "https://www.facebook.com/CNCreativesPH/posts/pfbid0263N39vqjzR6p36z4XhuyDa4hovwyK15j8nLtwHNv9RwyBVsoKVaAFgRJnbzb9vtrl",
     "status": "Opening Soon"
   },
     {
-    "name": "REXONA 10 MILER - MANILA",
+    "name": "REXONA 10 MILER - Manila City",
     "distance": "16KM,10KM,5KM",
-    "location": "Quirino Grandstand, Manila",
+    "location": "Quirino Grandstand, Manila City",
     "organizer": "RUNRIO",
     "date": "June 28, 2026",
     "website": "https://www.facebook.com/CNCreativesPH/posts/pfbid0263N39vqjzR6p36z4XhuyDa4hovwyK15j8nLtwHNv9RwyBVsoKVaAFgRJnbzb9vtrl",
@@ -372,7 +372,7 @@
   {
     "name": "REXONA 10 MILER - Makati City",
     "distance": "16KM,10KM,5KM",
-    "location": "Ayala, Makati",
+    "location": "Ayala, Makati City",
     "organizer": "RUNRIO",
     "date": "September 13, 2026",
     "website": "https://www.facebook.com/CNCreativesPH/posts/pfbid0263N39vqjzR6p36z4XhuyDa4hovwyK15j8nLtwHNv9RwyBVsoKVaAFgRJnbzb9vtrl",
@@ -399,7 +399,7 @@
   {
     "name": "SINGLIFE ILOILO MARATHON",
     "distance": "42KM,21KM,10KM,5KM",
-    "location": "Iloilo",
+    "location": "Iloilo City",
     "organizer": "RUNRIO",
     "date": "April 12, 2026",
     "website": "https://raceroster.com/events/2026/113788/sante-barley-trilogy-run-asia-2026-iloilo-leg-1",
@@ -417,7 +417,7 @@
     {
     "name": "SINGLIFE CAGAYAN DE ORO MARATHON",
     "distance": "42KM,21KM,10KM,5KM",
-    "location": "Cagayan de Oro",
+    "location": "Cagayan de Oro City",
     "organizer": "RUNRIO",
     "date": "December 14, 2026",
     "website": "https://raceroster.com/events/2026/113788/sante-barley-trilogy-run-asia-2026-iloilo-leg-1",
@@ -426,7 +426,7 @@
       {
     "name": "EARTH DAY RUN",
     "distance": "21KM,10KM,5KM",
-    "location": "Mall of Asia",
+    "location": "Mall of Asia, Pasay City",
     "organizer": "RUNRIO",
     "date": "April 19, 2026",
     "website": "https://raceroster.com/events/2026/113788/sante-barley-trilogy-run-asia-2026-iloilo-leg-1",
@@ -453,7 +453,7 @@
   {
     "name": "PINOY FITNESS 21K CHALLENGE",
     "distance": "21KM",
-    "location": "Vermosa, Cavite",
+    "location": "Vermosa, Cavite City",
     "organizer": "PINOY FITNESS & PEP SQUAD EVENTS",
     "date": "September 26, 2026",
     "website": "https://pinoyfitness.myruntime.com/register/pf-sub1-10k-challenge-2026",
@@ -462,7 +462,7 @@
     {
     "name": "PF MAMAW RUN HALLOWEEN EVENT",
     "distance": "10KM,5KM,3KM,1KM",
-    "location": "Filinvest, Alabang",
+    "location": "Filinvest, Alabang, Muntinlupa City",
     "organizer": "PINOY FITNESS & PEP SQUAD EVENTS",
     "date": "October 24, 2026",
     "website": "https://pinoyfitness.myruntime.com/register/pf-sub1-10k-challenge-2026",
@@ -471,7 +471,7 @@
     {
     "name": "PINOY FITNESS SUB1:30 15K CHALLENGE",
     "distance": "15KM",
-    "location": "Vermosa, Cavite",
+    "location": "Vermosa, Cavite City",
     "organizer": "PINOY FITNESS & PEP SQUAD EVENTS",
     "date": "May 23, 2026",
     "website": "https://pinoyfitness.myruntime.com/register/pf-sub1-10k-challenge-2026",
@@ -480,7 +480,7 @@
   {
     "name": "MANILA MARATHON",
     "distance": "42KM,21KM,10KM,5KM",
-    "location": "Mall of Asia",
+    "location": "Mall of Asia, Pasay City",
     "organizer": "RUNRIO",
     "date": "June 7, 2026",
     "website": "https://raceroster.com/events/2026/113788/sante-barley-trilogy-run-asia-2026-iloilo-leg-1",
@@ -493,6 +493,114 @@
     "organizer": "BIM",
     "date": "August 30, 2026",
     "website": "https://megatechph.com/events/bim-2026",
+    "status": "Register"
+  },
+  {
+    "name": "AIA ROCK 'N' ROLL MANILA",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "Quirino Grandstand, Manila City",
+    "organizer": "Sunrise Events Philippines & IRONMAN Group",
+    "date": "November 29, 2026",
+    "website": "https://www.runrocknroll.com/events/manila/register",
+    "status": "Register"
+  },
+  {
+    "name": "ATHENA OLYMPUS RUN",
+    "distance": "16KM,10KM,5KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RSRJ Events Management",
+    "date": "January 4, 2026",
+    "website": "https://rsrjevents.myruntime.com/register/athena-olympus-run-2026",
+    "status": "Event is Full"
+  },
+  {
+    "name": "HADES OLYMPUS RUN",
+    "distance": "18KM,10KM,5KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RSRJ Events Management",
+    "date": "April 5, 2026",
+    "website": "https://rsrjevents.myruntime.com/register/athena-olympus-run-2026",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "POSEIDON OLYMPUS RUN",
+    "distance": "21KM,10KM,5KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RSRJ Events Management",
+    "date": "May 24, 2026",
+    "website": "https://rsrjevents.myruntime.com/register/athena-olympus-run-2026",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "POSEIDON OLYMPUS RUN",
+    "distance": "32KM,16KM,10KM,5KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RSRJ Events Management",
+    "date": "July 26, 2026",
+    "website": "https://rsrjevents.myruntime.com/register/athena-olympus-run-2026",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "VINTA MARATHON DIA DE ZAMBOANGA",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "Paseo del Mar, Zamboanga City",
+    "organizer": "Smoke10 Events Management",
+    "date": "March 1, 2026",
+    "website": "https://smoke10events.myruntime.com/register/vinta-marathon-dia-de-zamboanga-2026",
+    "status": "Register"
+  },
+  {
+    "name": "FIT TO RUN - LEG 1",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "Clark, Pampanga",
+    "organizer": "Smoke10 Events Management",
+    "date": "February 15, 2026",
+    "website": "https://smoke10events.myruntime.com/register/fit-to-run-2026-leg-1-clark",
+    "status": "Register"
+  },
+  {
+    "name": "IRUN TARLAC",
+    "distance": "21KM,10KM,5KM",
+    "location": "Cresendo, Tarlac City",
+    "organizer": "Smoke10 Events Management",
+    "date": "January 11, 2026",
+    "website": "https://smoke10events.myruntime.com/register/irun-tarlac-2025",
+    "status": "Register"
+  },
+  {
+    "name": "Y2K: TAKBOCAUE",
+    "distance": "10KM,5KM",
+    "location": "Bocaue Municipal Hall, Bulacan",
+    "organizer": "Smoke10 Events Management",
+    "date": "January 11, 2026",
+    "website": "https://smoke10events.myruntime.com/register/y2k-takbocaue-2026",
+    "status": "Register"
+  },
+  {
+    "name": "JUAN BLUE RUN",
+    "distance": "16KM,10KM,5KM,3KM,1.5KM",
+    "location": "Clark, Pampanga",
+    "organizer": "Smoke10 Events Management",
+    "date": "January 17, 2026",
+    "website": "https://smoke10events.myruntime.com/register/juan-blue-run-2026",
+    "status": "Register"
+  },
+  {
+    "name": "GIRL POWER RUN",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "Clark, Pampanga",
+    "organizer": "Smoke10 Events Management",
+    "date": "January 18, 2026",
+    "website": "https://smoke10events.myruntime.com/register/girl-power-run-2026",
+    "status": "Register"
+  },
+  {
+    "name": "PAMPANGA TO BULACAN ULTRAMARATHON",
+    "distance": "50KM Solo, 2-Man Relay",
+    "location": "Natividad Guagua Adventist School to Baliwag City Hall",
+    "organizer": "Smoke10 Events Management",
+    "date": "January 26, 2026",
+    "website": "https://smoke10events.myruntime.com/register/pampanga-to-bulacan-ultramarathon-2026",
     "status": "Register"
   }
   
