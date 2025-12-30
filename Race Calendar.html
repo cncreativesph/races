@@ -564,7 +564,7 @@
             },
             suggestions: [],
             hiddenFilters: new Set(), // Track which filters should remain hidden
-            pagination: { page: 1, perPage: 30 }
+            pagination: { page: 1, perPage: 50 }
         };
 
         // DOM elements
@@ -1473,6 +1473,7 @@ function renderRaces() {
                 
                 raceList.appendChild(card);
             });
+			
 			
 			const existingGoTop = document.getElementById('goTopBtn');
 			if (existingGoTop) existingGoTop.remove();
