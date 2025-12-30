@@ -1225,6 +1225,7 @@
                     item.className = 'suggestion-item';
                     item.textContent = suggestion;
                     item.addEventListener('click', () => {
+						resetFiltersOnly();   
                         searchInput.value = suggestion;
                         state.searchTerm = suggestion;
                         searchSuggestions.classList.add('hidden');
@@ -1902,6 +1903,21 @@ function renderRaces() {
                 renderRaces();
             }
         }
+		
+		function resetFiltersOnly() {
+			state.filters = {
+				distance: [],
+				organizer: [],
+				month: [],
+				year: [],
+				day: []
+			};
+
+			// optional but recommended: go back to page 1 after new search
+			if (state.pagination) state.pagination.page = 1;
+
+			updateFilters(); // updates UI chips to "All"
+		}
 
         // Reset to default state
         function resetToDefault() {
@@ -1925,6 +1941,7 @@ function renderRaces() {
                 loadData();
             }
         }
+		
 
         // Event listeners
         //toggleViewButton.addEventListener('click', toggleView);
@@ -1937,17 +1954,9 @@ function renderRaces() {
         
 		searchInput.addEventListener('keydown', (e) => {
 		  if (e.key === 'Enter') {
-			// Reset all filters to "All"
-			state.filters = {
-			  distance: [],
-			  organizer: [],
-			  month: [],
-			  year: [],
-			  day: []
-			};
-
-			// optional but recommended: reset to first page after a new search
-			if (state.pagination) state.pagination.page = 1;
+			resetFiltersOnly();               //  reset ALL filters to "All"
+			state.searchTerm = searchInput.value;
+			searchSuggestions.classList.add('hidden');
 
 			updateFilters(); // refresh chip UI (All becomes active)
 
