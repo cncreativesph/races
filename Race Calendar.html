@@ -1783,13 +1783,14 @@ function renderRaces() {
 						? dayNames[new Date(date).getDay()]
 						: '';
 							  
-                    const matchesSearch =
-						  (name && name.toLowerCase().includes(searchLower)) ||
-						  (location && location.toLowerCase().includes(searchLower)) ||
-						  (organizer && organizer.toLowerCase().includes(searchLower)) ||
-						  (distance && distance.toLowerCase().includes(searchLower)) ||
-						  (dayName && dayName.includes(searchLower)) ||
-						  (location && locationMatchesRegion(searchLower, location));
+                    const matchesRegion = location && locationMatchesRegion(searchLower, location);
+
+					const matchesSearch =
+					  (name && name.toLowerCase().includes(searchLower)) ||
+					  (location && location.toLowerCase().includes(searchLower)) ||
+					  matchesRegion ||
+					  (organizer && organizer.toLowerCase().includes(searchLower)) ||
+					  (distance && distance.toLowerCase().includes(searchLower));
                     
                     // Check for date matches in various formats
                     let matchesDate = false;
@@ -1826,6 +1827,8 @@ function renderRaces() {
                                 `${day}-${month + 1}-${shortYear}`,
                                 `${monthNames[month]} ${day}, ${year}`,
                                 `${shortMonthNames[month]} ${day} ${year}`
+								`${year}`,
+								`${shortYear}`
                             ];
                             
                             // Add padding variations
@@ -1846,7 +1849,7 @@ function renderRaces() {
 								`${shortYear}`
 							);
                             matchesDate = dateFormats.some(format =>
-							format.toLowerCase().includes(searchLower)
+							  format.toLowerCase().includes(searchLower)
 							);
 							
 							// Allow searching by just the year (e.g., "2026")
