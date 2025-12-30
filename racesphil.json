@@ -1,5 +1,104 @@
 [
   {
+    "name": "CEBU MARATHON",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "SM Seaside City Cebu - CCLEX",
+    "organizer": "CEBU EXECUTIVE RUNNERS CLUB",
+    "date": "January 11, 2026",
+    "website": "https://cebumarathon.myruntime.com/register",
+    "status": "Event is Full"
+  },
+  {
+    "name": "DAILYFIX POWER RUN",
+    "distance": "10KM,5KM,3KM,1KM DOG",
+    "location": "Mall of Asia",
+    "organizer": "RUNRIO",
+    "date": "January 11, 2026",
+    "website": "https://raceroster.com/events/2026/108942/dailyfix-power-run-2026",
+    "status": "Register"
+  },
+  {
+    "name": "AYALA TACBO",
+    "distance": "10KM,5KM,3KM,1KM,KM DOG",
+    "location": "Ayala, Makati",
+    "organizer": "RUNRIO",
+    "date": "January 18, 2026",
+    "website": "https://raceroster.com/events/2026/112577/tacbo-2026",
+    "status": "Register"
+  },
+  {
+    "name": "GREAT UP RUN",
+    "distance": "10KM,5KM,3KM",
+    "location": "UP Diliman, Quezon City",
+    "organizer": "RUNRIO",
+    "date": "January 25, 2026",
+    "website": "https://raceroster.com/events/2026/110198/the-great-up-run-2026",
+    "status": "Register"
+  },
+  {
+    "name": "MEOWSHIE RUN",
+    "distance": "10KM,5KM",
+    "location": "Fort Santiago, Intramuros, Manila",
+    "organizer": "SPEARHEAD EVENTS",
+    "date": "January 25, 2026",
+    "website": "https://spearheadevents.myruntime.com/register/meowshie-run",
+    "status": "Register"
+  },
+  {
+    "name": "HOME CREDIT TAKBO PARA SA LIFE",
+    "distance": "10KM,5KM,3KM,1KM",
+    "location": "Mall of Asia",
+    "organizer": "RUNRIO",
+    "date": "February 1, 2026",
+    "website": "https://raceroster.com/events/2026/110197/home-credit-takbo-para-sa-life-2026",
+    "status": "Register"
+  },
+  {
+    "name": "EASTWEST DREAM RUN",
+    "distance": "30KM,10KM,5KM,2KM,1KM",
+    "location": "Filinvest, Alabang",
+    "organizer": "RUNRIO",
+    "date": "June 15, 2025",
+    "website": "https://raceroster.com/events/2025/97105/eastwest-dream-run-2025-filinvest",
+    "status": "Register"
+  },
+  {
+    "name": "SOUTHSTAR DRUG X MAXICARE RUN FOR WELLNESS",
+    "distance": "10KM,5KM,3KM",
+    "location": "UP Diliman",
+    "organizer": "RUNRIO",
+    "date": "June 22, 2025",
+    "website": "https://raceroster.com/events/2025/105328/southstar-drug-x-maxicare-run-for-wellness-2025-maxicare",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "CABALEN HALF MARATHON",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Clark, Pampanga",
+    "organizer": "Smoke10 Events Management",
+    "date": "June 29, 2025",
+    "website": "https://smoke10events.myruntime.com/register/cabalen-half-marathon-2025",
+    "status": "Register"
+  },
+  {
+    "name": "PRIDE RUN",
+    "distance": "10KM,5KM,3KM,1KM Dog",
+    "location": "Mall of Asia",
+    "organizer": "RUNRIO",
+    "date": "June 29, 2025",
+    "website": "https://raceroster.com/events/2025/101575/runrio-pride-run-2025-manila",
+    "status": "Register"
+  },
+  {
+    "name": "THE GREEN RUN",
+    "distance": "21KM,10KM,5KM,3KM,1KM",
+    "location": "Vermosa, Cavite",
+    "organizer": "PINOY FITNESS & PEP SQUAD EVENTS",
+    "date": "June 29, 2025",
+    "website": "https://ayalaland.myruntime.com/register",
+    "status": "Register"
+  },
+  {
     "name": "ONE BIG RUN CLARK MARATHON",
     "distance": "42KM,21KM,10KM,5KM,3KM",
     "location": "Clark, Pampanga",
