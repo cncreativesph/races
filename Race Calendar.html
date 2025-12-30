@@ -229,6 +229,15 @@
 			line-height: 1;
 		}
 		
+		.register-button.full .btn-main-text {
+			line-height: 1;
+		}
+
+		.register-button.full .btn-sub-text {
+			line-height: 1;
+			margin-top: 0; /* or -1px if tighter */
+		}
+		
         .register-button.soon {
             background-color: #fc650c;
             color: black;
@@ -1377,8 +1386,10 @@ function renderRaces() {
 					
                     if (buttonType === 'full') {
 						registerButton.innerHTML = `
-							<div class="btn-main-text">${buttonText}</div>
-							<div class="btn-sub-text">(View Details)</div>
+							<button class="register-button full">
+							  <div class="btn-main-text">EVENT IS FULL</div>
+							  <div class="btn-sub-text">(View Details)</div>
+							</button>
 						`;
 					} else {
 						registerButton.textContent = buttonText;
