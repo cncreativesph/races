@@ -553,7 +553,6 @@
                 year: [],
                 day: []
             },
-			locationSearchLocked: false,
             searchTerm: '',
             filtersVisible: true,
             expandedFilters: {
@@ -799,7 +798,6 @@
             });
             
 			function clearSearchOnFilterChange() {
-			  if (state.lockSearchOnFilter) return; // keep location search
 			  state.searchTerm = '';
 			  searchInput.value = '';
 			  searchSuggestions.classList.add('hidden');
@@ -1166,14 +1164,6 @@
                 }
             });
 			
-			// Region suggestions
-				const regionNames = ["Metro Manila", "Luzon", "Visayas", "Mindanao"];
-				regionNames.forEach(region => {
-				  if (region.toLowerCase().includes(searchTerm)) {
-					suggestions.add(region);
-				  }
-				});
-			
 			const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 			dayNames.forEach(day => {
 				if (day.toLowerCase().includes(searchTerm)) {
@@ -1239,8 +1229,6 @@
                     }
                 }
 				
-				
-								
 				
             });
             
@@ -1323,46 +1311,7 @@
             paginationContainer.appendChild(next);
         }
     
-	// --- Region keyword search support ---
-	const REGION_LOCATIONS = {
-	  "metro manila": [
-		"makati", "mall of asia", "alabang", "filinvest", "manila", "quirino grandstand",
-		"ayala", "bridgetowne", "pasig", "up diliman", "quezon city", "parqal",
-		"paranaque", "bgc", "taguig"
-	  ],
-	  "luzon": [
-		// Metro Manila locations included automatically (we’ll merge below)
-		"pampanga", "new clark city", "tarlac", "pangasinan", "subic", "bataan",
-		"naga", "bicol", "palawan"
-	  ],
-	  "visayas": ["cebu", "iloilo", "aklan", "bohol"],
-	  "mindanao": ["cagayan de oro", "davao", "siargao"]
-	};
-
-	// Merge Metro Manila into Luzon (so Luzon = Metro Manila + extra Luzon)
-	REGION_LOCATIONS["luzon"] = [
-	  ...REGION_LOCATIONS["metro manila"],
-	  ...REGION_LOCATIONS["luzon"]
-	];
-
-	function normalizeText(s) {
-	  return (s || "")
-		.toLowerCase()
-		.replace(/\s+/g, " ")
-		.trim();
-	}
-
-	function locationMatchesRegion(searchLower, locationStr) {
-	  const s = normalizeText(searchLower);
-	  const loc = normalizeText(locationStr);
-
-	  // If user didn’t type a region keyword, don’t match by region
-	  if (!REGION_LOCATIONS[s]) return false;
-
-	  // Match if location contains any of the region’s keywords (partial allowed)
-	  return REGION_LOCATIONS[s].some(k => loc.includes(normalizeText(k)));
-	}
-
+	
 function renderRaces() {
             const filteredRaces = filterData(state.races, false);
 			
@@ -1567,13 +1516,12 @@ function renderRaces() {
                 const searchLower = state.searchTerm.toLowerCase();
                 photosToDisplay = state.photos.filter(photo => {
                     return (
-					  (photo.nameP && photo.nameP.toLowerCase().includes(searchLower)) ||
-					  (photo.locationP && photo.locationP.toLowerCase().includes(searchLower)) ||
-					  (photo.locationP && locationMatchesRegion(searchLower, photo.locationP)) ||
-					  (photo.dateP && formatDate(photo.dateP).toLowerCase().includes(searchLower)) ||
-					  (photo.distanceP && photo.distanceP.toLowerCase().includes(searchLower)) ||
-					  (photo.listOfPhotogs && photo.listOfPhotogs.some(p => p.toLowerCase().includes(searchLower)))
-					);
+                        (photo.nameP && photo.nameP.toLowerCase().includes(searchLower)) ||
+                        (photo.locationP && photo.locationP.toLowerCase().includes(searchLower)) ||
+                        (photo.dateP && formatDate(photo.dateP).toLowerCase().includes(searchLower)) ||
+                        (photo.distanceP && photo.distanceP.toLowerCase().includes(searchLower)) ||
+                        (photo.listOfPhotogs && photo.listOfPhotogs.some(p => p.toLowerCase().includes(searchLower)))
+                    );
                 });
             }
             
@@ -1783,15 +1731,12 @@ function renderRaces() {
 						? dayNames[new Date(date).getDay()]
 						: '';
 							  
-                    const matchesRegion = location && locationMatchesRegion(searchLower, location);
-
-					const matchesSearch =
-						  (name && name.toLowerCase().includes(searchLower)) ||
-						  (location && location.toLowerCase().includes(searchLower)) ||
-						  (organizer && organizer.toLowerCase().includes(searchLower)) ||
-						  (distance && distance.toLowerCase().includes(searchLower)) ||
-						  // ✅ ADD THIS:
-						  (location && locationMatchesRegion(searchLower, location));
+                    const matchesSearch = 
+                        (name && name.toLowerCase().includes(searchLower)) ||
+                        (location && location.toLowerCase().includes(searchLower)) ||
+                        (organizer && organizer.toLowerCase().includes(searchLower)) ||
+                        (distance && distance.toLowerCase().includes(searchLower)) ||
+						(dayName && dayName.includes(searchLower));
                     
                     // Check for date matches in various formats
                     let matchesDate = false;
@@ -1828,8 +1773,6 @@ function renderRaces() {
                                 `${day}-${month + 1}-${shortYear}`,
                                 `${monthNames[month]} ${day}, ${year}`,
                                 `${shortMonthNames[month]} ${day} ${year}`
-								`${year}`,
-								`${shortYear}`
                             ];
                             
                             // Add padding variations
@@ -1850,7 +1793,7 @@ function renderRaces() {
 								`${shortYear}`
 							);
                             matchesDate = dateFormats.some(format =>
-							  format.toLowerCase().includes(searchLower)
+							format.toLowerCase().includes(searchLower)
 							);
 							
 							// Allow searching by just the year (e.g., "2026")
@@ -1993,23 +1936,6 @@ function renderRaces() {
 
 			updateFilters(); // updates UI chips to "All"
 		}
-		
-		function isLocationSearchTerm(term) {
-		  const q = (term || '').trim().toLowerCase();
-		  if (!q) return false;
-
-		  const data = state.view === 'photos' ? state.photos : state.races;
-		  if (!Array.isArray(data)) return false;
-
-		  return data.some(item => {
-			const loc = (state.view === 'photos' ? item.locationP : item.location) || '';
-			return loc.toLowerCase().includes(q);
-		  });
-		}
-
-		function updateLocationSearchLock(term) {
-		  state.locationSearchLocked = isLocationSearchTerm(term);
-		}
 
         // Reset to default state
         function resetToDefault() {
@@ -2041,33 +1967,30 @@ function renderRaces() {
         refreshButton.addEventListener('click', resetToDefault);
         
         searchInput.addEventListener('input', (e) => {
-            if (!searchInput.value.trim()) state.locationSearchLocked = false;
-			generateSearchSuggestions();
+            generateSearchSuggestions();
         });
         
 		searchInput.addEventListener('keydown', (e) => {
-		  if (e.key !== 'Enter') return;
+		  if (e.key === 'Enter') {
+			resetFiltersOnly();               //  reset ALL filters to "All"
+			state.searchTerm = searchInput.value;
+			searchSuggestions.classList.add('hidden');
 
-		  const term = searchInput.value.trim();
-		  searchSuggestions.classList.add('hidden');
+			updateFilters(); // refresh chip UI (All becomes active)
 
-		  // ✅ Reset filters ONLY when user entered a location term
-		  if (isLocationLikeTerm(term)) {
-			resetFiltersOnly();
-		  }
+			// Apply search term
+			state.searchTerm = searchInput.value.trim();
+			searchSuggestions.classList.add('hidden');
 
-		  state.searchTerm = term;
-
-		  // optional: always go page 1 when searching
-		  if (state.pagination) state.pagination.page = 1;
-
-		  if (state.view === 'photos') {
-			loadPhotoData();
-		  } else {
-			renderCurrentView();
+			// Re-render
+			if (state.view === 'photos') {
+			  loadPhotoData();
+			} else {
+			  renderCurrentView();
+			}
 		  }
 		});
-				
+        
         // Close suggestions when clicking outside
         document.addEventListener('click', (e) => {
             if (!searchInput.contains(e.target) && !searchSuggestions.contains(e.target)) {
