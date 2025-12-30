@@ -684,10 +684,8 @@
             const organizers = new Set();
             const months = new Set();
             const years = new Set();
-            const days = new Set(['Saturday', 'Sunday']);
-            
-            let hasSaturday = false;
-            let hasSunday = false;
+            const days = new Set();
+			
             const today = new Date();
             today.setHours(0, 0, 0, 0);
             
@@ -739,9 +737,8 @@
                             years.add(year);
                             
                             // Day
-                            const day = date.getDay();
-                            if (day === 6) hasSaturday = true; // Saturday
-                            if (day === 0) hasSunday = true; // Sunday
+                            const dayName = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(date);
+							days.add(dayName);
                         }
                     }
                 }
@@ -755,7 +752,7 @@
             }
             
             // Hide Day filter if only Sunday races or no races
-            const showDayFilter = hasSaturday && hasSunday;
+            const showDayFilter = days.size > 0;
             dayFilterContainer.classList.toggle('hidden', !showDayFilter);
             state.hiddenFilters.delete('day');
             if (!showDayFilter) {
@@ -931,7 +928,8 @@
                 dayFilters.appendChild(allDayChip);
                 
                 // Add individual day options
-                Array.from(days).forEach(day => {
+                const orderedDays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+				orderedDays.filter(d => days.has(d)).forEach(day => {
                     const chip = document.createElement('div');
                     chip.className = `filter-chip ${state.filters.day.includes(day) ? 'active' : ''}`;
                     chip.textContent = day;
