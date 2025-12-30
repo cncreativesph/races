@@ -1786,11 +1786,12 @@ function renderRaces() {
                     const matchesRegion = location && locationMatchesRegion(searchLower, location);
 
 					const matchesSearch =
-					  (name && name.toLowerCase().includes(searchLower)) ||
-					  (location && location.toLowerCase().includes(searchLower)) ||
-					  matchesRegion ||
-					  (organizer && organizer.toLowerCase().includes(searchLower)) ||
-					  (distance && distance.toLowerCase().includes(searchLower));
+						  (name && name.toLowerCase().includes(searchLower)) ||
+						  (location && location.toLowerCase().includes(searchLower)) ||
+						  (organizer && organizer.toLowerCase().includes(searchLower)) ||
+						  (distance && distance.toLowerCase().includes(searchLower)) ||
+						  // ✅ ADD THIS:
+						  (location && locationMatchesRegion(searchLower, location));
                     
                     // Check for date matches in various formats
                     let matchesDate = false;
@@ -2048,20 +2049,18 @@ function renderRaces() {
 		  if (e.key !== 'Enter') return;
 
 		  const term = searchInput.value.trim();
-
-		  // Apply search once
-		  state.searchTerm = term;
 		  searchSuggestions.classList.add('hidden');
 
-		  // Detect if this search is a location (partial + case-insensitive)
-		  state.lockSearchOnFilter = isLocationSearchTerm(term);
-
-		  // Reset filters ONLY if user entered a location
-		  if (state.lockSearchOnFilter) {
-			resetFiltersOnly(); // sets chips to "All" + page = 1 inside :contentReference[oaicite:1]{index=1}
+		  // ✅ Reset filters ONLY when user entered a location term
+		  if (isLocationLikeTerm(term)) {
+			resetFiltersOnly();
 		  }
 
-		  // Re-render
+		  state.searchTerm = term;
+
+		  // optional: always go page 1 when searching
+		  if (state.pagination) state.pagination.page = 1;
+
 		  if (state.view === 'photos') {
 			loadPhotoData();
 		  } else {
