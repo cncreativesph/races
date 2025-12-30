@@ -553,6 +553,7 @@
                 year: [],
                 day: []
             },
+			locationSearchLocked: false,
             searchTerm: '',
             filtersVisible: true,
             expandedFilters: {
@@ -798,6 +799,7 @@
             });
             
 			function clearSearchOnFilterChange() {
+			  if (state.lockSearchOnFilter) return; // keep location search
 			  state.searchTerm = '';
 			  searchInput.value = '';
 			  searchSuggestions.classList.add('hidden');
@@ -1987,6 +1989,23 @@ function renderRaces() {
 
 			updateFilters(); // updates UI chips to "All"
 		}
+		
+		function isLocationSearchTerm(term) {
+		  const q = (term || '').trim().toLowerCase();
+		  if (!q) return false;
+
+		  const data = state.view === 'photos' ? state.photos : state.races;
+		  if (!Array.isArray(data)) return false;
+
+		  return data.some(item => {
+			const loc = (state.view === 'photos' ? item.locationP : item.location) || '';
+			return loc.toLowerCase().includes(q);
+		  });
+		}
+
+		function updateLocationSearchLock(term) {
+		  state.locationSearchLocked = isLocationSearchTerm(term);
+		}
 
         // Reset to default state
         function resetToDefault() {
@@ -2018,30 +2037,35 @@ function renderRaces() {
         refreshButton.addEventListener('click', resetToDefault);
         
         searchInput.addEventListener('input', (e) => {
-            generateSearchSuggestions();
+            if (!searchInput.value.trim()) state.locationSearchLocked = false;
+			generateSearchSuggestions();
         });
         
 		searchInput.addEventListener('keydown', (e) => {
-		  if (e.key === 'Enter') {
-			resetFiltersOnly();               //  reset ALL filters to "All"
-			state.searchTerm = searchInput.value;
-			searchSuggestions.classList.add('hidden');
+		  if (e.key !== 'Enter') return;
 
-			updateFilters(); // refresh chip UI (All becomes active)
+		  const term = searchInput.value.trim();
 
-			// Apply search term
-			state.searchTerm = searchInput.value.trim();
-			searchSuggestions.classList.add('hidden');
+		  // Apply search once
+		  state.searchTerm = term;
+		  searchSuggestions.classList.add('hidden');
 
-			// Re-render
-			if (state.view === 'photos') {
-			  loadPhotoData();
-			} else {
-			  renderCurrentView();
-			}
+		  // Detect if this search is a location (partial + case-insensitive)
+		  state.lockSearchOnFilter = isLocationSearchTerm(term);
+
+		  // Reset filters ONLY if user entered a location
+		  if (state.lockSearchOnFilter) {
+			resetFiltersOnly(); // sets chips to "All" + page = 1 inside :contentReference[oaicite:1]{index=1}
+		  }
+
+		  // Re-render
+		  if (state.view === 'photos') {
+			loadPhotoData();
+		  } else {
+			renderCurrentView();
 		  }
 		});
-        
+				
         // Close suggestions when clicking outside
         document.addEventListener('click', (e) => {
             if (!searchInput.contains(e.target) && !searchSuggestions.contains(e.target)) {
