@@ -1454,17 +1454,21 @@ function renderRaces() {
                 raceList.appendChild(card);
             });
 			
-			const goTopBtn = document.createElement('button');
-			goTopBtn.type = 'button'; // 🔥 IMPORTANT
-			goTopBtn.textContent = 'Go to the top';
-			goTopBtn.className = 'go-top-btn';
+			const existingGoTop = document.getElementById('goTopBtn');
+			if (existingGoTop) existingGoTop.remove();
 
-			goTopBtn.addEventListener('click', () => {
-				paginationContainer.scrollIntoView({
-					behavior: 'smooth',
-					block: 'start'
-				});
-			});
+			const goTopBtn = document.createElement('button');
+			goTopBtn.id = 'goTopBtn';
+			goTopBtn.type = 'button';
+			goTopBtn.className = 'pagination-button'; // reuse your pagination styling
+			goTopBtn.textContent = 'Go to Top';
+
+			goTopBtn.onclick = (e) => {
+			  e.preventDefault();
+			  e.stopPropagation();
+			  // scroll to pagination area (your requested reference point)
+			  paginationContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			};
 
 			raceList.appendChild(goTopBtn);
 			
