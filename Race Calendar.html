@@ -489,7 +489,7 @@
             </svg>
             Refresh
        	</button>
-</button>
+
 
      <!--   <button id="toggleViewButton" class="toggle-button calendar flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -585,7 +585,7 @@
 	<!-- Sticky bottom controls -->
 	<div id="stickyFooterBar">
 	  <div id="stickyFooterBarInner">
-		<button id="goTopBtn" class="go-top-btn" type="button">Go to the top</button>
+		
 		<div id="paginationContainer" class="flex justify-center items-center gap-2"></div>
 	  </div>
 	</div>
@@ -638,16 +638,15 @@
 
         
         const paginationContainer = document.getElementById('paginationContainer');
-		const goTopBtn = document.getElementById('goTopBtn');
 
-		goTopBtn.addEventListener('click', (e) => {
-		  e.preventDefault();
-		  paginationContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-		});
+		// Move Refresh button into sticky footer (left of pagination)
+		const stickyFooterBarInner = document.getElementById('stickyFooterBarInner');
+		stickyFooterBarInner.insertBefore(refreshButton, paginationContainer);
 
-		goTopBtn.addEventListener('click', () => {
-		  window.scrollTo({ top: 0, behavior: 'smooth' });
-		});
+		// Make Refresh button match pagination style
+		refreshButton.classList.remove('toggle-button', 'refresh');
+		refreshButton.classList.add('pagination-button');
+
         async function fetchData(url) {
             try {
                 const response = await fetch(url);
