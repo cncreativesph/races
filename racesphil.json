@@ -72,75 +72,66 @@
     "status": "Register"
   },
   {
-    "name": "CABALEN HALF MARATHON",
-    "distance": "21KM,10KM,5KM,3KM",
-    "location": "Clark, Pampanga",
-    "organizer": "Smoke10 Events Management",
-    "date": "June 29, 2025",
-    "website": "https://smoke10events.myruntime.com/register/cabalen-half-marathon-2025",
-    "status": "Register"
-  },
-  {
-    "name": "PRIDE RUN",
-    "distance": "10KM,5KM,3KM,1KM Dog",
-    "location": "Mall of Asia",
+    "name": "TZU CHI CHARITY RUN",
+    "distance": "10KM,5KM,3KM,1KM",
+    "location": "Bridgetowne, Pasig City",
     "organizer": "RUNRIO",
-    "date": "June 29, 2025",
-    "website": "https://raceroster.com/events/2025/101575/runrio-pride-run-2025-manila",
+    "date": "February 8, 2026",
+    "website": "https://raceroster.com/events/2025/104991/tzu-chi-charity-run-2025",
     "status": "Register"
   },
   {
-    "name": "THE GREEN RUN",
-    "distance": "21KM,10KM,5KM,3KM,1KM",
-    "location": "Vermosa, Cavite",
-    "organizer": "PINOY FITNESS & PEP SQUAD EVENTS",
-    "date": "June 29, 2025",
-    "website": "https://ayalaland.myruntime.com/register",
-    "status": "Register"
-  },
-  {
-    "name": "ONE BIG RUN CLARK MARATHON",
-    "distance": "42KM,21KM,10KM,5KM,3KM",
-    "location": "Clark, Pampanga",
-    "organizer": "Smoke10 Events Management",
-    "date": "May 2, 2026",
-    "website": "https://smoke10events.myruntime.com/register/one-big-run-2025-clark-marathon",
+    "name": "THE BULL RUNNER DREAM MARATHON",
+    "distance": "42KM",
+    "location": "Filinvest, Alabang",
+    "organizer": "TBR DREAM TEAM",
+    "date": "February 15, 2026",
+    "website": "https://www.tbrdream.com/race-info/race-details/",
     "status": "Event is Full"
   },
   {
-    "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 2",
-    "distance": "21KM,10KM,5KM",
+    "name": "DORAEMON RUN",
+    "distance": "10KM,5KM,3KM,1KM",
     "location": "Mall of Asia",
     "organizer": "RUNRIO",
-    "date": "May 18, 2025",
-    "website": "https://raceroster.com/events/2025/97759/sante-barley-trilogy-run-asia-2025",
+    "date": "February 15, 2026",
+    "website": "https://raceroster.com/events/2026/112481/doraemon-run-2026-manila",
     "status": "Register"
   },
   {
-    "name": "PINOY FITNESS 21K CHALLENGE",
-    "distance": "21KM",
-    "location": "Vermosa, Cavite",
-    "organizer": "PINOY FITNESS & PEP SQUAD EVENTS",
-    "date": "May 24, 2027",
-    "website": "https://pinoyfitness.myruntime.com/register/pf-21k-challenge-2025",
-    "status": "Register"
-  },
-  {
-    "name": "LAZADA RUN PHILIPPINES",
-    "distance": "21KM,10KM,5KM",
-    "location": "Mall of Asia",
-    "organizer": "RUNRIO",
-    "date": "June 1, 2026",
-    "website": "https://raceroster.com/events/2025/80118/lazada-run-philippines-manila",
-    "status": "Register"
-  },
-  {
-    "name": "BPI #BESTLIFERUN",
-    "distance": "21KM,10KM,5KM,3KM",
+    "name": "AYALA PHILIPPINE MARATHON",
+    "distance": "42KM,21KM,10KM,5KM",
     "location": "Ayala, Makati",
     "organizer": "RUNRIO",
-    "date": "June 8, 2025",
-    "website": "https://raceroster.com/events/2025/102444/bpi-number-bestliferun-corporate-race-2025",
+    "date": "February 22, 2026",
+    "website": "https://raceroster.com/events/2026/112415/ayala-philippine-marathon",
+    "status": "Register"
+  },
+  {
+    "name": "BULACAN HALF MARATHON",
+    "distance": "21KM,10KM,5KM",
+    "location": "Waltermart Plaridel, Bulacan",
+    "organizer": "TEAM MALOFIT",
+    "date": "February 22, 2026",
+    "website": "https://teammalofit.myruntime.com/register/bhm2026/",
+    "status": "Event is Full"
+  },
+  {
+    "name": "WATSONS X UNILAB: SHARE THE ALAGA RUN",
+    "distance": "10KM,5KM,3KM,1KM",
+    "location": "Mall of Asia",
+    "organizer": "HYVESPORTS",
+    "date": "February 22, 2026",
+    "website": "https://www.facebook.com/CNCreativesPH/posts/pfbid0263N39vqjzR6p36z4XhuyDa4hovwyK15j8nLtwHNv9RwyBVsoKVaAFgRJnbzb9vtrl",
+    "status": "Register"
+  },
+  {
+    "name": "THE MUSIC RUN MANILA",
+    "distance": "10KM,5KM",
+    "location": "Filinvest, Alabang",
+    "organizer": "HYVESPORTS",
+    "date": "February 28, 2026",
+    "website": "https://registration.hyvesport.com/register/the-music-run-manila-2026",
     "status": "Register"
   },
   {
