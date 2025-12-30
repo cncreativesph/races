@@ -54,22 +54,22 @@
     "status": "Register"
   },
   {
-    "name": "EASTWEST DREAM RUN",
-    "distance": "30KM,10KM,5KM,2KM,1KM",
+    "name": "RUN 7-ELEVEN",
+    "distance": "42KM,32KM,21KM,16KM,10KM,7KM,5KM,3KM,711M",
     "location": "Filinvest, Alabang",
-    "organizer": "RUNRIO",
-    "date": "June 15, 2025",
-    "website": "https://raceroster.com/events/2025/97105/eastwest-dream-run-2025-filinvest",
+    "organizer": "7-ELEVEN",
+    "date": "February 1, 2026",
+    "website": "https://www.run711.com",
     "status": "Register"
   },
   {
-    "name": "SOUTHSTAR DRUG X MAXICARE RUN FOR WELLNESS",
-    "distance": "10KM,5KM,3KM",
-    "location": "UP Diliman",
+    "name": "ARMYNAVY RUN",
+    "distance": "21KM,10KM,5KM",
+    "location": "Ayala, Makati",
     "organizer": "RUNRIO",
-    "date": "June 22, 2025",
-    "website": "https://raceroster.com/events/2025/105328/southstar-drug-x-maxicare-run-for-wellness-2025-maxicare",
-    "status": "Opening Soon"
+    "date": "February 8, 2026",
+    "website": "https://raceroster.com/events/2026/111574/armynavy-run-2026",
+    "status": "Register"
   },
   {
     "name": "CABALEN HALF MARATHON",
