@@ -343,8 +343,6 @@
 		opacity: 0.4;
 		cursor: not-allowed;
 	}
-	
-
 
         .skeleton {
             background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
@@ -514,7 +512,7 @@
         </div>
         
         <!-- Toggle All Filters -->
-        <div class="flex justify-center items-center mb-1">
+        <div class="flex justify-center items-center mt-2 mb-1">
             <button id="toggleFiltersButton" class="text-xs bg-blue-500 text-white px-3 py-1 rounded-full flex items-center">
                 <span>Hide All Filters</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1235,10 +1233,7 @@
         function setCalendarPage(p) {
             state.pagination.page = p;
             renderRaces();
-            paginationContainer.scrollIntoView({
-			behavior: 'smooth',
-			block: 'start'
-		});
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function renderCalendarPagination(totalItems) {
@@ -1444,20 +1439,7 @@ function renderRaces() {
                 raceList.appendChild(card);
             });
 			
-			// --- Go to Top button ---
-			const goTopBtn = document.createElement('button');
-			goTopBtn.textContent = 'Go to the top';
-			goTopBtn.className = 'go-top-btn';
-
-			goTopBtn.addEventListener('click', () => {
-				paginationContainer.scrollIntoView({
-					behavior: 'smooth',
-					block: 'start'
-				});
-			});
-
-			raceList.appendChild(goTopBtn);
-
+			
         }
 
         // Render photos - show all data without filtering
