@@ -342,12 +342,15 @@
             Refresh
        	</button>
 </button>
-        <button id="toggleViewButton" class="toggle-button calendar flex items-center">
+
+     <!--   <button id="toggleViewButton" class="toggle-button calendar flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
             </svg>
             Race Calendar
-        </button>
+        </button> 
+	-->
+	
     </div>
 
     <div id="filtersContainer" class="px-4 py-2" style="display: none;">
@@ -506,7 +509,7 @@
 
         // DOM elements
         const headerTitle = document.querySelector('.header h1');
-        const toggleViewButton = document.getElementById('toggleViewButton');
+        //const toggleViewButton = document.getElementById('toggleViewButton');
         const refreshButton = document.getElementById('refreshButton');
         const searchInput = document.getElementById('searchInput');
         const searchSuggestions = document.getElementById('searchSuggestions');
@@ -1651,7 +1654,7 @@
         }
 
         // Toggle view between photos and calendar
-        function toggleView() {
+        /* function toggleView() {
             state.view = state.view === 'photos' ? 'calendar' : 'photos';
             headerTitle.textContent = state.view === 'photos' ? 'Race Photos & Results' : 'Race Calendar';
             toggleViewButton.textContent = state.view === 'photos' ? 'Race Calendar' : 'Race Photos & Results';
@@ -1691,6 +1694,7 @@
             
             loadData();
         }
+		*/
 
         // Render current view based on state
         function renderCurrentView() {
@@ -1725,7 +1729,7 @@
         }
 
         // Event listeners
-        toggleViewButton.addEventListener('click', toggleView);
+        //toggleViewButton.addEventListener('click', toggleView);
         
         refreshButton.addEventListener('click', resetToDefault);
         
