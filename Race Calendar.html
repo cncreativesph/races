@@ -1658,6 +1658,92 @@ function normalizeLocation(raw) {
   return raw; // default
 }
 
+function normalizeKey(s) {
+  return (s || '')
+    .toString()
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, ' ')
+    .replace(/[.,]/g, '');
+}
+
+function normalizeLocation(rawLocation) {
+  const s = normalizeKey(rawLocation);
+
+  // Fort Santiago (multiple variants)
+  if (
+    s === 'fort santiago' ||
+    s === 'fort santiago intramuros' ||
+    s === 'fort santiago manila' ||
+    s === 'fort santiago manila city' ||
+    s === 'fort santiago, intramuros' ||
+    s === 'fort santiago, manila' ||
+    s === 'fort santiago, manila city'
+  ) return 'Fort Santiago, Intramuros, City of Manila';
+
+  // Quirino Grandstand
+  if (
+    s === 'quirino grandstand' ||
+    s === 'quirino grandstand manila city'||
+    s === 'quirino grandstand, manila city'
+  ) return 'Quirino Grandstand, City of Manila';
+
+  // MOA
+  if (
+    s === 'moa' ||
+    s === 'mall of asia' ||
+    s === 'mall of asia pasay' ||
+    s === 'mall of asia pasay city'||
+    s === 'mall of asia, pasay' ||
+    s === 'mall of asia, pasay city'
+  ) return 'Mall of Asia, Pasay City';
+
+  // Filinvest
+  if (
+    s === 'filinvest alabang' ||
+    s === 'filinvest alabang muntinlupa' ||
+    s === 'filinvest alabang muntinlupa city'||
+    s === 'filinvest alabang, muntinlupa' ||
+    s === 'filinvest alabang, muntinlupa city'
+  ) return 'Filinvest, Alabang, Muntinlupa City';
+
+  // Ayala Makati
+  if (s === 'ayala makati' || s === 'ayala makati city' || s === 'ayala, makati city') 
+  {
+    return 'Ayala Avenue, Makati City';
+  }
+
+  // UP Diliman
+  if (s === 'up diliman' || s === 'up diliman quezon' || s === 'up diliman, quezon') {
+    return 'UP Diliman, Quezon City';
+  }
+
+  // Vermosa
+  if (s === 'vermosa' || s === 'vermosa cavite' || s === 'vermosa cavite city'|| s === 'vermosa, cavite' || s === 'vermosa, cavite city') {
+    return 'Vermosa, Cavite City';
+  }
+
+  // default (unchanged)
+  return rawLocation;
+}
+
+function normalizeDistanceLabel(raw) {
+  let s = (raw || '').toString().trim().replace(/\s+/g, ' ');
+
+  // DOG category (force exact casing)
+  if (/dog/i.test(s)) return '1KM Dog';
+
+  // Get first number
+  const m = s.match(/(\d+)/);
+  if (!m) return s;
+
+  const n = parseInt(m[1], 10);
+  if (!Number.isFinite(n)) return s;
+
+  // Force: "21" / "21k" / "21 km" / "21KM" => "21KM"
+  return `${n}KM`;
+}
+
 	
 function renderRaces() {
             const filteredRaces = filterData(state.races, false);
@@ -1769,7 +1855,7 @@ function renderRaces() {
                     race.distance.split(',').forEach(category => {
                         const chip = document.createElement('span');
                         chip.className = `category-chip ${getCategoryColorClass(category)}`;
-                        chip.textContent = category.trim();
+                        chip.textContent = normalizeDistanceLabel(category);
                         categoriesDiv.appendChild(chip);
                     });
                     
@@ -1971,7 +2057,7 @@ function renderRaces() {
                     photo.distanceP.split(',').forEach(category => {
                         const chip = document.createElement('span');
                         chip.className = `category-chip ${getCategoryColorClass(category)}`;
-                        chip.textContent = category.trim();
+                        chip.textContent = normalizeDistanceLabel(category);
                         categoriesDiv.appendChild(chip);
                     });
                     
