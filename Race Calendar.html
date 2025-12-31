@@ -1156,7 +1156,7 @@
                 ['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA', 'Others'].forEach(organizer => {
                     const chip = document.createElement('div');
                     chip.className = `filter-chip ${state.filters.organizer.includes(organizer) ? 'active' : ''}`;
-                    chip.textContent = organizer;
+                    chip.textContent = organizer.toUpperCase();
                     chip.addEventListener('click', () => {
 						clearSearchOnFilterChange();
 						state.pagination.page = 1; 
@@ -1702,7 +1702,7 @@ function renderRaces() {
                 if (race.organizer) {
                     const organizer = document.createElement('div');
                     organizer.className = 'race-detail';
-                    organizer.textContent = `Organizer: ${race.organizer}`;
+                    organizer.textContent = `Organizer: ${race.organizer.toUpperCase()}`;
                     detailsSection.appendChild(organizer);
                 }
                 
