@@ -1608,6 +1608,56 @@
             paginationContainer.appendChild(next);
         }
     
+function normalizeLocation(raw) {
+  if (!raw) return raw;
+
+  const v = String(raw).trim().toLowerCase();
+
+  // MOA
+  if (
+    v === 'moa' ||
+    v === 'mall of asia' ||
+    v === 'mall of asia, pasay'
+  ) return 'Mall of Asia, Pasay City';
+
+  // Filinvest
+  if (
+    v === 'filinvest, alabang' ||
+    v === 'filinvest, alabang, muntinlupa'
+  ) return 'Filinvest, Alabang, Muntinlupa City';
+
+  // Ayala
+  if (v === 'ayala, makati') return 'Ayala, Makati City';
+
+  // UP Diliman
+  if (
+    v === 'up diliman' ||
+    v === 'up diliman, quezon'
+  ) return 'UP Diliman, Quezon City';
+
+  // Vermosa
+  if (
+    v === 'vermosa' ||
+    v === 'vermosa, cavite'
+  ) return 'Vermosa, Cavite City';
+
+  // Quirino Grandstand
+  if (
+    v === 'quirino grandstand' ||
+    v === 'quirino grandstand, manila city'
+  ) return 'Quirino Grandstand, City of Manila';
+
+  // Fort Santiago
+  if (
+    v === 'fort santiago' ||
+    v === 'fort santiago, intramuros' ||
+    v === 'fort santiago, manila' ||
+    v === 'fort santiago, manila city'
+  ) return 'Fort Santiago, Intramuros, City of Manila';
+
+  return raw; // default
+}
+
 	
 function renderRaces() {
             const filteredRaces = filterData(state.races, false);
@@ -1682,7 +1732,7 @@ function renderRaces() {
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
-                        ${race.location}
+                        ${normalizeLocation(race.location)}
                     `;
                     detailsSection.appendChild(location);
                 }
