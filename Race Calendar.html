@@ -518,6 +518,20 @@
 		  color:#0a5f38;
 		  line-height:1;
 		}
+		
+		.runner-loader{
+		  font-size:42px;
+		  text-align:center;
+		  animation:runnerPulse 1s infinite ease-in-out;
+		}
+
+		@keyframes runnerPulse{
+		  0%{ transform:scale(.9); opacity:.6; }
+		  50%{ transform:scale(1); opacity:1; }
+		  100%{ transform:scale(.9); opacity:.6; }
+		}
+		
+		
 		.clear-search-btn.hidden{ display:none; }
 		#searchInput{ padding-right:32px; }
 		
@@ -873,6 +887,7 @@
         async function loadData() {
             try {
                 raceList.innerHTML = `
+					  <div class="runner-loader">🏃‍♂️</div>
                     <div class="skeleton h-24 w-full mb-3"></div>
                     <div class="skeleton h-24 w-full mb-3"></div>
                     <div class="skeleton h-24 w-full mb-3"></div>
