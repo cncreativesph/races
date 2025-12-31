@@ -1028,23 +1028,49 @@
 
 		function normalizeDistance(raw) {
 		  if (!raw) return '';
-		  let s = raw.trim().replace(/\s+/g, ' ').toLowerCase();
+			  let s = String(raw).trim().replace(/\s+/g, ' ');
 
-		  // Detect "dog" category
-		  const hasDog = s.includes('dog');
+			  // ✅ METERS FIRST: 711m, 711 m, 500m, 500 m -> 711M / 500M
+			  // (avoid catching km)
+			  const meterMatch = s.match(/^(\d+(?:\.\d+)?)\s*m\b/i);
+			  if (meterMatch && !/\bkm\b/i.test(s)) {
+				// keep as meters, never convert to KM
+				const num = meterMatch[1];
+				return `${num}M`;
+			  }
 
-		  // Extract number (supports "21", "21k", "21km", "21 k", "21 km")
-		  const m = s.match(/(\d+)\s*(k|km)?/);
-		  if (!m) return raw.trim();
+			  // ✅ KM forms (supports decimals): 21k, 21 km, 21, 2.5km, 1.5 k, etc.
+			  // plus optional label after: "1k dog" -> "1KM Dog"
+			  // ✅ KM forms (supports decimals) — REQUIRE unit (k/km)
+			const kmMatch = s.match(/^(\d+(?:\.\d+)?)\s*(k|km)\b\s*(.*)$/i);
+			if (kmMatch) {
+			  const num = kmMatch[1];                 // supports 2.5, 1.5, etc.
+			  const rest = (kmMatch[3] || '').trim();
 
-		  const n = m[1]; // "21"
-		  // normalize to KM
-		  let out = `${n}KM`;
+			  let result = `${num}KM`;
 
-		  if (hasDog) out += ' Dog';
+			  if (rest) {
+				const label = rest
+				  .split(' ')
+				  .filter(Boolean)
+				  .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+				  .join(' ');
+				result += ` ${label}`;
+			  }
+			  return result;
+			}
 
-		  return out;
-		}
+			// ✅ If it's ONLY a number (like "21"), treat as KM
+			const numOnly = s.match(/^(\d+(?:\.\d+)?)$/);
+			if (numOnly) {
+			  return `${numOnly[1]}KM`;
+			}
+
+
+			  // fallback
+			  return s.toUpperCase();
+			}
+
 		
 		
         // Setup filters based on data
@@ -1068,7 +1094,7 @@
                 const distanceField = isPhotos ? item.distanceP : item.distance;
                 if (distanceField) {
                     distanceField.split(',').forEach(d => {
-					distances.add(normalizeDistanceLabel(d));
+					  distances.add(normalizeDistance(d.trim())); // ✅ normalized labels in filter list
 					});
                 }
                 
@@ -1530,8 +1556,8 @@
                 if (distance) {
                     distance.split(',').forEach(d => {
                         const distNorm = normalizeDistance(d);
-						if (distNorm.toLowerCase().includes(searchTerm)) {
-							suggestions.add(distNorm);
+						if (distNorm && distNorm.toLowerCase().includes(searchTerm)) {
+						  suggestions.add(distNorm);
 						}
                     });
                 }
@@ -1909,11 +1935,14 @@ function renderRaces() {
                     categoriesDiv.className = 'flex flex-wrap flex-1';
                     
                     race.distance.split(',').forEach(category => {
-                        const chip = document.createElement('span');
-                        chip.className = `category-chip ${getCategoryColorClass(category)}`;
-                        chip.textContent = normalizeDistanceLabel(category);
-                        categoriesDiv.appendChild(chip);
-                    });
+					  const normalized = normalizeDistance(category.trim());
+
+					  const chip = document.createElement('span');
+					  chip.className = `category-chip ${getCategoryColorClass(normalized)}`;
+					  chip.textContent = normalized;
+					  categoriesDiv.appendChild(chip);
+					});
+
                     
                     categoriesSection.appendChild(categoriesDiv);
                     
@@ -2203,12 +2232,50 @@ function renderRaces() {
 						? dayNames[new Date(date).getDay()]
 						: '';
 							  
-                    const matchesSearch = 
-                        (name && name.toLowerCase().includes(searchLower)) ||
-                        (location && location.toLowerCase().includes(searchLower)) ||
-                        (organizer && organizer.toLowerCase().includes(searchLower)) ||
-                        (distance && distance.toLowerCase().includes(searchLower)) ||
-						(dayName && dayName.includes(searchLower));
+                    const rawSearch = state.searchTerm.trim();
+					const looksLikeDistance = /^\d+(?:\.\d+)?\s*(km|k|m)?(\s|$)/i.test(rawSearch);
+
+					// for "2-MAN RELAY" vs "2 man relay" matching
+					const searchTextNorm = rawSearch
+					  .toLowerCase()
+					  .replace(/[-_]+/g, ' ')
+					  .replace(/\s+/g, ' ')
+					  .trim();
+
+					const matchesSearch =
+					  // ✅ IMPORTANT: if search looks like a distance, do NOT match race name (prevents 1KM matching 21KM in name)
+					  (!looksLikeDistance && name && name.toLowerCase().includes(searchLower)) ||
+
+					  (location && location.toLowerCase().includes(searchLower)) ||
+					  (organizer && organizer.toLowerCase().includes(searchLower)) ||
+
+					  // ✅ Distance/category match (supports BOTH: numeric distances + text categories like 2-MAN RELAY)
+					  (() => {
+						if (!distance) return false;
+
+						// If user typed a real distance (e.g., 1KM / 500M), use your “safe distance” logic
+						if (looksLikeDistance) {
+						  const sDist = normalizeDistance(rawSearch);
+						  const tokens = distance.split(',').map(d => normalizeDistance(d));
+
+						  // exact token match OR "1KM" matches "1KM Dog" (prefix + space)
+						  return tokens.some(t => t === sDist || t.startsWith(sDist + ' '));
+						}
+
+						// If user typed a text category (e.g., "2-MAN RELAY"), match against raw distance tokens (normalized text)
+						const tokensRaw = distance.split(',').map(d => (d || '').trim()).filter(Boolean);
+						return tokensRaw.some(t => {
+						  const tNorm = t
+							.toLowerCase()
+							.replace(/[-_]+/g, ' ')
+							.replace(/\s+/g, ' ')
+							.trim();
+						  return tNorm.includes(searchTextNorm);
+						});
+					  })() ||
+
+					  (dayName && dayName.includes(searchLower));
+
                     
                     // Check for date matches in various formats
                     let matchesDate = false;
@@ -2285,11 +2352,14 @@ function renderRaces() {
                 
                 // Distance filter
                 if (state.filters.distance.length > 0 && distance) {
-                    const itemDistances = distance.split(',').map(d => d.trim());
-                    if (!itemDistances.some(d => state.filters.distance.includes(d))) {
-                        return false;
-                    }
-                }
+				  const itemDistances = distance
+					.split(',')
+					.map(d => normalizeDistance(d.trim())); // ✅ normalize JSON distances
+
+				  if (!itemDistances.some(d => state.filters.distance.includes(d))) {
+					return false;
+				  }
+				}
                 
                 // Organizer filter
                 if (state.filters.organizer.length > 0) {
@@ -2516,6 +2586,7 @@ function renderRaces() {
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9405435a5773fee1',t:'MTc0NzMzOTY2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe>
 
 </body></html>
+
 
 
 
