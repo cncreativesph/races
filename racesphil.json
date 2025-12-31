@@ -900,7 +900,7 @@
                     <div class="skeleton h-24 w-full mb-3"></div>
                     <div class="skeleton h-24 w-full mb-3"></div>
                     <div class="skeleton h-24 w-full mb-3"></div>
-					<div class="runner-loader">🏃‍♂️🏃🏃‍♀️</div>
+					
                 `;
                 
                 // Reset filters
