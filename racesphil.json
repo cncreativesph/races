@@ -1,17 +1,17 @@
 [
   {
-    "name": "CEBu MARATHON",
+    "name": "CEBU MARATHON",
     "distance": "42KM,21KM,10KM,5KM",
     "location": "SM Seaside City Cebu - CCLEX",
-    "organizer": "CEBu EXECUTIVE RUNNERS CLUB",
+    "organizer": "CEBU EXECUTIVE RUNNERS CLUB",
     "date": "January 11, 2026",
     "website": "https://cebumarathon.myruntime.com/register",
     "status": "Event is Full"
   },
   {
     "name": "DAILYFIX POWER RUN",
-    "distance": "10KM,5KM,3KM,1KM DOG",
-    "location": "Mall of Asia, Pasay City",
+    "distance": "10KM,5KM,3KM,1Km DOG",
+    "location": "Mall of Asia, pasay City",
     "organizer": "RUNRIO",
     "date": "January 11, 2026",
     "website": "https://raceroster.com/events/2026/108942/dailyfix-power-run-2026",
@@ -20,7 +20,7 @@
   {
     "name": "AYALA TACBO",
     "distance": "10KM,5KM,3KM,1KM,1KM DOG",
-    "location": "Ayala, Makati City",
+    "location": "Ayala, makati City",
     "organizer": "RUNRIO",
     "date": "January 18, 2026",
     "website": "https://raceroster.com/events/2026/112577/tacbo-2026",
