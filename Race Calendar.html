@@ -995,6 +995,58 @@
             return name;
         }
 
+		function normalizeLocation(loc) {
+		  if (!loc) return '';
+		  const s = loc.trim().toLowerCase();
+
+		  // MOA
+		  if (s === 'moa' || s.includes('mall of asia')) return 'Mall of Asia, Pasay City';
+		  if (s.includes('mall of asia, pasay')) return 'Mall of Asia, Pasay City';
+
+		  // Filinvest
+		  if (s.includes('filinvest')) return 'Filinvest, Alabang, Muntinlupa City';
+
+		  // Ayala
+		  if (s.includes('ayala') && s.includes('makati')) return 'Ayala, Makati City';
+
+		  // UP Diliman
+		  if (s.includes('up diliman')) return 'UP Diliman, Quezon City';
+		  if (s.includes('up diliman, quezon')) return 'UP Diliman, Quezon City';
+
+		  // Vermosa
+		  if (s.includes('vermosa')) return 'Vermosa, Cavite City';
+
+		  // Quirino
+		  if (s.includes('quirino grandstand')) return 'Quirino Grandstand, City of Manila';
+
+		  // Fort Santiago
+		  if (s.includes('fort santiago')) return 'Fort Santiago, Intramuros, City of Manila';
+
+		  // default: title case-ish (optional)
+		  return loc.trim();
+		}
+
+		function normalizeDistance(raw) {
+		  if (!raw) return '';
+		  let s = raw.trim().replace(/\s+/g, ' ').toLowerCase();
+
+		  // Detect "dog" category
+		  const hasDog = s.includes('dog');
+
+		  // Extract number (supports "21", "21k", "21km", "21 k", "21 km")
+		  const m = s.match(/(\d+)\s*(k|km)?/);
+		  if (!m) return raw.trim();
+
+		  const n = m[1]; // "21"
+		  // normalize to KM
+		  let out = `${n}KM`;
+
+		  if (hasDog) out += ' Dog';
+
+		  return out;
+		}
+		
+		
         // Setup filters based on data
         function setupFilters(data, isPhotos) {
             // Extract unique values for filters
@@ -1016,8 +1068,8 @@
                 const distanceField = isPhotos ? item.distanceP : item.distance;
                 if (distanceField) {
                     distanceField.split(',').forEach(d => {
-                        distances.add(d.trim());
-                    });
+					distances.add(normalizeDistanceLabel(d));
+					});
                 }
                 
                 // Process organizers (only for races)
@@ -1461,10 +1513,11 @@
                 }
                 
                 // Add location suggestions
-                if (location && location.toLowerCase().includes(searchTerm)) {
-                    suggestions.add(location);
-                }
-                
+                const locNorm = normalizeLocation(location);
+				if (locNorm && locNorm.toLowerCase().includes(searchTerm)) {
+					suggestions.add(locNorm);
+				}
+								
                 // Add organizer suggestions
                 if (organizer && organizer.toLowerCase().includes(searchTerm)) {
                     suggestions.add(organizer);
@@ -1473,10 +1526,10 @@
                 // Add distance suggestions
                 if (distance) {
                     distance.split(',').forEach(d => {
-                        const trimmed = d.trim();
-                        if (trimmed.toLowerCase().includes(searchTerm)) {
-                            suggestions.add(trimmed);
-                        }
+                        const distNorm = normalizeDistance(d);
+						if (distNorm.toLowerCase().includes(searchTerm)) {
+							suggestions.add(distNorm);
+						}
                     });
                 }
                 
