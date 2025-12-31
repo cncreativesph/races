@@ -1519,9 +1519,12 @@
 				}
 								
                 // Add organizer suggestions
-                if (organizer && organizer.toLowerCase().includes(searchTerm)) {
-                    suggestions.add(organizer);
-                }
+                if (organizer) {
+					const orgNorm = normalizeOrganizerName(organizer);
+					if (orgNorm && orgNorm.toLowerCase().includes(searchTerm)) {
+						suggestions.add(orgNorm);
+					}
+				}
                 
                 // Add distance suggestions
                 if (distance) {
