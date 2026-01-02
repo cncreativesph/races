@@ -119,11 +119,13 @@
     "dateP": "November 29, 2025",
     "listOfPhotogs": [
         "Genuine Sole",
-        "Humble Runner"
+        "Humble Runner",
+		"Pinoy Fitness"
       ],
       "photogsURL": [
         "https://photos.genuinesole.com/galleries/aia-rnr",
-        "https://photos.humblerunnerphoto.com/galleries/aia-rock-n-roll-by-humble-runner"
+        "https://photos.humblerunnerphoto.com/galleries/aia-rock-n-roll-by-humble-runner",
+		"https://photos.pinoyfitness.com/galleries/aia-rock-n-roll-manila-jc"
       ],
 	"resultsURL": "https://sportstats.one/event/rock-n-roll-running-series-manila"
   },
