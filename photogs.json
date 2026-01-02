@@ -84,6 +84,26 @@
 		"https://photos.arsportsph.com/galleries/sante-barley-trilogy-run-asia-national-finals"
       ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/cb6shdt2zmjp3f6g"
+  },
+  {
+    "nameP": "MINIONS RUN PHilippines",
+    "locationP": "Mall of Asia",
+    "dateP": "November 30, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"AR Sports ph"
+      ],
+      "photogsURL": [
+        "https://photos.cncreatives.com/galleries/minions-run-philippines",
+        "https://photos.humblerunnerphoto.com/galleries/minions-run-ph",
+		"https://photos.genuinesole.com/galleries/minion-run-2025-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/minions-run-ph",
+		"https://photos.arsportsph.com/galleries/minions-run-philippines"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/kqxmdg6647v94bn4"
   }
 ]
 
