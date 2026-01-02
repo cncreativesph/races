@@ -2,14 +2,12 @@
   {
     "nameP": "CAPAS MARATHON",
     "locationP": "New Clark City, Tarlac",
-    "organizerP": "Smoke10 Events Management",
     "dateP": "December 14, 2025",
 	"resultsURL": "https://smoke10events.myruntime.com/results/capas-marathon-2025"
   },
   {
     "nameP": "PUMA CLARK CITY HALF MARATHON",
     "locationP": "Clark, Pampanga",
-    "organizerP": "RUNRIO",
     "dateP": "December 14, 2025",
     "listOfPhotogs": [
         "CN Creatives",
@@ -24,7 +22,6 @@
   {
     "nameP": "RUN BGC",
     "locationP": "BGC, Taguig",
-    "organizerP": "RUNRIO",
     "dateP": "December 14, 2025",
     "listOfPhotogs": [
         "CN CreativeS",
@@ -40,18 +37,15 @@
   },
   {
     "nameP": "TAKBO PARA SA KALIKASAN - EARTH RUN",
-    "locationP": "QUIRINO GRANDSTAND, MANILA",
-    "organizerP": "GREEN MEDIA EVENTS",
+    "locationP": "Quirino Grandstand, MANILA",
     "dateP": "December 14, 2025",
     "listOfPhotogs": [
-        "CN Creatives",
-        "AR Sports PH",
-        "Humble Runner"
+
       ],
       "photogsURL": [
         "https://photos.cncreatives.com/admin/photos"
       ],
-	  "resultsURL": "https://greenmediaevents.myruntime.com/results/earth-run-2025"
+	"resultsURL": "https://greenmediaevents.myruntime.com/results/earth-run-2025"
   }
 ]
 
