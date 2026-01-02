@@ -154,6 +154,40 @@
         
       ],
 	"resultsURL": "https://rsrjevents.myruntime.com/results/mx3-run-for-life-2025"
+  },
+  {
+    "nameP": "REXONA 10 MILER LEG 6",
+    "locationP": "UP Diliman",
+    "dateP": "November 23, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"AR Sports ph",
+		"22Pixels"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/rexona10miler",
+        "https://photos.humblerunnerphoto.com/galleries/rexona-10-miler-run-quezon-city-leg-6",
+		"https://photos.genuinesole.com/galleries/rexona-10-miler-quezon-city-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/rexona-10-miler-run-quezon-city-leg-6",
+		"https://photos.arsportsph.com/galleries/rexona-10-miler-quezon-city",
+		"https://findmyshots.com/events/c55b26d2-5700-4f4c-a251-9f30ace81bb4?photographerId=1361838f-1063-4894-a2ae-68e175e6f739"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/4a5zp45a3xdk3y5e"
+  },
+  {
+    "nameP": "Run Ortigas",
+    "locationP": "ORTIGAS EAST, PASIG",
+    "dateP": "November 16, 2025",
+    "listOfPhotogs": [
+        "Humble Runner"
+      ],
+      "photogsURL": [
+        "https://photos.humblerunnerphoto.com/galleries/run-ortigas-2025"
+      ],
+	"resultsURL": "https://results.raceroster.com/v3/events/bbv2yuctszhyc5a6"
   }
 ]
 
