@@ -232,6 +232,7 @@
             color: black;
         }
 
+
 		.btn-main-text {
 			font-weight: bold; /* keeps original style */
 		}
@@ -253,12 +254,7 @@
 			margin-top: 0.5; /* or -1px if tighter */
 		}
 		
-        .register-button.soon {
-            background-color: #fc650c;
-            color: black;
-            opacity: 0.7;
-            pointer-events: none;
-        }
+
 
         .register-button.results {
             background-color: #007aff;
@@ -277,6 +273,59 @@
             margin-bottom: 0.35rem;
             transition: all 0.2s ease;
         }
+		.register-button {
+		  background-color: #EAF5EF;
+		  color: #14532D;
+		border: 1px solid #E5C76B;
+		  border-radius: 9999px;
+
+		  min-width: 125px;        /* ✅ fixed width */
+		  height: 40px;        /* ✅ fixed height */
+
+		
+		  align-items: center;
+		  justify-content: center;
+
+		  font-size: 13px;
+		  font-weight: 700;
+		  cursor: pointer;
+		  		/* ✨ smooth animation */
+		  transition: 
+			transform 0.15s ease,
+			box-shadow 0.15s ease,
+			background-color 0.15s ease,
+			color 0.15s ease;
+		  white-space: nowrap;
+		  
+		}
+
+		.register-button:hover {
+		  background-color: #FFE8A3;
+		  color: #14532D;                 /* ✅ dark green on hover */
+		  transform: translateY(-5px); /* 👈 subtle lift */
+			box-shadow: 0 4px 10px rgba(20, 83, 45, 0.25);
+		}
+		
+		.register-button:disabled {
+		  opacity: 0.5;
+		
+		  cursor: not-allowed;
+		}
+		
+		.register-button.soon {
+            background-color: #fc650c;
+            color: black;
+            opacity: 0.7;
+			border: none;
+            pointer-events: none;
+        }
+
+		/* Active */
+		.register-button:active {
+		  transform: translateY(0);
+		  		  box-shadow: 0 2px 6px rgba(20, 83, 45, 0.25);
+		  background-color: #FFD966;
+		}
 
         .photographer-cn {
             background-color: #ffcc00;
@@ -1970,10 +2019,10 @@ function renderRaces() {
 					
                     if (buttonType === 'full') {
 						registerButton.innerHTML = `
-							<button class="register-button full">
+						
 							  <div class="btn-main-text">EVENT IS FULL</div>
 							  <div class="btn-sub-text">(View Details)</div>
-							</button>
+						
 						`;
 					} else {
 						registerButton.textContent = buttonText;
