@@ -300,6 +300,71 @@
         "https://findmyshots.com/events/af9cc0c3-2dc5-4612-ba50-f106ddca6aaa?photographerId=1361838f-1063-4894-a2ae-68e175e6f739"
       ],
 	"resultsURL": ""
+  },
+  {
+    "nameP": "LACTACYD WOMEN’S RUN PH",
+    "locationP": "UP Diliman",
+    "dateP": "October 19, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"AR Sports ph",
+		"22Pixels"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/womensrunph",
+        "https://photos.humblerunnerphoto.com/galleries/lactacyd-womens-run-ph",
+		"https://photos.genuinesole.com/galleries/lactacyd-womens-run-ph",
+		"https://photos.phrunningoverload.com/galleries/lactacyd-womens-run-ph",
+		"http://findmyshots.com/events/065e8f52-8405-48cb-b385-41a71cb94eaa?photographerId=1361838f-1063-4894-a2ae-68e175e6f739"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/uzk4g95ja6ny9zmu"
+  },
+  {
+    "nameP": "33rd yakult 10-miler",
+    "locationP": "Mall of Asia",
+    "dateP": "October 12, 2025",
+    "listOfPhotogs": [
+        "CN Creatives",
+		"Humble Runner"
+      ],
+      "photogsURL": [
+        "https://photos.cncreatives.com/galleries/33rd-yakult-10-miler",
+		"https://photos.humblerunnerphoto.com/galleries/yakult-10-miler"
+      ],
+	"resultsURL": "https://registration.yakult10miler.com/results/yakult-33rd-10-miler"
+  },
+  {
+    "nameP": "ONE PIECE RUN PHILIPPINES",
+    "locationP": "SM Fairview, Quezon City",
+    "dateP": "October 12, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH RunninG Overload"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/runrioinc",
+        "https://photos.humblerunnerphoto.com/galleries/one-piece-run-philippines",
+		"https://photos.genuinesole.com/galleries/one-piece-run-2025",
+		"https://photos.phrunningoverload.com/galleries/one-piece-run-ph"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/rmf7339xj32vasj4"
+  },
+  {
+    "nameP": "CHOW FUN RUN",
+    "locationP": "Mall of Asia",
+    "dateP": "October 11, 2025",
+    "listOfPhotogs": [
+        "CN Creatives & Humble Runner"
+      ],
+      "photogsURL": [
+        "https://photos.cncreatives.com/galleries/chow-fun-run"
+      ],
+	"resultsURL": "https://registration.hyvesport.com/results/chow-fun-run-2025/"
   }
 ]
 
