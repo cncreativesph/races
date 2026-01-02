@@ -70,7 +70,7 @@
 	 "resultsURL": ""
   },
   {
-    "nameP": "Santé Barley TRILOGY RUN ASIA NATIONAL FINALS",
+    "nameP": "Santé Barley TRILOGY RUN ASIA - NATIONAL FINALS",
     "locationP": "Mall of Asia",
     "dateP": "December 6, 2025",
     "listOfPhotogs": [
@@ -206,6 +206,100 @@
 		"https://findmyshots.com/events/3920d12f-22a8-4a73-b8b4-d18f1151aaee?photographerId=1361838f-1063-4894-a2ae-68e175e6f739"
       ],
 	"resultsURL": "https://registration.hyvesport.com/results/run-to-zero-back-to-the-80s"
+  },
+  {
+    "nameP": "TAKBO PARA SA KALIKASAN - Air run",
+    "locationP": "Mall of Asia",
+    "dateP": "November 16, 2025",
+    "listOfPhotogs": [
+        
+      ],
+      "photogsURL": [
+        
+      ],
+	"resultsURL": "https://greenmediaevents.myruntime.com/results/air-run-2025"
+  },
+  {
+    "nameP": "IRUNPH - LEG 2",
+    "locationP": "UP DILIMAN",
+    "dateP": "November 9, 2025",
+    "listOfPhotogs": [
+        
+      ],
+      "photogsURL": [
+        
+      ],
+	"resultsURL": "https://tv8mediaproductions.myruntime.com/results/irunph2025-leg-2"
+  },
+  {
+    "nameP": "HUAWEI Active Rings Run",
+    "locationP": "Mall of Asia",
+    "dateP": "November 8, 2025",
+    "listOfPhotogs": [
+        
+      ],
+      "photogsURL": [
+        
+      ],
+	"resultsURL": "https://results.raceroster.com/v3/events/duq7xcegadx2u9yq"
+  },
+  {
+    "nameP": "CLARK CITY MARATHON",
+    "locationP": "Clark, Pampanga",
+    "dateP": "October 26, 2025",
+    "listOfPhotogs": [
+        
+      ],
+      "photogsURL": [
+        
+      ],
+	"resultsURL": "https://racetechph.com/uploadedresult/clark-city-marathon-2025"
+  },
+  {
+    "nameP": "GARMIN RUN ASIA",
+    "locationP": "Filinvest, Alabang",
+    "dateP": "October 26, 2025",
+    "listOfPhotogs": [
+        "Genuine Sole",
+        "CN Creatives",
+		"Humble Runner"
+      ],
+      "photogsURL": [
+        "https://photos.genuinesole.com/galleries/garmin-run-2025",
+        "https://photos.cncreatives.com/galleries/garmin-run-asia",
+		"https://photos.humblerunnerphoto.com/galleries/garmin-run-asia"
+      ],
+	"resultsURL": "https://registration.hyvesport.com/results/2025-garmin-run-asia-philippines"
+  },
+  {
+    "nameP": "JCO RUN PHILIPPINES",
+    "locationP": "Mall of Asia",
+    "dateP": "October 26, 2025",
+    "listOfPhotogs": [
+        "Genuine Sole",
+        "CN Creatives",
+		"Humble Runner"
+      ],
+      "photogsURL": [
+        "https://photos.genuinesole.com/galleries/jco-run-2025",
+        "https://ph.jco.run/result/search/2025",
+		"https://photos.humblerunnerphoto.com/galleries/jco-run-philippines"
+      ],
+	"resultsURL": "https://results.raceroster.com/v3/events/weh4nq7jm67b4c4a"
+  },
+  {
+    "nameP": "PINOY FITNESS PF MAMAW RUN",
+    "locationP": "Filinvest, Alabang",
+    "dateP": "October 25, 2025",
+    "listOfPhotogs": [
+        "Genuine Sole",
+        "22Pixels"
+      ],
+      "photogsURL": [
+        "https://photos.genuinesole.com/galleries/mamaw-run-2025",
+        "https://findmyshots.com/events/af9cc0c3-2dc5-4612-ba50-f106ddca6aaa?photographerId=1361838f-1063-4894-a2ae-68e175e6f739"
+      ],
+	"resultsURL": ""
   }
 ]
 
