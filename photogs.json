@@ -156,7 +156,7 @@
 	"resultsURL": "https://rsrjevents.myruntime.com/results/mx3-run-for-life-2025"
   },
   {
-    "nameP": "REXONA 10 MILER LEG 6",
+    "nameP": "REXONA 10 MILER - LEG 6",
     "locationP": "UP Diliman",
     "dateP": "November 23, 2025",
     "listOfPhotogs": [
@@ -179,7 +179,7 @@
   },
   {
     "nameP": "Run Ortigas",
-    "locationP": "ORTIGAS EAST, PASIG",
+    "locationP": "Ortigas East, Pasig City",
     "dateP": "November 16, 2025",
     "listOfPhotogs": [
         "Humble Runner"
@@ -188,6 +188,24 @@
         "https://photos.humblerunnerphoto.com/galleries/run-ortigas-2025"
       ],
 	"resultsURL": "https://results.raceroster.com/v3/events/bbv2yuctszhyc5a6"
+  },
+  {
+    "nameP": "RUN TO ZERO: BACK TO 80s",
+    "locationP": "Parqal, Paranaque",
+    "dateP": "November 16, 2025",
+    "listOfPhotogs": [
+        "Genuine Sole",
+        "CN Creatives",
+		"Humble Runner",
+		"22Pixels"
+      ],
+      "photogsURL": [
+        "https://photos.genuinesole.com/galleries/run-to-zero-80s",
+        "https://photos.cncreatives.com/galleries/run-to-zero-back-to-the-80s",
+		"https://photos.humblerunnerphoto.com/galleries/run-to-zero-back-to-the-80s",
+		"https://findmyshots.com/events/3920d12f-22a8-4a73-b8b4-d18f1151aaee?photographerId=1361838f-1063-4894-a2ae-68e175e6f739"
+      ],
+	"resultsURL": "https://registration.hyvesport.com/results/run-to-zero-back-to-the-80s"
   }
 ]
 
