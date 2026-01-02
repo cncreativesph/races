@@ -46,6 +46,44 @@
         ""
       ],
 	"resultsURL": "https://greenmediaevents.myruntime.com/results/earth-run-2025"
+  },
+  {
+    "nameP": "McDonald's Stripes Run",
+    "locationP": "Mall of Asia",
+    "dateP": "December 7, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH RunninG Overload"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/runrioinc",
+        "https://photos.humblerunnerphoto.com/galleries/mcdonalds-stripes-run",
+		"https://photos.genuinesole.com/galleries/the-stripes-run-2025-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/mcdonalds-stripes-run-2025"
+      ],
+	 "resultsURL": ""
+  },
+  {
+    "nameP": "TRILOGY RUN ASIA NATIONAL FINALS",
+    "locationP": "Mall of Asia",
+    "dateP": "December 6, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"AR Sports ph"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/TrilogyRunAsia",
+        "https://photos.humblerunnerphoto.com/galleries/sante-barley-trilogy-run-asia-national-finals",
+		"https://photos.genuinesole.com/galleries/sante-barley-finals",
+		"https://photos.phrunningoverload.com/galleries/sante-barley-trilogy-run-asia-national-finals",
+		"https://photos.arsportsph.com/galleries/sante-barley-trilogy-run-asia-national-finals"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/cb6shdt2zmjp3f6g"
   }
 ]
 
