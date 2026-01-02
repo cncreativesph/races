@@ -167,7 +167,15 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             border: 1px solid var(--card-border);
             color: white; /* Added for better contrast on dark green */
-        }
+			
+			  /* keep it calm by default */
+			  transition:
+				transform 0.18s ease,
+				box-shadow 0.18s ease;
+
+			  /* important so hover feels smooth */
+			  will-change: transform;
+					}
 
         .race-name {
             font-size: 17px;
@@ -179,7 +187,26 @@
             cursor: pointer;
             text-transform: uppercase;
         }
-
+		
+		.race-name {
+		  display: inline;          /* IMPORTANT */
+		  width: auto;              /* prevent stretching */
+		  cursor: pointer;
+		  text-decoration: none;
+		  color: inherit;
+		}
+		
+		.race-card:hover {
+		  transform: translateY(-3px);
+		  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+		}
+		
+		.race-card:active {
+		transform: translateY(-1px);
+		box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+		}
+		
+		
         .race-detail {
             font-size: 11px;
             color: rgba(255, 255, 255, 0.85); /* Changed for better contrast on dark green */
@@ -290,11 +317,7 @@
 		  font-weight: 700;
 		  cursor: pointer;
 		  		/* ✨ smooth animation */
-		  transition: 
-			transform 0.15s ease,
-			box-shadow 0.15s ease,
-			background-color 0.15s ease,
-			color 0.15s ease;
+
 		  white-space: nowrap;
 		  
 		}
@@ -310,6 +333,11 @@
 		  opacity: 0.5;
 		
 		  cursor: not-allowed;
+		}
+		
+		.register-button:focus {
+		  outline: none;
+		  box-shadow: none;
 		}
 		
 		.register-button.soon {
