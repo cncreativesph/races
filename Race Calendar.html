@@ -1,7 +1,7 @@
 <html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Race Results</title>
+    <title>Philippines Race Calendar</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&amp;display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -98,8 +98,6 @@
         }
 
         .suggestion-item {
-			font-size: 16px; /* prevent iOS zoom */
-			line-height: 1.2;
             padding: 0.75rem 1rem;
             border-bottom: 1px solid #f0f0f0;
             cursor: pointer;
@@ -177,8 +175,27 @@
 
 			  /* important so hover feels smooth */
 			  will-change: transform;
-        }
+					}
 
+        .race-name {
+            font-size: 17px;
+            font-weight: 900;
+            color: white; /* Changed for better contrast on dark green */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+		
+		.race-name {
+		  display: inline;          /* IMPORTANT */
+		  width: auto;              /* prevent stretching */
+		  cursor: pointer;
+		  text-decoration: none;
+		  color: inherit;
+		}
+		
 		.race-card:hover {
 		  transform: translateY(-3px);
 		  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
@@ -189,17 +206,7 @@
 		box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
 		}
 		
-        .race-name {
-            font-size: 17px;
-            font-weight: 900;
-            color: white; /* Changed for better contrast on dark green */
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100%;
-            //cursor: pointer;
-            text-transform: uppercase;
-        }
-
+		
         .race-detail {
             font-size: 11px;
             color: rgba(255, 255, 255, 0.85); /* Changed for better contrast on dark green */
@@ -222,15 +229,14 @@
 		.photographers-title {
         font-size: 13px;
         font-weight: 900;
-        color: #14532D;
+        color: white;
         text-transform: uppercase;
 		}
 		
 		.photographers-instruct {
         font-size: 10px;
 		font-style: italic;
-		color: #4D7C5A;
-
+        color: rgba(255, 255, 255, 0.85); /* Changed for better contrast on dark green */
 		}
 
         .register-button {
@@ -243,8 +249,6 @@
             text-transform: uppercase; /* Added all caps */
         }
 
-
-
         .register-button.register {
             background-color: #007aff;
             color: white;
@@ -254,6 +258,7 @@
             background-color: #faf31e;
             color: black;
         }
+
 
 		.btn-main-text {
 			font-weight: bold; /* keeps original style */
@@ -276,6 +281,25 @@
 			margin-top: 0.5; /* or -1px if tighter */
 		}
 		
+
+
+        .register-button.results {
+            background-color: #007aff;
+            color: white;
+            font-weight: 900; /* Added bold */
+            text-transform: uppercase; /* Added all caps */
+            font-size: 13px; 
+        }
+
+        .photographer-button {
+            border-radius: 8px;
+            padding: 0.35rem 0.8rem;
+            font-size: 13px;
+			font-weight: 900;
+            margin-right: 0.37rem;
+            margin-bottom: 0.35rem;
+            transition: all 0.2s ease;
+        }
 		.register-button {
 		  background-color: #EAF5EF;
 		  color: #14532D;
@@ -292,25 +316,12 @@
 		  font-size: 13px;
 		  font-weight: 700;
 		  cursor: pointer;
-		  transition: all 0.15s ease;
+		  		/* ✨ smooth animation */
+
 		  white-space: nowrap;
 		  
-		/* ✨ smooth animation */
-		  transition: 
-			transform 0.15s ease,
-			box-shadow 0.15s ease,
-			background-color 0.15s ease,
-			color 0.15s ease;
 		}
 
-        .register-button.results {
-            background-color: #007aff;
-            color: white;
-            font-weight: 900; /* Added bold */
-            text-transform: uppercase; /* Added all caps */
-            font-size: 13px; 
-        }
-		
 		.register-button:hover {
 		  background-color: #FFE8A3;
 		  color: #14532D;                 /* ✅ dark green on hover */
@@ -324,43 +335,29 @@
 		  cursor: not-allowed;
 		}
 		
+		.register-button:focus {
+		  outline: none;
+		  box-shadow: none;
+		}
+		
+		.register-button.soon {
+            background-color: #fc650c;
+            color: black;
+            opacity: 0.7;
+			border: none;
+            pointer-events: none;
+        }
 
 		/* Active */
 		.register-button:active {
 		  transform: translateY(0);
-		  box-shadow: 0 2px 6px rgba(20, 83, 45, 0.25);
+		  		  box-shadow: 0 2px 6px rgba(20, 83, 45, 0.25);
 		  background-color: #FFD966;
 		}
-.photographer-button {
-  background-color: #FFF4CC;      /* soft cream */
-  color: #1F2937;                 /* default text (slightly muted) */
-  border: 1px solid #E5C76B;
-  border-radius: 9999px;          /* pill */
-  padding: 6px 12px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-/* Hover */
-.photographer-button:hover {
-  background-color: #FFE8A3;
-  color: #14532D;                 /* ✅ dark green on hover */
-  		  transform: translateY(-5px); /* 👈 subtle lift */
-			box-shadow: 0 4px 10px rgba(20, 83, 45, 0.25);
-}
-
-/* Active */
-.photographer-button:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(20, 83, 45, 0.25);
-		  background-color: #FFD966;
-}
 
         .photographer-cn {
             background-color: #ffcc00;
-            color: #14532D;
+            color: black;
         }
 
         .photographer-ar {
@@ -605,7 +602,9 @@
 		.clear-search-btn.hidden{ display:none; }
 		#searchInput{
 			padding-right:32px; 
-			font-size: 12px;
+			 font-size: 16px;
+			  line-height: 1.2;
+			  padding: 6px 5px;
 		}
 		
 		/* PixHero text (shows when pagination is hidden) */
@@ -722,15 +721,15 @@
 <style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.relative{position:relative}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.ml-1{margin-left:0.25rem}.mr-1{margin-right:0.25rem}.mr-2{margin-right:0.5rem}.mt-2{margin-top:0.5rem}.mt-1{margin-top:0.25rem}.flex{display:flex}.hidden{display:none}.h-24{height:6rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-3{height:0.75rem}.w-16{width:4rem}.w-20{width:5rem}.w-24{width:6rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-full{width:100%}.w-3{width:0.75rem}.flex-1{flex:1 1 0%}.rotate-180{--tw-rotate:180deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.rounded-full{border-radius:9999px}.bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246 / var(--tw-bg-opacity, 1))}.bg-transparent{background-color:transparent}.p-2{padding:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.pb-20{padding-bottom:5rem}.pt-1{padding-top:0.25rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.text-black{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.outline-none{outline:2px solid transparent;outline-offset:2px}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}</style></head>
 <body class="pb-20">
     <div class="header">
-        <div class="flex justify-between items-center mb-4">
+        <div class="flex justify-between items-center mb-2">
             <h1 class="text-xl poppins-black">Race Calendar - PixHero App</h1>
         </div>
         
-        <div class="search-bar flex items-center p-2 mb-4 relative">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 ml-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="search-bar flex items-center p-2 mb-2 relative">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 ml-1 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
             </svg>
-            <input type="text" id="searchInput" placeholder="Search race name, location, date, month, year…" class="w-full bg-transparent outline-none text-base text-black">
+            <input type="text" id="searchInput" placeholder="Search race name, location, organizer, month, year…" class="w-full bg-transparent outline-none text-base text-black">
 			 <button id="clearSearchBtn" type="button" class="clear-search-btn hidden">×</button>
             <div id="searchSuggestions" class="search-suggestions hidden"></div>
         </div>
@@ -785,19 +784,6 @@
             </div>
         </div>
         
-		        <!-- Year Filter -->
-        <div id="yearFilterContainer" class="filter-section hidden">
-            <div class="filter-header" data-filter="year">
-                <h3 class="text-xs font-bold">Year</h3>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-            </div>
-            <div class="filter-content" id="yearFilters">
-                <div class="skeleton h-5 w-16 mr-2 "></div>
-            </div>
-        </div>
-		
         <!-- Month Filter -->
         <div class="filter-section">
             <div class="filter-header" data-filter="month">
@@ -812,7 +798,18 @@
             </div>
         </div>
         
-
+        <!-- Year Filter -->
+        <div id="yearFilterContainer" class="filter-section hidden">
+            <div class="filter-header" data-filter="year">
+                <h3 class="text-xs font-bold">Year</h3>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </div>
+            <div class="filter-content" id="yearFilters">
+                <div class="skeleton h-5 w-16 mr-2 "></div>
+            </div>
+        </div>
         
         <!-- Day Filter -->
         <div id="dayFilterContainer" class="filter-section hidden">
@@ -850,7 +847,7 @@
     <script>
         // State management
         const state = {
-            view: 'photos', // 'photos' or 'calendar'
+            view: 'calendar', // 'photos' or 'calendar'
             races: [],
             photos: [],
             filters: {
@@ -876,7 +873,7 @@
 
         // DOM elements
         const headerTitle = document.querySelector('.header h1');
-		headerTitle.textContent = 'Race Results';
+		headerTitle.textContent = 'Race Calendar';
         //const toggleViewButton = document.getElementById('toggleViewButton');
         const refreshButton = document.getElementById('refreshButton');
         const searchInput = document.getElementById('searchInput');
@@ -979,13 +976,12 @@
                 };
                 
                 // Show/hide filters based on view
-                filtersContainer.style.display = 'block';
+                filtersContainer.style.display = state.view === 'photos' ? 'none' : 'block';
                 
                 if (state.view === 'photos') {
                     try {
                         const data = await fetchData('https://raw.githubusercontent.com/cncreativesph/races/main/photogs.json');
                         state.photos = data;
-						setupFilters(data, true); 
                         renderPhotos();
                     } catch (error) {
                         showError(`Failed to load photo data: ${error.message}`);
@@ -1077,25 +1073,6 @@
 			if (name.includes('PINOY FITNESS')) return 'PINOY FITNESS';
             return name;
         }
-		
-		function normalizePhotographerName(input) {
-		  if (!input) return '';
-		  const raw = String(input).trim();
-		  const s = raw.toLowerCase().replace(/\s+/g, ' ');
-
-		  // Handle common variants
-		  const compact = s.replace(/\s/g, '');
-
-		  if (s.includes('cn creatives') || compact.includes('cncreatives')) return 'CN Creatives';
-		  if (s.includes('ar sports') || compact.includes('arsportsph')) return 'AR Sports PH';
-		  if (s.includes('genuine sole') || compact.includes('genuinesole')) return 'Genuine Sole';
-		  if (s.includes('humble runner') || compact.includes('humblerunner')) return 'Humble Runner';
-		  if (s.includes('ph running overload') || (s.includes('ph running') && s.includes('overload'))) return 'PH Running Overload';
-		  if (s.includes('pinoy fitness') || compact.includes('pinoyfitness')) return 'Pinoy Fitness';
-
-		  // Unknown photographer → just cleaned
-		  return raw.replace(/\s+/g, ' ');
-		}
 
 		function normalizeLocation(loc) {
 		  if (!loc) return '';
@@ -1123,9 +1100,6 @@
 
 		  // Fort Santiago
 		  if (s.includes('fort santiago')) return 'Fort Santiago, Intramuros, City of Manila';
-		  
-		  // Clark
-		  if (s.includes('clark')) return 'Clark, Pampanga';
 
 		  // default: title case-ish (optional)
 		  return loc.trim();
@@ -1176,80 +1150,7 @@
 			  return s.toUpperCase();
 			}
 
-		const PH_TZ = 'Asia/Manila';
-
-		function getTodayPHStart() {
-		  // start of "today" in PH time
-		  const parts = new Intl.DateTimeFormat('en-CA', {
-			timeZone: PH_TZ,
-			year: 'numeric',
-			month: '2-digit',
-			day: '2-digit'
-		  }).formatToParts(new Date());
-
-		  const y = parts.find(p => p.type === 'year').value;
-		  const m = parts.find(p => p.type === 'month').value;
-		  const d = parts.find(p => p.type === 'day').value;
-
-		  return new Date(`${y}-${m}-${d}T00:00:00+08:00`);
-		}
-
-		function parseDatePHStart(dateStr) {
-		  if (!dateStr) return null;
-
-		  // If it's YYYY-MM-DD, force PH midnight
-		  if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr.trim())) {
-			return new Date(`${dateStr.trim()}T00:00:00+08:00`);
-		  }
-
-		  // Otherwise parse, then convert to PH calendar date (midnight PH)
-		  const d = new Date(dateStr);
-		  if (isNaN(d.getTime())) return null;
-
-		  const parts = new Intl.DateTimeFormat('en-CA', {
-			timeZone: PH_TZ,
-			year: 'numeric',
-			month: '2-digit',
-			day: '2-digit'
-		  }).formatToParts(d);
-
-		  const y = parts.find(p => p.type === 'year').value;
-		  const m = parts.find(p => p.type === 'month').value;
-		  const day = parts.find(p => p.type === 'day').value;
-
-		  return new Date(`${y}-${m}-${day}T00:00:00+08:00`);
-		}
-
-		// ✅ PH Time helpers (Asia/Manila)
-		function getTodayPHMidnight() {
-		  const parts = new Intl.DateTimeFormat('en-CA', {
-			timeZone: 'Asia/Manila',
-			year: 'numeric',
-			month: '2-digit',
-			day: '2-digit'
-		  }).formatToParts(new Date());
-
-		  const y = Number(parts.find(p => p.type === 'year').value);
-		  const m = Number(parts.find(p => p.type === 'month').value);
-		  const d = Number(parts.find(p => p.type === 'day').value);
-
-		  // local Date object, but representing PH calendar date at midnight
-		  return new Date(y, m - 1, d, 0, 0, 0, 0);
-		}
-
-		function parseYMDToLocalMidnight(dateStr) {
-		  if (!dateStr) return null;
-
-		  // Supports: "YYYY-MM-DD" (and also "YYYY-MM-DDTHH:mm..." by slicing)
-		  const m = String(dateStr).match(/^(\d{4})-(\d{2})-(\d{2})/);
-		  if (m) return new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]), 0, 0, 0, 0);
-
-		  // fallback
-		  const d = new Date(dateStr);
-		  if (isNaN(d.getTime())) return null;
-		  return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0, 0);
-		}
-
+		
 		
         // Setup filters based on data
         function setupFilters(data, isPhotos) {
@@ -1311,10 +1212,8 @@
                             years.add(year);
                             
                             // Day
-                            if (!isPhotos) {
-							  const dayName = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(date);
-							  days.add(dayName);
-							}
+                            const dayName = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(date);
+							days.add(dayName);
                         }
                     }
                 }
@@ -1334,11 +1233,13 @@
                 state.hiddenFilters.add('distance');
             }
             
-            // Day filter: NEVER show in Photos view
-			const showDayFilter = (!isPhotos && days.size > 0);
-			dayFilterContainer.classList.toggle('hidden', !showDayFilter);
-			state.hiddenFilters.delete('day');
-			if (!showDayFilter) state.hiddenFilters.add('day');
+            // Hide Day filter if only Sunday races or no races
+            const showDayFilter = days.size > 0;
+            dayFilterContainer.classList.toggle('hidden', !showDayFilter);
+            state.hiddenFilters.delete('day');
+            if (!showDayFilter) {
+                state.hiddenFilters.add('day');
+            }
             
             // Render distance filters (only for calendar view)
             if (!isPhotos) {
@@ -1492,7 +1393,7 @@
                 yearFilters.appendChild(allYearChip);
                 
                 // Add individual year options
-                Array.from(years).sort((a, b) => parseInt(b) - parseInt(a)).forEach(year => {
+                Array.from(years).sort().forEach(year => {
                     const chip = document.createElement('div');
                     chip.className = `filter-chip ${state.filters.year.includes(year) ? 'active' : ''}`;
                     chip.textContent = year;
@@ -1697,30 +1598,24 @@
                 }
             });
 			
-
+			const dayNames = ['Sunday', 'Saturday'];
+			dayNames.forEach(day => {
+				if (day.toLowerCase().includes(searchTerm)) {
+					suggestions.add(day);
+				}
+			});
 						
             data.forEach(item => {
-                const todayPH = getTodayPHStart();
-
-				const name = state.view === 'photos' ? item.nameP : item.name;
-				const location = state.view === 'photos' ? item.locationP : item.location;
-				const distance = state.view === 'photos' ? item.distanceP : item.distance;
-				const organizer = state.view === 'photos' ? '' : item.organizer;
-				const date = state.view === 'photos' ? item.dateP : item.date;
-
-				// ✅ Photos view: skip FUTURE races so they won't appear in suggestions
-				if (state.view === 'photos' && date) {
-					const itemDate = parseDatePHStart(date) || new Date(date);
-					if (itemDate && !isNaN(itemDate.getTime()) && itemDate > todayPH) {
-						return; // skip this item completely
-					}
-				}
+                const name = state.view === 'photos' ? item.nameP : item.name;
+                const location = state.view === 'photos' ? item.locationP : item.location;
+                const distance = state.view === 'photos' ? item.distanceP : item.distance;
+                const organizer = state.view === 'photos' ? '' : item.organizer;
+                const date = state.view === 'photos' ? item.dateP : item.date;
                 
                 // Add race name suggestions
-                const nameNorm = name ? name.toUpperCase() : '';
-				if (nameNorm && nameNorm.toLowerCase().includes(searchTerm)) {
-					suggestions.add(nameNorm);
-				}
+                if (name && name.toLowerCase().includes(searchTerm)) {
+                    suggestions.add(name);
+                }
                 
                 // Add location suggestions
                 const locNorm = normalizeLocation(location);
@@ -1728,34 +1623,49 @@
 					suggestions.add(locNorm);
 				}
 								
+                // Add organizer suggestions
+                if (organizer) {
+					const orgNorm = normalizeOrganizerName(organizer);
+					if (orgNorm && orgNorm.toLowerCase().includes(searchTerm)) {
+						suggestions.add(orgNorm);
+					}
+				}
                 
+                // Add distance suggestions
+                if (distance) {
+                    distance.split(',').forEach(d => {
+                        const distNorm = normalizeDistance(d);
+						if (distNorm && distNorm.toLowerCase().includes(searchTerm)) {
+						  suggestions.add(distNorm);
+						}
+                    });
+                }
                 
                 // Add date suggestions
                 if (date) {
-				  const itemDatePH = parseDatePHStart(date);
-				  if (!itemDatePH) return;
-
-				  // ✅ Photos view: DO NOT suggest future dates
-				  if (state.view === 'photos' && itemDatePH > getTodayPHStart()) return;
-
-				  const monthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(itemDatePH);
-				  const shortMonthName = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(itemDatePH);
-				  const day = itemDatePH.getDate();
-				  const year = itemDatePH.getFullYear();
-
-				  const formattedDate = `${monthName} ${day}, ${year}`;
-
-				  if (
-					monthName.toLowerCase().includes(searchTerm) ||
-					shortMonthName.toLowerCase().includes(searchTerm) ||
-					formattedDate.toLowerCase().includes(searchTerm)
-				  ) {
-					suggestions.add(formattedDate);
-					suggestions.add(monthName);
-					suggestions.add(String(year)); // ✅ make year string
-				  }
-				}
-
+                    const itemDate = new Date(date);
+                    if (!isNaN(itemDate.getTime())) {
+                        const monthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(itemDate);
+                        const shortMonthName = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(itemDate);
+                        const day = itemDate.getDate();
+                        const year = itemDate.getFullYear();
+						const weekdayName = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(itemDate);
+                        
+                        const formattedDate = `${monthName} ${day}, ${year}`;
+                        
+                        if (
+							monthName.toLowerCase().includes(searchTerm) ||
+							shortMonthName.toLowerCase().includes(searchTerm) ||
+							formattedDate.toLowerCase().includes(searchTerm) ||
+							weekdayName.toLowerCase().includes(searchTerm)
+						) {
+							suggestions.add(formattedDate);
+							suggestions.add(monthName);
+							suggestions.add(year);
+							suggestions.add(weekdayName);
+						}
+                    }
+                }
 				
 				
             });
@@ -1769,28 +1679,19 @@
                     const item = document.createElement('div');
                     item.className = 'suggestion-item';
                     item.textContent = suggestion;
-                    // Stop iOS from focusing the input (which triggers zoom)
-					item.addEventListener('pointerdown', (e) => {
-					  e.preventDefault();
-					});
-
-					item.addEventListener('click', (e) => {
-					  e.preventDefault();
-
-					  resetFiltersOnly();
-					  searchInput.value = suggestion;
-					  state.searchTerm = String(suggestion).trim();
-					  searchSuggestions.classList.add('hidden');
-
-					  // IMPORTANT: remove focus so Safari won't zoom
-					  searchInput.blur();
-
-					  if (state.view === 'photos') {
-						loadPhotoData();
-					  } else {
-						renderCurrentView();
-					  }
-					});
+                    item.addEventListener('click', () => {
+						resetFiltersOnly();   
+                        searchInput.value = suggestion;
+                        state.searchTerm = suggestion;
+                        searchSuggestions.classList.add('hidden');
+                        
+                        // If in photos view, fetch fresh data when selecting a suggestion
+                        if (state.view === 'photos') {
+                            loadPhotoData();
+                        } else {
+                            renderCurrentView();
+                        }
+                    });
                     searchSuggestions.appendChild(item);
                 });
                 searchSuggestions.classList.remove('hidden');
@@ -1802,15 +1703,10 @@
         // Render races
         
         function setCalendarPage(p) {
-		  state.pagination.page = p;
-
-		  // ✅ works for both tabs
-		  if (state.view === 'photos') renderPhotos();
-		  else renderRaces();
-
-		  // ✅ scroll to top (your sticky footer stays)
-		  window.scrollTo({ top: 0, behavior: 'smooth' });
-		}
+            state.pagination.page = p;
+            renderRaces();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
         function renderCalendarPagination(totalItems) {
             const perPage = state.pagination.perPage;
@@ -1872,58 +1768,6 @@
             next.onclick = () => setCalendarPage(currentPage + 1);
             paginationContainer.appendChild(next);
         }
-		
-		function setPhotosPage(p) {
-  state.pagination.page = p;
-  renderPhotos();
-  // scroll to top pagination (safe even if sticky)
-  paginationContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function renderPhotosPagination(totalItems) {
-  const perPage = state.pagination.perPage;
-  const totalPages = Math.max(1, Math.ceil(totalItems / perPage));
-  const currentPage = Math.min(state.pagination.page, totalPages);
-  state.pagination.page = currentPage;
-
-  if (totalItems <= perPage) {
-    paginationContainer.innerHTML = '';
-    const label = document.createElement('div');
-    label.className = 'pagination-empty poppins-black';
-    label.textContent = 'Thank you for using the PixHero app';
-    paginationContainer.appendChild(label);
-    return;
-  }
-
-  paginationContainer.innerHTML = '';
-
-  const info = document.createElement('div');
-  info.className = 'pagination-info';
-  info.textContent = `Page ${currentPage} of ${totalPages}`;
-  paginationContainer.appendChild(info);
-
-  const prev = document.createElement('button');
-  prev.className = 'pagination-button';
-  prev.textContent = 'Prev';
-  prev.disabled = currentPage === 1;
-  prev.onclick = () => setPhotosPage(currentPage - 1);
-  paginationContainer.appendChild(prev);
-
-  for (let i = Math.max(1, currentPage - 2); i <= Math.min(totalPages, currentPage + 2); i++) {
-    const b = document.createElement('button');
-    b.className = 'pagination-button' + (i === currentPage ? ' active' : '');
-    b.textContent = i;
-    b.onclick = () => setPhotosPage(i);
-    paginationContainer.appendChild(b);
-  }
-
-  const next = document.createElement('button');
-  next.className = 'pagination-button';
-  next.textContent = 'Next';
-  next.disabled = currentPage === totalPages;
-  next.onclick = () => setPhotosPage(currentPage + 1);
-  paginationContainer.appendChild(next);
-}
     
 function normalizeLocation(raw) {
   if (!raw) return raw;
@@ -1971,12 +1815,6 @@ function normalizeLocation(raw) {
     v === 'fort santiago, manila' ||
     v === 'fort santiago, manila city'
   ) return 'Fort Santiago, Intramuros, City of Manila';
-  
-  // Clark
-  if (
-    v === 'clark pampanga' ||
-    v === 'clark, pampanga' 
-  ) return 'Clark, Pampanga';
 
   return raw; // default
 }
@@ -2045,13 +1883,6 @@ function normalizeLocation(rawLocation) {
   if (s === 'vermosa' || s === 'vermosa cavite' || s === 'vermosa cavite city'|| s === 'vermosa, cavite' || s === 'vermosa, cavite city') {
     return 'Vermosa, Cavite City';
   }
-  
-  // Clark
-  if (
-    s === 'clark pampanga' ||
-    s === 'clark, pampanga' 
-  ) return 'Clark, Pampanga';
-
 
   // default (unchanged)
   return rawLocation;
@@ -2059,56 +1890,39 @@ function normalizeLocation(rawLocation) {
 
 function normalizeDistanceLabel(raw) {
   let s = (raw || '').toString().trim().replace(/\s+/g, ' ');
-  if (!s) return s;
 
-  // ✅ If it's not a "distance-like" label (ex: 2-Man Relay), leave it as-is
-  // (no km/m, no pure number, no "k")
-  const looksLikeDistance = /(\d)/.test(s) && (/\b(km|m)\b/i.test(s) || /\bk\b/i.test(s) || /^\d+(\.\d+)?$/.test(s));
-  if (!looksLikeDistance && /relay/i.test(s)) return s;
+  // DOG category (force exact casing)
+  if (/dog/i.test(s)) return '1KM Dog';
 
-  // Extract number (supports decimals like 2.5, 1.5)
-  const numMatch = s.match(/(\d+(?:\.\d+)?)/);
-  if (!numMatch) return s;
+  // Get first number
+  const m = s.match(/(\d+)/);
+  if (!m) return s;
 
-  let numStr = numMatch[1];               // "2.5"
-  numStr = numStr.replace(/\.0+$/, '');   // "2.0" -> "2"
+  const n = parseInt(m[1], 10);
+  if (!Number.isFinite(n)) return s;
 
-  const hasKM = /\bkm\b/i.test(s) || /\bk\b/i.test(s);
-  const hasM  = /\bm\b/i.test(s) && !hasKM;
-
-  // DOG (keep number + "KM Dog")
-  if (/dog/i.test(s)) {
-    // default to 1 if weird formatting
-    const n = numStr || '1';
-    return `${n}KM Dog`;
-  }
-
-  // ✅ meters should stay meters (711M, 500M)
-  if (hasM) return `${numStr}M`;
-
-  // ✅ default to KM
-  return `${numStr}KM`;
+  // Force: "21" / "21k" / "21 km" / "21KM" => "21KM"
+  return `${n}KM`;
 }
-
 
 	
 function renderRaces() {
             const filteredRaces = filterData(state.races, false);
 			
-            filteredRaces.sort((a, b) => {
-			  const da = parseYMDToLocalMidnight(a.date);
-			  const db = parseYMDToLocalMidnight(b.date);
+            // ✅ ADD THIS LINE HERE
+			filteredRaces.sort((a, b) => {
+				const dateA = new Date(a.date);
+				const dateB = new Date(b.date);
 
-			  const ta = da ? da.getTime() : -Infinity;
-			  const tb = db ? db.getTime() : -Infinity;
+				// 1️⃣ Event Date (ascending)
+				if (!isNaN(dateA) && !isNaN(dateB) && dateA.getTime() !== dateB.getTime()) {
+					return dateA - dateB;
+				}
 
-			  // 1️⃣ Event Date (DESC)
-			  if (ta !== tb) return tb - ta;
-
-			  // 2️⃣ Alphabetical by race name (ASC)
-			  const nameA = (a.name || '').toLowerCase();
-			  const nameB = (b.name || '').toLowerCase();
-			  return nameA.localeCompare(nameB);
+				// 2️⃣ Alphabetical by race name
+				const nameA = (a.name || '').toLowerCase();
+				const nameB = (b.name || '').toLowerCase();
+				return nameA.localeCompare(nameB);
 			});
             
             const perPage = state.pagination.perPage;
@@ -2152,7 +1966,7 @@ function renderRaces() {
                     raceName.addEventListener('click', () => {
                         window.open(race.website, '_blank');
                     });
-                   // raceName.style.cursor = 'pointer';
+                    raceName.style.cursor = 'pointer';
                 }
                 
                 detailsSection.appendChild(raceName);
@@ -2235,10 +2049,10 @@ function renderRaces() {
 					
                     if (buttonType === 'full') {
 						registerButton.innerHTML = `
-							<button class="register-button full">
+						
 							  <div class="btn-main-text">EVENT IS FULL</div>
 							  <div class="btn-sub-text">(View Details)</div>
-							</button>
+						
 						`;
 					} else {
 						registerButton.textContent = buttonText;
@@ -2273,100 +2087,37 @@ function renderRaces() {
                 `;
                 return;
             }
-			
-
+            
             raceList.innerHTML = '';
             
             // Filter photos if search term exists
-			let photosToDisplay = state.photos;
-
-			// ✅ Remove FUTURE dates in PH time (today is based on Asia/Manila)
-			const todayPH = getTodayPHMidnight();
-			photosToDisplay = photosToDisplay.filter(photo => {
-			  if (!photo.dateP) return true;
-			  const d = parseYMDToLocalMidnight(photo.dateP);
-			  if (!d) return true;
-			  return d <= todayPH; // ✅ hide Jan 3, 2026+ when todayPH is Jan 2, 2026
-			});
-
-			// ---- SEARCH filter ----
-			if (state.searchTerm) {
-			  const searchLower = String(state.searchTerm).toLowerCase();
-			  photosToDisplay = photosToDisplay.filter(photo => {
-				return (
-				  (photo.nameP && photo.nameP.toLowerCase().includes(searchLower)) ||
-				  (photo.locationP && normalizeLocation(photo.locationP).toLowerCase().includes(searchLower)) ||
-				  (photo.dateP && formatDate(photo.dateP).toLowerCase().includes(searchLower)) ||
-				  (photo.distanceP && photo.distanceP.toLowerCase().includes(searchLower)) ||
-				  (photo.listOfPhotogs && photo.listOfPhotogs.some(p => p.toLowerCase().includes(searchLower)))
-				);
-			  });
-			}
+            let photosToDisplay = state.photos;
+            if (state.searchTerm) {
+                const searchLower = state.searchTerm.toLowerCase();
+                photosToDisplay = state.photos.filter(photo => {
+                    return (
+                        (photo.nameP && photo.nameP.toLowerCase().includes(searchLower)) ||
+                        (photo.locationP && photo.locationP.toLowerCase().includes(searchLower)) ||
+                        (photo.dateP && formatDate(photo.dateP).toLowerCase().includes(searchLower)) ||
+                        (photo.distanceP && photo.distanceP.toLowerCase().includes(searchLower)) ||
+                        (photo.listOfPhotogs && photo.listOfPhotogs.some(p => p.toLowerCase().includes(searchLower)))
+                    );
+                });
+            }
             
-            // ---- MONTH / YEAR filters (Photos view) ----
-			photosToDisplay = photosToDisplay.filter(photo => {
-			  if (!photo.dateP) return true;
-
-			  const d = new Date(photo.dateP);
-			  if (isNaN(d.getTime())) return true;
-
-			  // Month
-			  if (state.filters.month.length > 0) {
-				const monthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(d);
-				if (!state.filters.month.includes(monthName)) return false;
-			  }
-
-			  // Year
-			  if (state.filters.year.length > 0) {
-				const y = d.getFullYear().toString();
-				if (!state.filters.year.includes(y)) return false;
-			  }
-
-			  return true;
-			});
-			
-			if (photosToDisplay.length === 0) {
-			  raceList.innerHTML = `
-				<div class="p-4 text-center text-gray-500">
+            if (photosToDisplay.length === 0) {
+                raceList.innerHTML = `
+                    <div class="p-4 text-center text-gray-500">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <p>No races match your filters</p>
+                        <p>No results found. Try a different keyword</p>
                     </div>
-			  `;
-			  return;
-			}
+                `;
+                return;
+            }
             
-			raceList.innerHTML = '';
-			
-			photosToDisplay.sort((a, b) => {
-			  const da = parseYMDToLocalMidnight(a.dateP);
-			  const db = parseYMDToLocalMidnight(b.dateP);
-
-			  const ta = da ? da.getTime() : -Infinity;
-			  const tb = db ? db.getTime() : -Infinity;
-
-			  if (ta !== tb) return tb - ta; // DESC
-
-			  const na = (a.nameP || '').toLowerCase();
-			  const nb = (b.nameP || '').toLowerCase();
-			  return na.localeCompare(nb); // ASC
-			});
-			
-			const perPage = state.pagination.perPage;
-			const totalItems = photosToDisplay.length;
-			const totalPages = Math.max(1, Math.ceil(totalItems / perPage));
-			if (state.pagination.page > totalPages) state.pagination.page = 1;
-
-			const startIndex = (state.pagination.page - 1) * perPage;
-			const endIndex = startIndex + perPage;
-			const pageItems = photosToDisplay.slice(startIndex, endIndex);
-
-				// ✅ render pagination for PHOTOS
-				renderPhotosPagination(totalItems);
-
-				// ✅ render only current page
-				pageItems.forEach(photo => {
+            photosToDisplay.forEach(photo => {
                 const card = document.createElement('div');
                 card.className = 'race-card';
                 
@@ -2399,91 +2150,116 @@ function renderRaces() {
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
-                        ${normalizeLocation(photo.locationP)}
+                        ${photo.locationP}
                     `;
                     detailsSection.appendChild(location);
                 }
                 
                 card.appendChild(detailsSection);
 				
-			// ✅ ONE bottom block: photographers + results (NO distance chips)
-			const bottomSection = document.createElement('div');
-			bottomSection.className = 'categories-section';
-
-			// LEFT side container (photographers)
-			const leftWrap = document.createElement('div');
-			leftWrap.className = 'flex flex-col flex-1';
-
-			// Title
-			if (photo.listOfPhotogs && Array.isArray(photo.listOfPhotogs) && photo.listOfPhotogs.length > 0) {
-			  const photographersLabel = document.createElement('div');
-			  photographersLabel.className = 'photographers-title poppins-black';
-			  photographersLabel.textContent = 'LIST OF PHOTOGRAPHERS';
-
-			  const photographersInstruct = document.createElement('div');
-			  photographersInstruct.className = 'photographers-instruct';
-			  photographersInstruct.textContent = "Click the photographer's name to view photos";
-
-			  const photographersContainer = document.createElement('div');
-			  photographersContainer.className = 'flex flex-wrap mt-1';
-
-			  // hierarchy
-			  const photographerOrder = {
-				'CN Creatives': 1,
-				'AR Sports PH': 2,
-				'Genuine Sole': 3,
-				'Humble Runner': 4,
-				'PH Running Overload': 5,
-				'Pinoy Fitness': 6
-			  };
-
-			  const photographerItems = photo.listOfPhotogs.map((p, i) => ({
-				raw: p,
-				name: normalizePhotographerName(p),
-				url: (photo.photogsURL && Array.isArray(photo.photogsURL)) ? photo.photogsURL[i] : null
-			  }));
-
-			  photographerItems.sort((a, b) => {
-				const orderA = photographerOrder[a.name] || 999;
-				const orderB = photographerOrder[b.name] || 999;
-				if (orderA !== orderB) return orderA - orderB;
-				return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
-			  });
-
-			  photographerItems.forEach(p => {
-				const button = document.createElement('button');
-				button.className = `photographer-button ${getPhotographerClass(p.name)} mr-2 mb-0`;
-				button.textContent = p.name;
-
-				if (p.url) button.addEventListener('click', () => window.open(p.url, '_blank'));
-				photographersContainer.appendChild(button);
-			  });
-
-			  leftWrap.appendChild(photographersLabel);
-			  leftWrap.appendChild(photographersInstruct);
-			  leftWrap.appendChild(photographersContainer);
-			}
-
-			// RIGHT side container (results button)
-			const resultsButton = document.createElement('button');
-			resultsButton.className = 'register-button results';
-			resultsButton.textContent = 'VIEW RESULTS';
-
-			if (photo.resultsURL) {
-			  resultsButton.addEventListener('click', () => window.open(photo.resultsURL, '_blank'));
-			}
-
-			// ✅ assemble
-			bottomSection.appendChild(leftWrap);
-			bottomSection.appendChild(resultsButton);
-			card.appendChild(bottomSection);
-
+				// Add photographers section
+                if (photo.listOfPhotogs && Array.isArray(photo.listOfPhotogs) && photo.listOfPhotogs.length > 0) {
+                    const photographersLabel = document.createElement('div');
+                    photographersLabel.className = 'photographers-title poppins-black';
+                    photographersLabel.textContent = 'LIST OF PHOTOGRAPHERS';
+                    
+					
+					const photographersInstruct = document.createElement('div');
+                    photographersInstruct.className = 'photographers-instruct';
+                    photographersInstruct.textContent = 'Click the photographer\'s name to view photos';
+					
+                    const photographersContainer = document.createElement('div');
+                    photographersContainer.className = 'flex flex-wrap mt-1';
+                    
+                    // Sort photographers according to the specified hierarchy
+                    const photographerOrder = {
+                        'CN Creatives': 1,
+                        'AR Sports PH': 2,
+                        'Genuine Sole': 3,
+                        'Humble Runner': 4,
+                        'PH Running Overload': 5,
+                        'Pinoy Fitness': 6
+                    };
+                    
+                    const sortedPhotographers = [...photo.listOfPhotogs].sort((a, b) => {
+                        const orderA = photographerOrder[a] || 999;
+                        const orderB = photographerOrder[b] || 999;
+                        return orderA - orderB;
+                    });
+                    
+                    sortedPhotographers.forEach((photographer, index) => {
+                        const button = document.createElement('button');
+                        button.className = `photographer-button ${getPhotographerClass(photographer)}`;
+                        button.textContent = photographer;
+                        
+                        if (photo.photogsURL && Array.isArray(photo.photogsURL) && photo.photogsURL[index]) {
+                            button.addEventListener('click', () => {
+                                window.open(photo.photogsURL[index], '_blank');
+                            });
+                        }
+                        
+                        photographersContainer.appendChild(button);
+                    });
+                    
+                    const photographersSection = document.createElement('div');
+                    photographersSection.className = 'mt-2';
+                    photographersSection.appendChild(photographersLabel);
+					photographersSection.appendChild(photographersInstruct);
+                    photographersSection.appendChild(photographersContainer);
+                    card.appendChild(photographersSection);
+                }
+				
+                
+                // Categories section with results button
+                if (photo.distanceP) {
+                    const categoriesSection = document.createElement('div');
+                    categoriesSection.className = 'categories-section';
+                    
+                    const categoriesDiv = document.createElement('div');
+                    categoriesDiv.className = 'flex flex-wrap flex-1';
+                    
+                    photo.distanceP.split(',').forEach(category => {
+                        const chip = document.createElement('span');
+                        chip.className = `category-chip ${getCategoryColorClass(category)}`;
+                        chip.textContent = normalizeDistanceLabel(category);
+                        categoriesDiv.appendChild(chip);
+                    });
+                    
+                    categoriesSection.appendChild(categoriesDiv);
+                    
+                    // Results button
+                    const resultsButton = document.createElement('button');
+                    resultsButton.className = 'register-button results';
+                    resultsButton.textContent = 'VIEW RESULTS';
+                    
+                    // If there's a resultsURL, make the button open it
+                    if (photo.resultsURL) {
+                        resultsButton.addEventListener('click', () => {
+                            window.open(photo.resultsURL, '_blank');
+                        });
+                    }
+                    
+                    categoriesSection.appendChild(resultsButton);
+                    card.appendChild(categoriesSection);
+                }
                 
                 
                 
                 raceList.appendChild(card);
 				
+			const goTopBtn = document.createElement('button');
+			goTopBtn.type = 'button'; // 🔥 IMPORTANT
+			goTopBtn.textContent = 'Go to the top';
+			goTopBtn.className = 'go-top-btn';
 
+			goTopBtn.addEventListener('click', () => {
+				paginationContainer.scrollIntoView({
+					behavior: 'smooth',
+					block: 'start'
+				});
+			});
+
+			raceList.appendChild(goTopBtn);
 			
             });
         }
@@ -2496,37 +2272,45 @@ function renderRaces() {
             }
             
             // For photos view, return all data without filtering
-            const todayPH = getTodayPHStart();
-
-			return data.filter(item => {
-			  const name = isPhotos ? item.nameP : item.name;
-				const date = isPhotos ? item.dateP : item.date;
-				const location = isPhotos ? item.locationP : item.location;
-				const distance = isPhotos ? item.distanceP : item.distance;
-				const organizer = isPhotos ? '' : item.organizer;
-
-			  // ✅ Date filter using PH time
-			  if (date) {
-				const itemDatePH = parseDatePHStart(date);
-				if (itemDatePH) {
-				  if (isPhotos) {
-					// Photos view: show only today/past
-					if (itemDatePH > todayPH) return false;
-				  } else {
-					// Calendar view: show only today/future
-					if (itemDatePH < todayPH) return false;
+            if (isPhotos) {
+                return data;
+            }
+            
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            return data.filter(item => {
+                const name = item.name;
+                const date = item.date;
+                const location = item.location;
+                const distance = item.distance;
+                const organizer = item.organizer;
+                
+                // Date filter - only show future dates for races
+                if (date) {
+                    const itemDate = new Date(date);
+                    if (!isNaN(itemDate.getTime()) && itemDate < today) {
+                        return false;
+                    }
+                }
+				
+				if (state.filters.year && state.filters.year.length > 0 && date) {
+				  const itemDate = new Date(date);
+				  if (!isNaN(itemDate.getTime())) {
+					const y = itemDate.getFullYear().toString();
+					if (!state.filters.year.includes(y)) return false;
 				  }
 				}
-			  }
                 
                 // Search term filter
                 if (state.searchTerm) {
-                    const searchLower = String(state.searchTerm).toLowerCase();
+                    const searchLower = state.searchTerm.toLowerCase();
 					
-					const dayNames = ['sunday','saturday'];
-					const dayName = date && !isNaN(new Date(date).getTime())
-						? dayNames[new Date(date).getDay()]
-						: '';
+					const dayName = (date && !isNaN(new Date(date).getTime()))
+					  ? new Intl.DateTimeFormat('en-US', { weekday: 'long' })
+						  .format(new Date(date))
+						  .toLowerCase()
+					  : '';
 							  
                     const rawSearch = state.searchTerm.trim();
 					const looksLikeDistance = /^\d+(?:\.\d+)?\s*(km|k|m)?(\s|$)/i.test(rawSearch);
@@ -2843,13 +2627,10 @@ function renderRaces() {
             
             if (state.filtersVisible) {
                 document.querySelectorAll('.filter-section').forEach(section => {
-                    const filterId =
-					  section.querySelector('.filter-header')?.dataset.filter ||
-					  section.id.replace('FilterContainer', '');
-
-					if (!state.hiddenFilters.has(filterId)) {
-					  section.classList.remove('hidden');
-					}
+                    const filterId = section.id.replace('FilterContainer', '');
+                    if (!state.hiddenFilters.has(filterId)) {
+                        section.classList.remove('hidden');
+                    }
                 });
                 toggleFiltersButton.innerHTML = `
                     <span>Hide All Filters</span>
