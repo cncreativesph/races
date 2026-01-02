@@ -1,7 +1,6 @@
 [
   {
     "nameP": "CAPAS MARATHON",
-    "distanceP": "42KM,21KM,10KM,5KM",
     "locationP": "New Clark City, Tarlac",
     "organizerP": "Smoke10 Events Management",
     "dateP": "December 14, 2025",
@@ -9,13 +8,12 @@
   },
   {
     "nameP": "PUMA CLARK CITY HALF MARATHON",
-    "distanceP": "21KM,10KM,5KM",
-    "locationP": "clark, Pampanga",
+    "locationP": "Clark, Pampanga",
     "organizerP": "RUNRIO",
     "dateP": "December 14, 2025",
     "listOfPhotogs": [
-        "CN CreativeS",
-        "Humble RuNner"
+        "CN Creatives",
+        "Humble Runner"
       ],
       "photogsURL": [
         "https://photos.cncreatives.com/galleries/puma-clark-city-half-marathon",
@@ -24,48 +22,36 @@
 	"resultsURL": "https://results.raceroster.com/v3/events/mrb56faz3q55xg9d"
   },
   {
-    "nameP": "C TRILOGy RUN ASIA - LEG 3",
-    "distanceP": "21KM,10KM,5KM",
-    "locationP": "mall of Asia",
+    "nameP": "RUN BGC",
+    "locationP": "BGC, Taguig",
     "organizerP": "RUNRIO",
-    "dateP": "January 2, 2026",
+    "dateP": "December 14, 2025",
     "listOfPhotogs": [
-        "CN Creatives",
-        "AR SporTs PH",
-        "Humble Runner"
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole"
       ],
       "photogsURL": [
-        "https://photos.cncreatives.com/admin/photos",
-        "https://photos.arsportsph.com/admin/photos",
-        "https://photos.humblerunnerphoto.com/admin/photos"
+        "https://photos.cncreatives.com/galleries/run-bgc",
+        "https://photos.humblerunnerphoto.com/galleries/run-bgc",
+		"https://photos.genuinesole.com/galleries/run-bgc-by-gsp"
       ],
-	 "resultsURL": ""
+	 "resultsURL": "https://results.raceroster.com/v3/events/zhm9kmgzbme7ueyh"
   },
   {
-    "nameP": "D TRILOGY RUN ASIA - LEG 3",
-    "distanceP": "21KM,10KM,5KM",
-    "locationP": "Mall of Asia",
-    "organizerP": "RUNRIO",
-    "dateP": "January 3, 2026",
+    "nameP": "TAKBO PARA SA KALIKASAN - EARTH RUN",
+    "locationP": "QUIRINO GRANDSTAND, MANILA",
+    "organizerP": "GREEN MEDIA EVENTS",
+    "dateP": "December 14, 2025",
     "listOfPhotogs": [
-        "CN CreativEs",
-        "AR SpOrts PH",
+        "CN Creatives",
+        "AR Sports PH",
         "Humble Runner"
       ],
       "photogsURL": [
-        "https://photos.cncreatives.com/admin/photos",
-        "https://photos.arsportsph.com/admin/photos",
-        "https://photos.humblerunnerphoto.com/admin/photos"
-      ]
+        "https://photos.cncreatives.com/admin/photos"
+      ],
+	  "resultsURL": "https://greenmediaevents.myruntime.com/results/earth-run-2025"
   }
 ]
-
-
-
-
-
-
-
-
-
 
