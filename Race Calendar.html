@@ -183,15 +183,14 @@
             color: white; /* Changed for better contrast on dark green */
             overflow: hidden;
             text-overflow: ellipsis;
-            max-width: 100%;
-            cursor: pointer;
+            max-width: 100%;            
             text-transform: uppercase;
         }
 		
 		.race-name {
 		  display: inline;          /* IMPORTANT */
 		  width: auto;              /* prevent stretching */
-		  cursor: pointer;
+		  
 		  text-decoration: none;
 		  color: inherit;
 		}
@@ -1962,12 +1961,12 @@ function renderRaces() {
                 raceName.textContent = race.name ? race.name.toUpperCase() : 'UNNAMED RACE';
                 
                 // Make race name clickable if website is available
-                if (race.website) {
-                    raceName.addEventListener('click', () => {
-                        window.open(race.website, '_blank');
-                    });
-                    raceName.style.cursor = 'pointer';
-                }
+                //if (race.website) {
+                //    raceName.addEventListener('click', () => {
+                //        window.open(race.website, '_blank');
+                //    });
+                //    raceName.style.cursor = 'pointer';
+                //}
                 
                 detailsSection.appendChild(raceName);
                 
