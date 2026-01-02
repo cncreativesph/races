@@ -26,12 +26,14 @@
     "listOfPhotogs": [
         "CN CreativeS",
         "Humble Runner",
-		"Genuine Sole"
+		"Genuine Sole",
+		"22Pixels"
       ],
       "photogsURL": [
         "https://photos.cncreatives.com/galleries/run-bgc",
         "https://photos.humblerunnerphoto.com/galleries/run-bgc",
-		"https://photos.genuinesole.com/galleries/run-bgc-by-gsp"
+		"https://photos.genuinesole.com/galleries/run-bgc-by-gsp",
+		"https://findmyshots.com/events/bc18c9b3-1803-4b6f-b897-4cdc559da6da?photographerId=1361838f-1063-4894-a2ae-68e175e6f739"
       ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/zhm9kmgzbme7ueyh"
   },
@@ -55,13 +57,15 @@
         "CN CreativeS",
         "Humble Runner",
 		"Genuine Sole",
-		"PH RunninG Overload"
+		"PH RunninG Overload",
+		"22Pixels"
       ],
       "photogsURL": [
         "https://www.facebook.com/runrioinc",
         "https://photos.humblerunnerphoto.com/galleries/mcdonalds-stripes-run",
 		"https://photos.genuinesole.com/galleries/the-stripes-run-2025-by-gsp",
-		"https://photos.phrunningoverload.com/galleries/mcdonalds-stripes-run-2025"
+		"https://photos.phrunningoverload.com/galleries/mcdonalds-stripes-run-2025",
+		"https://findmyshots.com/events/14676313-eb0f-477b-b5ae-d6851273bf72?photographerId=1361838f-1063-4894-a2ae-68e175e6f739"
       ],
 	 "resultsURL": ""
   },
@@ -74,14 +78,16 @@
         "Humble Runner",
 		"Genuine Sole",
 		"PH RunninG Overload",
-		"AR Sports ph"
+		"AR Sports ph",
+		"22Pixels"
       ],
       "photogsURL": [
         "https://www.facebook.com/TrilogyRunAsia",
         "https://photos.humblerunnerphoto.com/galleries/sante-barley-trilogy-run-asia-national-finals",
 		"https://photos.genuinesole.com/galleries/sante-barley-finals",
 		"https://photos.phrunningoverload.com/galleries/sante-barley-trilogy-run-asia-national-finals",
-		"https://photos.arsportsph.com/galleries/sante-barley-trilogy-run-asia-national-finals"
+		"https://photos.arsportsph.com/galleries/sante-barley-trilogy-run-asia-national-finals",
+		"https://findmyshots.com/events/bf219990-db00-4d0e-b210-720968adec13?photographerId=1361838f-1063-4894-a2ae-68e175e6f739"
       ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/cb6shdt2zmjp3f6g"
   },
@@ -94,14 +100,16 @@
         "Humble Runner",
 		"Genuine Sole",
 		"PH RunninG Overload",
-		"AR Sports ph"
+		"AR Sports ph",
+		"22Pixels"
       ],
       "photogsURL": [
         "https://photos.cncreatives.com/galleries/minions-run-philippines",
         "https://photos.humblerunnerphoto.com/galleries/minions-run-ph",
 		"https://photos.genuinesole.com/galleries/minion-run-2025-by-gsp",
 		"https://photos.phrunningoverload.com/galleries/minions-run-ph",
-		"https://photos.arsportsph.com/galleries/minions-run-philippines"
+		"https://photos.arsportsph.com/galleries/minions-run-philippines",
+		"https://findmyshots.com/events/a7be5684-7712-4cfa-bb8a-2c7655ac9adc?photographerId=1361838f-1063-4894-a2ae-68e175e6f739"
       ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/kqxmdg6647v94bn4"
   },
