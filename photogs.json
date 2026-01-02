@@ -104,6 +104,46 @@
 		"https://photos.arsportsph.com/galleries/minions-run-philippines"
       ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/kqxmdg6647v94bn4"
+  },
+  {
+    "nameP": "AIA ROCK ‘N’ ROLL MANILA",
+    "locationP": "quirino grandstand",
+    "dateP": "November 29, 2025",
+    "listOfPhotogs": [
+        "Genuine Sole",
+        "Humble Runner"
+      ],
+      "photogsURL": [
+        "https://photos.genuinesole.com/galleries/aia-rnr",
+        "https://photos.humblerunnerphoto.com/galleries/aia-rock-n-roll-by-humble-runner"
+      ],
+	"resultsURL": "https://sportstats.one/event/rock-n-roll-running-series-manila"
+  },
+  {
+    "nameP": "Manny PACQUIAO HALF MARATHON",
+    "locationP": "Parqal, Paranaque",
+    "dateP": "November 29, 2025",
+    "listOfPhotogs": [
+        "Genuine Sole",
+        "CN Creatives"
+      ],
+      "photogsURL": [
+        "https://photos.genuinesole.com/galleries/manny-pacquiao-half-marathon",
+        "https://www.facebook.com/mannypacquiaohalfmarathon"
+      ],
+	"resultsURL": "https://mannypacquiaorun.com/results"
+  },
+  {
+    "nameP": "MX3 Run for Life",
+    "locationP": "Mall of Asia",
+    "dateP": "November 23, 2025",
+    "listOfPhotogs": [
+        
+      ],
+      "photogsURL": [
+        
+      ],
+	"resultsURL": "https://rsrjevents.myruntime.com/results/mx3-run-for-life-2025"
   }
 ]
 
