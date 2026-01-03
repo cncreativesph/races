@@ -402,7 +402,20 @@ min-width: 125px;
             color: white;
         }
 		
-
+		.photographer-runningphotog {
+			background-color: #ff66c4;      
+			color: white;
+		}
+		
+		.photographer.zion {
+		    background-color: #55cac9;      
+			color: white;
+		}
+		
+		.photographer.bicolano {
+			background-color: #cb6ce6;      
+			color: white;
+		}
 
         .categories-section {
             background-color: var(--light-green);
@@ -1691,9 +1704,15 @@ min-width: 125px;
             if (name.includes('ph running')) return 'photographer-ph';
             if (name.includes('pinoy fitness')) return 'photographer-pinoy';
 			if (name.includes('22pixels')) return 'photographer-22pixels';
+			if (name.includes('running photographer')) return 'photographer-runningphotog';
+			if (name.includes('running photographer')) return 'photographer-runningphotog';
+			if (name.includes('run zion')) return 'photographer-zion';
+			if (name.includes('bicolano runner')) return 'photographer-bicolano';
             return '';
         }
 
+
+		
         // Generate search suggestions
         function generateSearchSuggestions() {
             const searchTerm = searchInput.value.toLowerCase().trim();
