@@ -1094,7 +1094,7 @@
 		  if (s.includes('up diliman, quezon')) return 'UP Diliman, Quezon City';
 
 		  // Vermosa
-		  if (s.includes('vermosa')) return 'Vermosa, Cavite City';
+		  if (s.includes('vermosa')) return 'Vermosa, Imus, Cavite';
 
 		  // Quirino
 		  if (s.includes('quirino grandstand')) return 'Quirino Grandstand, City of Manila';
@@ -1801,7 +1801,7 @@ function normalizeLocation(raw) {
   if (
     v === 'vermosa' ||
     v === 'vermosa, cavite'
-  ) return 'Vermosa, Cavite City';
+  ) return 'Vermosa, Imus, Cavite';
 
   // Quirino Grandstand
   if (
@@ -1882,7 +1882,7 @@ function normalizeLocation(rawLocation) {
 
   // Vermosa
   if (s === 'vermosa' || s === 'vermosa cavite' || s === 'vermosa cavite city'|| s === 'vermosa, cavite' || s === 'vermosa, cavite city') {
-    return 'Vermosa, Cavite City';
+    return 'Vermosa, Imus, Cavite';
   }
 
   // default (unchanged)
