@@ -367,6 +367,21 @@ min-width: 125px;
 		  background-color: #FFD966;
 }
 
+		.photographer-runningphotog {
+			background-color: #ff66c4;      
+			color: white;
+		}
+		
+		.photographer-zion {
+		    background-color: #55cac9;      
+			color: white;
+		}
+		
+		.photographer-bicolano {
+			background-color: #cb6ce6;      
+			color: white;
+		}
+		
         .photographer-cn {
             background-color: #ffcc00;
             color: #14532D;
@@ -402,20 +417,7 @@ min-width: 125px;
             color: white;
         }
 		
-		.photographer-runningphotog {
-			background-color: #ff66c4;      
-			color: white;
-		}
-		
-		.photographer.zion {
-		    background-color: #55cac9;      
-			color: white;
-		}
-		
-		.photographer.bicolano {
-			background-color: #cb6ce6;      
-			color: white;
-		}
+
 
         .categories-section {
             background-color: var(--light-green);
@@ -1124,6 +1126,9 @@ min-width: 125px;
 		  if (s.includes('ph running overload') || (s.includes('ph running') && s.includes('overload'))) return 'PH Running Overload';
 		  if (s.includes('pinoy fitness') || compact.includes('pinoyfitness')) return 'Pinoy Fitness';
 		  if (s.includes('22 pixels') || compact.includes('22pixels')) return '22Pixels';
+		  if (s.includes('running photographers') || compact.includes('runningphotographers')) return 'Running Photographers';
+		  if (s.includes('run zion') || compact.includes('runzion')) return 'Run Zion';
+		  if (s.includes('bicolano runner') || compact.includes('bicolanorunner')) return 'Bicolano Runner';
 
 		  // Unknown photographer → just cleaned
 		  return raw.replace(/\s+/g, ' ');
@@ -1704,10 +1709,10 @@ min-width: 125px;
             if (name.includes('ph running')) return 'photographer-ph';
             if (name.includes('pinoy fitness')) return 'photographer-pinoy';
 			if (name.includes('22pixels')) return 'photographer-22pixels';
-			if (name.includes('running photographer')) return 'photographer-runningphotog';
-			if (name.includes('running photographer')) return 'photographer-runningphotog';
+			if (name.includes('running photographers')) return 'photographer-runningphotog';
 			if (name.includes('run zion')) return 'photographer-zion';
 			if (name.includes('bicolano runner')) return 'photographer-bicolano';
+
             return '';
         }
 
@@ -2490,7 +2495,8 @@ function renderRaces() {
 				'Genuine Sole': 3,
 				'Humble Runner': 4,
 				'PH Running Overload': 5,
-				'Pinoy Fitness': 6
+				'Pinoy Fitness': 6,
+				'Bicolano Runner': 7,
 			  };
 
 			  const photographerItems = photo.listOfPhotogs.map((p, i) => ({
