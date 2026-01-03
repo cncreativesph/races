@@ -10,10 +10,12 @@
     "locationP": "Mall of Asia",
     "dateP": "January 4, 2026",
     "listOfPhotogs": [
-        "Pinoy Fitness"
+        "Pinoy Fitness",
+		"Running Photographers"
       ],
       "photogsURL": [
-        "https://photos.pinoyfitness.com/"
+        "https://photos.pinoyfitness.com/",
+		"https://www.facebook.com/runningphotographers"
       ],
 	"resultsURL": "https://rsrjevents.myruntime.com/results/athena-olympus-run-2026"
   },
