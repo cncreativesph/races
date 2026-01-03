@@ -92,6 +92,26 @@
 	 "resultsURL": "https://results.raceroster.com/v3/events/cb6shdt2zmjp3f6g"
   },
   {
+    "nameP": "Santé Barley TRILOGY RUN ASIA - LEG 3",
+    "locationP": "Mall of Asia",
+    "dateP": "July 13, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"AR Sports ph"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/TrilogyRunAsia",
+        "https://photos.humblerunnerphoto.com/galleries/2025TRALeg3",
+		"https://photos.genuinesole.com/galleries/sante-barley-trilogy-run-leg-3-2025-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/2025TRALeg3",
+		"https://photos.arsportsph.com/galleries/2025TRALeg3"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/yesdue7c6e2pr5fm"
+  },
+  {
     "nameP": "MINIONS RUN PHilippines",
     "locationP": "Mall of Asia",
     "dateP": "November 30, 2025",
@@ -194,6 +214,54 @@
 		"https://photos.phrunningoverload.com/galleries/RexonaLeg5ByPRO"
       ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/9q3z9weg4g5va2wt"
+  },
+  {
+    "nameP": "REXONA 10 MILER - LEG 4",
+    "locationP": "PARQAL, PARANAQUE",
+    "dateP": "August 3, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH RunninG Overload"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/rexona10miler",
+        "https://photos.humblerunnerphoto.com/galleries/RexonaLeg4ByHR",
+		"https://photos.genuinesole.com/galleries/rexona-10-miler-paranaque-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/RexonaLeg4ByPRO"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/2g4szvbv2jg5vnvm"
+  },
+  {
+    "nameP": "REXONA 10 MILER - LEG 3",
+    "locationP": "FILINVEST, ALABANG",
+    "dateP": "July 6, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH RunninG Overload"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/rexona10miler",
+        "https://photos.humblerunnerphoto.com/galleries/RexonaLeg3ByHR",
+		"https://photos.genuinesole.com/galleries/rexona-10-miler-muntinlupa-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/RexonaLeg3ByPRO"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/p5dxbgxwjhw7fjpn"
+  },
+  {
+    "nameP": "DECATHLON 8TH ANNIVERSARY RUN",
+    "locationP": "Mall of Asia",
+    "dateP": "August 2, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS"
+      ],
+      "photogsURL": [
+        "https://photos.cncreatives.com/galleries/Decathlon8th"
+      ],
+	 "resultsURL": ""
   },
   {
     "nameP": "HOKA MIDNIGHT RUN ASIA",
