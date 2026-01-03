@@ -6,6 +6,18 @@
 	"resultsURL": "https://smoke10events.myruntime.com/results/capas-marathon-2025"
   },
   {
+    "nameP": "ATHENA OLYMPUS RUN",
+    "locationP": "Mall of Asia",
+    "dateP": "January 4, 2026",
+    "listOfPhotogs": [
+        "Pinoy Fitness"
+      ],
+      "photogsURL": [
+        "https://photos.pinoyfitness.com/"
+      ],
+	"resultsURL": "https://rsrjevents.myruntime.com/results/athena-olympus-run-2026"
+  },
+  {
     "nameP": "PUMA CLARK CITY HALF MARATHON",
     "locationP": "Clark, Pampanga",
     "dateP": "December 14, 2025",
