@@ -234,6 +234,60 @@
 	 "resultsURL": "https://results.raceroster.com/v3/events/26ktya3kxq6pgagk"
   },
   {
+    "nameP": "XIAOMI POP RUN",
+    "locationP": "FILINVEST, ALABANG",
+    "dateP": "August 30, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/XiaomiPhilippines",
+        "https://photos.humblerunnerphoto.com/galleries/2025Xiaomi",
+		"https://photos.genuinesole.com/galleries/xiaomi-pop-run-2025"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/wvwgdurumes6ezpb"
+  },
+  {
+    "nameP": "Great UP RUN",
+    "locationP": "UP DILIMAN",
+    "dateP": "August 24, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH Running Overload"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/thegreatuprun/",
+        "https://photos.humblerunnerphoto.com/galleries/2025GreatUPRun2",
+		"https://photos.genuinesole.com/galleries/the-great-up-run-2-2025-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/2025GreatUPRun2"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/m5syhr75x22735tp"
+  },
+  {
+    "nameP": "GALAXY MANILA MARATHON",
+    "locationP": "Mall of Asia",
+    "dateP": "August 10, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH Running Overload",
+		"AR Sports PH"
+      ],
+      "photogsURL": [
+        "https://photos.cncreatives.com/galleries/2025ManilaMarathon",
+        "https://photos.humblerunnerphoto.com/galleries/2025ManilaMarathonHR",
+		"https://photos.genuinesole.com/galleries/galaxy-manila-marathon-2025-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/2025ManilaMarathonPRO",
+		"https://photos.arsportsph.com/galleries/2025ManilaMarathonAR"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/v2fzjfn2j9e2jmx4"
+  },
+  {
     "nameP": "Run Ortigas",
     "locationP": "Ortigas East, Pasig City",
     "dateP": "November 16, 2025",
