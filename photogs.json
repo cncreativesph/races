@@ -112,6 +112,26 @@
 	 "resultsURL": "https://results.raceroster.com/v3/events/yesdue7c6e2pr5fm"
   },
   {
+    "nameP": "Sante Barley TRILOGY RUN ASIA - LEG 2",
+    "locationP": "Mall of Asia",
+    "dateP": "May 18, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"AR Sports ph"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/TrilogyRunAsia",
+        "https://photos.humblerunnerphoto.com/galleries/2025TRALeg2",
+		"https://photos.genuinesole.com/galleries/sante-barley-trilogy-run-leg-2-2025-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/2025TRALeg2",
+		"https://photos.arsportsph.com/galleries/2025TRALeg2"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/yesdue7c6e2pr5fm"
+  },
+  {
     "nameP": "MINIONS RUN PHilippines",
     "locationP": "Mall of Asia",
     "dateP": "November 30, 2025",
@@ -384,7 +404,7 @@
 		"PH Running Overload"
       ],
       "photogsURL": [
-        "https://www.facebook.com/southstardrugph/",
+        "https://www.facebook.com/runrioinc",
         "https://photos.humblerunnerphoto.com/galleries/SSDxMaxicare2025",
 		"https://photos.genuinesole.com/galleries/southstar-drug-and-maxicare-run-2025-by-gsp",
 		"https://photos.phrunningoverload.com/galleries/2025RunForWellness"
@@ -409,6 +429,44 @@
       ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/rvka3777xx6hhyez"
   },
+  {
+    "nameP": "BPI #BestLifeRun Corporate Race",
+    "locationP": "AYALA, MAKATI",
+    "dateP": "June 8, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH Running Overload"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/runrioinc",
+        "https://photos.humblerunnerphoto.com/galleries/2025BPI",
+		"https://photos.genuinesole.com/galleries/bpi-best-life-run-2025",
+		"https://photos.phrunningoverload.com/galleries/2025BPIBLR"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/uw5b349c57spzyvh"
+  },
+  {
+    "nameP": "LAZADA RUN",
+    "locationP": "MALL OF ASIA",
+    "dateP": "June 1, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"AR Sports PH",
+		"PH Running Overload"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/runrioinc",
+        "https://photos.humblerunnerphoto.com/galleries/LazadaRun2025",
+		"https://photos.genuinesole.com/galleries/lazada-run-ph-2025-by-gsp",
+		"https://photos.arsportsph.com/galleries/2025LazadaRun",
+		"https://photos.phrunningoverload.com/galleries/2025LazadaRun"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/u5sjxc5st3u6ajq7"
+  },  
   {
     "nameP": "Run Ortigas",
     "locationP": "Ortigas East, Pasig City",
@@ -518,6 +576,22 @@
 		"https://photos.humblerunnerphoto.com/galleries/jco-run-philippines"
       ],
 	"resultsURL": "https://results.raceroster.com/v3/events/weh4nq7jm67b4c4a"
+  },
+  {
+    "nameP": "PINOY FITNESS 21K SUNSET CHALLENgE",
+    "locationP": "Vermosa, Imus, Cavite",
+    "dateP": "May 25, 2025",
+    "listOfPhotogs": [
+        "Genuine Sole",
+        "CN Creatives",
+		"Pinoy Fitness"
+      ],
+      "photogsURL": [
+        "https://photos.genuinesole.com/galleries/pinoy-fitness-21k-challenge-2025-by-gsp",
+        "https://photos.cncreatives.com/galleries/2025PF21K",
+		"https://photos.pinoyfitness.com/pages/events"
+      ],
+	"resultsURL": "https://pinoyfitness.myruntime.com/results/pf-21k-challenge-2025"
   },
   {
     "nameP": "PINOY FITNESS PF MAMAW RUN",
