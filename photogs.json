@@ -177,6 +177,61 @@
       ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/4a5zp45a3xdk3y5e"
   },
+    "nameP": "REXONA 10 MILER - LEG 5",
+    "locationP": "AYALA, MAKATI",
+    "dateP": "September 14, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH RunninG Overload"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/rexona10miler",
+        "https://photos.humblerunnerphoto.com/galleries/RexonaLeg5ByHR",
+		"https://photos.genuinesole.com/galleries/rexona-10-miler-makati-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/RexonaLeg5ByPRO"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/9q3z9weg4g5va2wt"
+  },
+  {
+    "nameP": "HOKA MIDNIGHT RUN ASIA",
+    "locationP": "Mall of Asia",
+    "dateP": "September 7, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"AR Sports ph"
+      ],
+      "photogsURL": [
+        "https://photos.cncreatives.com/galleries/hoka-midnight-run-asia",
+        "https://photos.humblerunnerphoto.com/galleries/hoka-midnight-run-asia",
+		"https://photos.genuinesole.com/galleries/hoka-midnight-run-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/hoka-midnight-run-asia",
+		"https://photos.arsportsph.com/galleries/hoka-midnight-run-asia"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/r3spgx7rq46x9yv4"
+  },
+  {
+    "nameP": "SUNNIES RUN",
+    "locationP": "AYALA, MAKATI",
+    "dateP": "August 31, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH RunninG Overload"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/share/p/1Fwv4KcAiR/",
+        "https://photos.humblerunnerphoto.com/galleries/sunnies-run",
+		"https://photos.genuinesole.com/galleries/sunnies-run-2025",
+		"https://photos.phrunningoverload.com/galleries/sunnies-run"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/26ktya3kxq6pgagk"
+  },
   {
     "nameP": "Run Ortigas",
     "locationP": "Ortigas East, Pasig City",
@@ -365,6 +420,37 @@
         "https://photos.cncreatives.com/galleries/chow-fun-run"
       ],
 	"resultsURL": "https://registration.hyvesport.com/results/chow-fun-run-2025/"
+  },
+  {
+    "nameP": "TAKBO PARA SA WEST PHILIPPINE SEA",
+    "locationP": "Bridgetowne Central Park, Pasig City",
+    "dateP": "October 11, 2025",
+    "listOfPhotogs": [
+        "Humble Runner"
+      ],
+      "photogsURL": [
+        "https://photos.humblerunnerphoto.com/galleries/2025takbo-para-sa-west-philippine-sea"
+      ],
+	"resultsURL": "https://results.raceroster.com/v3/events/rzhvq65t6aje96uz"
+  },
+  {
+    "nameP": "PUMA MANILA HALF MARATHON",
+    "locationP": "Mall of Asia",
+    "dateP": "October 5, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"AR Sports ph"
+      ],
+      "photogsURL": [
+        "https://photos.cncreatives.com/galleries/puma-manila-half-marathon",
+        "https://photos.humblerunnerphoto.com/galleries/puma-manila-half-marathon",
+		"https://photos.genuinesole.com/galleries/puma-half-marathon-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/puma-manila-half-marathon"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/7ts3gv6dpmqptpqc"
   }
 ]
 
