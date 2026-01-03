@@ -150,6 +150,24 @@
 	 "resultsURL": "https://results.raceroster.com/v3/events/yesdue7c6e2pr5fm"
   },
   {
+    "nameP": "Sante Barley TRILOGY RUN ASIA - LEG 1",
+    "locationP": "Mall of Asia",
+    "dateP": "May 18, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH RunninG Overload"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/TrilogyRunAsia",
+        "https://photos.humblerunnerphoto.com/galleries/TRALeg1ByHR",
+		"https://photos.genuinesole.com/galleries/sante-barley-trilogy-run-leg-1-2025-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/TRALeg1ByPRO"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/t2m2dcxcsxx5vvyv"
+  },
+  {
     "nameP": "MINIONS RUN PHilippines",
     "locationP": "Mall of Asia",
     "dateP": "November 30, 2025",
@@ -290,6 +308,56 @@
 	 "resultsURL": "https://results.raceroster.com/v3/events/p5dxbgxwjhw7fjpn"
   },
   {
+    "nameP": "REXONA 10 MILER - LEG 2",
+    "locationP": "Mall of Asia",
+    "dateP": "May 4, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/rexona10miler",
+        "https://photos.humblerunnerphoto.com/galleries/Leg2RexonaByHR",
+		"https://photos.genuinesole.com/galleries/rexona-10-miler-pasay-by-gsp"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/6squkdt4wexba759"
+  },
+  {
+    "nameP": "REXONA 10 MILER - LEG 1",
+    "locationP": "QUIRINO GRANDSTAND, MANILA",
+    "dateP": "April 6, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH Running Overload"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/rexona10miler",
+        "https://photos.humblerunnerphoto.com/galleries/Leg1RexonaByHR",
+		"https://photos.genuinesole.com/galleries/rexona-10-miler-manila",
+		"https://photos.phrunningoverload.com/galleries/RexonaLeg1ByPRO"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/32vn5ffancwq3ezw"
+  },
+  {
+    "nameP": "GALAXY EARTH DAY RUN",
+    "locationP": "Mall of Asia",
+    "dateP": "April 27, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/runrioedr",
+        "https://photos.humblerunnerphoto.com/galleries/2025EDRByHR",
+		"https://photos.genuinesole.com/galleries/earth-day-run-2025-by-gsp"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/usmxpfqngmxvsn29"
+  },
+  {
     "nameP": "DECATHLON 8TH ANNIVERSARY RUN",
     "locationP": "Mall of Asia",
     "dateP": "August 2, 2025",
@@ -372,6 +440,38 @@
 		"https://photos.phrunningoverload.com/galleries/2025GreatUPRun2"
       ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/m5syhr75x22735tp"
+  },
+  {
+    "nameP": "Great UP RUN",
+    "locationP": "UP DILIMAN",
+    "dateP": "March 30, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "AR Sports PH",
+		"Genuine Sole"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/thegreatuprun/",
+        "https://photos.arsportsph.com/galleries/GreatUPRunByAR",
+		"https://photos.genuinesole.com/galleries/the-great-up-run-2025-by-gsp"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/e3az44fvq2skv75s"
+  },
+  {
+    "nameP": "GCASH ECO RUN",
+    "locationP": "AYALA, MAKATI",
+    "dateP": "March 23, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/runrioinc",
+        "https://photos.humblerunnerphoto.com/galleries/gcash-eco-run",
+		"https://photos.genuinesole.com/galleries/gcash-eco-run-2025-by-gsp"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/hpt3xjearbzfuygc"
   },
   {
     "nameP": "GALAXY MANILA MARATHON",
