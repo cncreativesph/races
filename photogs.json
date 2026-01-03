@@ -356,6 +356,60 @@
 	 "resultsURL": "https://results.raceroster.com/v3/events/v2fzjfn2j9e2jmx4"
   },
   {
+    "nameP": "RUNRIO PRIDE RUN",
+    "locationP": "Mall of Asia",
+    "dateP": "June 29, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH Running Overload"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/runriopriderun",
+        "https://photos.humblerunnerphoto.com/galleries/2025PrideRun",
+		"https://photos.genuinesole.com/galleries/pride-run-2025-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/PrideRun2025"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/e2evm7sjrrqq7gz5"
+  },
+  {
+    "nameP": "Southstar Drug X Maxicare Run for Wellness",
+    "locationP": "UP DILIMAN",
+    "dateP": "June 22, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH Running Overload"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/southstardrugph/",
+        "https://photos.humblerunnerphoto.com/galleries/SSDxMaxicare2025",
+		"https://photos.genuinesole.com/galleries/southstar-drug-and-maxicare-run-2025-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/2025RunForWellness"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/7urvb7z9xjfsq5vf"
+  },
+  {
+    "nameP": "EastWest Dream Run",
+    "locationP": "FILINVEST, ALABANG",
+    "dateP": "June 15, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"AR Sports PH"
+      ],
+      "photogsURL": [
+        "https://www.facebook.com/runrioinc",
+        "https://photos.humblerunnerphoto.com/galleries/EastwestRun2025",
+		"https://photos.genuinesole.com/galleries/eastwest-bank-dream-run-2025-by-gsp",
+		"https://photos.arsportsph.com/galleries/2025EastwestRun"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/rvka3777xx6hhyez"
+  },
+  {
     "nameP": "Run Ortigas",
     "locationP": "Ortigas East, Pasig City",
     "dateP": "November 16, 2025",
