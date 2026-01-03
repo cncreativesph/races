@@ -1097,7 +1097,13 @@
 		  if (s.includes('vermosa')) return 'Vermosa, Imus, Cavite';
 
 		  // Quirino
-		  if (s.includes('quirino grandstand')) return 'Quirino Grandstand, City of Manila';
+	
+		  if (
+			  (s.includes('quirino') && s.includes('grandstand')) ||
+			  s.includes('quirino grand stand')
+			) {
+			  return 'Quirino Grandstand, City of Manila';
+			}
 
 		  // Fort Santiago
 		  if (s.includes('fort santiago')) return 'Fort Santiago, Intramuros, City of Manila';
@@ -1797,11 +1803,21 @@ function normalizeLocation(raw) {
     v === 'up diliman, quezon'
   ) return 'UP Diliman, Quezon City';
 
-  // Vermosa
-  if (
-    v === 'vermosa' ||
-    v === 'vermosa, cavite'
-  ) return 'Vermosa, Imus, Cavite';
+
+    // Vermosa (include Imus variants)
+	if (
+	  v === 'vermosa' ||
+	  v === 'vermosa cavite' ||
+	  v === 'vermosa, cavite' ||
+	  v === 'vermosa, cavite city' ||
+	  v === 'vermosa imus cavite' ||
+	  v === 'vermosa imus cavite city' ||
+	  v === 'vermosa, cavite city' ||
+	  v === 'vermosa imus' ||
+	  v === 'vermosa, imus'
+	) {
+	  return 'Vermosa, Imus, Cavite';
+	}
 
   // Quirino Grandstand
   if (
@@ -1843,12 +1859,13 @@ function normalizeLocation(rawLocation) {
     s === 'fort santiago, manila city'
   ) return 'Fort Santiago, Intramuros, City of Manila';
 
-  // Quirino Grandstand
+  
   if (
-    s === 'quirino grandstand' ||
-    s === 'quirino grandstand manila city'||
-    s === 'quirino grandstand, manila city'
-  ) return 'Quirino Grandstand, City of Manila';
+  (s.includes('quirino') && s.includes('grandstand')) ||
+  s.includes('quirino grand stand')
+	) {
+	  return 'Quirino Grandstand, City of Manila';
+	}
 
   // MOA
   if (
@@ -1880,10 +1897,9 @@ function normalizeLocation(rawLocation) {
     return 'UP Diliman, Quezon City';
   }
 
-  // Vermosa
-  if (s === 'vermosa' || s === 'vermosa cavite' || s === 'vermosa cavite city'|| s === 'vermosa, cavite' || s === 'vermosa, cavite city') {
-    return 'Vermosa, Imus, Cavite';
-  }
+if (s === 'vermosa' || s === 'vermosa cavite' || s === 'vermosa cavite city'|| s === 'vermosa, cavite' || s === 'vermosa, cavite city') {
+  return 'Vermosa, Imus, Cavite';
+}
 
   // default (unchanged)
   return rawLocation;
@@ -2327,7 +2343,7 @@ function renderRaces() {
 					  // ✅ IMPORTANT: if search looks like a distance, do NOT match race name (prevents 1KM matching 21KM in name)
 					  (!looksLikeDistance && name && name.toLowerCase().includes(searchLower)) ||
 
-					  (location && location.toLowerCase().includes(searchLower)) ||
+					  (normalizeKey(normalizeLocation(location)).includes(normalizeKey(searchLower))) ||
 					  (organizer && organizer.toLowerCase().includes(searchLower)) ||
 
 					  // ✅ Distance/category match (supports BOTH: numeric distances + text categories like 2-MAN RELAY)
