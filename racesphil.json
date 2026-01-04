@@ -586,6 +586,69 @@
     "status": "Register"
   },
   {
+    "name": "FIT TO RUN - LEG 2",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Clark, Pampanga",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "July 26, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "FIT TO RUN - LEG 3",
+    "distance": "32KM,21KM,10KM,5KM,3KM",
+    "location": "Clark, Pampanga",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "November 8, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "DECATHLON HALF MARATHON - LEG 1",
+    "distance": "21KM,10KM,5KM",
+    "location": "Clark, Pampanga",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "April 19, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "DECATHLON RUN - LEG 2",
+    "distance": "",
+    "location": "Clark, Pampanga",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "December 13, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "DECATHLON RUN - LEG 3",
+    "distance": "",
+    "location": "Clark, Pampanga",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "December 27, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "CABALEN HALF MARATHON",
+    "distance": "21KM,10KM,5KM",
+    "location": "Clark, Pampanga",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "June 14, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "CLARK HALF MARATHON",
+    "distance": "21KM,10KM,5KM",
+    "location": "Clark, Pampanga",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "October 11, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
     "name": "IRUN TARLAC",
     "distance": "21KM,10KM,5KM",
     "location": "Cresendo, Tarlac City",
@@ -629,6 +692,24 @@
     "date": "January 24, 2026",
     "website": "https://smoke10events.myruntime.com/register/pampanga-to-bulacan-ultramarathon-2026",
     "status": "Register"
+  },
+  {
+    "name": "FIVE STAR HALF MARATHON",
+    "distance": "21KM,10KM,5KM",
+    "location": "Clark, Pampanga",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "December 6, 2026",
+    "website": "https://smoke10events.myruntime.com/register/pampanga-to-bulacan-ultramarathon-2026",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "PAMPANGA MARATHON",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "Clark, Pampanga",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "September 13, 2026",
+    "website": "https://smoke10events.myruntime.com/register/pampanga-to-bulacan-ultramarathon-2026",
+    "status": "Opening Soon"
   },
   {
     "name": "MNL CITY RUN - HEARTBEAT RUN",
