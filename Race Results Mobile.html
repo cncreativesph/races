@@ -2869,7 +2869,7 @@ function renderRaces() {
             state.searchTerm = '';
             searchInput.value = '';
             searchSuggestions.classList.add('hidden');
-            
+            state.pagination.page = 1;
             updateFilters();
             
             // If in photos view, fetch fresh data when refreshing
