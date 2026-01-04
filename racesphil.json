@@ -611,6 +611,106 @@
     "date": "January 24, 2026",
     "website": "https://smoke10events.myruntime.com/register/pampanga-to-bulacan-ultramarathon-2026",
     "status": "Register"
+  },
+  {
+    "name": "MNL CITY RUN - HEARTBEAT RUN",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "Filinvest, Alabang",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "March 8, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "MNL CITY RUN - AQUA RUN",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "Filinvest, Alabang",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "July 26, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "MNL CITY RUN - ECOFEST RUN",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Filinvest, Alabang",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "October 4, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "MNL CITY RUN - THE GIFT OF RUNNING",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Filinvest, Alabang",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "December 6, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "Diliman Half Marathon",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "UP Diliman",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "October 18, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "ATENEO ONE BEAT FEST RUN",
+    "distance": "10KM,5KM,3KM,1KM Dog",
+    "location": "Ateneo de Manila University, Quezon City",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "February 8, 2026",
+    "website": "https://myruntime.com/register/one-beat-fest-fun-run",
+    "status": "Register"
+  },
+  {
+    "name": "ARGO RUN",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "UP Los Banos",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "February 8, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "IWHITE RUN",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "Filinvest, Alabang",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "April 26, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "UP FIGHT RUN",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "UP Diliman",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "May 10, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "ELORDE THE FLASH RUN",
+    "distance": "21KM,16KM,10KM,5KM,3KM",
+    "location": "Filinvest, Alabang",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "May 31, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "KAPAMILYA RUN",
+    "distance": "10KM,5KM,3KM, 1KM Dog",
+    "location": "Filinvest, Alabang",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "June 14, 2026",
+    "website": "",
+    "status": "Opening Soon"
   }
+  
   
 ]
