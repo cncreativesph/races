@@ -1666,10 +1666,10 @@
 							formattedDate.toLowerCase().includes(searchTerm) ||
 							weekdayName.toLowerCase().includes(searchTerm)
 						) {
-							suggestions.add(formattedDate);
-							suggestions.add(monthName);
-							suggestions.add(year);
-							suggestions.add(weekdayName);
+							suggestions.add(String(formattedDate));
+							suggestions.add(String(monthName));
+							suggestions.add(String(year));
+							suggestions.add(String(weekdayName));
 						}
                     }
                 }
@@ -1688,8 +1688,8 @@
                     item.textContent = suggestion;
                     item.addEventListener('click', () => {
 						resetFiltersOnly();   
-                        searchInput.value = suggestion;
-                        state.searchTerm = suggestion;
+                        searchInput.value = String(suggestion);
+						state.searchTerm = String(suggestion);
                         searchSuggestions.classList.add('hidden');
                         
                         // If in photos view, fetch fresh data when selecting a suggestion
