@@ -587,7 +587,7 @@
   },
   {
     "name": "FIT TO RUN - LEG 2",
-    "distance": "21KM,10KM,5KM,3KM",
+    "distance": "21KM,10KM,5KM",
     "location": "Clark, Pampanga",
     "organizer": "SMOKE10 EVENTS MANAGEMENT",
     "date": "July 26, 2026",
@@ -596,7 +596,7 @@
   },
   {
     "name": "FIT TO RUN - LEG 3",
-    "distance": "32KM,21KM,10KM,5KM,3KM",
+    "distance": "32KM,21KM,10KM,5KM",
     "location": "Clark, Pampanga",
     "organizer": "SMOKE10 EVENTS MANAGEMENT",
     "date": "November 8, 2026",
@@ -614,7 +614,7 @@
   },
   {
     "name": "DECATHLON RUN - LEG 2",
-    "distance": "",
+    "distance": "16KM,10KM,5KM,3KM",
     "location": "Clark, Pampanga",
     "organizer": "SMOKE10 EVENTS MANAGEMENT",
     "date": "December 13, 2026",
@@ -623,7 +623,7 @@
   },
   {
     "name": "DECATHLON RUN - LEG 3",
-    "distance": "",
+    "distance": "16KM,10KM,5KM,3KM",
     "location": "Clark, Pampanga",
     "organizer": "SMOKE10 EVENTS MANAGEMENT",
     "date": "December 27, 2026",
