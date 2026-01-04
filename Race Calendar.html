@@ -1190,7 +1190,7 @@
                     if (['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA'].includes(normalizedOrg)) {
                         organizers.add(normalizedOrg);
                     } else {
-                        organizers.add('Others');
+                        organizers.add('OTHERS');
                     }
                 }
                 
@@ -1317,7 +1317,7 @@
                 organizerFilters.appendChild(allChip);
                 
                 // Add specific organizers
-                ['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA', 'Others'].forEach(organizer => {
+                ['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA', 'OTHERS'].forEach(organizer => {
                     const chip = document.createElement('div');
                     chip.className = `filter-chip ${state.filters.organizer.includes(organizer) ? 'active' : ''}`;
                     chip.textContent = organizer.toUpperCase();
@@ -2463,7 +2463,7 @@ function renderRaces() {
                 if (state.filters.organizer.length > 0) {
                     const normalizedOrganizer = normalizeOrganizerName(organizer);
                     
-                    if (state.filters.organizer.includes('Others')) {
+                    if (state.filters.organizer.includes('OTHERS')) {
                         if (['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA'].includes(normalizedOrganizer) && 
                             !state.filters.organizer.includes(normalizedOrganizer)) {
                             return false;
