@@ -10,13 +10,11 @@
     "locationP": "Mall of Asia",
     "dateP": "January 4, 2026",
     "listOfPhotogs": [
-        "Pinoy Fitness",
 		"Running Photographers",
 		"Bicolano Runner",
 		"Run Zion"
       ],
       "photogsURL": [
-        "https://photos.pinoyfitness.com/",
 		"https://www.facebook.com/runningphotographers",
 		"https://www.facebook.com/bicolanorunner",
 		"https://www.facebook.com/paulzion1492"
