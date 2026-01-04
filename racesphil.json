@@ -334,6 +334,24 @@
     "status": "Register"
   },
   {
+    "name": "MAPUA: RUN FOR THE FUTURE",
+    "distance": "10KM,5KM,3KM,1KM Dog",
+    "location": "Mapua Campus, Intramuros, City of Manila",
+    "organizer": "GREEN MEDIA EVENTS",
+    "date": "January 25, 2026",
+    "website": "https://greenmediaevents.myruntime.com/register/mapua-run-for-the-future-2026",
+    "status": "Register"
+  },
+  {
+    "name": "RUN FOR MILLION TREES: AN EARTH DAY CELEBRATION",
+    "distance": "16KM,10KM,5KM",
+    "location": "Quirino Grandstand, City of Manila",
+    "organizer": "GREEN MEDIA EVENTS",
+    "date": "April 11, 2026",
+    "website": "https://greenmediaevents.myruntime.com/register/run-for-million-trees-2026",
+    "status": "Register"
+  },
+  {
     "name": "GCASH RUN",
     "distance": "10KM,5KM,3KM,1KM DOG",
     "location": "Ayala, Makati City",
@@ -704,7 +722,7 @@
   },
   {
     "name": "KAPAMILYA RUN",
-    "distance": "10KM,5KM,3KM,1KM Dog",
+    "distance": "10KM,5KM,3KM, 1KM Dog",
     "location": "Filinvest, Alabang",
     "organizer": "RULE & RICH EVENTS MANAGEMENT",
     "date": "June 14, 2026",
