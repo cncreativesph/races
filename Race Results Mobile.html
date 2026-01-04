@@ -1907,13 +1907,27 @@ min-width: 125px;
             prev.onclick = () => setCalendarPage(currentPage - 1);
             paginationContainer.appendChild(prev);
 
-            for (let i = Math.max(1, currentPage - 2); i <= Math.min(totalPages, currentPage + 2); i++) {
-                const b = document.createElement('button');
-                b.className = 'pagination-button' + (i === currentPage ? ' active' : '');
-                b.textContent = i;
-                b.onclick = () => setCalendarPage(i);
-                paginationContainer.appendChild(b);
-            }
+            // Show only 3 page buttons at a time
+			const windowSize = 3;
+			const half = Math.floor(windowSize / 2); // 1
+
+			let start = Math.max(1, currentPage - half);
+			let end = start + windowSize - 1;
+
+			// if end exceeds totalPages, shift back
+			if (end > totalPages) {
+			  end = totalPages;
+			  start = Math.max(1, end - windowSize + 1);
+			}
+
+			for (let i = start; i <= end; i++) {
+			  const b = document.createElement('button');
+			  b.className = 'pagination-button' + (i === currentPage ? ' active' : '');
+			  b.textContent = i;
+			  b.onclick = () => setCalendarPage(i);
+			  paginationContainer.appendChild(b);
+			}
+
 
             const next = document.createElement('button');
             next.className = 'pagination-button';
