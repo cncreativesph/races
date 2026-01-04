@@ -911,9 +911,26 @@
         "https://photos.cncreatives.com/galleries/puma-manila-half-marathon",
         "https://photos.humblerunnerphoto.com/galleries/puma-manila-half-marathon",
 		"https://photos.genuinesole.com/galleries/puma-half-marathon-by-gsp",
-		"https://photos.phrunningoverload.com/galleries/puma-manila-half-marathon"
+		"https://photos.phrunningoverload.com/galleries/puma-manila-half-marathon",
+		"https://photos.arsportsph.com/galleries/puma-manila-half-marathon"
       ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/7ts3gv6dpmqptpqc"
+  },
+  {
+    "nameP": "7-ELEVEN RUN",
+    "locationP": "FILINVEST, ALABANG",
+    "dateP": "February 2, 2025",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"AR Sports ph"
+      ],
+      "photogsURL": [
+        "https://photos.cncreatives.com/galleries/2025Run711byCN",
+        "https://photos.humblerunnerphoto.com/galleries/2025Run711byHR",
+		"https://photos.arsportsph.com/galleries/2025Run711byAR"
+      ],
+	 "resultsURL": "https://run711.com/results"
   }
 ]
 
