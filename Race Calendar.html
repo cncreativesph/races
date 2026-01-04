@@ -1,2712 +1,743 @@
-<html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Philippines Race Calendar</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&amp;display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        :root {
-            --primary-color: #0066cc;
-            --secondary-color: #f2f2f7;
-            --accent-color: #007aff;
-            --text-primary: #1c1c1e;
-            --text-secondary: #6e6e73;
-            --background: #f0f4f8;
-            --card-bg: #0a5f38; /* Changed to dark green */
-            --card-border: #0a5f38; /* Changed to match background */
-            --dark-green: #0a5f38;
-            --light-green: #e8f5e9;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background-color: var(--background);
-            color: var(--text-primary);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .poppins-black {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 900;
-        }
-
-        .poppins-regular {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 400;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #0066cc, #5856d6);
-            color: white;
-            padding: 1.5rem 1rem;
-            border-radius: 0 0 20px 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .toggle-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 20px;
-            padding: 0.5rem 1rem;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-            color: white;
-        }
-
-        .toggle-button.refresh {
-            background-color: #007aff;
-        }
-
-        .toggle-button.calendar {
-            background-color: #34c759;
-        }
-
-        .toggle-button.photos {
-            background-color: #ff9500;
-        }
-
-        .search-bar {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .search-bar input {
-            color: black;
-        }
-
-        .search-suggestions {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background-color: white;
-            border-radius: 0 0 12px 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        .suggestion-item {
-			font-size: 16px; /* prevent iOS zoom */
-			line-height: 1.2;
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid #f0f0f0;
-            cursor: pointer;
-            color: black;
-        }
-
-        .suggestion-item:hover {
-            background-color: #f5f5f5;
-        }
-
-        .filter-section {
-            border-bottom: 1px solid #f0f0f0;
-            margin-bottom: 0.5rem;
-        }
-
-        .filter-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0;
-			padding-top: 2px;
-			padding-bottom: 2px;
-			margin-bottom: 8px; 
-            cursor: pointer;
-        }
-		
-		.filter-chip,
-		.filter-content > * {
-		  cursor: pointer;
-		}
-
-        .filter-content {
-            padding-bottom: 0.5rem;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-		
-		body {
-		  -webkit-user-select: none; /* Safari */
-		  -moz-user-select: none;    /* Firefox */
-		  -ms-user-select: none;     /* IE/Edge */
-		  user-select: none;         /* Standard */
-		}
-
-        .filter-chip {
-            background-color: var(--secondary-color);
-            border-radius: 16px;
-            padding: 0.25rem 0.6rem;
-            font-size: 11px;
-            margin-right: 0.35rem;
-            margin-bottom: 0.35rem;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-            display: inline-block;
-        }
-
-        .filter-chip.active {
-            background-color: var(--accent-color);
-            color: white;
-        }
-
-        .race-card {
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--card-border);
-            color: white; /* Added for better contrast on dark green */
-			
-			  /* keep it calm by default */
-			  transition:
-				transform 0.18s ease,
-				box-shadow 0.18s ease;
-
-			  /* important so hover feels smooth */
-			  will-change: transform;
-					}
-
-        .race-name {
-            font-size: 17px;
-            font-weight: 900;
-            color: white; /* Changed for better contrast on dark green */
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100%;            
-            text-transform: uppercase;
-        }
-		
-		.race-name {
-		  display: inline;          /* IMPORTANT */
-		  width: auto;              /* prevent stretching */
-		  
-		  text-decoration: none;
-		  color: inherit;
-		}
-		
-		.race-card:hover {
-		  transform: translateY(-3px);
-		  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
-		}
-		
-		.race-card:active {
-		transform: translateY(-1px);
-		box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-		}
-		
-		
-        .race-detail {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.85); /* Changed for better contrast on dark green */
-            display: flex;
-            align-items: center;
-            margin-top: 0.35rem;
-            letter-spacing: -0.2px;
-        }
-
-        .category-chip {
-            padding: 0.25rem 0.5rem;
-            border-radius: 12px;
-            font-size: 8.8px;
-            margin-right: 0.35rem;
-            margin-bottom: 0.35rem;
-            color: white;
-            display: inline-block;
-        }
-		
-		.photographers-title {
-        font-size: 13px;
-        font-weight: 900;
-        color: white;
-        text-transform: uppercase;
-		}
-		
-		.photographers-instruct {
-        font-size: 10px;
-		font-style: italic;
-        color: rgba(255, 255, 255, 0.85); /* Changed for better contrast on dark green */
-		}
-
-        .register-button {
-            border-radius: 12px;
-            padding: 0.25rem 0.5rem;
-            font-size: 13px; 
-            transition: all 0.2s ease;
-            white-space: nowrap;
-            font-weight: 900; /* Added bold */
-            text-transform: uppercase; /* Added all caps */
-        }
-
-        .register-button.register {
-            background-color: #007aff;
-            color: white;
-        }
-
-        .register-button.full {
-            background-color: #faf31e;
-            color: black;
-        }
-
-
-		.btn-main-text {
-			font-weight: bold; /* keeps original style */
-		}
-
-		.btn-sub-text {
-			font-size: 10px;
-			font-style: italic;
-			font-weight: normal;
-			margin-top: 2px;
-			line-height: 1;
-		}
-		
-		.register-button.full .btn-main-text {
-			line-height: 1;
-		}
-
-		.register-button.full .btn-sub-text {
-			line-height: 1;
-			margin-top: 0.5; /* or -1px if tighter */
-		}
-		
-
-
-        .register-button.results {
-            background-color: #007aff;
-            color: white;
-            font-weight: 900; /* Added bold */
-            text-transform: uppercase; /* Added all caps */
-            font-size: 13px; 
-        }
-
-        .photographer-button {
-            border-radius: 8px;
-            padding: 0.35rem 0.8rem;
-            font-size: 13px;
-			font-weight: 900;
-            margin-right: 0.37rem;
-            margin-bottom: 0.35rem;
-            transition: all 0.2s ease;
-        }
-		.register-button {
-		  background-color: #EAF5EF;
-		  color: #14532D;
-		border: 1px solid #E5C76B;
-		  border-radius: 9999px;
-
-		  min-width: 125px;        /* ✅ fixed width */
-		  height: 40px;        /* ✅ fixed height */
-
-		
-		  align-items: center;
-		  justify-content: center;
-
-		  font-size: 13px;
-		  font-weight: 700;
-		  cursor: pointer;
-		  		/* ✨ smooth animation */
-
-		  white-space: nowrap;
-		  
-		}
-
-		.register-button:hover {
-		  background-color: #FFE8A3;
-		  color: #14532D;                 /* ✅ dark green on hover */
-		  transform: translateY(-5px); /* 👈 subtle lift */
-			box-shadow: 0 4px 10px rgba(20, 83, 45, 0.25);
-		}
-		
-		.register-button:disabled {
-		  opacity: 0.5;
-		
-		  cursor: not-allowed;
-		}
-		
-		.register-button:focus {
-		  outline: none;
-		  box-shadow: none;
-		}
-		
-		.register-button.soon {
-            background-color: #fc650c;
-            color: black;
-            opacity: 0.7;
-			border: none;
-            pointer-events: none;
-        }
-
-		/* Active */
-		.register-button:active {
-		  transform: translateY(0);
-		  		  box-shadow: 0 2px 6px rgba(20, 83, 45, 0.25);
-		  background-color: #FFD966;
-		}
-
-        .photographer-cn {
-            background-color: #ffcc00;
-            color: black;
-        }
-
-        .photographer-ar {
-            background-color: #ff3b30;
-            color: white;
-        }
-
-        .photographer-genuine {
-            background-color: #029635;
-            color: white;
-        }
-
-        .photographer-humble {
-            background-color: #e85600;
-            color: white;
-        }
-
-        .photographer-ph {
-            background-color: #7b39ff;
-            color: white;
-        }
-
-        .photographer-pinoy {
-            background-color: #007aff;
-            color: white;
-        }
-
-        .categories-section {
-            background-color: var(--light-green);
-            padding: 0.75rem;
-            border-radius: 12px;
-            margin-top: 0.75rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-		#paginationContainer {
-		font-size: 12px;
-		color: #0a5f38;
-		margin-top: 12px;     /* space above pagination */
-		margin-bottom: 4px;   /* tight gap to first race */
-		padding: 0;
-	}
-
-	#paginationContainer .pagination-info {
-		font-size: 12px;
-		color: #0a5f38;
-	}
-
-	#paginationContainer .pagination-button {
-		font-size: 12px;
-		padding: 8px 12px;
-		min-width: 40px;
-		height: 40px;
-
-		color: #0a5f38;
-		border: 1px solid #0a5f38;
-		background-color: transparent;
-
-		border-radius: 6px;
-		cursor: pointer;
-	}
-
-	#paginationContainer .pagination-button:hover:not(.active):not(:disabled) {
-		background-color: rgba(10, 95, 56, 0.12);
-	}
-
-	#paginationContainer .pagination-button.active {
-		background-color: #0a5f38;
-		color: #ffffff;
-		font-weight: 600;
-	}
-
-	#paginationContainer .pagination-button:disabled {
-		opacity: 0.4;
-		cursor: not-allowed;
-	}
-
-	/* Sticky bottom bar */
-	#stickyFooterBar {
-	  position: fixed;
-	  left: 0;
-	  right: 0;
-	  bottom: 0;
-	  background: #fff;
-	  border-top: 1px solid rgba(10, 95, 56, 0.25);
-	  z-index: 999;
-	  padding: 10px 12px;
-	  padding-bottom: 18px; 
-	}
-
-	#stickyFooterBarInner {
-	  display: flex;
-	  align-items: center;
-	  justify-content: flex-start; /* LEFT align everything */
-	  gap: 18px;                   /* standard spacing */
-	}
-		
-	#stickyFooterBarInner .sticky-refresh-btn{
-	  display: inline-flex;
-	  align-items: center;
-	  justify-content: center;
-
-	  font-size: 12px;
-	  padding: 8px 12px;
-	  min-width: 40px;
-	  height: 40px;
-
-	  color: #0a5f38;
-	  border: 1px solid #0a5f38;
-	  background-color: transparent;
-	  border-radius: 6px;
-	  cursor: pointer;
-	}
-
-	#stickyFooterBarInner .sticky-refresh-btn:hover{
-	  background-color: rgba(10, 95, 56, 0.12);
-	}
-
-	/* Put pagination in center, Go to top on the left */
-	#paginationContainer {
-	  display: flex;
-	  justify-content: flex-start;  /* LEFT */
-	  align-items: center;
-	  gap: 8px;
-
-	  flex: 0 0 auto;               /* don't stretch / don't center */
-	  margin: 0 !important;
-	  padding: 0 !important;
-	}
-
-	/* so last card isn't hidden behind the sticky bar */
-	body {
-	  padding-bottom: 90px;
-	}
-	
-	.go-top-btn {
-		display: block;
-		margin: 16px auto 6px; /* smaller bottom gap */
-		padding: 10px 14px;
-		font-size: 14px;
-
-		color: #0a5f38;
-		background-color: transparent;
-		border: 1px solid #0a5f38;
-		border-radius: 6px;
-		cursor: pointer;
-	}
-
-	.go-top-btn:hover {
-		background-color: rgba(10, 95, 56, 0.12);
-	}
-        .skeleton {
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
-            border-radius: 8px;
-        }
-
-        @keyframes loading {
-            0% {
-                background-position: 200% 0;
-            }
-            100% {
-                background-position: -200% 0;
-            }
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        /* Category colors */
-        .cat-100km { background-color: #8e44ad; }
-        .cat-75km { background-color: #9b59b6; }
-        .cat-50km { background-color: #2980b9; }
-        .cat-42km { background-color: #ff2d55; }
-        .cat-32km { background-color: #5856d6; }
-        .cat-25km { background-color: #3498db; }
-        .cat-21km { background-color: #007aff; }
-        .cat-16km { background-color: #34c759; }
-        .cat-10km { background-color: #ff9500; }
-        .cat-5km { background-color: #af52de; }
-        .cat-3km { background-color: #ff3b30; }
-        .cat-2km { background-color: #5ac8fa; }
-        .cat-1km { background-color: #4cd964; }
-        .cat-other { background-color: #8e8e93; }
-    
-        .pagination-button {
-            background-color: rgba(255,255,255,0.12);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.25);
-            border-radius: 10px;
-            padding: 0.35rem 0.6rem;
-            font-size: 11px;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-        .pagination-button.active {
-            background-color: #007aff;
-            border-color: #007aff;
-        }
-        .pagination-button:disabled {
-            opacity: 0.4;
-            pointer-events: none;
-        }
-        .pagination-info {
-            font-size: 11px;
-            color: rgba(255,255,255,0.85);
-            font-weight: 900;
-        }
-		
-		.sticky-refresh-btn{
-		  display:flex;
-		  align-items:center;
-		  gap:6px;
-		}
-		
-		#paginationContainer .pagination-empty{
-		  color: #0a5f38;
-		  font-size: 14px;
-		  font-weight: 900; /* extra safe even if poppins-black already does it */
-		}
-		
-		.search-wrap { position: relative; }
-		.clear-search-btn{
-		  position:absolute;
-		  right:10px;
-		  top:50%;
-		  transform:translateY(-50%);
-		  border:none;
-		  background:transparent;
-		  width: 36px;          /* bigger hit area */
-		  height: 36px;
-		  font-size: 30px;
-		  cursor:pointer;
-		  color:#0a5f38;
-		  line-height:1;
-		}
-		
-		
-		.clear-search-btn.hidden{ display:none; }
-		#searchInput{
-			padding-right:32px; 
-			 font-size: 16px;
-			  line-height: 1.2;
-			  padding: 6px 5px;
-		}
-		
-		/* PixHero text (shows when pagination is hidden) */
-		/* Base PixHero text */
-			.pixhero-fallback {
-			  font-family: 'Poppins', sans-serif;
-			  font-weight: 900;
-			  font-size: 14px;
-			  color: #0a5f38;
-			}
-
-			/* Animation variants */
-			.pixhero-fade {
-			  opacity: 0;
-			  animation: fadeIn 2500ms ease-out forwards;
-			}
-
-			.pixhero-slide-up {
-			  opacity: 0;
-			  transform: translateY(8px);
-			  animation: slideUp 2500ms ease-out forwards;
-			}
-
-			.pixhero-slide-left {
-			  opacity: 0;
-			  transform: translateX(8px);
-			  animation: slideLeft 2500ms ease-out forwards;
-			}
-
-			.pixhero-scale {
-			  opacity: 0;
-			  transform: scale(0.9);
-			  animation: scaleIn 2500ms ease-out forwards;
-			}
-
-			/* Keyframes */
-			@keyframes fadeIn {
-			  to { opacity: 1; }
-			}
-
-			@keyframes slideUp {
-			  to { opacity: 1; transform: translateY(0); }
-			}
-
-			@keyframes slideLeft {
-			  to { opacity: 1; transform: translateX(0); }
-			}
-
-			@keyframes scaleIn {
-			  to { opacity: 1; transform: scale(1); }
-			}
-
-			@keyframes pixHeroPop {
-			  to {
-				opacity: 1;
-				transform: translateY(0);
-			  }
-			  
-			/* Extra animation variants */
-			.pixhero-slide-right {
-			  opacity: 0;
-			  transform: translateX(-8px);
-			  animation: slideRight 500ms ease-out forwards;
-			}
-
-			.pixhero-zoom-rotate {
-			  opacity: 0;
-			  transform: scale(0.85) rotate(-4deg);
-			  animation: zoomRotate 550ms ease-out forwards;
-			}
-
-			.pixhero-pop {
-			  opacity: 0;
-			  transform: scale(0.7);
-			  animation: popIn 450ms cubic-bezier(.34,1.56,.64,1) forwards;
-			}
-
-			.pixhero-float {
-			  opacity: 0;
-			  transform: translateY(12px);
-			  animation: floatUp 600ms ease-out forwards;
-			}
-
-			.pixhero-blur-in {
-			  opacity: 0;
-			  filter: blur(6px);
-			  animation: blurIn 550ms ease-out forwards;
-			}
-
-			/* Keyframes */
-			@keyframes slideRight {
-			  to { opacity: 1; transform: translateX(0); }
-			}
-
-			@keyframes zoomRotate {
-			  to { opacity: 1; transform: scale(1) rotate(0deg); }
-			}
-
-			@keyframes popIn {
-			  to { opacity: 1; transform: scale(1); }
-			}
-
-			@keyframes floatUp {
-			  to { opacity: 1; transform: translateY(0); }
-			}
-
-			@keyframes blurIn {
-			  to { opacity: 1; filter: blur(0); }
-			}
-		}
-
-        </style>
-        
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.relative{position:relative}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.ml-1{margin-left:0.25rem}.mr-1{margin-right:0.25rem}.mr-2{margin-right:0.5rem}.mt-2{margin-top:0.5rem}.mt-1{margin-top:0.25rem}.flex{display:flex}.hidden{display:none}.h-24{height:6rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-3{height:0.75rem}.w-16{width:4rem}.w-20{width:5rem}.w-24{width:6rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-full{width:100%}.w-3{width:0.75rem}.flex-1{flex:1 1 0%}.rotate-180{--tw-rotate:180deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.rounded-full{border-radius:9999px}.bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246 / var(--tw-bg-opacity, 1))}.bg-transparent{background-color:transparent}.p-2{padding:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.pb-20{padding-bottom:5rem}.pt-1{padding-top:0.25rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.text-black{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.outline-none{outline:2px solid transparent;outline-offset:2px}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}</style></head>
-<body class="pb-20">
-    <div class="header">
-        <div class="flex justify-between items-center mb-2">
-            <h1 class="text-xl poppins-black">Race Calendar - PixHero App</h1>
-        </div>
-        
-        <div class="search-bar flex items-center p-2 mb-2 relative">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 ml-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-            </svg>
-            <input type="text" id="searchInput" placeholder="Search race name, location, organizer, month, year…" class="w-full bg-transparent outline-none text-base text-black">
-			 <button id="clearSearchBtn" type="button" class="clear-search-btn hidden">×</button>
-            <div id="searchSuggestions" class="search-suggestions hidden"></div>
-        </div>
-    </div>
-
-    <div class="flex justify-between items-center px-4 py-2">
-        <button id="refreshButton" class="toggle-button refresh flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-            </svg>
-            Refresh
-       	</button>
-
-
-
-     <!--   <button id="toggleViewButton" class="toggle-button calendar flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-            </svg>
-            Race Calendar
-        </button> 
-	-->
-	
-    </div>
-
-    <div id="filtersContainer" class="px-4 py-2" style="display: none;">
-        <!-- Distance Filter -->
-        <div id="distanceFilterContainer" class="filter-section">
-            <div class="filter-header" data-filter="distance">
-                <h3 class="text-xs font-bold">Distance</h3>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-            </div>
-            <div class="filter-content hidden" id="distanceFilters">
-                <div class="skeleton h-5 w-16 mr-2 mb-1"></div>
-
-            </div>
-        </div>
-        
-        <!-- Organizer Filter -->
-        <div class="filter-section">
-            <div class="filter-header" data-filter="organizer">
-                <h3 class="text-xs font-bold">Organizer</h3>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-            </div>
-            <div class="filter-content" id="organizerFilters">
-                <div class="skeleton h-5 w-20 mr-2 "></div>
-
-            </div>
-        </div>
-        
-        <!-- Month Filter -->
-        <div class="filter-section">
-            <div class="filter-header" data-filter="month">
-                <h3 class="text-xs font-bold">Month</h3>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-            </div>
-            <div class="filter-content" id="monthFilters">
-                <div class="skeleton h-5 w-16 mr-2 "></div>
-
-            </div>
-        </div>
-        
-        <!-- Year Filter -->
-        <div id="yearFilterContainer" class="filter-section hidden">
-            <div class="filter-header" data-filter="year">
-                <h3 class="text-xs font-bold">Year</h3>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-            </div>
-            <div class="filter-content" id="yearFilters">
-                <div class="skeleton h-5 w-16 mr-2 "></div>
-            </div>
-        </div>
-        
-        <!-- Day Filter -->
-        <div id="dayFilterContainer" class="filter-section hidden">
-            <div class="filter-header" data-filter="day">
-                <h3 class="text-xs font-bold">Day</h3>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-            </div>
-            <div class="filter-content" id="dayFilters">
-                <div class="skeleton h-5 w-16 mr-2 "></div>
-            </div>
-        </div>
-        
-        <!-- Toggle All Filters -->
-        <div class="flex justify-center items-center mt-2 mb-1">
-            <button id="toggleFiltersButton" class="text-xs bg-blue-500 text-white px-3 py-1 rounded-full flex items-center">
-                <span>Hide All Filters</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-        </div>
-    </div>
-	<div id="raceList" class="px-4 pt-1"></div>
-
-	<!-- Sticky bottom controls -->
-	<div id="stickyFooterBar">
-	  <div id="stickyFooterBarInner">
-		
-		<div id="paginationContainer" class="flex justify-center items-center gap-2"></div>
-	  </div>
-	</div>
-	
-    <script>
-        // State management
-        const state = {
-            view: 'calendar', // 'photos' or 'calendar'
-            races: [],
-            photos: [],
-            filters: {
-                distance: [],
-                organizer: [],
-                month: [],
-                year: [],
-                day: []
-            },
-            searchTerm: '',
-            filtersVisible: true,
-            expandedFilters: {
-                distance: false,
-                organizer: true,
-                month: true,
-                year: true,
-                day: true // Day filter initially expanded
-            },
-            suggestions: [],
-            hiddenFilters: new Set(), // Track which filters should remain hidden
-            pagination: { page: 1, perPage: 25 }
-        };
-
-        // DOM elements
-        const headerTitle = document.querySelector('.header h1');
-		headerTitle.textContent = 'Race Calendar';
-        //const toggleViewButton = document.getElementById('toggleViewButton');
-        const refreshButton = document.getElementById('refreshButton');
-        const searchInput = document.getElementById('searchInput');
-		
-		const clearSearchBtn = document.getElementById('clearSearchBtn');
-
-		function toggleClearBtn(){
-		  clearSearchBtn.classList.toggle('hidden', !searchInput.value.trim());
-		}
-
-		searchInput.addEventListener('input', () => {
-		  state.searchTerm = searchInput.value.trim();
-		  toggleClearBtn();
-		});
-
-		clearSearchBtn.addEventListener('click', () => {
-		  searchInput.value = '';
-		  state.searchTerm = '';
-		  searchSuggestions.classList.add('hidden');
-		  toggleClearBtn();
-
-		  if (state.view === 'photos') loadPhotoData();
-		  else renderCurrentView();
-
-		  searchInput.focus();
-		});
-
-        const searchSuggestions = document.getElementById('searchSuggestions');
-        const toggleFiltersButton = document.getElementById('toggleFiltersButton');
-        const filtersContainer = document.getElementById('filtersContainer');
-        const distanceFilters = document.getElementById('distanceFilters');
-        const organizerFilters = document.getElementById('organizerFilters');
-        const monthFilters = document.getElementById('monthFilters');
-        const yearFilters = document.getElementById('yearFilters');
-        const dayFilters = document.getElementById('dayFilters');
-        const yearFilterContainer = document.getElementById('yearFilterContainer');
-        const dayFilterContainer = document.getElementById('dayFilterContainer');
-        const distanceFilterContainer = document.getElementById('distanceFilterContainer');
-        const raceList = document.getElementById('raceList');
-
-        
-        const paginationContainer = document.getElementById('paginationContainer');
-
-		// Move Refresh button into sticky footer (left of pagination)
-		const stickyFooterBarInner = document.getElementById('stickyFooterBarInner');
-
-		if (refreshButton && stickyFooterBarInner && paginationContainer) {
-		  stickyFooterBarInner.insertBefore(refreshButton, paginationContainer);
-
-		  // make sure it is visible + styled
-		  refreshButton.classList.remove('toggle-button', 'refresh', 'hidden');
-		  refreshButton.classList.add('sticky-refresh-btn');
-		}
-
-        async function fetchData(url) {
-            try {
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                
-                const text = await response.text();
-                try {
-                    const data = JSON.parse(text);
-                    // Check if data is an array
-                    if (!Array.isArray(data)) {
-                        console.error('Data is not an array:', data);
-                        throw new Error('Invalid data format: expected an array');
-                    }
-                    return data;
-                } catch (parseError) {
-                    console.error('JSON Parse Error:', parseError);
-                    console.error('Raw response:', text.substring(0, 200) + '...'); // Log first 200 chars
-                    throw new Error(`Invalid JSON format: ${parseError.message}`);
-                }
-            } catch (error) {
-                console.error('Fetch Error:', error);
-                throw error;
-            }
-        }
-
-        // Load data based on current view
-        async function loadData() {
-            try {
-                raceList.innerHTML = `
-					
-                    <div class="skeleton h-24 w-full mb-3"></div>
-                    <div class="skeleton h-24 w-full mb-3"></div>
-                    <div class="skeleton h-24 w-full mb-3"></div>
-					
-                `;
-                
-                // Reset filters
-                state.filters = {
-                    distance: [],
-                    organizer: [],
-                    month: [],
-                    year: [],
-                    day: []
-                };
-                
-                // Show/hide filters based on view
-                filtersContainer.style.display = state.view === 'photos' ? 'none' : 'block';
-                
-                if (state.view === 'photos') {
-                    try {
-                        const data = await fetchData('https://raw.githubusercontent.com/cncreativesph/races/main/photogs.json');
-                        state.photos = data;
-                        renderPhotos();
-                    } catch (error) {
-                        showError(`Failed to load photo data: ${error.message}`);
-                    }
-                } else {
-                    try {
-                        const data = await fetchData('https://raw.githubusercontent.com/cncreativesph/races/main/racesphil.json');
-                        state.races = data;
-                        renderRaces();
-                        setupFilters(data, false);
-                    } catch (error) {
-                        showError(`Failed to load race data: ${error.message}`);
-                    }
-                }
-            } catch (error) {
-                console.error('Error loading data:', error);
-                showError(`An error occurred while loading data: ${error.message}`);
-            }
-        }
-
-
-		function sortRacesByDateAndName(races) {
-			return races.sort((a, b) => {
-				const dateA = new Date(a.date);
-				const dateB = new Date(b.date);
-
-				// 1️⃣ Sort by event date
-				if (!isNaN(dateA) && !isNaN(dateB)) {
-					if (dateA.getTime() !== dateB.getTime()) {
-						return dateA - dateB;
-					}
-				}
-
-				// 2️⃣ If same date, sort alphabetically by race name
-				const nameA = (a.name || '').toLowerCase();
-				const nameB = (b.name || '').toLowerCase();
-
-				return nameA.localeCompare(nameB);
-			});
-		}
-
-        // Load photo data specifically - used for search and refresh in photos view
-        async function loadPhotoData() {
-            try {
-                raceList.innerHTML = `
-                    <div class="skeleton h-24 w-full mb-3"></div>
-                    <div class="skeleton h-24 w-full mb-3"></div>
-                    <div class="skeleton h-24 w-full mb-3"></div>
-					
-                `;
-                
-                const data = await fetchData('https://raw.githubusercontent.com/cncreativesph/races/main/photogs.json');
-                state.photos = data;
-                renderPhotos();
-            } catch (error) {
-                showError(`Failed to load photo data: ${error.message}`);
-            }
-        }
-
-        function showError(message) {
-            raceList.innerHTML = `
-				
-                <div class="p-4 text-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-red-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <p class="text-gray-700">${message}</p>
-                    <button id="retryButton" class="mt-3 bg-blue-500 text-white px-4 py-2 rounded-lg">Retry</button>
-                </div>
-            `;
-            
-            document.getElementById('retryButton').addEventListener('click', () => {
-                if (state.view === 'photos') {
-                    loadPhotoData();
-                } else {
-                    loadData();
-                }
-            });
-        }
-
-        // Normalize organizer names
-        function normalizeOrganizerName(name) {
-            if (!name) return '';
-            name = name.toUpperCase().trim();
-            if (name.includes('SMOKE10')) return 'SMOKE10';
-            if (name.includes('RUNRIO')) return 'RUNRIO';
-            if (name.includes('GREEN MEDIA')) return 'GREEN MEDIA';
-			if (name.includes('HYVESPORTS')) return 'HYVESPORTS';
-			if (name.includes('PINOY FITNESS')) return 'PINOY FITNESS';
-            return name;
-        }
-
-		function normalizeLocation(loc) {
-		  if (!loc) return '';
-		  const s = loc.trim().toLowerCase();
-
-		  // MOA
-		  if (s === 'moa' || s.includes('mall of asia')) return 'Mall of Asia, Pasay City';
-		  if (s.includes('mall of asia, pasay')) return 'Mall of Asia, Pasay City';
-
-		  // Filinvest
-		  if (s.includes('filinvest')) return 'Filinvest, Alabang, Muntinlupa City';
-
-		  // Ayala
-		  if (s.includes('ayala') && s.includes('makati')) return 'Ayala, Makati City';
-
-		  // UP Diliman
-		  if (s.includes('up diliman')) return 'UP Diliman, Quezon City';
-		  if (s.includes('up diliman, quezon')) return 'UP Diliman, Quezon City';
-
-		  // Vermosa
-		  if (s.includes('vermosa')) return 'Vermosa, Imus, Cavite';
-
-		  // Quirino
-	
-		  if (
-			  (s.includes('quirino') && s.includes('grandstand')) ||
-			  s.includes('quirino grand stand')
-			) {
-			  return 'Quirino Grandstand, City of Manila';
-			}
-
-		  // Fort Santiago
-		  if (s.includes('fort santiago')) return 'Fort Santiago, Intramuros, City of Manila';
-
-		  // default: title case-ish (optional)
-		  return loc.trim();
-		}
-
-		function normalizeDistance(raw) {
-		  if (!raw) return '';
-			  let s = String(raw).trim().replace(/\s+/g, ' ');
-
-			  // ✅ METERS FIRST: 711m, 711 m, 500m, 500 m -> 711M / 500M
-			  // (avoid catching km)
-			  const meterMatch = s.match(/^(\d+(?:\.\d+)?)\s*m\b/i);
-			  if (meterMatch && !/\bkm\b/i.test(s)) {
-				// keep as meters, never convert to KM
-				const num = meterMatch[1];
-				return `${num}M`;
-			  }
-
-			  // ✅ KM forms (supports decimals): 21k, 21 km, 21, 2.5km, 1.5 k, etc.
-			  // plus optional label after: "1k dog" -> "1KM Dog"
-			  // ✅ KM forms (supports decimals) — REQUIRE unit (k/km)
-			const kmMatch = s.match(/^(\d+(?:\.\d+)?)\s*(k|km)\b\s*(.*)$/i);
-			if (kmMatch) {
-			  const num = kmMatch[1];                 // supports 2.5, 1.5, etc.
-			  const rest = (kmMatch[3] || '').trim();
-
-			  let result = `${num}KM`;
-
-			  if (rest) {
-				const label = rest
-				  .split(' ')
-				  .filter(Boolean)
-				  .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
-				  .join(' ');
-				result += ` ${label}`;
-			  }
-			  return result;
-			}
-
-			// ✅ If it's ONLY a number (like "21"), treat as KM
-			const numOnly = s.match(/^(\d+(?:\.\d+)?)$/);
-			if (numOnly) {
-			  return `${numOnly[1]}KM`;
-			}
-
-
-			  // fallback
-			  return s.toUpperCase();
-			}
-
-		
-		
-        // Setup filters based on data
-        function setupFilters(data, isPhotos) {
-            // Extract unique values for filters
-            const distances = new Set();
-            const organizers = new Set();
-            const months = new Set();
-            const years = new Set();
-            const days = new Set();
-			
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-            
-            // For calendar view, only show future months
-            const currentMonth = today.getMonth();
-            const currentYear = today.getFullYear();
-            
-            data.forEach(item => {
-                // Process distances
-                const distanceField = isPhotos ? item.distanceP : item.distance;
-                if (distanceField) {
-                    distanceField.split(',').forEach(d => {
-					  distances.add(normalizeDistance(d.trim())); // ✅ normalized labels in filter list
-					});
-                }
-                
-                // Process organizers (only for races)
-                if (!isPhotos && item.organizer) {
-                    const normalizedOrg = normalizeOrganizerName(item.organizer);
-                    if (['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA'].includes(normalizedOrg)) {
-                        organizers.add(normalizedOrg);
-                    } else {
-                        organizers.add('OTHERS');
-                    }
-                }
-                
-                // Process dates
-                const dateStr = isPhotos ? item.dateP : item.date;
-                if (dateStr) {
-                    const date = new Date(dateStr);
-                    if (!isNaN(date.getTime())) {
-                        // For calendar view, only include future dates
-                        // For photos view, only include current and past dates
-                        const shouldInclude = isPhotos ? date <= today : date > today;
-                        
-                        if (shouldInclude) {
-                            // Month
-                            const monthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(date);
-                            
-                            // For calendar view, only show future months or months with future year races
-                            if (isPhotos || 
-                                date.getFullYear() > currentYear || 
-                                (date.getFullYear() === currentYear && date.getMonth() >= currentMonth)) {
-                                months.add(monthName);
-                            }
-                            
-                            // Year
-                            const year = date.getFullYear().toString();
-                            years.add(year);
-                            
-                            // Day
-                            const dayName = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(date);
-							days.add(dayName);
-                        }
-                    }
-                }
-            });
-            
-			function clearSearchOnFilterChange() {
-			  state.searchTerm = '';
-			  searchInput.value = '';
-			  searchSuggestions.classList.add('hidden');
-			}
-			
-			
-            // Hide Distance filter for Photos view
-            distanceFilterContainer.classList.toggle('hidden', isPhotos);
-            state.hiddenFilters.delete('distance');
-            if (isPhotos) {
-                state.hiddenFilters.add('distance');
-            }
-            
-            // Hide Day filter if only Sunday races or no races
-            const showDayFilter = days.size > 0;
-            dayFilterContainer.classList.toggle('hidden', !showDayFilter);
-            state.hiddenFilters.delete('day');
-            if (!showDayFilter) {
-                state.hiddenFilters.add('day');
-            }
-            
-            // Render distance filters (only for calendar view)
-            if (!isPhotos) {
-                distanceFilters.innerHTML = '';
-                
-                // Sort distances by numeric value (descending)
-                const sortedDistances = Array.from(distances).sort((a, b) => {
-                    const numA = parseInt(a.match(/\d+/) || [0]);
-                    const numB = parseInt(b.match(/\d+/) || [0]);
-                    return numB - numA; // Descending order
-                });
-                
-                // Add "All" option first
-                const allChip = document.createElement('div');
-                allChip.className = `filter-chip ${state.filters.distance.length === 0 ? 'active' : ''}`;
-                allChip.textContent = 'All';
-                allChip.addEventListener('click', () => {
-					clearSearchOnFilterChange();
-					state.pagination.page = 1; 
-                    state.filters.distance = [];
-                    updateFilters();
-                    renderCurrentView();
-                });
-                distanceFilters.appendChild(allChip);
-                
-                // Add individual distance options
-                sortedDistances.forEach(distance => {
-                    const chip = document.createElement('div');
-                    chip.className = `filter-chip ${state.filters.distance.includes(distance) ? 'active' : ''}`;
-                    chip.textContent = distance;
-                    chip.addEventListener('click', () => {
-						clearSearchOnFilterChange();
-						state.pagination.page = 1; 
-                        if (state.filters.distance.includes(distance)) {
-                            state.filters.distance = state.filters.distance.filter(d => d !== distance);
-                        } else {
-							
-                            state.filters.distance.push(distance);
-                        }
-                        updateFilters();
-                        renderCurrentView();
-                    });
-                    distanceFilters.appendChild(chip);
-                });
-            }
-            
-            // Render organizer filters (only for races)
-            organizerFilters.innerHTML = '';
-            organizerFilters.parentElement.classList.toggle('hidden', isPhotos);
-            state.hiddenFilters.delete('organizer');
-            if (isPhotos) {
-                state.hiddenFilters.add('organizer');
-            }
-            
-            if (!isPhotos) {
-                // Add "All" option first
-                const allChip = document.createElement('div');
-                allChip.className = `filter-chip ${state.filters.organizer.length === 0 ? 'active' : ''}`;
-                allChip.textContent = 'All';
-                allChip.addEventListener('click', () => {
-					clearSearchOnFilterChange();
-					
-                    state.filters.organizer = [];
-					state.pagination.page = 1; 
-                    updateFilters();
-                    renderCurrentView();
-                });
-                organizerFilters.appendChild(allChip);
-                
-                // Add specific organizers
-                ['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA', 'OTHERS'].forEach(organizer => {
-                    const chip = document.createElement('div');
-                    chip.className = `filter-chip ${state.filters.organizer.includes(organizer) ? 'active' : ''}`;
-                    chip.textContent = organizer.toUpperCase();
-                    chip.addEventListener('click', () => {
-						clearSearchOnFilterChange();
-						state.pagination.page = 1; 
-                        if (state.filters.organizer.includes(organizer)) {
-                            state.filters.organizer = state.filters.organizer.filter(o => o !== organizer);
-                        } else {
-                            state.filters.organizer.push(organizer);
-                        }
-                        updateFilters();
-                        renderCurrentView();
-                    });
-                    organizerFilters.appendChild(chip);
-                });
-            }
-            
-            // Render month filters
-            monthFilters.innerHTML = '';
-            const monthOrder = {
-                'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6,
-                'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
-            };
-            
-            // Add "All" option first
-            const allMonthChip = document.createElement('div');
-            allMonthChip.className = `filter-chip ${state.filters.month.length === 0 ? 'active' : ''}`;
-            allMonthChip.textContent = 'All';
-            allMonthChip.addEventListener('click', () => {
-				clearSearchOnFilterChange();
-				state.pagination.page = 1; 
-                state.filters.month = [];
-                updateFilters();
-                renderCurrentView();
-            });
-            monthFilters.appendChild(allMonthChip);
-            
-            // Add individual month options
-            Array.from(months).sort((a, b) => monthOrder[a] - monthOrder[b]).forEach(month => {
-                const chip = document.createElement('div');
-                chip.className = `filter-chip ${state.filters.month.includes(month) ? 'active' : ''}`;
-                chip.textContent = month;
-                chip.addEventListener('click', () => {
-					clearSearchOnFilterChange();
-					state.pagination.page = 1; 
-                    if (state.filters.month.includes(month)) {
-                        state.filters.month = state.filters.month.filter(m => m !== month);
-                    } else {
-                        state.filters.month.push(month);
-                    }
-                    updateFilters();
-                    renderCurrentView();
-                });
-                monthFilters.appendChild(chip);
-            });
-            
-            // Render year filters if more than one year
-            const showYearFilter = years.size > 1;
-            yearFilterContainer.classList.toggle('hidden', !showYearFilter);
-            state.hiddenFilters.delete('year');
-            if (!showYearFilter) {
-                state.hiddenFilters.add('year');
-            }
-            
-            if (showYearFilter) {
-                yearFilters.innerHTML = '';
-                
-                // Add "All" option first
-                const allYearChip = document.createElement('div');
-                allYearChip.className = `filter-chip ${state.filters.year.length === 0 ? 'active' : ''}`;
-                allYearChip.textContent = 'All';
-                allYearChip.addEventListener('click', () => {
-					clearSearchOnFilterChange();
-					state.pagination.page = 1; 
-                    state.filters.year = [];
-                    updateFilters();
-                    renderCurrentView();
-                });
-                yearFilters.appendChild(allYearChip);
-                
-                // Add individual year options
-                Array.from(years).sort().forEach(year => {
-                    const chip = document.createElement('div');
-                    chip.className = `filter-chip ${state.filters.year.includes(year) ? 'active' : ''}`;
-                    chip.textContent = year;
-                    chip.addEventListener('click', () => {
-						clearSearchOnFilterChange();
-						state.pagination.page = 1; 
-                        if (state.filters.year.includes(year)) {
-                            state.filters.year = state.filters.year.filter(y => y !== year);
-                        } else {
-                            state.filters.year.push(year);
-                        }
-                        updateFilters();
-                        renderCurrentView();
-                    });
-                    yearFilters.appendChild(chip);
-                });
-            }
-            
-            // Render day filters if both Saturday and Sunday races exist
-            if (showDayFilter) {
-                dayFilters.innerHTML = '';
-                
-                // Add "All" option first
-                const allDayChip = document.createElement('div');
-                allDayChip.className = `filter-chip ${state.filters.day.length === 0 ? 'active' : ''}`;
-                allDayChip.textContent = 'All';
-                allDayChip.addEventListener('click', () => {
-					clearSearchOnFilterChange();
-					state.pagination.page = 1; 
-                    state.filters.day = [];
-                    updateFilters();
-                    renderCurrentView();
-                });
-                dayFilters.appendChild(allDayChip);
-                
-                // Add individual day options
-                const orderedDays = ['Saturday','Sunday'];
-				orderedDays.filter(d => days.has(d)).forEach(day => {
-                    const chip = document.createElement('div');
-                    chip.className = `filter-chip ${state.filters.day.includes(day) ? 'active' : ''}`;
-                    chip.textContent = day;
-                    chip.addEventListener('click', () => {
-						clearSearchOnFilterChange();
-						state.pagination.page = 1; 
-                        if (state.filters.day.includes(day)) {
-                            state.filters.day = state.filters.day.filter(d => d !== day);
-                        } else {
-                            state.filters.day.push(day);
-                        }
-                        updateFilters();
-                        renderCurrentView();
-                    });
-                    dayFilters.appendChild(chip);
-                });
-            }
-            
-            // Set initial filter states
-            updateFilterVisibility();
-        }
-
-        // Update filter UI
-        function updateFilters() {
-            // Distance filters
-            document.querySelectorAll('#distanceFilters .filter-chip').forEach(chip => {
-                const isAll = chip.textContent === 'All';
-                const isActive = isAll ? state.filters.distance.length === 0 : state.filters.distance.includes(chip.textContent);
-                chip.classList.toggle('active', isActive);
-            });
-            
-            // Organizer filters
-            document.querySelectorAll('#organizerFilters .filter-chip').forEach(chip => {
-                const isAll = chip.textContent === 'All';
-                const isActive = isAll ? state.filters.organizer.length === 0 : state.filters.organizer.includes(chip.textContent);
-                chip.classList.toggle('active', isActive);
-            });
-            
-            // Month filters
-            document.querySelectorAll('#monthFilters .filter-chip').forEach(chip => {
-                const isAll = chip.textContent === 'All';
-                const isActive = isAll ? state.filters.month.length === 0 : state.filters.month.includes(chip.textContent);
-                chip.classList.toggle('active', isActive);
-            });
-            
-            // Year filters
-            document.querySelectorAll('#yearFilters .filter-chip').forEach(chip => {
-                const isAll = chip.textContent === 'All';
-                const isActive = isAll ? state.filters.year.length === 0 : state.filters.year.includes(chip.textContent);
-                chip.classList.toggle('active', isActive);
-            });
-            
-            // Day filters
-            document.querySelectorAll('#dayFilters .filter-chip').forEach(chip => {
-                const isAll = chip.textContent === 'All';
-                const isActive = isAll ? state.filters.day.length === 0 : state.filters.day.includes(chip.textContent);
-                chip.classList.toggle('active', isActive);
-            });
-        }
-
-        // Update filter visibility based on expanded state
-        function updateFilterVisibility() {
-            Object.keys(state.expandedFilters).forEach(filter => {
-                const content = document.getElementById(`${filter}Filters`);
-                const header = document.querySelector(`.filter-header[data-filter="${filter}"]`);
-                const container = document.getElementById(`${filter}FilterContainer`);
-                
-                // Skip if this filter should be hidden
-                if (state.hiddenFilters.has(filter)) {
-                    if (container) container.classList.add('hidden');
-                    return;
-                }
-                
-                if (content && header) {
-                    if (state.expandedFilters[filter]) {
-                        content.classList.remove('hidden');
-                        header.querySelector('svg').classList.remove('rotate-180');
-                    } else {
-                        content.classList.add('hidden');
-                        header.querySelector('svg').classList.add('rotate-180');
-                    }
-                }
-            });
-        }
-
-        // Format date string
-        function formatDate(dateStr) {
-			if (!dateStr) return '';
-
-			// Force a safe parse: "May 1, 2026" → "2026-05-01"
-			const parsed = dateStr.replace(/(\w+)\s(\d+),\s(\d+)/, '$1 $2 $3');
-			const date = new Date(parsed + ' 00:00:00');
-
-			if (isNaN(date.getTime())) return dateStr;
-
-			const formattedDate = date.toLocaleDateString('en-US', {
-				year: 'numeric',
-				month: 'long',
-				day: 'numeric'
-			});
-
-			const dayName = date.toLocaleDateString('en-US', { weekday: 'long' });
-
-			return `${formattedDate} (${dayName})`;
-		}
-
-        // Get category color class
-        function getCategoryColorClass(category) {
-            category = category.toLowerCase().trim();
-            if (category.includes('100km')) return 'cat-100km';
-            if (category.includes('75km')) return 'cat-75km';
-            if (category.includes('50km')) return 'cat-50km';
-            if (category.includes('42km')) return 'cat-42km';
-            if (category.includes('32km')) return 'cat-32km';
-            if (category.includes('25km')) return 'cat-25km';
-            if (category.includes('21km') || category.includes('half')) return 'cat-21km';
-            if (category.includes('16km')) return 'cat-16km';
-            if (category.includes('10km')) return 'cat-10km';
-            if (category.includes('5km')) return 'cat-5km';
-            if (category.includes('3km')) return 'cat-3km';
-            if (category.includes('2km')) return 'cat-2km';
-            if (category.includes('1km')) return 'cat-1km';
-            return 'cat-other';
-        }
-
-        // Get photographer class
-        function getPhotographerClass(photographer) {
-            const name = photographer.toLowerCase();
-            if (name.includes('cn creatives')) return 'photographer-cn';
-            if (name.includes('ar sports')) return 'photographer-ar';
-            if (name.includes('genuine sole')) return 'photographer-genuine';
-            if (name.includes('humble runner')) return 'photographer-humble';
-            if (name.includes('ph running')) return 'photographer-ph';
-            if (name.includes('pinoy fitness')) return 'photographer-pinoy';
-            return '';
-        }
-
-        // Generate search suggestions
-        function generateSearchSuggestions() {
-            const searchTerm = searchInput.value.toLowerCase().trim();
-            if (!searchTerm) {
-                searchSuggestions.classList.add('hidden');
-                return;
-            }
-            
-            const suggestions = new Set();
-            const data = state.view === 'photos' ? state.photos : state.races;
-            
-            if (!Array.isArray(data)) {
-                console.error('Invalid data format for suggestions');
-                return;
-            }
-            
-            // Month names for suggestions
-            const monthNames = [
-                'January', 'February', 'March', 'April', 'May', 'June',
-                'July', 'August', 'September', 'October', 'November', 'December'
-            ];
-            
-            // Add month name suggestions if search term matches part of a month name
-            monthNames.forEach(month => {
-                if (month.toLowerCase().includes(searchTerm)) {
-                    suggestions.add(month);
-                }
-            });
-			
-			const dayNames = ['Sunday', 'Saturday'];
-			dayNames.forEach(day => {
-				if (day.toLowerCase().includes(searchTerm)) {
-					suggestions.add(day);
-				}
-			});
-						
-            data.forEach(item => {
-                const name = state.view === 'photos' ? item.nameP : item.name;
-                const location = state.view === 'photos' ? item.locationP : item.location;
-                const distance = state.view === 'photos' ? item.distanceP : item.distance;
-                const organizer = state.view === 'photos' ? '' : item.organizer;
-                const date = state.view === 'photos' ? item.dateP : item.date;
-                
-                // Add race name suggestions
-                if (name && name.toLowerCase().includes(searchTerm)) {
-                    suggestions.add(name);
-                }
-                
-                // Add location suggestions
-                const locNorm = normalizeLocation(location);
-				if (locNorm && locNorm.toLowerCase().includes(searchTerm)) {
-					suggestions.add(locNorm);
-				}
-								
-                // Add organizer suggestions
-                if (organizer) {
-					const orgNorm = normalizeOrganizerName(organizer);
-					if (orgNorm && orgNorm.toLowerCase().includes(searchTerm)) {
-						suggestions.add(orgNorm);
-					}
-				}
-                
-                // Add distance suggestions
-                if (distance) {
-                    distance.split(',').forEach(d => {
-                        const distNorm = normalizeDistance(d);
-						if (distNorm && distNorm.toLowerCase().includes(searchTerm)) {
-						  suggestions.add(distNorm);
-						}
-                    });
-                }
-                
-                // Add date suggestions
-                if (date) {
-                    const itemDate = new Date(date);
-                    if (!isNaN(itemDate.getTime())) {
-                        const monthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(itemDate);
-                        const shortMonthName = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(itemDate);
-                        const day = itemDate.getDate();
-                        const year = itemDate.getFullYear();
-						const weekdayName = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(itemDate);
-                        
-                        const formattedDate = `${monthName} ${day}, ${year}`;
-                        
-                        if (
-							monthName.toLowerCase().includes(searchTerm) ||
-							shortMonthName.toLowerCase().includes(searchTerm) ||
-							formattedDate.toLowerCase().includes(searchTerm) ||
-							weekdayName.toLowerCase().includes(searchTerm)
-						) {
-							suggestions.add(formattedDate);
-							suggestions.add(monthName);
-							suggestions.add(year);
-							suggestions.add(weekdayName);
-						}
-                    }
-                }
-				
-				
-            });
-            
-            // Limit suggestions to 5
-            const limitedSuggestions = Array.from(suggestions).slice(0, 5);
-            
-            if (limitedSuggestions.length > 0) {
-                searchSuggestions.innerHTML = '';
-                limitedSuggestions.forEach(suggestion => {
-                    const item = document.createElement('div');
-                    item.className = 'suggestion-item';
-                    item.textContent = suggestion;
-                    item.addEventListener('click', () => {
-						resetFiltersOnly();   
-                        searchInput.value = suggestion;
-                        state.searchTerm = suggestion;
-                        searchSuggestions.classList.add('hidden');
-                        
-                        // If in photos view, fetch fresh data when selecting a suggestion
-                        if (state.view === 'photos') {
-                            loadPhotoData();
-                        } else {
-                            renderCurrentView();
-                        }
-                    });
-                    searchSuggestions.appendChild(item);
-                });
-                searchSuggestions.classList.remove('hidden');
-            } else {
-                searchSuggestions.classList.add('hidden');
-            }
-        }
-
-        // Render races
-        
-        function setCalendarPage(p) {
-            state.pagination.page = p;
-            renderRaces();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function renderCalendarPagination(totalItems) {
-            const perPage = state.pagination.perPage;
-            const totalPages = Math.max(1, Math.ceil(totalItems / perPage));
-            const currentPage = Math.min(state.pagination.page, totalPages);
-            state.pagination.page = currentPage;
-
-			if (totalItems <= perPage) {
-			  paginationContainer.innerHTML = '';
-
-			  const label = document.createElement('div');
-			  label.textContent = 'Thank you for using the PixHero app';
-
-			  const animations = [
-				  'pixhero-fade',
-				  'pixhero-slide-up',
-				  'pixhero-slide-left',
-				  'pixhero-slide-right',
-				  'pixhero-scale',
-				  'pixhero-zoom-rotate',
-				  'pixhero-pop',
-				  'pixhero-float',
-				  'pixhero-blur-in'
-				];
-
-			  const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
-			  label.className = `pagination-empty poppins-black pixhero-fallback ${randomAnimation}`;
-
-			  paginationContainer.appendChild(label);
-			  return;
-			}
-
-            paginationContainer.innerHTML = '';
-
-            const info = document.createElement('div');
-            info.className = 'pagination-info';
-            info.textContent = `Page ${currentPage} of ${totalPages}`;
-            paginationContainer.appendChild(info);
-
-            const prev = document.createElement('button');
-            prev.className = 'pagination-button';
-            prev.textContent = 'Prev';
-            prev.disabled = currentPage === 1;
-            prev.onclick = () => setCalendarPage(currentPage - 1);
-            paginationContainer.appendChild(prev);
-
-            // Show only 3 page buttons at a time
-			const windowSize = 3;
-			const half = Math.floor(windowSize / 2); // 1
-
-			let start = Math.max(1, currentPage - half);
-			let end = start + windowSize - 1;
-
-			// if end exceeds totalPages, shift back
-			if (end > totalPages) {
-			  end = totalPages;
-			  start = Math.max(1, end - windowSize + 1);
-			}
-
-			for (let i = start; i <= end; i++) {
-			  const b = document.createElement('button');
-			  b.className = 'pagination-button' + (i === currentPage ? ' active' : '');
-			  b.textContent = i;
-			  b.onclick = () => setCalendarPage(i);
-			  paginationContainer.appendChild(b);
-			}
-
-
-            const next = document.createElement('button');
-            next.className = 'pagination-button';
-            next.textContent = 'Next';
-            next.disabled = currentPage === totalPages;
-            next.onclick = () => setCalendarPage(currentPage + 1);
-            paginationContainer.appendChild(next);
-        }
-    
-function normalizeLocation(raw) {
-  if (!raw) return raw;
-
-  const v = String(raw).trim().toLowerCase();
-
-  // MOA
-  if (
-    v === 'moa' ||
-    v === 'mall of asia' ||
-    v === 'mall of asia, pasay'
-  ) return 'Mall of Asia, Pasay City';
-
-  // Filinvest
-  if (
-    v === 'filinvest, alabang' ||
-    v === 'filinvest, alabang, muntinlupa'
-  ) return 'Filinvest, Alabang, Muntinlupa City';
-
-  // Ayala
-  if (v === 'ayala, makati') return 'Ayala, Makati City';
-
-  // UP Diliman
-  if (
-    v === 'up diliman' ||
-    v === 'up diliman, quezon'
-  ) return 'UP Diliman, Quezon City';
-
-
-    // Vermosa (include Imus variants)
-	if (
-	  v === 'vermosa' ||
-	  v === 'vermosa cavite' ||
-	  v === 'vermosa, cavite' ||
-	  v === 'vermosa, cavite city' ||
-	  v === 'vermosa imus cavite' ||
-	  v === 'vermosa imus cavite city' ||
-	  v === 'vermosa, cavite city' ||
-	  v === 'vermosa imus' ||
-	  v === 'vermosa, imus'
-	) {
-	  return 'Vermosa, Imus, Cavite';
-	}
-
-  // Quirino Grandstand
-  if (
-    v === 'quirino grandstand' ||
-    v === 'quirino grandstand, manila city'
-  ) return 'Quirino Grandstand, City of Manila';
-
-  // Fort Santiago
-  if (
-    v === 'fort santiago' ||
-    v === 'fort santiago, intramuros' ||
-    v === 'fort santiago, manila' ||
-    v === 'fort santiago, manila city'
-  ) return 'Fort Santiago, Intramuros, City of Manila';
-
-  return raw; // default
-}
-
-function normalizeKey(s) {
-  return (s || '')
-    .toString()
-    .trim()
-    .toLowerCase()
-    .replace(/\s+/g, ' ')
-    .replace(/[.,]/g, '');
-}
-
-function normalizeLocation(rawLocation) {
-  const s = normalizeKey(rawLocation);
-
-  // Fort Santiago (multiple variants)
-  if (
-    s === 'fort santiago' ||
-    s === 'fort santiago intramuros' ||
-    s === 'fort santiago manila' ||
-    s === 'fort santiago manila city' ||
-    s === 'fort santiago, intramuros' ||
-    s === 'fort santiago, manila' ||
-    s === 'fort santiago, manila city'
-  ) return 'Fort Santiago, Intramuros, City of Manila';
-
-  
-  if (
-  (s.includes('quirino') && s.includes('grandstand')) ||
-  s.includes('quirino grand stand')
-	) {
-	  return 'Quirino Grandstand, City of Manila';
-	}
-
-  // MOA
-  if (
-    s === 'moa' ||
-    s === 'mall of asia' ||
-    s === 'mall of asia pasay' ||
-    s === 'mall of asia pasay city'||
-    s === 'mall of asia, pasay' ||
-    s === 'mall of asia, pasay city'
-  ) return 'Mall of Asia, Pasay City';
-
-  // Filinvest
-  if (
-    s === 'filinvest alabang' ||
-    s === 'filinvest alabang muntinlupa' ||
-    s === 'filinvest alabang muntinlupa city'||
-    s === 'filinvest alabang, muntinlupa' ||
-    s === 'filinvest alabang, muntinlupa city'
-  ) return 'Filinvest, Alabang, Muntinlupa City';
-
-  // Ayala Makati
-  if (s === 'ayala makati' || s === 'ayala makati city' || s === 'ayala, makati city') 
+[
   {
-    return 'Ayala Avenue, Makati City';
+    "name": "CEBU MARATHON",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "SM Seaside City Cebu - CCLEX",
+    "organizer": "CEBU EXECUTIVE RUNNERS CLUB",
+    "date": "January 11, 2026",
+    "website": "https://cebumarathon.myruntime.com/register",
+    "status": "Event is Full"
+  },
+  {
+    "name": "DAILYFIX POWER RUN",
+    "distance": "10KM,5KM,3KM,1Km DOG",
+    "location": "Mall of Asia, pasay City",
+    "organizer": "RUNRIO",
+    "date": "January 11, 2026",
+    "website": "https://raceroster.com/events/2026/108942/dailyfix-power-run-2026",
+    "status": "Register"
+  },
+  {
+    "name": "AYALA TACBO",
+    "distance": "21KM,10KM,5KM,3KM,1KM,1KM DOG",
+    "location": "Ayala, makati City",
+    "organizer": "RUnRIO",
+    "date": "January 18, 2026",
+    "website": "https://raceroster.com/events/2026/112577/tacbo-2026",
+    "status": "Register"
+  },
+  {
+    "name": "GREAT UP RUN",
+    "distance": "10KM,5KM,3KM",
+    "location": "UP Diliman, Quezon City",
+    "organizer": "RUNRIO",
+    "date": "January 25, 2026",
+    "website": "https://raceroster.com/events/2026/110198/the-great-up-run-2026",
+    "status": "Register"
+  },
+  {
+    "name": "MEOWSHIE RUN",
+    "distance": "10KM,5KM",
+    "location": "Fort Santiago, Intramuros, Manila City",
+    "organizer": "SPEARHEAD EVENTS",
+    "date": "January 25, 2026",
+    "website": "https://spearheadevents.myruntime.com/register/meowshie-run",
+    "status": "Register"
+  },
+  {
+    "name": "HOME CREDIT TAKBO PARA SA LIFE",
+    "distance": "10KM,5KM,3KM,1KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RUNRIO",
+    "date": "February 1, 2026",
+    "website": "https://raceroster.com/events/2026/110197/home-credit-takbo-para-sa-life-2026",
+    "status": "Register"
+  },
+  {
+    "name": "RUN 7-ELEVEN",
+    "distance": "42KM,32KM,21KM,16KM,10KM,7KM,5KM,3KM,711M",
+    "location": "Filinvest, Alabang, Muntinlupa City",
+    "organizer": "7-ELEVEN",
+    "date": "February 1, 2026",
+    "website": "https://www.run711.com",
+    "status": "Register"
+  },
+  {
+    "name": "ARMYNAVY RUN",
+    "distance": "21KM,10KM,5KM",
+    "location": "Ayala, Makati City",
+    "organizer": "RUNRIO",
+    "date": "February 8, 2026",
+    "website": "https://raceroster.com/events/2026/111574/armynavy-run-2026",
+    "status": "Register"
+  },
+  {
+    "name": "TZU CHI CHARITY RUN",
+    "distance": "10KM,5KM,3KM,1KM",
+    "location": "Bridgetowne, Pasig City",
+    "organizer": "RUNRIO",
+    "date": "February 8, 2026",
+    "website": "https://raceroster.com/events/2025/104991/tzu-chi-charity-run-2025",
+    "status": "Register"
+  },
+  {
+    "name": "THE BULL RUNNER DREAM MARATHON",
+    "distance": "42KM",
+    "location": "Filinvest, Alabang, Muntinlupa City",
+    "organizer": "TBR DREAM TEAM",
+    "date": "February 15, 2026",
+    "website": "https://www.tbrdream.com/race-info/race-details/",
+    "status": "Event is Full"
+  },
+  {
+    "name": "DORAEMON RUN",
+    "distance": "10KM,5KM,3KM,1KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RUNRIO",
+    "date": "February 15, 2026",
+    "website": "https://raceroster.com/events/2026/112481/doraemon-run-2026-manila",
+    "status": "Register"
+  },
+  {
+    "name": "QUAKER FIT RUN",
+    "distance": "16KM,10KM,5KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RUNRIO",
+    "date": "April 26, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "AYALA PHILIPPINE MARATHON",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "Ayala, Makati City",
+    "organizer": "RUNRIO",
+    "date": "February 22, 2026",
+    "website": "https://raceroster.com/events/2026/112415/ayala-philippine-marathon",
+    "status": "Register"
+  },
+  {
+    "name": "BULACAN HALF MARATHON",
+    "distance": "21KM,10KM,5KM",
+    "location": "Waltermart Plaridel, Bulacan",
+    "organizer": "TEAM MALOFIT",
+    "date": "February 22, 2026",
+    "website": "https://teammalofit.myruntime.com/register/bhm2026/",
+    "status": "Event is Full"
+  },
+   {
+    "name": "BULACAN MARATHON",
+    "distance": "42KM, 21KM,10KM,5KM",
+    "location": "Waltermart Plaridel, Bulacan",
+    "organizer": "TEAM MALOFIT",
+    "date": "August 9, 2026",
+    "website": "https://teammalofit.myruntime.com/register/bhm2026/",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "WATSONS X UNILAB: SHARE THE ALAGA RUN",
+    "distance": "10KM,5KM,3KM,1KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "HYVESPORTS",
+    "date": "February 22, 2026",
+    "website": "https://www.facebook.com/CNCreativesPH/posts/pfbid0263N39vqjzR6p36z4XhuyDa4hovwyK15j8nLtwHNv9RwyBVsoKVaAFgRJnbzb9vtrl",
+    "status": "Register"
+  },
+  {
+    "name": "THE MUSIC RUN MANILA",
+    "distance": "10KM,5KM",
+    "location": "Filinvest, Alabang, Muntinlupa City",
+    "organizer": "HYVESPORTS",
+    "date": "February 28, 2026",
+    "website": "https://registration.hyvesport.com/register/the-music-run-manila-2026",
+    "status": "Register"
+  },
+  {
+    "name": "PINOY FITNESS SUB1 10K CHALLENGE",
+    "distance": "10KM",
+    "location": "Vermosa, Cavite City",
+    "organizer": "PINOY FITNESS & PEP SQUAD EVENTS",
+    "date": "March 7, 2026",
+    "website": "https://pinoyfitness.myruntime.com/register/pf-sub1-10k-challenge-2026",
+    "status": "Register"
+  },
+  {
+    "name": "FCC WOMEN’S RUN PH",
+    "distance": "16KM,10KM,5KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RUNRIO",
+    "date": "March 8, 2026",
+    "website": "https://raceroster.com/events/2026/107165/fcc-womens-run-ph-2026",
+    "status": "Register"
+  },
+  {
+    "name": "TCS CLARK ANIMO INTERNATIONAL MARATHON",
+    "distance": "42KM,21KM,10KM,5KM,2.5KM",
+    "location": "Clark, Pampanga",
+    "organizer": "DE LA SALLE ALUMNI-PAMPANGA",
+    "date": "March 8, 2026",
+    "website": "https://raceroster.com/events/2026/112416/tcs-clark-animo-international-marathon-2026",
+    "status": "Register"
+  },
+  {
+    "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 1",
+    "distance": "16KM,10KM,5KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RUNRIO",
+    "date": "March 15, 2026",
+    "website": "https://raceroster.com/events/2026/113730/sante-barley-trilogy-run-asia-2026-manila-leg-1",
+    "status": "Register"
+  },
+  {
+    "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 2",
+    "distance": "21KM,10KM,5KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RUNRIO",
+    "date": "May 17, 2026",
+    "website": "https://raceroster.com/events/2026/113730/sante-barley-trilogy-run-asia-2026-manila-leg-1",
+    "status": "Register"
+  },
+  {
+    "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 3",
+    "distance": "32KM,21KM,10KM,5KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RUNRIO",
+    "date": "September 6, 2026",
+    "website": "https://raceroster.com/events/2026/113730/sante-barley-trilogy-run-asia-2026-manila-leg-1",
+    "status": "Register"
+  },
+  {
+    "name": "SANTE BARLEY TRILOGY RUN ASIA - NATIONAL FINALS",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RUNRIO",
+    "date": "November 8, 2026",
+    "website": "https://raceroster.com/events/2026/113730/sante-barley-trilogy-run-asia-2026-manila-leg-1",
+    "status": "Register"
+  },
+  {
+    "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 1",
+    "distance": "16KM,10KM,5KM",
+    "location": "Iloilo City",
+    "organizer": "RUNRIO",
+    "date": "March 1, 2026",
+    "website": "https://raceroster.com/events/2026/113788/sante-barley-trilogy-run-asia-2026-iloilo-leg-1",
+    "status": "Register"
+  },
+ {
+    "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 2",
+    "distance": "21KM,10KM,5KM",
+    "location": "Iloilo City",
+    "organizer": "RUNRIO",
+    "date": "May 31, 2026",
+    "website": "https://raceroster.com/events/2026/113788/sante-barley-trilogy-run-asia-2026-iloilo-leg-1",
+    "status": "Register"
+  },
+ {
+    "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 3",
+    "distance": "32KM,21KM,10KM,5KM",
+    "location": "Iloilo City",
+    "organizer": "RUNRIO",
+    "date": "August 23, 2026",
+    "website": "https://raceroster.com/events/2026/113788/sante-barley-trilogy-run-asia-2026-iloilo-leg-1",
+    "status": "Register"
+  },
+
+  {
+    "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 1",
+    "distance": "16KM,10KM,5KM",
+    "location": "Cagayan de Oro City",
+    "organizer": "RUNRIO",
+    "date": "March 8, 2026",
+    "website": "https://raceroster.com/events/2026/113787/sante-barley-trilogy-run-asia-2026-cagayan-de-oro-leg-1",
+    "status": "Register"
+  },
+  {
+    "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 2",
+    "distance": "21KM,10KM,5KM",
+    "location": "Cagayan de Oro City",
+    "organizer": "RUNRIO",
+    "date": "June 7, 2026",
+    "website": "https://raceroster.com/events/2026/113787/sante-barley-trilogy-run-asia-2026-cagayan-de-oro-leg-1",
+    "status": "Register"
+  },
+  {
+    "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 3",
+    "distance": "32KM,21KM,10KM,5KM",
+    "location": "Cagayan de Oro City",
+    "organizer": "RUNRIO",
+    "date": "September 20, 2026",
+    "website": "https://raceroster.com/events/2026/113787/sante-barley-trilogy-run-asia-2026-cagayan-de-oro-leg-1",
+    "status": "Register"
+  },
+  {
+    "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 1",
+    "distance": "16KM,10KM,5KM",
+    "location": "Cebu City",
+    "organizer": "RUNRIO",
+    "date": "March 22, 2026",
+    "website": "https://raceroster.com/events/2026/113793/sante-barley-trilogy-run-asia-2026-cebu-leg-1",
+    "status": "Register"
+  },
+  {
+    "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 2",
+    "distance": "21KM,10KM,5KM",
+    "location": "Cebu City",
+    "organizer": "RUNRIO",
+    "date": "June 21, 2026",
+    "website": "https://raceroster.com/events/2026/113793/sante-barley-trilogy-run-asia-2026-cebu-leg-1",
+    "status": "Register"
+  },
+  {
+    "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 3",
+    "distance": "32KM,21KM,10KM,5KM",
+    "location": "Cebu City",
+    "organizer": "RUNRIO",
+    "date": "September 13, 2026",
+    "website": "https://raceroster.com/events/2026/113793/sante-barley-trilogy-run-asia-2026-cebu-leg-1",
+    "status": "Register"
+  },
+  {
+    "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 1",
+    "distance": "16KM,10KM,5KM",
+    "location": "Davao City",
+    "organizer": "RUNRIO",
+    "date": "March 29, 2026",
+    "website": "https://raceroster.com/events/2026/113792/sante-barley-trilogy-run-asia-2026-davao-leg-1",
+    "status": "Register"
+  },
+  {
+    "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 2",
+    "distance": "21KM,10KM,5KM",
+    "location": "Davao City",
+    "organizer": "RUNRIO",
+    "date": "June 14, 2026",
+    "website": "https://raceroster.com/events/2026/113792/sante-barley-trilogy-run-asia-2026-davao-leg-1",
+    "status": "Register"
+  },
+  {
+    "name": "SANTE BARLEY TRILOGY RUN ASIA - LEG 3",
+    "distance": "32KM,21KM,10KM,5KM",
+    "location": "Davao City",
+    "organizer": "RUNRIO",
+    "date": "September 27, 2026",
+    "website": "https://raceroster.com/events/2026/113792/sante-barley-trilogy-run-asia-2026-davao-leg-1",
+    "status": "Register"
+  },
+  {
+    "name": "APO HALF MARATHON",
+    "distance": "21KM,10KM,5KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "GREEN MEDIA EVENTS",
+    "date": "March 22, 2026",
+    "website": "https://greenmediaevents.myruntime.com/register/race-to-serve-apo-half-marathon-2026",
+    "status": "Register"
+  },
+  {
+    "name": "MAPUA: RUN FOR THE FUTURE",
+    "distance": "10KM,5KM,3KM,1KM Dog",
+    "location": "Mapua Campus, Intramuros, City of Manila",
+    "organizer": "GREEN MEDIA EVENTS",
+    "date": "January 25, 2026",
+    "website": "https://greenmediaevents.myruntime.com/register/mapua-run-for-the-future-2026",
+    "status": "Register"
+  },
+  {
+    "name": "RUN FOR MILLION TREES: AN EARTH DAY CELEBRATION",
+    "distance": "16KM,10KM,5KM",
+    "location": "Quirino Grandstand, City of Manila",
+    "organizer": "GREEN MEDIA EVENTS",
+    "date": "April 11, 2026",
+    "website": "https://greenmediaevents.myruntime.com/register/run-for-million-trees-2026",
+    "status": "Register"
+  },
+  {
+    "name": "GCASH RUN",
+    "distance": "10KM,5KM,3KM,1KM DOG",
+    "location": "Ayala, Makati City",
+    "organizer": "RUNRIO",
+    "date": "March 22, 2026",
+    "website": "https://ayalaland.myruntime.com/register",
+    "status": "Register"
+  },
+   {
+    "name": "ALL WOMEN’S RUN ASIA: SHINE HALF MARATHON",
+    "distance": "21KM,10KM,5KM,3KM,1KM,500M",
+    "location": "Filinvest, Alabang, Muntinlupa City",
+    "organizer": "HYVESPORTS",
+    "date": "March 29, 2026",
+    "website": "https://registration.hyvesport.com/register/awr-asia-year-4-shine-half-marathon",
+    "status": "Register"
+  },
+    {
+    "name": "REXONA 10 MILER - PASAY",
+    "distance": "16KM,10KM,5KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RUNRIO",
+    "date": "March 29, 2026",
+    "website": "https://www.facebook.com/CNCreativesPH/posts/pfbid0263N39vqjzR6p36z4XhuyDa4hovwyK15j8nLtwHNv9RwyBVsoKVaAFgRJnbzb9vtrl",
+    "status": "Opening Soon"
+  },
+    {
+    "name": "REXONA 10 MILER - Manila City",
+    "distance": "16KM,10KM,5KM",
+    "location": "Quirino Grandstand, Manila City",
+    "organizer": "RUNRIO",
+    "date": "June 28, 2026",
+    "website": "https://www.facebook.com/CNCreativesPH/posts/pfbid0263N39vqjzR6p36z4XhuyDa4hovwyK15j8nLtwHNv9RwyBVsoKVaAFgRJnbzb9vtrl",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "REXONA 10 MILER - Quezon City",
+    "distance": "16KM,10KM,5KM",
+    "location": "UP Diliman, Quezon City",
+    "organizer": "RUNRIO",
+    "date": "August 16, 2026",
+    "website": "https://www.facebook.com/CNCreativesPH/posts/pfbid0263N39vqjzR6p36z4XhuyDa4hovwyK15j8nLtwHNv9RwyBVsoKVaAFgRJnbzb9vtrl",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "REXONA 10 MILER - Makati City",
+    "distance": "16KM,10KM,5KM",
+    "location": "Ayala, Makati City",
+    "organizer": "RUNRIO",
+    "date": "September 13, 2026",
+    "website": "https://www.facebook.com/CNCreativesPH/posts/pfbid0263N39vqjzR6p36z4XhuyDa4hovwyK15j8nLtwHNv9RwyBVsoKVaAFgRJnbzb9vtrl",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "SINGLIFE CEBU INTERNATIONAL MARATHON",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "Cebu City",
+    "organizer": "RUNRIO",
+    "date": "July 12, 2026",
+    "website": "https://raceroster.com/events/2026/113788/sante-barley-trilogy-run-asia-2026-iloilo-leg-1",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "SINGLIFE DAVAO MARATHON",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "Davao City",
+    "organizer": "RUNRIO",
+    "date": "August 15, 2026",
+    "website": "https://raceroster.com/events/2026/113788/sante-barley-trilogy-run-asia-2026-iloilo-leg-1",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "SINGLIFE ILOILO MARATHON",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "Iloilo City",
+    "organizer": "RUNRIO",
+    "date": "April 12, 2026",
+    "website": "https://raceroster.com/events/2026/113788/sante-barley-trilogy-run-asia-2026-iloilo-leg-1",
+    "status": "Opening Soon"
+  },
+    {
+    "name": "SINGLIFE ONE CLARK INTERNATIONAL MARATHON",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "Clark, Pampanga",
+    "organizer": "RUNRIO",
+    "date": "September 20, 2026",
+    "website": "https://raceroster.com/events/2026/113788/sante-barley-trilogy-run-asia-2026-iloilo-leg-1",
+    "status": "Opening Soon"
+  },
+    {
+    "name": "SINGLIFE CAGAYAN DE ORO MARATHON",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "Cagayan de Oro City",
+    "organizer": "RUNRIO",
+    "date": "December 13, 2026",
+    "website": "https://raceroster.com/events/2026/113788/sante-barley-trilogy-run-asia-2026-iloilo-leg-1",
+    "status": "Opening Soon"
+  },
+      {
+    "name": "EARTH DAY RUN",
+    "distance": "21KM,10KM,5KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RUNRIO",
+    "date": "April 19, 2026",
+    "website": "https://raceroster.com/events/2026/113788/sante-barley-trilogy-run-asia-2026-iloilo-leg-1",
+    "status": "Opening Soon"
+  },
+      {
+    "name": "EARTH DAY RUN",
+    "distance": "21KM,10KM,5KM",
+    "location": "Davao City",
+    "organizer": "RUNRIO",
+    "date": "April 12, 2026",
+    "website": "https://raceroster.com/events/2026/113788/sante-barley-trilogy-run-asia-2026-iloilo-leg-1",
+    "status": "Opening Soon"
+  },
+       {
+    "name": "EARTH DAY RUN",
+    "distance": "21KM,10KM,5KM",
+    "location": "Cebu City",
+    "organizer": "RUNRIO",
+    "date": "April 26, 2026",
+    "website": "https://raceroster.com/events/2026/113788/sante-barley-trilogy-run-asia-2026-iloilo-leg-1",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "PINOY FITNESS 21K CHALLENGE",
+    "distance": "21KM",
+    "location": "Vermosa, Cavite City",
+    "organizer": "PINOY FITNESS & PEP SQUAD EVENTS",
+    "date": "September 26, 2026",
+    "website": "https://pinoyfitness.myruntime.com/register/pf-sub1-10k-challenge-2026",
+    "status": "Register"
+  },
+    {
+    "name": "PF MAMAW RUN HALLOWEEN EVENT",
+    "distance": "10KM,5KM,3KM,1KM",
+    "location": "Filinvest, Alabang, Muntinlupa City",
+    "organizer": "PINOY FITNESS & PEP SQUAD EVENTS",
+    "date": "October 24, 2026",
+    "website": "https://pinoyfitness.myruntime.com/register/pf-sub1-10k-challenge-2026",
+    "status": "Opening Soon"
+  },
+    {
+    "name": "PINOY FITNESS SUB1:30 15K CHALLENGE",
+    "distance": "15KM",
+    "location": "Vermosa, Cavite City",
+    "organizer": "PINOY FITNESS & PEP SQUAD EVENTS",
+    "date": "May 23, 2026",
+    "website": "https://pinoyfitness.myruntime.com/register/pf-sub1-10k-challenge-2026",
+    "status": "Register"
+  },
+  {
+    "name": "MANILA MARATHON",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RUNRIO",
+    "date": "June 7, 2026",
+    "website": "https://raceroster.com/events/2026/113788/sante-barley-trilogy-run-asia-2026-iloilo-leg-1",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "BOHOL INTERNATIONAL MARATHON",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "Panglao, Bohol",
+    "organizer": "BIM",
+    "date": "August 30, 2026",
+    "website": "https://megatechph.com/events/bim-2026",
+    "status": "Register"
+  },
+  {
+    "name": "AIA ROCK 'N' ROLL MANILA",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "Quirino Grandstand, Manila City",
+    "organizer": "SUNRISE EVENTS PHILIPPINES & IRONMAN GROUP",
+    "date": "November 29, 2026",
+    "website": "https://www.runrocknroll.com/events/manila/register",
+    "status": "Register"
+  },
+  {
+    "name": "ATHENA OLYMPUS RUN",
+    "distance": "16KM,10KM,5KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RSRJ EVENTS MANAGEMENT",
+    "date": "January 4, 2026",
+    "website": "https://rsrjevents.myruntime.com/register/athena-olympus-run-2026",
+    "status": "Event is Full"
+  },
+  {
+    "name": "HADES OLYMPUS RUN",
+    "distance": "18KM,10KM,5KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RSRJ EVENTS MANAGEMENT",
+    "date": "April 5, 2026",
+    "website": "https://rsrjevents.myruntime.com/register/athena-olympus-run-2026",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "POSEIDON OLYMPUS RUN",
+    "distance": "21KM,10KM,5KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RSRJ EVENTS MANAGEMENT",
+    "date": "May 24, 2026",
+    "website": "https://rsrjevents.myruntime.com/register/athena-olympus-run-2026",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "ZEUS OLYMPUS RUN",
+    "distance": "32KM,16KM,10KM,5KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RSRJ EVENTS MANAGEMENT",
+    "date": "July 26, 2026",
+    "website": "https://rsrjevents.myruntime.com/register/athena-olympus-run-2026",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "VINTA MARATHON DIA DE ZAMBOANGA",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "Paseo del Mar, Zamboanga City",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "March 1, 2026",
+    "website": "https://smoke10events.myruntime.com/register/vinta-marathon-dia-de-zamboanga-2026",
+    "status": "Register"
+  },
+  {
+    "name": "FIT TO RUN - LEG 1",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "Clark, Pampanga",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "February 15, 2026",
+    "website": "https://smoke10events.myruntime.com/register/fit-to-run-2026-leg-1-clark",
+    "status": "Register"
+  },
+  {
+    "name": "IRUN TARLAC",
+    "distance": "21KM,10KM,5KM",
+    "location": "Cresendo, Tarlac City",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "January 11, 2026",
+    "website": "https://smoke10events.myruntime.com/register/irun-tarlac-2025",
+    "status": "Register"
+  },
+  {
+    "name": "Y2K: TAKBOCAUE",
+    "distance": "10KM,5KM",
+    "location": "Bocaue Municipal Hall, Bulacan",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "January 11, 2026",
+    "website": "https://smoke10events.myruntime.com/register/y2k-takbocaue-2026",
+    "status": "Register"
+  },
+  {
+    "name": "JUAN BLUE RUN",
+    "distance": "16KM,10KM,5KM,3KM,1.5KM",
+    "location": "Clark, Pampanga",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "January 17, 2026",
+    "website": "https://smoke10events.myruntime.com/register/juan-blue-run-2026",
+    "status": "Register"
+  },
+  {
+    "name": "GIRL POWER RUN",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "Clark, Pampanga",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "January 18, 2026",
+    "website": "https://smoke10events.myruntime.com/register/girl-power-run-2026",
+    "status": "Register"
+  },
+  {
+    "name": "PAMPANGA TO BULACAN ULTRAMARATHON",
+    "distance": "50KM Solo, 2-Man Relay",
+    "location": "Natividad Guagua Adventist School to Baliwag City Hall",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "January 24, 2026",
+    "website": "https://smoke10events.myruntime.com/register/pampanga-to-bulacan-ultramarathon-2026",
+    "status": "Register"
+  },
+  {
+    "name": "MNL CITY RUN - HEARTBEAT RUN",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "Filinvest, Alabang",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "March 8, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "MNL CITY RUN - AQUA RUN",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "Filinvest, Alabang",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "July 26, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "MNL CITY RUN - ECOFEST RUN",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Filinvest, Alabang",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "October 4, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "MNL CITY RUN - THE GIFT OF RUNNING",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Filinvest, Alabang",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "December 6, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "Diliman Half Marathon",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "UP Diliman",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "October 18, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "ATENEO ONE BEAT FEST RUN",
+    "distance": "10KM,5KM,3KM,1KM Dog",
+    "location": "Ateneo de Manila University, Quezon City",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "February 8, 2026",
+    "website": "https://myruntime.com/register/one-beat-fest-fun-run",
+    "status": "Register"
+  },
+  {
+    "name": "ARGO RUN",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "UP Los Banos",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "February 8, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "IWHITE RUN",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "Filinvest, Alabang",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "April 26, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "UP FIGHT RUN",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "UP Diliman",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "May 10, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "ELORDE THE FLASH RUN",
+    "distance": "21KM,16KM,10KM,5KM,3KM",
+    "location": "Filinvest, Alabang",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "May 31, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "KAPAMILYA RUN",
+    "distance": "10KM,5KM,3KM,1KM Dog",
+    "location": "Filinvest, Alabang",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "June 14, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "PUERTO PRINCESA INTERNATIONAL MARATHON",
+    "distance": "42KM,10KM,5KM,3KM,,
+    "location": "Puerto Princesa City, Palawan",
+    "organizer": "PPI MARATHON",
+    "date": "May 31, 2026",
+    "website": "",
+    "status": "Opening Soon"
   }
-
-  // UP Diliman
-  if (s === 'up diliman' || s === 'up diliman quezon' || s === 'up diliman, quezon') {
-    return 'UP Diliman, Quezon City';
-  }
-
-if (s === 'vermosa' || s === 'vermosa cavite' || s === 'vermosa cavite city'|| s === 'vermosa, cavite' || s === 'vermosa, cavite city') {
-  return 'Vermosa, Imus, Cavite';
-}
-
-  // default (unchanged)
-  return rawLocation;
-}
-
-function normalizeDistanceLabel(raw) {
-  let s = (raw || '').toString().trim().replace(/\s+/g, ' ');
-
-  // DOG category (force exact casing)
-  if (/dog/i.test(s)) return '1KM Dog';
-
-  // Get first number
-  const m = s.match(/(\d+)/);
-  if (!m) return s;
-
-  const n = parseInt(m[1], 10);
-  if (!Number.isFinite(n)) return s;
-
-  // Force: "21" / "21k" / "21 km" / "21KM" => "21KM"
-  return `${n}KM`;
-}
-
-	
-function renderRaces() {
-            const filteredRaces = filterData(state.races, false);
-			
-            // ✅ ADD THIS LINE HERE
-			filteredRaces.sort((a, b) => {
-				const dateA = new Date(a.date);
-				const dateB = new Date(b.date);
-
-				// 1️⃣ Event Date (ascending)
-				if (!isNaN(dateA) && !isNaN(dateB) && dateA.getTime() !== dateB.getTime()) {
-					return dateA - dateB;
-				}
-
-				// 2️⃣ Alphabetical by race name
-				const nameA = (a.name || '').toLowerCase();
-				const nameB = (b.name || '').toLowerCase();
-				return nameA.localeCompare(nameB);
-			});
-            
-            const perPage = state.pagination.perPage;
-            const totalItems = filteredRaces.length;
-            const totalPages = Math.max(1, Math.ceil(totalItems / perPage));
-            if (state.pagination.page > totalPages) state.pagination.page = 1;
-
-            const startIndex = (state.pagination.page - 1) * perPage;
-            const endIndex = startIndex + perPage;
-            const pageItems = filteredRaces.slice(startIndex, endIndex);
-
-            renderCalendarPagination(totalItems);
-    if (filteredRaces.length === 0) {
-                raceList.innerHTML = `
-                    <div class="p-4 text-center text-gray-500">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <p>No races match your filters</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            raceList.innerHTML = '';
-            
-            pageItems.forEach(race => {
-                const card = document.createElement('div');
-                card.className = 'race-card';
-                
-                // Race name and details
-                const detailsSection = document.createElement('div');
-                detailsSection.className = 'action-section';
-                
-                const raceName = document.createElement('h3');
-                raceName.className = 'race-name poppins-black';
-                raceName.textContent = race.name ? race.name.toUpperCase() : 'UNNAMED RACE';
-                
-                // Make race name clickable if website is available
-                //if (race.website) {
-                //    raceName.addEventListener('click', () => {
-                //        window.open(race.website, '_blank');
-                //    });
-                //    raceName.style.cursor = 'pointer';
-                //}
-                
-                detailsSection.appendChild(raceName);
-                
-                if (race.location) {
-                    const location = document.createElement('div');
-                    location.className = 'race-detail';
-                    location.innerHTML = `
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        ${normalizeLocation(race.location)}
-                    `;
-                    detailsSection.appendChild(location);
-                }
-                
-                if (race.date) {
-                    const date = document.createElement('div');
-                    date.className = 'race-detail';
-                    date.innerHTML = `
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        ${formatDate(race.date)}
-                    `;
-                    detailsSection.appendChild(date);
-                }
-                
-                if (race.organizer) {
-                    const organizer = document.createElement('div');
-                    organizer.className = 'race-detail';
-                    organizer.textContent = `Organizer: ${race.organizer.toUpperCase()}`;
-                    detailsSection.appendChild(organizer);
-                }
-                
-                card.appendChild(detailsSection);
-                
-                // Categories section with register button
-                if (race.distance) {
-                    const categoriesSection = document.createElement('div');
-                    categoriesSection.className = 'categories-section';
-                    
-                    const categoriesDiv = document.createElement('div');
-                    categoriesDiv.className = 'flex flex-wrap flex-1';
-                    
-                    race.distance.split(',').forEach(category => {
-					  const normalized = normalizeDistance(category.trim());
-
-					  const chip = document.createElement('span');
-					  chip.className = `category-chip ${getCategoryColorClass(normalized)}`;
-					  chip.textContent = normalized;
-					  categoriesDiv.appendChild(chip);
-					});
-
-                    
-                    categoriesSection.appendChild(categoriesDiv);
-                    
-                    // Register button - Use status from JSON directly
-                    const registerButton = document.createElement('button');
-                    
-                    // Determine button type based on status
-                    let buttonType = 'register';
-                    let buttonText = 'REGISTER';
-                    
-                    if (race.status) {
-                        if (race.status === 'Register') {
-                            buttonType = 'register';
-                            buttonText = 'REGISTER';
-                        } else if (race.status === 'Event is Full') {
-                            buttonType = 'full';
-                            buttonText = 'EVENT IS FULL';
-                        } else if (race.status === 'Opening Soon') {
-                            buttonType = 'soon';
-                            buttonText = 'OPENING SOON';
-                        }
-                    }
-                    
-                    registerButton.className = `register-button ${buttonType}`;
-					
-                    if (buttonType === 'full') {
-						registerButton.innerHTML = `
-						
-							  <div class="btn-main-text">EVENT IS FULL</div>
-							  <div class="btn-sub-text">(View Details)</div>
-						
-						`;
-					} else {
-						registerButton.textContent = buttonText;
-					}
-                    
-                    if (race.website && buttonType !== 'soon') {
-                        registerButton.addEventListener('click', () => {
-                            window.open(race.website, '_blank');
-                        });
-                    }
-                    
-                    categoriesSection.appendChild(registerButton);
-                    card.appendChild(categoriesSection);
-                }
-                
-                raceList.appendChild(card);
-            });
-			
-			
-        }
-
-        // Render photos - show all data without filtering
-        function renderPhotos() {
-            if (!Array.isArray(state.photos) || state.photos.length === 0) {
-                raceList.innerHTML = `
-                    <div class="p-4 text-center text-gray-500">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <p>No photo data available</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            raceList.innerHTML = '';
-            
-            // Filter photos if search term exists
-            let photosToDisplay = state.photos;
-            if (state.searchTerm) {
-                const searchLower = state.searchTerm.toLowerCase();
-                photosToDisplay = state.photos.filter(photo => {
-                    return (
-                        (photo.nameP && photo.nameP.toLowerCase().includes(searchLower)) ||
-                        (photo.locationP && photo.locationP.toLowerCase().includes(searchLower)) ||
-                        (photo.dateP && formatDate(photo.dateP).toLowerCase().includes(searchLower)) ||
-                        (photo.distanceP && photo.distanceP.toLowerCase().includes(searchLower)) ||
-                        (photo.listOfPhotogs && photo.listOfPhotogs.some(p => p.toLowerCase().includes(searchLower)))
-                    );
-                });
-            }
-            
-            if (photosToDisplay.length === 0) {
-                raceList.innerHTML = `
-                    <div class="p-4 text-center text-gray-500">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <p>No results found. Try a different keyword</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            photosToDisplay.forEach(photo => {
-                const card = document.createElement('div');
-                card.className = 'race-card';
-                
-                // Race name and details
-                const detailsSection = document.createElement('div');
-                detailsSection.className = 'action-section';
-                
-                const raceName = document.createElement('h3');
-                raceName.className = 'race-name poppins-black';
-                raceName.textContent = photo.nameP ? photo.nameP.toUpperCase() : 'UNNAMED RACE';
-                detailsSection.appendChild(raceName);
-                
-                if (photo.dateP) {
-                    const date = document.createElement('div');
-                    date.className = 'race-detail';
-                    date.innerHTML = `
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        ${formatDate(photo.dateP)}
-                    `;
-                    detailsSection.appendChild(date);
-                }
-                
-                if (photo.locationP) {
-                    const location = document.createElement('div');
-                    location.className = 'race-detail';
-                    location.innerHTML = `
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        ${photo.locationP}
-                    `;
-                    detailsSection.appendChild(location);
-                }
-                
-                card.appendChild(detailsSection);
-				
-				// Add photographers section
-                if (photo.listOfPhotogs && Array.isArray(photo.listOfPhotogs) && photo.listOfPhotogs.length > 0) {
-                    const photographersLabel = document.createElement('div');
-                    photographersLabel.className = 'photographers-title poppins-black';
-                    photographersLabel.textContent = 'LIST OF PHOTOGRAPHERS';
-                    
-					
-					const photographersInstruct = document.createElement('div');
-                    photographersInstruct.className = 'photographers-instruct';
-                    photographersInstruct.textContent = 'Click the photographer\'s name to view photos';
-					
-                    const photographersContainer = document.createElement('div');
-                    photographersContainer.className = 'flex flex-wrap mt-1';
-                    
-                    // Sort photographers according to the specified hierarchy
-                    const photographerOrder = {
-                        'CN Creatives': 1,
-                        'AR Sports PH': 2,
-                        'Genuine Sole': 3,
-                        'Humble Runner': 4,
-                        'PH Running Overload': 5,
-                        'Pinoy Fitness': 6
-                    };
-                    
-                    const sortedPhotographers = [...photo.listOfPhotogs].sort((a, b) => {
-                        const orderA = photographerOrder[a] || 999;
-                        const orderB = photographerOrder[b] || 999;
-                        return orderA - orderB;
-                    });
-                    
-                    sortedPhotographers.forEach((photographer, index) => {
-                        const button = document.createElement('button');
-                        button.className = `photographer-button ${getPhotographerClass(photographer)}`;
-                        button.textContent = photographer;
-                        
-                        if (photo.photogsURL && Array.isArray(photo.photogsURL) && photo.photogsURL[index]) {
-                            button.addEventListener('click', () => {
-                                window.open(photo.photogsURL[index], '_blank');
-                            });
-                        }
-                        
-                        photographersContainer.appendChild(button);
-                    });
-                    
-                    const photographersSection = document.createElement('div');
-                    photographersSection.className = 'mt-2';
-                    photographersSection.appendChild(photographersLabel);
-					photographersSection.appendChild(photographersInstruct);
-                    photographersSection.appendChild(photographersContainer);
-                    card.appendChild(photographersSection);
-                }
-				
-                
-                // Categories section with results button
-                if (photo.distanceP) {
-                    const categoriesSection = document.createElement('div');
-                    categoriesSection.className = 'categories-section';
-                    
-                    const categoriesDiv = document.createElement('div');
-                    categoriesDiv.className = 'flex flex-wrap flex-1';
-                    
-                    photo.distanceP.split(',').forEach(category => {
-                        const chip = document.createElement('span');
-                        chip.className = `category-chip ${getCategoryColorClass(category)}`;
-                        chip.textContent = normalizeDistanceLabel(category);
-                        categoriesDiv.appendChild(chip);
-                    });
-                    
-                    categoriesSection.appendChild(categoriesDiv);
-                    
-                    // Results button
-                    const resultsButton = document.createElement('button');
-                    resultsButton.className = 'register-button results';
-                    resultsButton.textContent = 'VIEW RESULTS';
-                    
-                    // If there's a resultsURL, make the button open it
-                    if (photo.resultsURL) {
-                        resultsButton.addEventListener('click', () => {
-                            window.open(photo.resultsURL, '_blank');
-                        });
-                    }
-                    
-                    categoriesSection.appendChild(resultsButton);
-                    card.appendChild(categoriesSection);
-                }
-                
-                
-                
-                raceList.appendChild(card);
-				
-			const goTopBtn = document.createElement('button');
-			goTopBtn.type = 'button'; // 🔥 IMPORTANT
-			goTopBtn.textContent = 'Go to the top';
-			goTopBtn.className = 'go-top-btn';
-
-			goTopBtn.addEventListener('click', () => {
-				paginationContainer.scrollIntoView({
-					behavior: 'smooth',
-					block: 'start'
-				});
-			});
-
-			raceList.appendChild(goTopBtn);
-			
-            });
-        }
-
-        // Filter data based on current filters - only used for races view
-        function filterData(data, isPhotos) {
-            if (!Array.isArray(data)) {
-                console.error('Invalid data format: expected an array, got', typeof data);
-                return [];
-            }
-            
-            // For photos view, return all data without filtering
-            if (isPhotos) {
-                return data;
-            }
-            
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-            
-            return data.filter(item => {
-                const name = item.name;
-                const date = item.date;
-                const location = item.location;
-                const distance = item.distance;
-                const organizer = item.organizer;
-                
-                // Date filter - only show future dates for races
-                if (date) {
-					const itemDate = new Date(date);
-					if (!isNaN(itemDate.getTime())) {
-						itemDate.setHours(0, 0, 0, 0);
-						if (itemDate <= today) return false;  // ✅ blocks past AND today
-					}
-				}
-				
-				if (state.filters.year && state.filters.year.length > 0 && date) {
-				  const itemDate = new Date(date);
-				  if (!isNaN(itemDate.getTime())) {
-					const y = itemDate.getFullYear().toString();
-					if (!state.filters.year.includes(y)) return false;
-				  }
-				}
-                
-                // Search term filter
-                if (state.searchTerm) {
-                    const searchLower = state.searchTerm.toLowerCase();
-					
-					const dayName = (date && !isNaN(new Date(date).getTime()))
-					  ? new Intl.DateTimeFormat('en-US', { weekday: 'long' })
-						  .format(new Date(date))
-						  .toLowerCase()
-					  : '';
-							  
-                    const rawSearch = state.searchTerm.trim();
-					const looksLikeDistance = /^\d+(?:\.\d+)?\s*(km|k|m)?(\s|$)/i.test(rawSearch);
-
-					// for "2-MAN RELAY" vs "2 man relay" matching
-					const searchTextNorm = rawSearch
-					  .toLowerCase()
-					  .replace(/[-_]+/g, ' ')
-					  .replace(/\s+/g, ' ')
-					  .trim();
-
-					const matchesSearch =
-					  // ✅ IMPORTANT: if search looks like a distance, do NOT match race name (prevents 1KM matching 21KM in name)
-					  (!looksLikeDistance && name && name.toLowerCase().includes(searchLower)) ||
-
-					  (normalizeKey(normalizeLocation(location)).includes(normalizeKey(searchLower))) ||
-					  (organizer && organizer.toLowerCase().includes(searchLower)) ||
-
-					  // ✅ Distance/category match (supports BOTH: numeric distances + text categories like 2-MAN RELAY)
-					  (() => {
-						if (!distance) return false;
-
-						// If user typed a real distance (e.g., 1KM / 500M), use your “safe distance” logic
-						if (looksLikeDistance) {
-						  const sDist = normalizeDistance(rawSearch);
-						  const tokens = distance.split(',').map(d => normalizeDistance(d));
-
-						  // exact token match OR "1KM" matches "1KM Dog" (prefix + space)
-						  return tokens.some(t => t === sDist || t.startsWith(sDist + ' '));
-						}
-
-						// If user typed a text category (e.g., "2-MAN RELAY"), match against raw distance tokens (normalized text)
-						const tokensRaw = distance.split(',').map(d => (d || '').trim()).filter(Boolean);
-						return tokensRaw.some(t => {
-						  const tNorm = t
-							.toLowerCase()
-							.replace(/[-_]+/g, ' ')
-							.replace(/\s+/g, ' ')
-							.trim();
-						  return tNorm.includes(searchTextNorm);
-						});
-					  })() ||
-
-					  (dayName && dayName.includes(searchLower));
-
-                    
-                    // Check for date matches in various formats
-                    let matchesDate = false;
-                    if (date) {
-                        const itemDate = new Date(date);
-                        if (!isNaN(itemDate.getTime())) {
-                            // Format the date in various ways to match against search
-                            const monthNames = ['january', 'february', 'march', 'april', 'may', 'june', 
-                                              'july', 'august', 'september', 'october', 'november', 'december'];
-                            const shortMonthNames = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 
-                                                   'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
-
-                            
-                            const month = itemDate.getMonth();
-                            const day = itemDate.getDate();
-                            const year = itemDate.getFullYear();
-                            const shortYear = year % 100;
-                            
-                            // Various date formats
-                            const dateFormats = [
-                                `${monthNames[month]} ${day}`,
-                                `${shortMonthNames[month]} ${day}`,
-                                `${month + 1}/${day}`,
-                                `${month + 1}-${day}`,
-                                `${month + 1}/${day}/${year}`,
-                                `${month + 1}/${day}/${shortYear}`,
-                                `${month + 1}-${day}-${year}`,
-                                `${month + 1}-${day}-${shortYear}`,
-                                `${day}/${month + 1}`,
-                                `${day}-${month + 1}`,
-                                `${day}/${month + 1}/${year}`,
-                                `${day}/${month + 1}/${shortYear}`,
-                                `${day}-${month + 1}-${year}`,
-                                `${day}-${month + 1}-${shortYear}`,
-                                `${monthNames[month]} ${day}, ${year}`,
-                                `${shortMonthNames[month]} ${day} ${year}`
-                            ];
-                            
-                            // Add padding variations
-                            const paddedMonth = (month + 1).toString().padStart(2, '0');
-                            const paddedDay = day.toString().padStart(2, '0');
-                            
-                            dateFormats.push(
-                                `${paddedMonth}/${paddedDay}`,
-                                `${paddedMonth}-${paddedDay}`,
-                                `${paddedMonth}/${paddedDay}/${year}`,
-                                `${paddedMonth}/${paddedDay}/${shortYear}`,
-                                `${paddedMonth}-${paddedDay}-${year}`,
-                                `${paddedMonth}-${paddedDay}-${shortYear}`
-                            );
-							
-                            dateFormats.push(
-								`${year}`,
-								`${shortYear}`
-							);
-                            matchesDate = dateFormats.some(format =>
-							format.toLowerCase().includes(searchLower)
-							);
-							
-							// Allow searching by just the year (e.g., "2026")
-							if (`${year}`.includes(searchLower) || `${shortYear}` === searchLower) {
-							matchesDate = true;
-							}
-                            
-                            // Also check if search is just the month name
-                            if (monthNames[month].includes(searchLower) || shortMonthNames[month].includes(searchLower)) {
-                                matchesDate = true;
-                            }
-                        }
-                    }
-                    
-                    if (!matchesSearch && !matchesDate) return false;
-                }
-                
-                // Distance filter
-                if (state.filters.distance.length > 0 && distance) {
-				  const itemDistances = distance
-					.split(',')
-					.map(d => normalizeDistance(d.trim())); // ✅ normalize JSON distances
-
-				  if (!itemDistances.some(d => state.filters.distance.includes(d))) {
-					return false;
-				  }
-				}
-                
-                // Organizer filter
-                if (state.filters.organizer.length > 0) {
-                    const normalizedOrganizer = normalizeOrganizerName(organizer);
-                    
-                    if (state.filters.organizer.includes('OTHERS')) {
-                        if (['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA'].includes(normalizedOrganizer) && 
-                            !state.filters.organizer.includes(normalizedOrganizer)) {
-                            return false;
-                        }
-                    } else if (!state.filters.organizer.includes(normalizedOrganizer)) {
-                        return false;
-                    }
-                }
-                
-                // Month filter
-                if (state.filters.month.length > 0 && date) {
-                    const itemDate = new Date(date);
-                    if (!isNaN(itemDate.getTime())) {
-                        const monthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(itemDate);
-                        if (!state.filters.month.includes(monthName)) {
-                            return false;
-                        }
-                    }
-                }
-                
-                // Year filter
-                if (state.filters.year.length > 0 && date) {
-                    const itemDate = new Date(date);
-                    if (!isNaN(itemDate.getTime())) {
-                        const year = itemDate.getFullYear().toString();
-                        if (!state.filters.year.includes(year)) {
-                            return false;
-                        }
-                    }
-                }
-                
-                // Day filter
-                if (state.filters.day.length > 0 && date) {
-                    const itemDate = new Date(date);
-                    if (!isNaN(itemDate.getTime())) {
-                        const day = itemDate.getDay();
-                        const dayName = day === 6 ? 'Saturday' : day === 0 ? 'Sunday' : '';
-                        if (!state.filters.day.includes(dayName)) {
-                            return false;
-                        }
-                    }
-                }
-                
-                return true;
-            });
-        }
-
-        // Toggle view between photos and calendar
-			function toggleView() {
-            state.view = state.view === 'photos' ? 'calendar' : 'photos';
-            headerTitle.textContent = state.view === 'photos' ? 'Race Photos & Results' : 'Race Calendar - PixHero';
-            toggleViewButton.textContent = state.view === 'photos' ? 'Race Calendar - PixHero' : 'Race Photos & Results';
-            toggleViewButton.className = state.view === 'photos' ? 'toggle-button calendar flex items-center' : 'toggle-button photos flex items-center';
-            
-            // Show/hide filters based on view
-            filtersContainer.style.display = state.view === 'photos' ? 'none' : 'block';
-            
-            // Update toggle button icon
-            if (state.view === 'photos') {
-                toggleViewButton.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    Race Calendar - PixHero
-                `;
-            } else {
-                toggleViewButton.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    Race Photos & Results
-                `;
-            }
-            
-            // Reset filters and search
-            state.filters = {
-                distance: [],
-                organizer: [],
-                month: [],
-                year: [],
-                day: []
-            };
-            state.searchTerm = '';
-            searchInput.value = '';
-            searchSuggestions.classList.add('hidden');
-            
-            loadData();
-        }
-
-        // Render current view based on state
-        function renderCurrentView() {
-            if (state.view === 'photos') {
-                renderPhotos();
-            } else {
-                renderRaces();
-            }
-        }
-		
-		function resetFiltersOnly() {
-			state.filters = {
-				distance: [],
-				organizer: [],
-				month: [],
-				year: [],
-				day: []
-			};
-
-			// optional but recommended: go back to page 1 after new search
-			if (state.pagination) state.pagination.page = 1;
-
-			updateFilters(); // updates UI chips to "All"
-		}
-
-        // Reset to default state
-        function resetToDefault() {
-            state.filters = {
-                distance: [],
-                organizer: [],
-                month: [],
-                year: [],
-                day: []
-            };
-            state.searchTerm = '';
-            searchInput.value = '';
-            searchSuggestions.classList.add('hidden');
-            state.pagination.page = 1;
-            updateFilters();
-            
-            // If in photos view, fetch fresh data when refreshing
-            if (state.view === 'photos') {
-                loadPhotoData();
-            } else {
-                loadData();
-            }
-        }
-		
-
-        // Event listeners
-        //toggleViewButton.addEventListener('click', toggleView);
-        
-        refreshButton.addEventListener('click', resetToDefault);
-        
-        searchInput.addEventListener('input', (e) => {
-            generateSearchSuggestions();
-        });
-        
-		searchInput.addEventListener('keydown', (e) => {
-		  if (e.key === 'Enter') {
-			resetFiltersOnly();               //  reset ALL filters to "All"
-			state.pagination.page = 1; 
-			state.searchTerm = searchInput.value;
-			searchSuggestions.classList.add('hidden');
-
-			updateFilters(); // refresh chip UI (All becomes active)
-
-			// Apply search term
-			state.searchTerm = searchInput.value.trim();
-			searchSuggestions.classList.add('hidden');
-
-			// Re-render
-			if (state.view === 'photos') {
-			  loadPhotoData();
-			} else {
-			  renderCurrentView();
-			}
-		  }
-		});
-        
-        // Close suggestions when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!searchInput.contains(e.target) && !searchSuggestions.contains(e.target)) {
-                searchSuggestions.classList.add('hidden');
-            }
-        });
-        
-        // Toggle all filters
-        toggleFiltersButton.addEventListener('click', () => {
-            state.filtersVisible = !state.filtersVisible;
-            
-            if (state.filtersVisible) {
-                document.querySelectorAll('.filter-section').forEach(section => {
-                    const filterId = section.id.replace('FilterContainer', '');
-                    if (!state.hiddenFilters.has(filterId)) {
-                        section.classList.remove('hidden');
-                    }
-                });
-                toggleFiltersButton.innerHTML = `
-                    <span>Hide All Filters</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-                    </svg>
-                `;
-            } else {
-                document.querySelectorAll('.filter-section').forEach(section => {
-                    section.classList.add('hidden');
-                });
-                toggleFiltersButton.innerHTML = `
-                    <span>Show All Filters</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                `;
-            }
-        });
-        
-        // Filter section toggle handlers
-        document.querySelectorAll('.filter-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const filterName = header.getAttribute('data-filter');
-                state.expandedFilters[filterName] = !state.expandedFilters[filterName];
-                updateFilterVisibility();
-            });
-        });
-
-        // Initialize
-        loadData();
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9405435a5773fee1',t:'MTc0NzMzOTY2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe>
-
-</body></html>
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+]
