@@ -722,10 +722,19 @@
   },
   {
     "name": "KAPAMILYA RUN",
-    "distance": "10KM,5KM,3KM, 1KM Dog",
+    "distance": "10KM,5KM,3KM,1KM Dog",
     "location": "Filinvest, Alabang",
     "organizer": "RULE & RICH EVENTS MANAGEMENT",
     "date": "June 14, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "PUERTO PRINCESA INTERNATIONAL MARATHON",
+    "distance": "42KM,21KM,10KM,5KM,"
+    "location": "Puerto Princesa City, Palawan",
+    "organizer": "PPI MARATHON",
+    "date": "May 31, 2026",
     "website": "",
     "status": "Opening Soon"
   }
