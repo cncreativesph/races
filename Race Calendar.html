@@ -75,6 +75,8 @@
         }
 
         .search-bar {
+			position: relative;
+			height: 50px;
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -608,6 +610,56 @@
 			  padding: 6px 5px;
 		}
 		
+		.search-bar.error {
+		  border: 1px solid #dc2626;
+		}
+
+		.search-error-overlay {
+		  position: absolute;
+		  right: 38px;              /* before clear (×) button */
+		  top: 50%;
+		  transform: translateY(-50%);
+		  font-size: 11px;
+		  color: #dc2626;
+		  pointer-events: none;
+		  white-space: nowrap;
+		}
+
+		.search-input-wrap {
+		  position: relative;
+		  flex: 1;
+		  height: 100%;          /* ✅ inherit from search-bar */
+		  overflow: hidden;      /* ✅ prevents expansion */
+		}
+
+
+		.search-inline-error {
+		  position: absolute;
+		  top: 50%;
+		  transform: translateY(-50%);
+		  
+		  margin-left: 12px;        /* ✅ space from typed text */
+		  font-size: 11px;
+		  font-style: italic;       /* ✅ italic */
+		  line-height: 1;
+		  color: #dc2626;
+
+		  white-space: nowrap;
+		  pointer-events: none;
+		}
+		
+		@keyframes shake {
+		  0% { transform: translateX(0); }
+		  25% { transform: translateX(-3px); }
+		  50% { transform: translateX(3px); }
+		  75% { transform: translateX(-3px); }
+		  100% { transform: translateX(0); }
+		}
+
+		.search-bar.shake {
+		  animation: shake 180ms ease;
+		}
+
 		/* PixHero text (shows when pagination is hidden) */
 		/* Base PixHero text */
 			.pixhero-fallback {
@@ -730,10 +782,23 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 ml-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
             </svg>
+			<div class="search-input-wrap">
             <input type="text" id="searchInput" placeholder="Search race name, location, organizer, month, year…" class="w-full bg-transparent outline-none text-base text-black">
-			 <button id="clearSearchBtn" type="button" class="clear-search-btn hidden">×</button>
+				<span id="searchInlineError" class="search-inline-error hidden">
+				  Type at least 3 characters
+				</span>
+				<span id="searchErrorOverlay"
+					  class="search-error-overlay hidden">
+				  Type at least 3 characters
+				</span>
+			</div>
+				<button id="clearSearchBtn" type="button" class="clear-search-btn hidden">×</button>
+
             <div id="searchSuggestions" class="search-suggestions hidden"></div>
+		
+
         </div>
+			
     </div>
 
     <div class="flex justify-between items-center px-4 py-2">
@@ -757,6 +822,21 @@
     </div>
 
     <div id="filtersContainer" class="px-4 py-2" style="display: none;">
+	
+			<!-- Location Filter -->
+		<div id="locationFilterContainer" class="filter-section">
+		  <div class="filter-header" data-filter="location">
+			<h3 class="text-xs font-bold">Location</h3>
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-gray-500 transition-transform"
+			  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+			  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+			</svg>
+		  </div>
+		  <div class="filter-content" id="locationFilters">
+			<div class="skeleton h-5 w-20 mr-2 "></div>
+		  </div>
+		</div>
+
         <!-- Distance Filter -->
         <div id="distanceFilterContainer" class="filter-section">
             <div class="filter-header" data-filter="distance">
@@ -846,12 +926,15 @@
 	</div>
 	
     <script>
+		let searchErrorTimeout = null;
+		
         // State management
         const state = {
             view: 'calendar', // 'photos' or 'calendar'
             races: [],
             photos: [],
             filters: {
+				location: [], 
                 distance: [],
                 organizer: [],
                 month: [],
@@ -861,16 +944,19 @@
             searchTerm: '',
             filtersVisible: true,
             expandedFilters: {
+				location: true,
                 distance: false,
                 organizer: true,
                 month: true,
                 year: true,
-                day: true // Day filter initially expanded
+                day: false // Day filter initially expanded
             },
             suggestions: [],
             hiddenFilters: new Set(), // Track which filters should remain hidden
             pagination: { page: 1, perPage: 25 }
         };
+		
+		let locations = new Set();
 
         // DOM elements
         const headerTitle = document.querySelector('.header h1');
@@ -883,6 +969,23 @@
 
 		function toggleClearBtn(){
 		  clearSearchBtn.classList.toggle('hidden', !searchInput.value.trim());
+		}
+
+		const searchInlineError = document.getElementById('searchInlineError');
+
+		function positionInlineError() {
+		  const value = searchInput.value || '';
+		  const span = document.createElement('span');
+		  span.style.visibility = 'hidden';
+		  span.style.whiteSpace = 'pre';
+		  span.style.font = window.getComputedStyle(searchInput).font;
+		  span.textContent = value;
+
+		  document.body.appendChild(span);
+		  const textWidth = span.getBoundingClientRect().width;
+		  document.body.removeChild(span);
+
+		  searchInlineError.style.left = `${8 + textWidth}px`;
 		}
 
 		searchInput.addEventListener('input', () => {
@@ -906,6 +1009,8 @@
         const toggleFiltersButton = document.getElementById('toggleFiltersButton');
         const filtersContainer = document.getElementById('filtersContainer');
         const distanceFilters = document.getElementById('distanceFilters');
+		const locationFilters = document.getElementById('locationFilters');
+		const locationFilterContainer = document.getElementById('locationFilterContainer');
         const organizerFilters = document.getElementById('organizerFilters');
         const monthFilters = document.getElementById('monthFilters');
         const yearFilters = document.getElementById('yearFilters');
@@ -969,6 +1074,7 @@
                 
                 // Reset filters
                 state.filters = {
+					location: [],
                     distance: [],
                     organizer: [],
                     month: [],
@@ -1075,6 +1181,7 @@
             return name;
         }
 
+
 		function normalizeLocation(loc) {
 		  if (!loc) return '';
 		  const s = loc.trim().toLowerCase();
@@ -1157,11 +1264,12 @@
 			  return s.toUpperCase();
 			}
 
-		
-		
+
+	
         // Setup filters based on data
         function setupFilters(data, isPhotos) {
             // Extract unique values for filters
+			locations = new Set();
             const distances = new Set();
             const organizers = new Set();
             const months = new Set();
@@ -1176,6 +1284,18 @@
             const currentYear = today.getFullYear();
             
             data.forEach(item => {
+			
+			// Process locations (Calendar view only)
+			if (!isPhotos) {
+			  const rawLocation = item.location;
+				if (rawLocation) {
+				  const normLoc = normalizeLocation(rawLocation);
+				  const group = getLocationGroupFromNormalized(normLoc);
+				  locations.add(group);
+				}
+
+			}
+
                 // Process distances
                 const distanceField = isPhotos ? item.distanceP : item.distance;
                 if (distanceField) {
@@ -1230,6 +1350,7 @@
 			  state.searchTerm = '';
 			  searchInput.value = '';
 			  searchSuggestions.classList.add('hidden');
+			  clearSearchError();
 			}
 			
 			
@@ -1250,14 +1371,91 @@
             
             // Render distance filters (only for calendar view)
             if (!isPhotos) {
+				// Render location filters (Calendar view)
+					locationFilters.innerHTML = "";
+
+					// All chip
+					const allLocChip = document.createElement("div");
+					allLocChip.className = `filter-chip ${state.filters.location.length === 0 ? "active" : ""}`;
+					allLocChip.textContent = "All";
+					allLocChip.addEventListener("click", () => {
+					  clearSearchOnFilterChange();
+					  state.pagination.page = 1;
+					  state.filters.location = [];
+					  updateFilters();
+					  renderCurrentView();
+					});
+					locationFilters.appendChild(allLocChip);
+					
+					// Sorted location groups (alphabetical, but you can keep your preferred order if you want later)
+					const LOCATION_FILTER_ORDER = [
+					  "NCR",
+					  "Cavite",
+					  "Luzon (Outside NCR & Cavite)",
+					  "Visayas",
+					  "Mindanao",
+					  "Others"
+					];
+
+					LOCATION_FILTER_ORDER.forEach(loc => {
+					  // optional: show only groups that exist in the data
+					  // if (!locations.has(loc)) return;
+
+					  const chip = document.createElement("div");
+					  chip.className = `filter-chip ${state.filters.location.includes(loc) ? "active" : ""}`;
+					  chip.textContent = loc;
+
+					  chip.addEventListener("click", () => {
+						clearSearchOnFilterChange();
+						state.pagination.page = 1;
+
+						if (state.filters.location.includes(loc)) {
+						  state.filters.location = state.filters.location.filter(x => x !== loc);
+						} else {
+						  state.filters.location.push(loc);
+						}
+
+						updateFilters();
+						renderCurrentView();
+					  });
+
+					  locationFilters.appendChild(chip);
+					});
+
+
+			
                 distanceFilters.innerHTML = '';
                 
                 // Sort distances by numeric value (descending)
                 const sortedDistances = Array.from(distances).sort((a, b) => {
-                    const numA = parseInt(a.match(/\d+/) || [0]);
-                    const numB = parseInt(b.match(/\d+/) || [0]);
-                    return numB - numA; // Descending order
-                });
+				  const parseDistance = (value) => {
+					const km = value.match(/^(\d+(\.\d+)?)\s*KM/i);
+					const m  = value.match(/^(\d+(\.\d+)?)\s*M$/i);
+
+					if (km) return { type: 'KM', value: parseFloat(km[1]) };
+					if (m)  return { type: 'M',  value: parseFloat(m[1]) };
+
+					return { type: 'OTHER', value };
+				  };
+
+				  const da = parseDistance(a);
+				  const db = parseDistance(b);
+
+				  // 1️⃣ KM → M → OTHER
+				  const typeRank = { KM: 1, M: 2, OTHER: 3 };
+				  if (typeRank[da.type] !== typeRank[db.type]) {
+					return typeRank[da.type] - typeRank[db.type];
+				  }
+
+				  // 2️⃣ Same unit → bigger first
+				  if (da.type === 'KM' || da.type === 'M') {
+					return db.value - da.value;
+				  }
+
+				  // 3️⃣ OTHER → alphabetical
+				  return da.value.localeCompare(db.value);
+				});
+
                 
                 // Add "All" option first
                 const allChip = document.createElement('div');
@@ -1463,6 +1661,17 @@
 
         // Update filter UI
         function updateFilters() {
+		
+			// Location filters
+			document.querySelectorAll('#locationFilters .filter-chip').forEach(chip => {
+			  const isAll = chip.textContent === 'All';
+			  const isActive = isAll
+				? state.filters.location.length === 0
+				: state.filters.location.includes(chip.textContent);
+
+			  chip.classList.toggle('active', isActive);
+			});
+
             // Distance filters
             document.querySelectorAll('#distanceFilters .filter-chip').forEach(chip => {
                 const isAll = chip.textContent === 'All';
@@ -1591,6 +1800,15 @@
                 console.error('Invalid data format for suggestions');
                 return;
             }
+			
+			const LOCATION_GROUP_SUGGESTIONS = [
+			  "NCR",
+			  "Cavite",
+			  "Luzon (Outside NCR & Cavite)",
+			  "Visayas",
+			  "Mindanao"
+			];
+
             
             // Month names for suggestions
             const monthNames = [
@@ -1611,6 +1829,14 @@
 					suggestions.add(day);
 				}
 			});
+			
+			// ✅ Add location group suggestions
+			LOCATION_GROUP_SUGGESTIONS.forEach(locGroup => {
+			  if (locGroup.toLowerCase().includes(searchTerm)) {
+				suggestions.add(locGroup);
+			  }
+			});
+
 						
             data.forEach(item => {
                 const name = state.view === 'photos' ? item.nameP : item.name;
@@ -1687,6 +1913,23 @@
                     item.className = 'suggestion-item';
                     item.textContent = suggestion;
                     item.addEventListener('click', () => {
+					  const picked = String(suggestion);
+
+					  // ✅ If user clicked a location group, apply location filter
+					  if (LOCATION_GROUP_SUGGESTIONS.includes(picked)) {
+						resetFiltersOnly();
+						state.filters.location = [picked];
+						state.pagination.page = 1;
+
+						// clear text search so filtering is purely by location filter
+						searchInput.value = picked;
+						state.searchTerm = '';
+						searchSuggestions.classList.add('hidden');
+
+						updateFilters();
+						renderCurrentView();
+						return;
+					  }
 						resetFiltersOnly();   
                         searchInput.value = String(suggestion);
 						state.searchTerm = String(suggestion);
@@ -1849,6 +2092,100 @@ function normalizeLocation(raw) {
 
   return raw; // default
 }
+
+// ===== Location grouping (Calendar view) =====
+
+const LOCATION_GROUPS = [
+  {
+    name: "NCR",
+    keywords: [
+      "caloocan",
+      "las piñas", "las pinas",
+      "makati",
+      "malabon",
+      "mandaluyong",
+      "manila",
+      "marikina",
+      "muntinlupa",
+      "navotas",
+      "parañaque", "paranaque",
+      "pasay",
+      "pasig",
+      "quezon city",
+      "san juan",
+      "taguig",
+      "valenzuela",
+      "pateros"
+    ]
+  },
+  { name: "Cavite", keywords: ["cavite"] },
+  {
+    name: "Luzon (Outside NCR & Cavite)",
+	  keywords: [
+		// Pampanga
+		"pampanga", "san fernando", "angeles", "clark", "guagua",
+		
+		// Bulacan
+		"bulacan", "baliwag", "malolos", "meycauayan", "marilao",
+		"plaridel", "san jose del monte", "sjdm", "calumpit",
+		"guiguinto", "balagtas", "bocaue", "pulilan",
+		
+		// Laguna
+		"laguna", "calamba", "los baños", "los banos", "biñan", "binan",
+		"sta rosa", "santa rosa", "san pablo", "cabuyao",
+		
+		// Batangas
+		"batangas", "lipa", "tanauan", "sto tomas", "santo tomas",
+		
+		// Rizal
+		"rizal", "antipolo", "cainta", "taytay", "angono",
+		
+		// North Luzon
+		"tarlac", "bataan", "zambales", "nueva ecija",
+		"pangasinan", "la union", "ilocos", "benguet", "baguio",
+		
+		// South Luzon / Bicol
+		"quezon province", "lucena",
+		"bicol", "albay", "camarines", "naga", "sorsogon",
+		
+		// Palawan
+		"palawan", "puerto princesa"
+	  ]
+  },
+  {
+    name: "Visayas",
+    keywords: [
+      "cebu", "iloilo", "bacolod", "bohol",
+      "leyte", "tacloban",
+      "dumaguete", "roxas", "kalibo", "boracay"
+    ]
+  },
+  {
+    name: "Mindanao",
+    keywords: [
+      "davao",
+      "cagayan de oro", "cdo",
+      "zamboanga",
+      "general santos", "gensan",
+      "butuan",
+      "bukidnon",
+      "surigao"
+    ]
+  }
+];
+
+function getLocationGroupFromNormalized(normLoc) {
+  const s = (normLoc || "").toLowerCase();
+
+  for (const group of LOCATION_GROUPS) {
+    if (group.keywords.some(k => s.includes(k))) {
+      return group.name;
+    }
+  }
+
+  return "Others"; // ✅ unmatched locations go here
+}
+
 
 function normalizeKey(s) {
   return (s || '')
@@ -2334,6 +2671,16 @@ function renderRaces() {
 				  }
 				}
                 
+				// Location filter
+			if (state.filters.location.length > 0) {
+			  const normLoc = normalizeLocation(item.location || item.locationP || "");
+			  const locGroup = getLocationGroupFromNormalized(normLoc);
+
+			  if (!state.filters.location.includes(locGroup)) {
+				return false;
+			  }
+			}
+
                 // Search term filter
                 if (state.searchTerm) {
                     const searchLower = state.searchTerm.toLowerCase();
@@ -2461,7 +2808,13 @@ function renderRaces() {
                     
                     if (!matchesSearch && !matchesDate) return false;
                 }
-                
+
+
+								// Location group
+				const normLoc = normalizeLocation(item.location || item.locationP || "");
+				const locGroup = getLocationGroupFromNormalized(normLoc);
+				locations.add(locGroup);
+
                 // Distance filter
                 if (state.filters.distance.length > 0 && distance) {
 				  const itemDistances = distance
@@ -2554,6 +2907,7 @@ function renderRaces() {
             
             // Reset filters and search
             state.filters = {
+				  location: [],
                 distance: [],
                 organizer: [],
                 month: [],
@@ -2578,6 +2932,7 @@ function renderRaces() {
 		
 		function resetFiltersOnly() {
 			state.filters = {
+				location: [],
 				distance: [],
 				organizer: [],
 				month: [],
@@ -2594,6 +2949,7 @@ function renderRaces() {
         // Reset to default state
         function resetToDefault() {
             state.filters = {
+				location: [],
                 distance: [],
                 organizer: [],
                 month: [],
@@ -2605,6 +2961,7 @@ function renderRaces() {
             searchSuggestions.classList.add('hidden');
             state.pagination.page = 1;
             updateFilters();
+			clearSearchError(); 
             
             // If in photos view, fetch fresh data when refreshing
             if (state.view === 'photos') {
@@ -2614,6 +2971,16 @@ function renderRaces() {
             }
         }
 		
+		function clearSearchError() {
+		  const searchBar = document.querySelector('.search-bar');
+		  const searchInlineError = document.getElementById('searchInlineError');
+
+		  searchBar.classList.remove('error', 'shake');
+
+		  if (searchInlineError) {
+			searchInlineError.classList.add('hidden');
+		  }
+		}
 
         // Event listeners
         //toggleViewButton.addEventListener('click', toggleView);
@@ -2622,29 +2989,116 @@ function renderRaces() {
         
         searchInput.addEventListener('input', (e) => {
             generateSearchSuggestions();
+			 const searchError = document.getElementById('searchError');
+			searchError.style.display = 'none';
         });
         
+		searchInput.addEventListener('input', () => {
+		  searchBar.classList.remove('error');
+		   searchInlineError.classList.add('hidden');
+		});
+
+		const searchBar = document.querySelector('.search-bar');
+		const searchErrorOverlay = document.getElementById('searchErrorOverlay');
 		searchInput.addEventListener('keydown', (e) => {
-		  if (e.key === 'Enter') {
-			resetFiltersOnly();               //  reset ALL filters to "All"
-			state.pagination.page = 1; 
-			state.searchTerm = searchInput.value;
+		  if (e.key !== 'Enter') return;
+		  e.preventDefault();
+
+		  const value = searchInput.value.trim();
+		  const nonSpaceLength = value.replace(/\s/g, '').length;
+
+		  const searchInlineError = document.getElementById('searchInlineError');
+
+		function positionInlineError() {
+		  const value = searchInput.value || '';
+		  const temp = document.createElement('span');
+		  temp.style.visibility = 'hidden';
+		  temp.style.whiteSpace = 'pre';
+		  temp.style.font = window.getComputedStyle(searchInput).font;
+		  temp.textContent = value;
+
+		  document.body.appendChild(temp);
+		  const width = temp.getBoundingClientRect().width;
+		  document.body.removeChild(temp);
+
+		  searchInlineError.style.left = `${16 + width}px`;
+		}
+		
+		
+
+		if (nonSpaceLength < 3) {
+		  searchBar.classList.add('error');
+
+		  // 🫨 shake on invalid Enter
+		  searchBar.classList.add('shake');
+		  setTimeout(() => searchBar.classList.remove('shake'), 200);
+
+		  if (nonSpaceLength > 0) {
+			searchInlineError.classList.remove('hidden');
+			positionInlineError();
+
+			// ⏱️ auto-hide after 5 seconds
+			clearTimeout(searchErrorTimeout);
+			searchErrorTimeout = setTimeout(() => {
+			  clearSearchError();
+			}, 3000);
+		  }
+
+		  searchSuggestions.classList.add('hidden');
+		  return;
+		}
+
+
+
+
+		  // ✅ clear error if valid
+		  searchBar.classList.remove('error');
+		  searchErrorOverlay.classList.add('hidden');
+
+
+		  const LOCATION_GROUP_SUGGESTIONS = [
+			"NCR",
+			"Cavite",
+			"Luzon (Outside NCR & Cavite)",
+			"Visayas",
+			"Mindanao"
+		  ];
+
+		  // ✅ Case-insensitive + partial location match
+		  const lowerValue = value.toLowerCase();
+		  const matchedLocation = LOCATION_GROUP_SUGGESTIONS.find(loc =>
+			loc.toLowerCase().includes(lowerValue)
+		  );
+
+		  // ✅ Location filter via Enter
+		  if (matchedLocation) {
+			resetFiltersOnly();
+			state.filters.location = [matchedLocation];
+			state.searchTerm = '';
+			state.pagination.page = 1;
+
+			updateFilters();
+			renderCurrentView();
 			searchSuggestions.classList.add('hidden');
+			return;
+		  }
 
-			updateFilters(); // refresh chip UI (All becomes active)
+		  // ✅ Normal text search
+		  resetFiltersOnly();
+		  state.pagination.page = 1;
+		  state.searchTerm = value;
+		  searchSuggestions.classList.add('hidden');
 
-			// Apply search term
-			state.searchTerm = searchInput.value.trim();
-			searchSuggestions.classList.add('hidden');
+		  updateFilters();
 
-			// Re-render
-			if (state.view === 'photos') {
-			  loadPhotoData();
-			} else {
-			  renderCurrentView();
-			}
+		  if (state.view === 'photos') {
+			loadPhotoData();
+		  } else {
+			renderCurrentView();
 		  }
 		});
+
+
         
         // Close suggestions when clicking outside
         document.addEventListener('click', (e) => {
