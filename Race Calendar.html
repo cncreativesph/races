@@ -1921,7 +1921,7 @@
                 limitedSuggestions.forEach(suggestion => {
                     const item = document.createElement('div');
                     item.className = 'suggestion-item';
-                    item.textContent = suggestion;
+                    item.textContent = String(suggestion).toUpperCase();
                     item.addEventListener('click', () => {
 					  const picked = String(suggestion);
 
