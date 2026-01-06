@@ -956,6 +956,15 @@
             pagination: { page: 1, perPage: 25 }
         };
 		
+		const DEFAULT_EXPANDED_FILTERS = {
+			  location: true,
+			  distance: false,
+			  organizer: true,
+			  month: true,
+			  year: true,
+			  day: false
+			};
+					
 		let locations = new Set();
 
         // DOM elements
@@ -1351,6 +1360,7 @@
 			  searchInput.value = '';
 			  searchSuggestions.classList.add('hidden');
 			  clearSearchError();
+			  toggleClearBtn(); 
 			}
 			
 			
@@ -2942,9 +2952,46 @@ function renderRaces() {
 
 			// optional but recommended: go back to page 1 after new search
 			if (state.pagination) state.pagination.page = 1;
+			toggleClearBtn(); 
 
 			updateFilters(); // updates UI chips to "All"
 		}
+		
+		function restoreDefaultFilterUI() {
+		  // restore "Hide / Show All Filters" state
+		  state.filtersVisible = true;
+
+		  // restore default expanded/collapsed behavior
+		  state.expandedFilters = { ...DEFAULT_EXPANDED_FILTERS };
+
+		  // unhide all filter sections (except intentionally hidden ones)
+		  document.querySelectorAll('.filter-section').forEach(section => {
+			const filterName =
+			  section.querySelector('.filter-header')?.getAttribute('data-filter');
+
+			if (!filterName || !state.hiddenFilters.has(filterName)) {
+			  section.classList.remove('hidden');
+			}
+		  });
+
+		  // restore button label
+		  toggleFiltersButton.innerHTML = `
+			<span>Hide All Filters</span>
+			<svg xmlns="http://www.w3.org/2000/svg"
+			  class="h-4 w-4 ml-1"
+			  fill="none"
+			  viewBox="0 0 24 24"
+			  stroke="currentColor">
+			  <path stroke-linecap="round" stroke-linejoin="round"
+				stroke-width="2"
+				d="M5 15l7-7 7 7" />
+			</svg>
+		  `;
+
+		  // apply expanded/collapsed state to contents + arrows
+		  updateFilterVisibility();
+		}
+
 
         // Reset to default state
         function resetToDefault() {
@@ -2959,16 +3006,20 @@ function renderRaces() {
             state.searchTerm = '';
             searchInput.value = '';
             searchSuggestions.classList.add('hidden');
+			toggleClearBtn(); 
             state.pagination.page = 1;
             updateFilters();
-			clearSearchError(); 
-            
-            // If in photos view, fetch fresh data when refreshing
-            if (state.view === 'photos') {
-                loadPhotoData();
-            } else {
-                loadData();
-            }
+			clearSearchError();
+
+			// ✅ ADD THIS LINE
+			restoreDefaultFilterUI();
+
+			if (state.view === 'photos') {
+			  loadPhotoData();
+			} else {
+			  loadData();
+			}
+
         }
 		
 		function clearSearchError() {
