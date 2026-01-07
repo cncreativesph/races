@@ -42,7 +42,7 @@
     "organizer": "SPEARHEAD EVENTS",
     "date": "January 25, 2026",
     "website": "https://spearheadevents.myruntime.com/register/meowshie-run",
-    "status": "Register"
+    "status": "Event is Full"
   },
   {
     "name": "HOME CREDIT TAKBO PARA SA LIFE",
@@ -132,6 +132,42 @@
     "organizer": "TEAM MALOFIT",
     "date": "August 9, 2026",
     "website": "https://teammalofit.myruntime.com/register/bhm2026/",
+    "status": "Opening Soon"
+  },
+   {
+    "name": "TAKBO PARA SA KALIKASAN - FIRE RUN",
+    "distance": "16KM,10KM,5KM",
+    "location": "Quirino Grandstand, Manila",
+    "organizer": "GREEN MEDIA EVENTS",
+    "date": "May 24, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+   {
+    "name": "TAKBO PARA SA KALIKASAN - WATER RUN",
+    "distance": "18KM,10KM,5KM",
+    "location": "Quirino Grandstand, Manila",
+    "organizer": "GREEN MEDIA EVENTS",
+    "date": "July 26, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+   {
+    "name": "TAKBO PARA SA KALIKASAN - AIR RUN",
+    "distance": "21KM,10KM,5KM",
+    "location": "Quirino Grandstand, Manila",
+    "organizer": "GREEN MEDIA EVENTS",
+    "date": "September 20, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+   {
+    "name": "TAKBO PARA SA KALIKASAN - EARTH RUN",
+    "distance": "25KM,10KM,5KM",
+    "location": "Quirino Grandstand, Manila",
+    "organizer": "GREEN MEDIA EVENTS",
+    "date": "November 15, 2026",
+    "website": "",
     "status": "Opening Soon"
   },
   {
@@ -370,39 +406,102 @@
     "status": "Register"
   },
     {
-    "name": "REXONA 10 MILER - PASAY",
+    "name": "REXONA 10 MILER",
     "distance": "16KM,10KM,5KM",
     "location": "Mall of Asia, Pasay City",
     "organizer": "RUNRIO",
     "date": "March 29, 2026",
-    "website": "https://www.facebook.com/CNCreativesPH/posts/pfbid0263N39vqjzR6p36z4XhuyDa4hovwyK15j8nLtwHNv9RwyBVsoKVaAFgRJnbzb9vtrl",
+    "website": "",
     "status": "Opening Soon"
   },
     {
-    "name": "REXONA 10 MILER - Manila City",
+    "name": "REXONA 10 MILER",
     "distance": "16KM,10KM,5KM",
     "location": "Quirino Grandstand, Manila City",
     "organizer": "RUNRIO",
     "date": "June 28, 2026",
-    "website": "https://www.facebook.com/CNCreativesPH/posts/pfbid0263N39vqjzR6p36z4XhuyDa4hovwyK15j8nLtwHNv9RwyBVsoKVaAFgRJnbzb9vtrl",
+    "website": "",
     "status": "Opening Soon"
   },
   {
-    "name": "REXONA 10 MILER - Quezon City",
+    "name": "REXONA 10 MILER",
     "distance": "16KM,10KM,5KM",
     "location": "UP Diliman, Quezon City",
     "organizer": "RUNRIO",
     "date": "August 16, 2026",
-    "website": "https://www.facebook.com/CNCreativesPH/posts/pfbid0263N39vqjzR6p36z4XhuyDa4hovwyK15j8nLtwHNv9RwyBVsoKVaAFgRJnbzb9vtrl",
+    "website": "",
     "status": "Opening Soon"
   },
   {
-    "name": "REXONA 10 MILER - Makati City",
+    "name": "REXONA 10 MILER",
     "distance": "16KM,10KM,5KM",
     "location": "Ayala, Makati City",
     "organizer": "RUNRIO",
     "date": "September 13, 2026",
-    "website": "https://www.facebook.com/CNCreativesPH/posts/pfbid0263N39vqjzR6p36z4XhuyDa4hovwyK15j8nLtwHNv9RwyBVsoKVaAFgRJnbzb9vtrl",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "REXONA 10 MILER",
+    "distance": "16KM,10KM,5KM",
+    "location": "Cagayan De Oro",
+    "organizer": "RUNRIO",
+    "date": "May 10, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "REXONA 10 MILER",
+    "distance": "16KM,10KM,5KM",
+    "location": "Azuela Cove, Davao City",
+    "organizer": "RUNRIO",
+    "date": "April 19, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "PRIDE RUN DAVAO",
+    "distance": "10KM,5KM,3KM",
+    "location": "SM Lanang Premier, Davao City",
+    "organizer": "RUNRIO",
+    "date": "June 7, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "HOKA MIDNIGHT RUN ASIA",
+    "distance": "21KM,10KM,5KM",
+    "location": "Davao Global Township, Davao City",
+    "organizer": "RUNRIO",
+    "date": "May 3, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "BALAY PASILUNGAN FUN RUN",
+    "distance": "10KM,5KM,3KM,1KM",
+    "location": "Crocodile Park, Davao City",
+    "organizer": "KINETIXSPORTS",
+    "date": "May 9, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "AGOO HALF MARATHON",
+    "distance": "21KM,10KM,5KM",
+    "location": "Agoo Eco Park, La Union",
+    "organizer": "SLOWFOOTRUNNER EVENTS",
+    "date": "May 17, 2026",
+    "website": "https://forms.gle/zjtYGZcVNLDcjqKf6",
+    "status": "Register"
+  },
+  {
+    "name": "REXONA 10 MILER - ILOILO",
+    "distance": "16KM,10KM,5KM",
+    "location": "Iloilo",
+    "organizer": "RUNRIO",
+    "date": "November 29, 2026",
+    "website": "",
     "status": "Opening Soon"
   },
   {
