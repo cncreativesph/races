@@ -1,7 +1,7 @@
 <html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Race Results</title>
+    <title>Race Results & Photos</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&amp;display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -75,6 +75,8 @@
         }
 
         .search-bar {
+			position: relative;
+			height: 50px;
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -909,7 +911,7 @@ min-width: 125px;
 
         // DOM elements
         const headerTitle = document.querySelector('.header h1');
-		headerTitle.textContent = 'Race Results';
+		headerTitle.textContent = 'Race Results & Photos';
         //const toggleViewButton = document.getElementById('toggleViewButton');
         const refreshButton = document.getElementById('refreshButton');
         const searchInput = document.getElementById('searchInput');
@@ -1818,7 +1820,7 @@ min-width: 125px;
                 limitedSuggestions.forEach(suggestion => {
                     const item = document.createElement('div');
                     item.className = 'suggestion-item';
-                    item.textContent = suggestion;
+                    item.textContent = String(suggestion).toUpperCase();
                     // Stop iOS from focusing the input (which triggers zoom)
 					item.addEventListener('pointerdown', (e) => {
 					  e.preventDefault();
