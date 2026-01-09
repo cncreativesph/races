@@ -2529,13 +2529,19 @@ function renderRaces() {
 			  });
 
 			  photographerItems.forEach(p => {
-				const button = document.createElement('button');
-				button.className = `photographer-button ${getPhotographerClass(p.name)} mr-2 mb-1.5`;
-				button.textContent = p.name;
+				  const button = document.createElement('button');
+				  button.className = `photographer-button ${getPhotographerClass(p.name)} mr-2 mb-1.5`;
+				  button.textContent = p.name;
 
-				if (p.url) button.addEventListener('click', () => window.open(p.url, '_blank'));
-				photographersContainer.appendChild(button);
-			  });
+				  if (p.url) {
+					button.addEventListener('click', () => {
+					  window.location.href = p.url;   // ✅ SAME PAGE
+					});
+				  }
+
+				  photographersContainer.appendChild(button);
+				});
+
 
 			  leftWrap.appendChild(photographersLabel);
 			  leftWrap.appendChild(photographersInstruct);
