@@ -2536,12 +2536,23 @@ function renderRaces() {
 
 				  if (p.url) {
 					button.addEventListener('click', () => {
-					  if (p.url.includes('facebook.com')) {
-						window.open(p.url, '_blank');
-					  } else {
+					  const samePageDomains = [
+						'photos.cncreatives.com',
+						'photos.humblerunnerphoto.com',
+						'photos.genuinesole.com',
+						'photos.phrunningoverload.com',
+						'photos.arsportsph.com'
+					  ];
+
+					  const openSamePage = samePageDomains.some(d => p.url.includes(d));
+
+					  if (openSamePage) {
 						window.location.href = p.url;
+					  } else {
+						window.open(p.url, '_blank');
 					  }
 					});
+
 				  }
 
 				  photographersContainer.appendChild(button);
