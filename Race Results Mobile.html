@@ -2606,16 +2606,30 @@ function renderRaces() {
 					  const openSamePage = samePageDomains.some(d => p.url.includes(d));
 
 					  if (openSamePage) {
-					  showNavLoader(); // ✅ show spinner first
+  sessionStorage.setItem('scrollY', window.scrollY);
 
-					  // ✅ let the browser paint the loader before navigating
-					  setTimeout(() => {
-						window.location.href = p.url;
-					  }, 50);
+  if (isIOS()) {
+    // iOS → normal spinner only
+    const navLoader = document.getElementById('navLoader');
+    const navSpinner = document.getElementById('navSpinner');
+    const navLottie = document.getElementById('navLottie');
 
-					} else {
-					  window.open(p.url, '_blank');
-					}
+    if (navLoader) navLoader.style.display = 'flex';
+    if (navSpinner) navSpinner.style.display = 'block';
+    if (navLottie) navLottie.style.display = 'none';
+  } else {
+    // non-iOS → Lottie loader
+    showNavLoader();
+  }
+
+  setTimeout(() => {
+    window.location.href = p.url;
+  }, 50);
+
+} else {
+  window.open(p.url, '_blank');
+}
+
 
 					});
 
