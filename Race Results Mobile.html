@@ -918,6 +918,45 @@ min-width: 125px;
         const searchInput = document.getElementById('searchInput');
 		
 		const clearSearchBtn = document.getElementById('clearSearchBtn');
+		
+		let navLottieInstance = null;
+
+		function showNavLoader(){
+		  const navLoader = document.getElementById('navLoader');
+		  const navLottie = document.getElementById('navLottie');
+		  if (!navLoader || !navLottie) return;
+
+		  navLoader.style.display = 'flex';
+
+		  // init only once
+		  if (!navLottieInstance && window.lottie) {
+			navLottieInstance = lottie.loadAnimation({
+			  container: navLottie,
+			  renderer: 'svg',
+			  loop: true,
+			  autoplay: true,
+
+			  // ✅ Replace this with YOUR lottie JSON URL later
+			  path: 'https://raw.githubusercontent.com/cncreativesph/races/main/Lottie.json'
+			});
+		  } else if (navLottieInstance) {
+			navLottieInstance.play();
+		  }
+		}
+		
+		// SHOW loader on initial page load
+			document.addEventListener('DOMContentLoaded', () => {
+			  showNavLoader();
+			});
+
+			// HIDE loader when page fully loaded
+			window.addEventListener('load', () => {
+			  const navLoader = document.getElementById('navLoader');
+			  if (navLoader) {
+				navLoader.style.display = 'none';
+			  }
+			});
+
 
 		function toggleClearBtn(){
 		  clearSearchBtn.classList.toggle('hidden', !searchInput.value.trim());
@@ -993,6 +1032,8 @@ min-width: 125px;
                 throw error;
             }
         }
+
+
 
         // Load data based on current view
         async function loadData() {
@@ -2547,10 +2588,17 @@ function renderRaces() {
 					  const openSamePage = samePageDomains.some(d => p.url.includes(d));
 
 					  if (openSamePage) {
+					  showNavLoader(); // ✅ show spinner first
+
+					  // ✅ let the browser paint the loader before navigating
+					  setTimeout(() => {
 						window.location.href = p.url;
-					  } else {
-						window.open(p.url, '_blank');
-					  }
+					  }, 50);
+
+					} else {
+					  window.open(p.url, '_blank');
+					}
+
 					});
 
 				  }
@@ -2989,6 +3037,64 @@ function renderRaces() {
         loadData();
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9405435a5773fee1',t:'MTc0NzMzOTY2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe>
+<button
+  id="photoBackBtn"
+  style="
+    display:none;
+    position:fixed;
+    bottom:18px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:1001;
+    padding:10px 16px;
+    font-size:14px;
+    font-weight:700;
+    border-radius:9999px;
+    border:1px solid #0a5f38;
+    background:#ffffff;
+    color:#0a5f38;
+  "
+>
+  ← Back
+</button>
+<!-- Loading Overlay (Lottie) -->
+<div
+  id="navLoader"
+  style="
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:2000;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter: blur(2px);
+    align-items:center;
+    justify-content:center;
+  "
+>
+ <div
+  style="
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    overflow:hidden;
+    background:transparent;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  "
+>
+  <div
+    id="navLottie"
+    style="
+      width:140px;
+      height:140px;
+    "
+  ></div>
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
 
 </body></html>
 
