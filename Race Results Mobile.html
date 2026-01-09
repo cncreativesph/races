@@ -2536,7 +2536,11 @@ function renderRaces() {
 
 				  if (p.url) {
 					button.addEventListener('click', () => {
-					  window.location.href = p.url;   // ✅ SAME PAGE
+					  if (p.url.includes('facebook.com')) {
+						window.open(p.url, '_blank');
+					  } else {
+						window.location.href = p.url;
+					  }
 					});
 				  }
 
