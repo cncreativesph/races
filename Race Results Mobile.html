@@ -883,6 +883,8 @@ min-width: 125px;
 	  </div>
 	</div>
 	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+	
     <script>
         // State management
         const state = {
@@ -919,30 +921,46 @@ min-width: 125px;
 		
 		const clearSearchBtn = document.getElementById('clearSearchBtn');
 		
-		let navLottieInstance = null;
+let navLottieInstance = null;
 
-		function showNavLoader(){
-		  const navLoader = document.getElementById('navLoader');
-		  const navLottie = document.getElementById('navLottie');
-		  if (!navLoader || !navLottie) return;
+function isIOS() {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+         (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+}
 
-		  navLoader.style.display = 'flex';
+function showNavLoader(){
+  const navLoader = document.getElementById('navLoader');
+  const navLottie = document.getElementById('navLottie');
+  const navSpinner = document.getElementById('navSpinner');
+  if (!navLoader) return;
 
-		  // init only once
-		  if (!navLottieInstance && window.lottie) {
-			navLottieInstance = lottie.loadAnimation({
-			  container: navLottie,
-			  renderer: 'svg',
-			  loop: true,
-			  autoplay: true,
+  navLoader.style.display = 'flex';
 
-			  // ✅ Replace this with YOUR lottie JSON URL later
-			  path: 'https://raw.githubusercontent.com/cncreativesph/races/main/Lottie.json'
-			});
-		  } else if (navLottieInstance) {
-			navLottieInstance.play();
-		  }
-		}
+  if (!window.lottie || !navLottie) {
+    if (navSpinner) navSpinner.style.display = 'block';
+    return;
+  }
+
+  if (navSpinner) navSpinner.style.display = 'none';
+
+  const renderer = isIOS() ? 'canvas' : 'svg';
+
+  if (!navLottieInstance) {
+    navLottieInstance = lottie.loadAnimation({
+      container: navLottie,
+      renderer,
+      loop: true,
+      autoplay: true,
+      path: 'https://raw.githubusercontent.com/cncreativesph/races/main/Lottie.json',
+      rendererSettings: renderer === 'svg'
+        ? { preserveAspectRatio: 'xMidYMid slice' }
+        : { clearCanvas: true }
+    });
+  } else {
+    navLottieInstance.play();
+  }
+}
+
 		
 		// SHOW loader on initial page load
 			document.addEventListener('DOMContentLoaded', () => {
@@ -3035,6 +3053,13 @@ function renderRaces() {
 
         // Initialize
         loadData();
+		
+		showNavLoader();
+
+window.addEventListener('load', () => {
+  const navLoader = document.getElementById('navLoader');
+  if (navLoader) navLoader.style.display = 'none';
+});
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9405435a5773fee1',t:'MTc0NzMzOTY2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe>
 <button
@@ -3060,39 +3085,40 @@ function renderRaces() {
 <!-- Loading Overlay (Lottie) -->
 <div
   id="navLoader"
-  style="
-    display:none;
-    position:fixed;
-    inset:0;
-    z-index:2000;
-    background:rgba(255,255,255,0.85);
-    backdrop-filter: blur(2px);
-    align-items:center;
-    justify-content:center;
-  "
+  style="display:none; position:fixed; inset:0; z-index:2000;
+         background:rgba(255,255,255,0.85);
+         backdrop-filter: blur(2px);
+         align-items:center; justify-content:center;"
 >
- <div
-  style="
+  <div
+    style="
     width:120px;
     height:120px;
-    border-radius:50%;
+    border-radius:100%;
     overflow:hidden;
     background:transparent;
     display:flex;
     align-items:center;
     justify-content:center;
   "
->
-  <div
-    id="navLottie"
-    style="
-      width:140px;
-      height:140px;
-    "
-  ></div>
+  >
+    <div id="navLottie" style="width:80px;height:80px;"></div>
+
+    <div
+      id="navSpinner"
+      style="display:none;width:46px;height:46px;
+             border:5px solid rgba(10,95,56,0.2);
+             border-top-color:#0a5f38;
+             border-radius:50%;
+             animation:spin 0.9s linear infinite;"
+    ></div>
+  </div>
+
+  <style>
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
 </div>
 
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
 
