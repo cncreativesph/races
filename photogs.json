@@ -1,5 +1,23 @@
 [
   {
+    "nameP": "DAILYFIX POWER RUN",
+    "locationP": "Mall of Asia",
+    "dateP": "January 11, 2026",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH RunninG Overload"
+      ],
+      "photogsURL": [
+        "https://photos.cncreatives.com/galleries/dailyfix-power-run",
+        "https://photos.humblerunnerphoto.com/galleries/dailyfix-power-run",
+		"https://photos.genuinesole.com/galleries/dailyfix-power-run-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/dailyfix-power-run"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/jzazkp5aguh3hdrd"
+  },
+  {
     "nameP": "CAPAS MARATHON",
     "locationP": "New Clark City, Tarlac",
     "dateP": "December 14, 2025",
