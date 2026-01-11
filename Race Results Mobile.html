@@ -435,6 +435,21 @@ min-width: 125px;
 			background-color: #BE123C; /* rose/red (not used yet) */
 			color: white;
 		}
+		
+		.photographer-nomad {
+		  background-color: #1D4ED8; /* deep blue (not used yet) */
+		  color: white;
+		}
+
+		.photographer-jmshutter {
+		  background-color: #7C2D12; /* dark burnt orange */
+		  color: white;
+		}
+
+		.photographer-cieb {
+		  background-color: #4338CA; /* indigo */
+		  color: white;
+		}
 
 
         .categories-section {
@@ -1792,6 +1807,9 @@ function showNavLoader(){
 			if (name.includes('paksit photos')) return 'photographer-paksit';
 			if (name.includes('pitik idols cebu')) return 'photographer-pitikidolscebu';
 			if (name.includes('stefners photography')) return 'photographer-stefners';
+			if (name.includes('nomad photography')) return 'photographer-nomad';
+			if (name.includes('jm shutter')) return 'photographer-jmshutter';
+			if (name.includes('cieb media')) return 'photographer-cieb';
             return '';
         }
 
