@@ -433,6 +433,21 @@ min-width: 125px;
             color: white;
         }
 		
+			/* ✅ NEW photographers (unique colors, white text) */
+		.photographer-paksit {
+			background-color: #0F766E; /* teal (not used yet) */
+			color: white;
+		}
+
+		.photographer-pitikidolscebu {
+			background-color: #B45309; /* amber/brown (not used yet) */
+			color: white;
+		}
+
+		.photographer-stefners {
+			background-color: #BE123C; /* rose/red (not used yet) */
+			color: white;
+		}
 
 
         .categories-section {
@@ -1846,7 +1861,9 @@ function showNavLoader(){
 			if (name.includes('running photographers')) return 'photographer-runningphotog';
 			if (name.includes('run zion')) return 'photographer-zion';
 			if (name.includes('bicolano runner')) return 'photographer-bicolano';
-
+			if (name.includes('paksit photos')) return 'photographer-paksit';
+			if (name.includes('pitik idols cebu')) return 'photographer-pitikidolscebu';
+			if (name.includes('stefners photography')) return 'photographer-stefners';
             return '';
         }
 
