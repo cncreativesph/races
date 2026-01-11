@@ -7,15 +7,29 @@
         "CN CreativeS",
         "Humble Runner",
 		"Genuine Sole",
-		"PH RunninG Overload"
+		"PH RunninG Overload",
+		"AR Sports PH"
       ],
       "photogsURL": [
         "https://photos.cncreatives.com/galleries/dailyfix-power-run",
         "https://photos.humblerunnerphoto.com/galleries/dailyfix-power-run",
 		"https://photos.genuinesole.com/galleries/dailyfix-power-run-by-gsp",
-		"https://photos.phrunningoverload.com/galleries/dailyfix-power-run"
+		"https://photos.phrunningoverload.com/galleries/dailyfix-power-run",
+		"https://photos.arsportsph.com/galleries/dailyfix-power-run"
       ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/jzazkp5aguh3hdrd"
+  },
+  {
+    "nameP": "CEBU MARATHON",
+    "locationP": "SM Seaside City Cebu - CCLEX",
+    "dateP": "January 11, 2026",
+    "listOfPhotogs": [
+        ""
+      ],
+      "photogsURL": [
+        ""
+      ],
+	 "resultsURL": "https://cebumarathon.myruntime.com/results/cebu-marathon-2026"
   },
   {
     "nameP": "CAPAS MARATHON",
