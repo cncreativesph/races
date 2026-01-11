@@ -25,11 +25,13 @@
     "dateP": "January 11, 2026",
   "listOfPhotogs": [
         "Paksit Photos",
-		"Pitik Idols Cebu"
+		"Pitik Idols Cebu",
+		"Stefners Photography"
       ],
       "photogsURL": [
         "https://findmyshots.com/s/cebumarathon2026-paksitphotos",
-		"https://findmyshots.com/s/cebumarathon2026-pitikidolscebu"
+		"https://findmyshots.com/s/cebumarathon2026-pitikidolscebu",
+		"https://findmyshots.com/s/cebumarathon2026-stefnersphotography"
       ],
 	 "resultsURL": "https://cebumarathon.myruntime.com/results"
   },
