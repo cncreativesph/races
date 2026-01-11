@@ -26,12 +26,18 @@
   "listOfPhotogs": [
         "Paksit Photos",
 		"Pitik Idols Cebu",
-		"Stefners Photography"
+		"Stefners Photography",
+		"CieB Media",
+		"Nomad Photography",
+		"JM Shutter"
       ],
       "photogsURL": [
         "https://findmyshots.com/s/cebumarathon2026-paksitphotos",
 		"https://findmyshots.com/s/cebumarathon2026-pitikidolscebu",
-		"https://findmyshots.com/s/cebumarathon2026-stefnersphotography"
+		"https://findmyshots.com/s/cebumarathon2026-stefnersphotography",
+		"https://findmyshots.com/s/cebumarathon2026-ciebmedia",
+		"https://findmyshots.com/s/cebumarathon2026-nomadphotography",
+		"https://findmyshots.com/s/cebumarathon2026-jmshutter"
       ],
 	 "resultsURL": "https://cebumarathon.myruntime.com/results"
   },
