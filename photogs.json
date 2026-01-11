@@ -23,7 +23,12 @@
     "nameP": "CEBU MARATHON",
     "locationP": "SM Seaside City Cebu - CCLEX",
     "dateP": "January 11, 2026",
-  
+  "listOfPhotogs": [
+        "Paksit Photos"
+      ],
+      "photogsURL": [
+        "https://findmyshots.com/s/cebumarathon2026-paksitphotos"
+      ],
 	 "resultsURL": "https://cebumarathon.myruntime.com/results"
   },
   {
