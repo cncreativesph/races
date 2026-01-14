@@ -363,7 +363,7 @@
   {
     "name": "APO HALF MARATHON",
     "distance": "21KM,10KM,5KM",
-    "location": "Mall of Asia, Pasay City",
+    "location": "Liwasang Ulalim, CCP Complex, Pasay City",
     "organizer": "GREEN MEDIA EVENTS",
     "date": "March 22, 2026",
     "website": "https://greenmediaevents.myruntime.com/register/race-to-serve-apo-half-marathon-2026",
@@ -505,11 +505,182 @@
     "status": "Opening Soon"
   },
   {
+    "name": "MILO NATIONAL MARATHON",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Mall of Asia",
+    "organizer": "RUNRIO",
+    "date": "March 1, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "MILO NATIONAL MARATHON",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Naga, Camarines Sur",
+    "organizer": "RUNRIO",
+    "date": "March 8, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "MILO NATIONAL MARATHON",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Sorsogon City",
+    "organizer": "RUNRIO",
+    "date": "March 15, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "MILO NATIONAL MARATHON",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Vermosa, Cavite",
+    "organizer": "RUNRIO",
+    "date": "March 22, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "MILO NATIONAL MARATHON",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Davao City, Davao del Sur",
+    "organizer": "RUNRIO",
+    "date": "August 2, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "MILO NATIONAL MARATHON",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "General Santos City, South Cotabato",
+    "organizer": "RUNRIO",
+    "date": "August 9, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "MILO NATIONAL MARATHON",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Dipolog City, Zamboanga del Norte",
+    "organizer": "RUNRIO",
+    "date": "August 16, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "MILO NATIONAL MARATHON",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Cagayan de Oro",
+    "organizer": "RUNRIO",
+    "date": "August 23, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "MILO NATIONAL MARATHON",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Cebu City",
+    "organizer": "RUNRIO",
+    "date": "September 6, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "MILO NATIONAL MARATHON",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Tagbiliran City, Bohol",
+    "organizer": "RUNRIO",
+    "date": "September 13, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "MILO NATIONAL MARATHON",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Dumaguete City",
+    "organizer": "RUNRIO",
+    "date": "October 4, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "MILO NATIONAL MARATHON",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Bacolod City",
+    "organizer": "RUNRIO",
+    "date": "October 11, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "MILO NATIONAL MARATHON",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Subic, Zambales",
+    "organizer": "RUNRIO",
+    "date": "October 18, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "MILO NATIONAL MARATHON",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Urdaneta City, Pangasinan",
+    "organizer": "RUNRIO",
+    "date": "November 8, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
     "name": "MILO NATIONAL MARATHON - FINALS",
     "distance": "42KM,21KM,10KM,5KM,3KM",
     "location": "Clark, Pampanga",
     "organizer": "RUNRIO",
     "date": "December 6, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "HOKA MIDNIGHT RUN ASIA",
+    "distance": "21KM,10KM,5KM",
+    "location": "Mall of Asia",
+    "organizer": "RUNRIO",
+    "date": "July 19, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "HOKA MIDNIGHT RUN ASIA",
+    "distance": "21KM,10KM,5KM",
+    "location": "Cagayan De Oro",
+    "organizer": "RUNRIO",
+    "date": "August 2, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "HOKA MIDNIGHT RUN ASIA",
+    "distance": "21KM,10KM,5KM",
+    "location": "Cebu",
+    "organizer": "RUNRIO",
+    "date": "October 11, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "HOKA MIDNIGHT RUN ASIA",
+    "distance": "21KM,10KM,5KM",
+    "location": "Iloilo",
+    "organizer": "RUNRIO",
+    "date": "October 25, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "HOKA MIDNIGHT RUN ASIA",
+    "distance": "21KM,10KM,5KM",
+    "location": "Clark, Pampanga",
+    "organizer": "RUNRIO",
+    "date": "November 15, 2026",
     "website": "",
     "status": "Opening Soon"
   },
@@ -527,7 +698,7 @@
     "distance": "42KM,21KM,10KM,5KM",
     "location": "Davao City",
     "organizer": "RUNRIO",
-    "date": "August 15, 2026",
+    "date": "August 16, 2026",
     "website": "https://raceroster.com/events/2026/113788/sante-barley-trilogy-run-asia-2026-iloilo-leg-1",
     "status": "Opening Soon"
   },
