@@ -496,6 +496,33 @@
     "status": "Register"
   },
   {
+    "name": "34TH YAKULT 10-MILER",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "Mall of Asia",
+    "organizer": "HYVESPORTS",
+    "date": "October 18, 2026",
+    "website": "https://registration.yakult10miler.com/register/34th-yakult-10-miler-trilogy-manila",
+    "status": "Register"
+  },
+  {
+    "name": "34TH YAKULT 10-MILER",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "SM Seaside, Cebu City",
+    "organizer": "HYVESPORTS",
+    "date": "August 23, 2026",
+    "website": "https://registration.yakult10miler.com/register/34th-yakult-10-miler-trilogy-cebu",
+    "status": "Register"
+  },
+  {
+    "name": "34TH YAKULT 10-MILER",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "Azuela Cove, Davao City",
+    "organizer": "HYVESPORTS",
+    "date": "July 12, 2026",
+    "website": "https://registration.yakult10miler.com/register/34th-yakult-10-miler-trilogy-davao",
+    "status": "Register"
+  },
+  {
     "name": "REXONA 10 MILER",
     "distance": "16KM,10KM,5KM",
     "location": "Iloilo City",
