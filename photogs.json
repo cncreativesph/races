@@ -1,5 +1,25 @@
 [
   {
+    "nameP": "AYALA TACBO",
+    "locationP": "Ayala, Makati City",
+    "dateP": "January 18, 2026",
+    "listOfPhotogs": [
+        "CN CreativeS",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"AR Sports PH"
+      ],
+      "photogsURL": [
+		"https://photos.cncreatives.com/galleries/ayala-tacbo",
+		"https://photos.humblerunnerphoto.com/galleries/ayala-tacbo",
+		"https://photos.genuinesole.com/galleries/tacbo-2026-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/ayala-tacbo",
+        "https://photos.arsportsph.com/galleries/ayala-tacbo"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/2qqxnhdymmrwu5xe"
+  },
+  {
     "nameP": "DAILYFIX POWER RUN",
     "locationP": "Mall of Asia",
     "dateP": "January 11, 2026",
