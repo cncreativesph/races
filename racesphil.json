@@ -24,7 +24,7 @@
     "organizer": "RUnRIO",
     "date": "January 18, 2026",
     "website": "https://raceroster.com/events/2026/112577/tacbo-2026",
-    "status": "Register"
+    "status": "Event is Full"
   },
   {
     "name": "GREAT UP RUN",
@@ -411,8 +411,8 @@
     "location": "Mall of Asia, Pasay City",
     "organizer": "RUNRIO",
     "date": "March 29, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/114353/rexona-10-miler-series-2026-pasay-city",
+    "status": "Register"
   },
     {
     "name": "REXONA 10 MILER",
@@ -420,8 +420,8 @@
     "location": "Quirino Grandstand, Manila City",
     "organizer": "RUNRIO",
     "date": "June 28, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/114354/rexona-10-miler-series-2026-manila-city",
+    "status": "Register"
   },
   {
     "name": "REXONA 10 MILER",
@@ -429,8 +429,8 @@
     "location": "UP Diliman, Quezon City",
     "organizer": "RUNRIO",
     "date": "August 16, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/114355/rexona-10-miler-series-2026-quezon-city",
+    "status": "Register"
   },
   {
     "name": "REXONA 10 MILER",
@@ -438,8 +438,8 @@
     "location": "Ayala, Makati City",
     "organizer": "RUNRIO",
     "date": "September 13, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/114356/rexona-10-miler-series-2026-makati-city",
+    "status": "Register"
   },
   {
     "name": "REXONA 10 MILER",
@@ -447,8 +447,8 @@
     "location": "Cagayan De Oro",
     "organizer": "RUNRIO",
     "date": "May 10, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/114358/rexona-10-miler-series-2026-cagayan-de-oro-city",
+    "status": "Register"
   },
   {
     "name": "REXONA 10 MILER",
@@ -456,8 +456,8 @@
     "location": "Azuela Cove, Davao City",
     "organizer": "RUNRIO",
     "date": "April 19, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/114357/rexona-10-miler-series-2026-davao-city",
+    "status": "Register"
   },
   {
     "name": "PRIDE RUN DAVAO",
@@ -474,8 +474,8 @@
     "location": "Davao Global Township, Davao City",
     "organizer": "RUNRIO",
     "date": "May 31, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/114523/hoka-midnight-run-asia-2026-davao",
+    "status": "Register"
   },
   {
     "name": "BALAY PASILUNGAN FUN RUN",
@@ -496,40 +496,13 @@
     "status": "Register"
   },
   {
-    "name": "34TH YAKULT 10-MILER",
-    "distance": "16KM,10KM,5KM,3KM",
-    "location": "Mall of Asia",
-    "organizer": "HYVESPORTS",
-    "date": "October 18, 2026",
-    "website": "https://registration.yakult10miler.com/register/34th-yakult-10-miler-trilogy-manila",
-    "status": "Register"
-  },
-  {
-    "name": "34TH YAKULT 10-MILER",
-    "distance": "16KM,10KM,5KM,3KM",
-    "location": "SM Seaside, Cebu City",
-    "organizer": "HYVESPORTS",
-    "date": "August 23, 2026",
-    "website": "https://registration.yakult10miler.com/register/34th-yakult-10-miler-trilogy-cebu",
-    "status": "Register"
-  },
-  {
-    "name": "34TH YAKULT 10-MILER",
-    "distance": "16KM,10KM,5KM,3KM",
-    "location": "Azuela Cove, Davao City",
-    "organizer": "HYVESPORTS",
-    "date": "July 12, 2026",
-    "website": "https://registration.yakult10miler.com/register/34th-yakult-10-miler-trilogy-davao",
-    "status": "Register"
-  },
-  {
     "name": "REXONA 10 MILER",
     "distance": "16KM,10KM,5KM",
     "location": "Iloilo City",
     "organizer": "RUNRIO",
     "date": "November 29, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/114359/rexona-10-miler-series-2026-iloilo-city",
+    "status": "Register"
   },
   {
     "name": "MILO NATIONAL MARATHON",
@@ -672,8 +645,8 @@
     "location": "Mall of Asia",
     "organizer": "RUNRIO",
     "date": "July 19, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/114461/hoka-midnight-run-asia-2026-manila",
+    "status": "Register"
   },
   {
     "name": "HOKA MIDNIGHT RUN ASIA",
@@ -681,8 +654,8 @@
     "location": "Cagayan De Oro",
     "organizer": "RUNRIO",
     "date": "August 2, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/114524/hoka-midnight-run-asia-2026-cagayan-de-oro",
+    "status": "Register"
   },
   {
     "name": "HOKA MIDNIGHT RUN ASIA",
@@ -690,8 +663,8 @@
     "location": "Cebu City",
     "organizer": "RUNRIO",
     "date": "October 11, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/114525/hoka-midnight-run-asia-2026-cebu",
+    "status": "Register"
   },
   {
     "name": "HOKA MIDNIGHT RUN ASIA",
@@ -699,8 +672,8 @@
     "location": "Iloilo City",
     "organizer": "RUNRIO",
     "date": "October 25, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/114527/hoka-midnight-run-asia-2026-lloilo",
+    "status": "Register"
   },
   {
     "name": "HOKA MIDNIGHT RUN ASIA",
@@ -708,8 +681,8 @@
     "location": "Clark, Pampanga",
     "organizer": "RUNRIO",
     "date": "November 15, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/114528/hoka-midnight-run-asia-2026-clark",
+    "status": "Register"
   },
   {
     "name": "SINGLIFE CEBU INTERNATIONAL MARATHON",
@@ -735,8 +708,8 @@
     "location": "Iloilo City",
     "organizer": "RUNRIO",
     "date": "April 12, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/113718/singlife-iloilo-marathon",
+    "status": "Register"
   },
     {
     "name": "SINGLIFE ONE CLARK INTERNATIONAL MARATHON",
