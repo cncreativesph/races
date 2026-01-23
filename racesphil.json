@@ -100,12 +100,12 @@
   },
   {
     "name": "QUAKER FIT RUN",
-    "distance": "16KM,10KM,5KM",
+    "distance": "21KM,10KM,5KM",
     "location": "Ayala, Makati City",
     "organizer": "RUNRIO",
     "date": "April 26, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/114699/quakerfit-run-2026",
+    "status": "Register"
   },
   {
     "name": "AYALA PHILIPPINE MARATHON",
@@ -536,7 +536,7 @@
     "distance": "21KM,10KM,5KM,3KM",
     "location": "Vermosa, Cavite",
     "organizer": "RUNRIO",
-    "date": "March 22, 2026",
+    "date": "October 11, 2026",
     "website": "",
     "status": "Opening Soon"
   },
@@ -599,7 +599,7 @@
     "distance": "21KM,10KM,5KM,3KM",
     "location": "Dumaguete City",
     "organizer": "RUNRIO",
-    "date": "October 4, 2026",
+    "date": "September 20, 2026",
     "website": "",
     "status": "Opening Soon"
   },
@@ -608,7 +608,7 @@
     "distance": "21KM,10KM,5KM,3KM",
     "location": "Bacolod City",
     "organizer": "RUNRIO",
-    "date": "October 11, 2026",
+    "date": "October 4, 2026",
     "website": "",
     "status": "Opening Soon"
   },
