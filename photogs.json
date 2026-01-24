@@ -522,6 +522,20 @@
 	 "resultsURL": "https://results.raceroster.com/v3/events/m5syhr75x22735tp"
   },
   {
+    "nameP": "ANGEL'S BURGER Great UP RUN",
+    "locationP": "UP DILIMAN",
+    "dateP": "January 25, 2026",
+    "listOfPhotogs": [
+        "CN CreativeS",
+		"Genuine Sole"
+      ],
+      "photogsURL": [
+        "https://photos.cncreatives.com/galleries/2026GreatUPRun",
+		"https://photos.genuinesole.com/galleries/angels-burger-the-great-up-run-by-gsp"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/2m4sacq6ehrf2r7k"
+  },
+  {
     "nameP": "Great UP RUN",
     "locationP": "UP DILIMAN",
     "dateP": "March 30, 2025",
@@ -996,6 +1010,4 @@
 	 "resultsURL": "https://run711.com/results"
   }
 ]
-
-
 
