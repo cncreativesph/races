@@ -527,11 +527,17 @@
     "dateP": "January 25, 2026",
     "listOfPhotogs": [
         "CN CreativeS",
-		"Genuine Sole"
+		"Genuine Sole",
+		"PH Running Overload",
+		"AR Sports PH",
+		"Humble Runner"
       ],
       "photogsURL": [
         "https://photos.cncreatives.com/galleries/2026GreatUPRun",
-		"https://photos.genuinesole.com/galleries/angels-burger-the-great-up-run-by-gsp"
+		"https://photos.genuinesole.com/galleries/angels-burger-the-great-up-run-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/great-up-run",
+		"https://photos.arsportsph.com/galleries/the-great-up-run",
+		"https://photos.humblerunnerphoto.com/galleries/angels-burger-great-up-run"
       ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/2m4sacq6ehrf2r7k"
   },
