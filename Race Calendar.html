@@ -1401,15 +1401,25 @@
 					const LOCATION_FILTER_ORDER = [
 					  "NCR",
 					  "Cavite",
-					  "Luzon (Outside NCR & Cavite)",
-					  "Visayas",
-					  "Mindanao",
+					  "Cebu",
+					  "Davao",
+					  "Pampanga",		  				 
+					  "Luzon (Others)",
+					  "Visayas (Others)",				
+					  "Mindanao (Others)",
 					  "Others"
 					];
+
+					// If "Others" doesn't exist in the dataset, make sure it isn't selected
+					if (!locations.has("Others") && state.filters.location.includes("Others")) {
+					  state.filters.location = state.filters.location.filter(x => x !== "Others");
+					}
 
 					LOCATION_FILTER_ORDER.forEach(loc => {
 					  // optional: show only groups that exist in the data
 					  // if (!locations.has(loc)) return;
+					  
+					    if (loc === "Others" && !locations.has("Others")) return;
 
 					  const chip = document.createElement("div");
 					  chip.className = `filter-chip ${state.filters.location.includes(loc) ? "active" : ""}`;
@@ -1794,171 +1804,187 @@
             if (name.includes('pinoy fitness')) return 'photographer-pinoy';
             return '';
         }
+		
+		// ✅ Region -> location groups mapping (filters use these group names)
+		const REGION_LOCATION_MAP = {
+		  "Luzon": ["NCR", "Cavite", "Pampanga", "Luzon (Others)"],
+		  "Visayas": ["Cebu", "Visayas (Others)"],
+		  "Mindanao": ["Davao", "Mindanao (Others)"]
+		};
 
-        // Generate search suggestions
-        function generateSearchSuggestions() {
-            const searchTerm = searchInput.value.toLowerCase().trim();
-            if (!searchTerm) {
-                searchSuggestions.classList.add('hidden');
-                return;
-            }
-            
-            const suggestions = new Set();
-            const data = state.view === 'photos' ? state.photos : state.races;
-            
-            if (!Array.isArray(data)) {
-                console.error('Invalid data format for suggestions');
-                return;
-            }
-			
-			const LOCATION_GROUP_SUGGESTIONS = [
-			  "NCR",
-			  "Cavite",
-			  "Luzon (Outside NCR & Cavite)",
-			  "Visayas",
-			  "Mindanao"
-			];
+		// ✅ Suggestions list (NO "Luzon (Others)" etc)
+		const LOCATION_SUGGESTIONS = [
+		  "Luzon",
+		  "Visayas",
+		  "Mindanao",
+		  "NCR",
+		  "Cavite",
+		  "Pampanga",
+		  "Cebu",
+		  "Davao"
+		];
 
-            
-            // Month names for suggestions
-            const monthNames = [
-                'January', 'February', 'March', 'April', 'May', 'June',
-                'July', 'August', 'September', 'October', 'November', 'December'
-            ];
-            
-            // Add month name suggestions if search term matches part of a month name
-            monthNames.forEach(month => {
-                if (month.toLowerCase().includes(searchTerm)) {
-                    suggestions.add(month);
-                }
-            });
-			
-			const dayNames = ['Sunday', 'Saturday'];
-			dayNames.forEach(day => {
-				if (day.toLowerCase().includes(searchTerm)) {
-					suggestions.add(day);
-				}
-			});
-			
-			// ✅ Add location group suggestions
-			LOCATION_GROUP_SUGGESTIONS.forEach(locGroup => {
-			  if (locGroup.toLowerCase().includes(searchTerm)) {
-				suggestions.add(locGroup);
-			  }
-			});
+      function generateSearchSuggestions() {
+  const searchTerm = searchInput.value.toLowerCase().trim();
+  if (!searchTerm) {
+    searchSuggestions.classList.add('hidden');
+    return;
+  }
 
-						
-            data.forEach(item => {
-                const name = state.view === 'photos' ? item.nameP : item.name;
-                const location = state.view === 'photos' ? item.locationP : item.location;
-                const distance = state.view === 'photos' ? item.distanceP : item.distance;
-                const organizer = state.view === 'photos' ? '' : item.organizer;
-                const date = state.view === 'photos' ? item.dateP : item.date;
-                
-                // Add race name suggestions
-                if (name && name.toLowerCase().includes(searchTerm)) {
-                    suggestions.add(name);
-                }
-                
-                // Add location suggestions
-                const locNorm = normalizeLocation(location);
-				if (locNorm && locNorm.toLowerCase().includes(searchTerm)) {
-					suggestions.add(locNorm);
-				}
-								
-                // Add organizer suggestions
-                if (organizer) {
-					const orgNorm = normalizeOrganizerName(organizer);
-					if (orgNorm && orgNorm.toLowerCase().includes(searchTerm)) {
-						suggestions.add(orgNorm);
-					}
-				}
-                
-                // Add distance suggestions
-                if (distance) {
-                    distance.split(',').forEach(d => {
-                        const distNorm = normalizeDistance(d);
-						if (distNorm && distNorm.toLowerCase().includes(searchTerm)) {
-						  suggestions.add(distNorm);
-						}
-                    });
-                }
-                
-                // Add date suggestions
-                if (date) {
-                    const itemDate = new Date(date);
-                    if (!isNaN(itemDate.getTime())) {
-                        const monthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(itemDate);
-                        const shortMonthName = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(itemDate);
-                        const day = itemDate.getDate();
-                        const year = itemDate.getFullYear();
-						const weekdayName = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(itemDate);
-                        
-                        const formattedDate = `${monthName} ${day}, ${year}`;
-                        
-                        if (
-							monthName.toLowerCase().includes(searchTerm) ||
-							shortMonthName.toLowerCase().includes(searchTerm) ||
-							formattedDate.toLowerCase().includes(searchTerm) ||
-							weekdayName.toLowerCase().includes(searchTerm)
-						) {
-							suggestions.add(String(formattedDate));
-							suggestions.add(String(monthName));
-							suggestions.add(String(year));
-							suggestions.add(String(weekdayName));
-						}
-                    }
-                }
-				
-				
-            });
-            
-            // Limit suggestions to 5
-            const limitedSuggestions = Array.from(suggestions).slice(0, 5);
-            
-            if (limitedSuggestions.length > 0) {
-                searchSuggestions.innerHTML = '';
-                limitedSuggestions.forEach(suggestion => {
-                    const item = document.createElement('div');
-                    item.className = 'suggestion-item';
-                    item.textContent = String(suggestion).toUpperCase();
-                    item.addEventListener('click', () => {
-					  const picked = String(suggestion);
+  const suggestions = new Set();
+  const isPhotosView = state.view === 'photos';
 
-					  // ✅ If user clicked a location group, apply location filter
-					  if (LOCATION_GROUP_SUGGESTIONS.includes(picked)) {
-						resetFiltersOnly();
-						state.filters.location = [picked];
-						state.pagination.page = 1;
+  // ✅ calendar view: suggestions should come from FUTURE races only
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-						// clear text search so filtering is purely by location filter
-						searchInput.value = picked;
-						state.searchTerm = '';
-						searchSuggestions.classList.add('hidden');
+  const baseData = isPhotosView ? state.photos : state.races;
 
-						updateFilters();
-						renderCurrentView();
-						return;
-					  }
-						resetFiltersOnly();   
-                        searchInput.value = String(suggestion);
-						state.searchTerm = String(suggestion);
-                        searchSuggestions.classList.add('hidden');
-                        
-                        // If in photos view, fetch fresh data when selecting a suggestion
-                        if (state.view === 'photos') {
-                            loadPhotoData();
-                        } else {
-                            renderCurrentView();
-                        }
-                    });
-                    searchSuggestions.appendChild(item);
-                });
-                searchSuggestions.classList.remove('hidden');
-            } else {
-                searchSuggestions.classList.add('hidden');
-            }
+  if (!Array.isArray(baseData)) {
+    console.error('Invalid data format for suggestions');
+    return;
+  }
+
+  const dataForSuggestions = isPhotosView
+    ? baseData
+    : baseData.filter(item => {
+        const d = item?.date ? new Date(item.date) : null;
+        if (!d || isNaN(d.getTime())) return false;
+        d.setHours(0, 0, 0, 0);
+        return d > today; // ✅ future only (same rule as your calendar list)
+      });
+
+  const LOCATION_GROUP_SUGGESTIONS = [
+    "NCR",
+    "Cavite",
+	"Pampanga",
+    "Luzon (Others)",
+	"Cebu",
+    "Visayas (Others)",
+	"Davao",
+    "Mindanao (Others)"
+  ];
+
+  // ✅ Location group suggestions (still OK)
+	LOCATION_SUGGESTIONS.forEach(label => {
+	  if (label.toLowerCase().includes(searchTerm)) {
+		suggestions.add(label);
+	  }
+	});
+
+  // ✅ Month/day suggestions should come from FUTURE races (calendar) instead of static Jan-Dec
+  dataForSuggestions.forEach(item => {
+    const name = isPhotosView ? item.nameP : item.name;
+    const location = isPhotosView ? item.locationP : item.location;
+    const distance = isPhotosView ? item.distanceP : item.distance;
+    const organizer = isPhotosView ? '' : item.organizer;
+    const date = isPhotosView ? item.dateP : item.date;
+
+    if (name && name.toLowerCase().includes(searchTerm)) {
+      suggestions.add(name);
+    }
+
+    const locNorm = normalizeLocation(location);
+    if (locNorm && locNorm.toLowerCase().includes(searchTerm)) {
+      suggestions.add(locNorm);
+    }
+
+    if (organizer) {
+      const orgNorm = normalizeOrganizerName(organizer);
+      if (orgNorm && orgNorm.toLowerCase().includes(searchTerm)) {
+        suggestions.add(orgNorm);
+      }
+    }
+
+    if (distance) {
+      distance.split(',').forEach(d => {
+        const distNorm = normalizeDistance(d);
+        if (distNorm && distNorm.toLowerCase().includes(searchTerm)) {
+          suggestions.add(distNorm);
         }
+      });
+    }
+
+    if (date) {
+      const itemDate = new Date(date);
+      if (!isNaN(itemDate.getTime())) {
+        const monthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(itemDate);
+        const shortMonthName = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(itemDate);
+        const weekdayName = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(itemDate);
+
+        const day = itemDate.getDate();
+        const year = itemDate.getFullYear();
+        const formattedDate = `${monthName} ${day}, ${year}`;
+
+        if (
+          monthName.toLowerCase().includes(searchTerm) ||
+          shortMonthName.toLowerCase().includes(searchTerm) ||
+          formattedDate.toLowerCase().includes(searchTerm) ||
+          weekdayName.toLowerCase().includes(searchTerm) ||
+          String(year).includes(searchTerm)
+        ) {
+          suggestions.add(formattedDate);
+          suggestions.add(monthName);
+          suggestions.add(String(year));
+          suggestions.add(weekdayName);
+        }
+      }
+    }
+  });
+
+  const limitedSuggestions = Array.from(suggestions).slice(0, 5);
+
+  if (limitedSuggestions.length > 0) {
+    searchSuggestions.innerHTML = '';
+    limitedSuggestions.forEach(suggestion => {
+      const item = document.createElement('div');
+      item.className = 'suggestion-item';
+      item.textContent = String(suggestion).toUpperCase();
+
+      item.addEventListener('click', () => {
+        const picked = String(suggestion);
+
+        if (LOCATION_SUGGESTIONS.includes(picked)) {
+		  resetFiltersOnly();
+
+		  // ✅ If user picked a REGION, expand it to all its groups
+		  if (REGION_LOCATION_MAP[picked]) {
+			state.filters.location = [...REGION_LOCATION_MAP[picked]];
+		  } else {
+			// ✅ Else it's a single group like NCR/Cavite/Cebu/etc
+			state.filters.location = [picked];
+		  }
+
+		  state.pagination.page = 1;
+
+		  searchInput.value = picked;
+		  state.searchTerm = '';
+		  searchSuggestions.classList.add('hidden');
+
+		  updateFilters();
+		  renderCurrentView();
+		  return;
+		}
+
+
+        resetFiltersOnly();
+        searchInput.value = picked;
+        state.searchTerm = picked;
+        searchSuggestions.classList.add('hidden');
+
+        if (state.view === 'photos') loadPhotoData();
+        else renderCurrentView();
+      });
+
+      searchSuggestions.appendChild(item);
+    });
+
+    searchSuggestions.classList.remove('hidden');
+  } else {
+    searchSuggestions.classList.add('hidden');
+  }
+}
+
 
         // Render races
         
@@ -2109,80 +2135,80 @@ const LOCATION_GROUPS = [
   {
     name: "NCR",
     keywords: [
-      "caloocan",
-      "las piñas", "las pinas",
-      "makati",
-      "malabon",
-      "mandaluyong",
-      "manila",
-      "marikina",
-      "muntinlupa",
-      "navotas",
-      "parañaque", "paranaque",
-      "pasay",
-      "pasig",
-      "quezon city",
-      "san juan",
-      "taguig",
-      "valenzuela",
-      "pateros"
+      "caloocan","makati","manila","pasay","quezon city",
+      "taguig","pasig","mandaluyong","marikina","muntinlupa"
     ]
   },
   { name: "Cavite", keywords: ["cavite"] },
+
+  // ✅ NEW
   {
-    name: "Luzon (Outside NCR & Cavite)",
+    name: "Pampanga",
+    keywords: [
+      "pampanga",
+      "san fernando",
+      "angeles",
+      "clark",
+      "guagua",
+      "mabalacat",
+      "mexico",
+      "arayat",
+      "bacolor",
+      "lubao",
+      "floridablanca",
+      "porac",
+      "apali",
+      "macabebe"
+    ]
+  },
+	{
+	  name: "Cebu",
 	  keywords: [
-		// Pampanga
-		"pampanga", "san fernando", "angeles", "clark", "guagua",
-		
-		// Bulacan
-		"bulacan", "baliwag", "malolos", "meycauayan", "marilao",
-		"plaridel", "san jose del monte", "sjdm", "calumpit",
-		"guiguinto", "balagtas", "bocaue", "pulilan",
-		
-		// Laguna
-		"laguna", "calamba", "los baños", "los banos", "biñan", "binan",
-		"sta rosa", "santa rosa", "san pablo", "cabuyao",
-		
-		// Batangas
-		"batangas", "lipa", "tanauan", "sto tomas", "santo tomas",
-		
-		// Rizal
-		"rizal", "antipolo", "cainta", "taytay", "angono",
-		
-		// North Luzon
-		"tarlac", "bataan", "zambales", "nueva ecija",
-		"pangasinan", "la union", "ilocos", "benguet", "baguio",
-		
-		// South Luzon / Bicol
-		"quezon province", "lucena",
-		"bicol", "albay", "camarines", "naga", "sorsogon",
-		
-		// Palawan
-		"palawan", "puerto princesa"
+		"cebu",
+		"cebu city",
+		"mandaue",
+		"lapu-lapu",
+		"lapu lapu",
+		"talisay",
+		"naga cebu",
+		"cordoba",
+		"consolacion"
 	  ]
-  },
+	},
+	{
+	  name: "Davao",
+	  keywords: [
+		"davao",
+		"davao city",
+		"davao del sur",
+		"davao del norte",
+		"panabo",
+		"tagum",
+		"samal"
+	  ]
+	},
   {
-    name: "Visayas",
+    name: "Luzon (Others)",
     keywords: [
-      "cebu", "iloilo", "bacolod", "bohol",
-      "leyte", "tacloban",
-      "dumaguete", "roxas", "kalibo", "boracay"
+      // ❌ REMOVE Pampanga entries from here
+      "bulacan","laguna","los banos","los baños","batangas","rizal",
+      "tarlac","bataan","zambales","nueva ecija",
+      "pangasinan","la union","ilocos","benguet","baguio",
+      "bicol","albay","camarines","naga","sorsogon",
+      "palawan","puerto princesa"
     ]
   },
+
   {
-    name: "Mindanao",
-    keywords: [
-      "davao",
-      "cagayan de oro", "cdo",
-      "zamboanga",
-      "general santos", "gensan",
-      "butuan",
-      "bukidnon",
-      "surigao"
-    ]
+    name: "Visayas (Others)",
+    keywords: ["iloilo","bacolod","bohol","leyte","dumaguete"]
+  },
+  {
+    name: "Mindanao (Others)",
+    keywords: ["south cotabato","koronadal","cagayan de oro","gensan","zamboanga","butuan"]
   }
 ];
+
 
 function getLocationGroupFromNormalized(normLoc) {
   const s = (normLoc || "").toLowerCase();
@@ -3107,32 +3133,30 @@ function renderRaces() {
 		  searchErrorOverlay.classList.add('hidden');
 
 
-		  const LOCATION_GROUP_SUGGESTIONS = [
-			"NCR",
-			"Cavite",
-			"Luzon (Outside NCR & Cavite)",
-			"Visayas",
-			"Mindanao"
-		  ];
-
-		  // ✅ Case-insensitive + partial location match
 		  const lowerValue = value.toLowerCase();
-		  const matchedLocation = LOCATION_GROUP_SUGGESTIONS.find(loc =>
-			loc.toLowerCase().includes(lowerValue)
-		  );
+			const matchedLocation = LOCATION_SUGGESTIONS.find(label =>
+			  label.toLowerCase().includes(lowerValue)
+			);
 
-		  // ✅ Location filter via Enter
-		  if (matchedLocation) {
-			resetFiltersOnly();
-			state.filters.location = [matchedLocation];
-			state.searchTerm = '';
-			state.pagination.page = 1;
+			if (matchedLocation) {
+			  resetFiltersOnly();
 
-			updateFilters();
-			renderCurrentView();
-			searchSuggestions.classList.add('hidden');
-			return;
-		  }
+			  // ✅ Region expands to all groups
+			  if (REGION_LOCATION_MAP[matchedLocation]) {
+				state.filters.location = [...REGION_LOCATION_MAP[matchedLocation]];
+			  } else {
+				state.filters.location = [matchedLocation];
+			  }
+
+			  state.searchTerm = '';
+			  state.pagination.page = 1;
+
+			  updateFilters();
+			  renderCurrentView();
+			  searchSuggestions.classList.add('hidden');
+			  return;
+			}
+
 
 		  // ✅ Normal text search
 		  resetFiltersOnly();
