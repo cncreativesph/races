@@ -36,6 +36,15 @@
     "status": "Register"
   },
   {
+    "name": "GREAT UP RUN",
+    "distance": "16KM,10KM,5KM",
+    "location": "UP Diliman, Quezon City",
+    "organizer": "RUNRIO",
+    "date": "August 23, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
     "name": "MEOWSHIE RUN",
     "distance": "10KM,5KM",
     "location": "Fort Santiago, Intramuros, City of Manila",
@@ -690,8 +699,8 @@
     "location": "Cebu City",
     "organizer": "RUNRIO",
     "date": "July 12, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/114290/singlife-cebu-international-marathon",
+    "status": "Register"
   },
   {
     "name": "SINGLIFE DAVAO MARATHON",
