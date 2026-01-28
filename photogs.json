@@ -1,5 +1,41 @@
 [
   {
+    "nameP": "HOME CREDIT TAKBO PARA SA LIFE",
+    "locationP": "Mall of Asia",
+    "dateP": "February 1, 2026",
+    "listOfPhotogs": [
+        "CN CreativeS",
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"AR Sports PH"
+      ],
+      "photogsURL": [
+		"https://photos.cncreatives.com/galleries/home-credit-takbo-parasalife",
+		"https://photos.genuinesole.com/galleries/home-credit-takbo-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/home-credit-takbo-para-sa-life",
+        "https://photos.arsportsph.com/galleries/home-credit-takbo-parasalife"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/2vmkjfc549tmbmwd"
+  },
+  {
+    "nameP": "7-ELEVEN 711 RUN 2026",
+    "locationP": "Filinvest, Alabang",
+    "dateP": "February 1, 2026",
+    "listOfPhotogs": [
+        "CN CreativeS",
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"AR Sports PH"
+      ],
+      "photogsURL": [
+		"https://photos.cncreatives.com/galleries/7-eleven-run-2026",
+		"https://photos.genuinesole.com/galleries/7-eleven-run-series-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/711-run-2026",
+        "https://photos.arsportsph.com/galleries/7-eleven-run-2026"
+      ],
+	 "resultsURL": "https://www.run711.com/"
+  },
+  {
     "nameP": "AYALA TACBO",
     "locationP": "Ayala, Makati City",
     "dateP": "January 18, 2026",
