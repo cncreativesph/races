@@ -193,7 +193,7 @@
     "distance": "10KM,5KM",
     "location": "Filinvest, Alabang, Muntinlupa City",
     "organizer": "HYVESPORTS",
-    "date": "February 28, 2026",
+    "date": "May 9, 2026",
     "website": "https://registration.hyvesport.com/register/the-music-run-manila-2026",
     "status": "Register"
   },
@@ -214,6 +214,33 @@
     "date": "March 8, 2026",
     "website": "https://raceroster.com/events/2026/107165/fcc-womens-run-ph-2026",
     "status": "Register"
+  },
+  {
+    "name": "REV MANILA CITY HALF MARATHON",
+    "distance": "21KM,10KM,5KM",
+    "location": "Manila City Hall",
+    "organizer": "RUNRIO",
+    "date": "April 12, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "REV MAKATI CITY HALF MARATHON",
+    "distance": "21KM,10KM,5KM",
+    "location": "Manila City Hall",
+    "organizer": "RUNRIO",
+    "date": "JULY 5, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "REV QUEZON CITY HALF MARATHON",
+    "distance": "21KM,10KM,5KM",
+    "location": "UP Diliman, Quezon City",
+    "organizer": "RUNRIO",
+    "date": "December 13, 2026",
+    "website": "",
+    "status": "Opening Soon"
   },
   {
     "name": "TCS CLARK ANIMO INTERNATIONAL MARATHON",
