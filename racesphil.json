@@ -72,6 +72,15 @@
     "status": "Register"
   },
   {
+    "name": "PET EXPRESS DOGGIE RUN",
+    "distance": "5KM,3KM,1.5KM",
+    "location": "Mall of Asia",
+    "organizer": "Pet Express",
+    "date": "March 7, 2026",
+    "website": "https://www.petexpress.com.ph/collections/2026-doggie-run",
+    "status": "Register"
+  },
+  {
     "name": "ARMYNAVY RUN",
     "distance": "21KM,10KM,5KM",
     "location": "Ayala, Makati City",
