@@ -578,6 +578,26 @@
 	 "resultsURL": "https://results.raceroster.com/v3/events/2m4sacq6ehrf2r7k"
   },
   {
+    "nameP": "ARMYNAVY RUN",
+    "locationP": "Ayala, Makati",
+    "dateP": "February 8, 2026",
+    "listOfPhotogs": [
+        "CN CreativeS",
+		"Genuine Sole",
+		"PH Running Overload",
+		"AR Sports PH",
+		"Humble Runner"
+      ],
+      "photogsURL": [
+        "https://photos.cncreatives.com/galleries/armynavy-run",
+		"https://photos.genuinesole.com/galleries/army-navy-run-2026-by-gsp",
+		"https://photos.phrunningoverload.com/galleries/armynavy-run",
+		"https://photos.arsportsph.com/galleries/armynavy-run",
+		"https://photos.humblerunnerphoto.com/galleries/armynavy-run"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/544ghhfy6cfcmfqc"
+  },
+  {
     "nameP": "Great UP RUN",
     "locationP": "UP DILIMAN",
     "dateP": "March 30, 2025",
