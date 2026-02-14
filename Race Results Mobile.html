@@ -1214,6 +1214,13 @@ function showNavLoader(){
 
 		  // Handle common variants
 		  const compact = s.replace(/\s/g, '');
+		  
+		    if (
+			s.includes('cn creatives x stories') ||
+			s.includes('cn creatives × stories') ||
+			(s.includes('cn creatives') && s.includes('stories') && (s.includes(' x ') || s.includes('×')))
+		  ) return 'CN Creatives x Stories';
+
 
 		  if (s.includes('cn creatives') || compact.includes('cncreatives')) return 'CN Creatives';
 		  if (s.includes('ar sports') || compact.includes('arsportsph')) return 'AR Sports PH';
@@ -2606,13 +2613,14 @@ function renderRaces() {
 
 			  // hierarchy
 			  const photographerOrder = {
-				'CN Creatives': 1,
-				'AR Sports PH': 2,
-				'Genuine Sole': 3,
-				'Humble Runner': 4,
-				'PH Running Overload': 5,
-				'Pinoy Fitness': 6,
-				'Bicolano Runner': 7,
+				'CN Creatives x Stories': 1,
+				'CN Creatives': 2,
+				'AR Sports PH': 3,
+				'Genuine Sole': 4,
+				'Humble Runner': 5,
+				'PH Running Overload': 6,
+				'Pinoy Fitness': 7,
+				'Bicolano Runner': 8,
 			  };
 
 			  const photographerItems = photo.listOfPhotogs.map((p, i) => ({
@@ -2686,7 +2694,15 @@ function renderRaces() {
 			// RIGHT side container (results button)
 			const resultsButton = document.createElement('button');
 			resultsButton.className = 'register-button results';
+			
+			// ✅ decide label based on photographers list
+			const hasCNStories = Array.isArray(photo.listOfPhotogs) && photo.listOfPhotogs.some(p => {
+			  const n = normalizePhotographerName(p);
+			  return n === 'CN Creatives x Stories';
+			});
 
+			const resultsProviderLabel = hasCNStories ? 'CN CREATIVES x STORIES' : 'CN CREATIVES';
+			
 			if (photo.resultsURL) {
 			  resultsButton.textContent = 'VIEW RESULTS';
 			  resultsButton.addEventListener('click', () => {
