@@ -1,5 +1,23 @@
 [
   {
+    "nameP": "DORAEMON RUN",
+    "locationP": "Mall of Asia",
+    "dateP": "February 14, 2026",
+    "listOfPhotogs": [
+        "CN Creatives X Stories",
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"AR Sports PH"
+      ],
+      "photogsURL": [
+		"https://photos.cncreatives.com/galleries/doraemon-run-philippines",
+		"https://photos.genuinesole.com/galleries/doraemon-run-2026",
+		"https://photos.phrunningoverload.com/galleries/doraemon-run",
+        "https://photos.arsportsph.com/galleries/doraemon-run-philippines"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/gyp9fsvkcxvuet9w"
+  },
+  {
     "nameP": "HOME CREDIT TAKBO PARA SA LIFE",
     "locationP": "Mall of Asia",
     "dateP": "February 1, 2026",
@@ -595,7 +613,7 @@
 		"Humble Runner"
       ],
       "photogsURL": [
-        "https://photos.cncreatives.com/galleries/armynavy-run",
+        "https://www.facebook.com/runrioinc",
 		"https://photos.genuinesole.com/galleries/army-navy-run-2026-by-gsp",
 		"https://photos.phrunningoverload.com/galleries/armynavy-run",
 		"https://photos.arsportsph.com/galleries/armynavy-run",
@@ -976,6 +994,22 @@
   {
     "nameP": "THE BULL RUNNER TBR INLIFE DREAM MARATHON",
     "locationP": "FILINVEST, ALABANG",
+    "dateP": "February 15, 2026",
+    "listOfPhotogs": [
+        "CN CreativeS",
+		"AR Sports PH",
+		"Genuine Sole"
+      ],
+      "photogsURL": [
+        "https://photos.cncreatives.com/galleries/TBR2026",
+		"https://photos.arsportsph.com/galleries/tbr-inlife-dream-marathon-2026",
+		"https://photos.genuinesole.com/galleries/tbr-inlife-dream-marathon-2026"
+      ],
+	 "resultsURL": "https://www.tbrdream.com/race-info/race-results/"
+  },
+  {
+    "nameP": "THE BULL RUNNER TBR INLIFE DREAM MARATHON",
+    "locationP": "FILINVEST, ALABANG",
     "dateP": "February 16, 2025",
     "listOfPhotogs": [
         "CN CreativeS",
@@ -1078,7 +1112,4 @@
 	 "resultsURL": "https://run711.com/results"
   }
 ]
-
-
-
 
