@@ -19,9 +19,9 @@
   },
   {
     "name": "Panasonic Run",
-    "distance": "",
+    "distance": "16KM,10KM,5KM,3KM",
     "location": "Mall of Asia",
-    "organizer": "",
+    "organizer": "RUNRIO",
     "date": "May 16, 2026",
     "website": "",
     "status": "Opening Soon"
@@ -323,6 +323,15 @@
     "date": "March 8, 2026",
     "website": "https://raceroster.com/events/2026/107165/fcc-womens-run-ph-2026",
     "status": "Event is Full"
+  },
+  {
+    "name": "WOMEN’S RUN PH",
+    "distance": "10KM,5KM,1KM Kids",
+    "location": "Ayala, Makati",
+    "organizer": "RUNRIO",
+    "date": "October 25, 2026",
+    "website": "https://raceroster.com/events/2026/115582/womens-run-ph-2026",
+    "status": "Register"
   },
   {
     "name": "REV MANILA CITY HALF MARATHON",
@@ -1038,12 +1047,12 @@
   },
   {
     "name": "DECATHLON HALF MARATHON - LEG 1",
-    "distance": "21KM,10KM,5KM",
+    "distance": "21KM,16KM,10KM,5KM",
     "location": "Clark, Pampanga",
     "organizer": "SMOKE10 EVENTS MANAGEMENT",
     "date": "April 19, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://smoke10events.myruntime.com/register/decathlon-half-marathon-2026",
+    "status": "Register"
   },
   {
     "name": "DECATHLON RUN - LEG 2",
@@ -1213,8 +1222,8 @@
     "location": "Filinvest, Alabang",
     "organizer": "RULE & RICH EVENTS MANAGEMENT",
     "date": "April 26, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://mnlcityrun.myruntime.com/register/iwhite-korea-run-2026",
+    "status": "Register"
   },
   {
     "name": "UP FIGHT RUN",
