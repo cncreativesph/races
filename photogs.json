@@ -1,4 +1,24 @@
 [
+    {
+    "nameP": "AYALA PHILIPPINE MARATHON",
+    "locationP": "Ayala, Makati City",
+    "dateP": "February 22, 2026",
+    "listOfPhotogs": [
+        "CN Creatives X Stories",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"AR Sports PH"
+      ],
+      "photogsURL": [
+		"https://photos.cncreatives.com/galleries/ayala-philippine-marathon",
+		"https://photos.humblerunnerphoto.com/galleries/ayala-philippine-marathon",
+		"",
+		"https://photos.phrunningoverload.com/galleries/ayala-philippine-marathon",
+        "https://photos.arsportsph.com/galleries/ayala-philippine-marathon"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/yywbs6fd4yux5q3e"
+  },
   {
     "nameP": "DORAEMON RUN",
     "locationP": "Mall of Asia",
