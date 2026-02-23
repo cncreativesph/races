@@ -20,6 +20,24 @@
 	 "resultsURL": "https://results.raceroster.com/v3/events/yywbs6fd4yux5q3e"
   },
   {
+    "nameP": "ISUZU Bulacan Half Marathon",
+    "locationP": "Waltermart Plaridel, Bulacan",
+    "dateP": "February 22, 2026",
+	"resultsURL": "https://teammalofit.myruntime.com/results/bhm2026"
+  },
+  {
+    "nameP": "Cavite Half Marathon",
+    "locationP": "Vermosa, Imus, Cavite",
+    "dateP": "February 22, 2026",
+	"resultsURL": "https://myruntime.com/results/cavite-half-marathon-2026"
+  },
+  {
+    "nameP": "Clark Ultramarathon",
+    "locationP": "Clark, Pampanga",
+    "dateP": "February 22, 2026",
+	"resultsURL": "https://smoke10events.myruntime.com/results/clark-ultramarathon-2026"
+  },
+  {
     "nameP": "DORAEMON RUN",
     "locationP": "Mall of Asia",
     "dateP": "February 15, 2026",
