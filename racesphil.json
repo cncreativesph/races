@@ -1,12 +1,12 @@
 [
   {
     "name": "Star Wars Run",
-    "distance": "",
-    "location": "",
+    "distance": "10KM,5KM,3KM",
+    "location": "Mall of Asia",
     "organizer": "RUNRIO",
     "date": "May 3, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/115958/star-wars-night-run",
+    "status": "Register"
   },
   {
     "name": "BPI #BestLifeRun Corporate Race",
