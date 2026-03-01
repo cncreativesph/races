@@ -1,5 +1,17 @@
 [
     {
+    "nameP": "National MILO Marathon - Pasay Leg",
+    "locationP": "Mall of Asia",
+    "dateP": "March 1, 2026",
+    "listOfPhotogs": [
+        "CN Creatives X Stories"
+      ],
+      "photogsURL": [
+		"https://photos.cncreatives.com/galleries/national-milo-marathon"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/fe4njmgcq6ck5ymk"
+  },
+  {
     "nameP": "AYALA PHILIPPINE MARATHON",
     "locationP": "Ayala, Makati City",
     "dateP": "February 22, 2026",
