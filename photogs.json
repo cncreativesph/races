@@ -4,10 +4,18 @@
     "locationP": "Mall of Asia",
     "dateP": "March 1, 2026",
     "listOfPhotogs": [
-        "CN Creatives X Stories"
+        "CN Creatives X Stories",
+        "Humble Runner",
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"AR Sports PH"
       ],
       "photogsURL": [
-		"https://photos.cncreatives.com/galleries/national-milo-marathon"
+		"https://photos.cncreatives.com/galleries/national-milo-marathon",
+		"https://photos.humblerunnerphoto.com/galleries/national-milo-marathon",
+		"https://photos.genuinesole.com/galleries/50th-national-milo-marathon-pasay-leg",
+		"https://photos.phrunningoverload.com/galleries/national-milo-marathon",
+        "https://photos.arsportsph.com/galleries/national-milo-marathon"
       ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/fe4njmgcq6ck5ymk"
   },
