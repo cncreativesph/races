@@ -1,5 +1,23 @@
 [
     {
+    "nameP": "Pinoy Fitness SUB1 10K Sunset Challenge",
+    "locationP": "Vermosa, Cavite",
+    "dateP": "March 7, 2026",
+    "listOfPhotogs": [
+        "CN Creatives",
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"AR Sports PH"
+      ],
+      "photogsURL": [
+		"https://photos.cncreatives.com/galleries/pinoy-fitness-sub1-10k-sunset-challenge",
+		"https://photos.genuinesole.com/galleries/pf-sub-1-10k-challenge",
+		"https://photos.phrunningoverload.com/galleries/pinoy-fitness-sub1-10k-sunset-challenge-vermosa",
+        "https://photos.arsportsph.com/galleries/pinoy-fitness-sub1-10k-sunset-challenge"
+      ],
+	 "resultsURL": "https://pinoyfitness.myruntime.com/results/pf-sub1-10k-challenge-2026"
+  },
+  {
     "nameP": "National MILO Marathon - Pasay Leg",
     "locationP": "Mall of Asia",
     "dateP": "March 1, 2026",
