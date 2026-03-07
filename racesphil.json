@@ -18,13 +18,22 @@
     "status": "Register"
   },
   {
+    "name": "SpongeBob Run",
+    "distance": "10KM,5KM,3KM,1KM",
+    "location": "Ayala, Makati City",
+    "organizer": "RUNRIO",
+    "date": "May 31, 2026",
+    "website": "https://raceroster.com/events/2026/116526/spongebob-run-2026",
+    "status": "Register"
+  },
+  {
     "name": "Panasonic Run",
     "distance": "16KM,10KM,5KM,3KM",
     "location": "Mall of Asia",
     "organizer": "RUNRIO",
     "date": "May 16, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/116767/panasonic-run-2026",
+    "status": "Register"
   },
   {
     "name": "UP SIKLAB RUN",
