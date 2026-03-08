@@ -326,13 +326,13 @@
 		}
 
         .register-button.results {
-			margin-left: 50px; 
-            background-color: #007aff;
-            color: white;
-            font-weight: 900; /* Added bold */
-            text-transform: uppercase; /* Added all caps */
-            font-size: 13px; 
-        }
+    background-color: #007aff;
+    color: white;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 13px;
+    flex-shrink: 0;
+}
 		
 		.register-button:hover {
 		  background-color: #FFE8A3;
@@ -2661,7 +2661,7 @@ function renderRaces() {
 
 			// LEFT side container (photographers)
 			const leftWrap = document.createElement('div');
-			leftWrap.className = 'flex flex-col flex-1';
+			leftWrap.className = 'flex flex-col flex-1 min-w-0';
 
 			// Title
 			if (photo.listOfPhotogs && Array.isArray(photo.listOfPhotogs) && photo.listOfPhotogs.length > 0) {
@@ -2674,7 +2674,7 @@ function renderRaces() {
 			  photographersInstruct.textContent = "Click the photographer's name to view photos";
 
 			  const photographersContainer = document.createElement('div');
-			  photographersContainer.className = 'flex flex-wrap mt-1';
+			  photographersContainer.className = 'flex flex-wrap gap-2 mt-1';
 
 			  // hierarchy
 			  const photographerOrder = {
@@ -2751,7 +2751,7 @@ function renderRaces() {
 
 
 			  leftWrap.appendChild(photographersLabel);
-			 // leftWrap.appendChild(photographersInstruct);
+			 leftWrap.appendChild(photographersInstruct);
 			  leftWrap.appendChild(photographersContainer);
 			}
 
