@@ -2674,7 +2674,7 @@ function renderRaces() {
 			  photographersInstruct.textContent = "Click the photographer's name to view photos";
 
 			  const photographersContainer = document.createElement('div');
-			  photographersContainer.className = 'flex flex-wrap gap-2 mt-1';
+			  photographersContainer.className = 'flex flex-wrap gap-1 mt-1';
 
 			  // hierarchy
 			  const photographerOrder = {
@@ -2702,7 +2702,7 @@ function renderRaces() {
 
 			  photographerItems.forEach(p => {
 				  const button = document.createElement('button');
-				  button.className = `photographer-button ${getPhotographerClass(p.name)} mr-2 mb-1.5`;
+				  button.className = `photographer-button ${getPhotographerClass(p.name)} `;
 				  button.textContent = p.name;
 
 				  if (p.url) {
