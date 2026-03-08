@@ -2749,10 +2749,16 @@ function renderRaces() {
 				  photographersContainer.appendChild(button);
 				});
 
-
 			  leftWrap.appendChild(photographersLabel);
-			 leftWrap.appendChild(photographersInstruct);
+			// small line gap
+const spacer = document.createElement('div');
+spacer.style.height = '1px';
+leftWrap.appendChild(spacer);
+
+			leftWrap.appendChild(photographersInstruct);
+leftWrap.appendChild(spacer);
 			  leftWrap.appendChild(photographersContainer);
+			
 			}
 
 			// RIGHT side container (results button)
