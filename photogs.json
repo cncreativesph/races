@@ -62,6 +62,24 @@
 	 "resultsURL": "https://results.raceroster.com/v3/events/93abqyagyjt5x2ne"
   },
   {
+    "nameP": "SANTE BARLEY TRILOGY RUN ASIA - LEG 1",
+    "locationP": "Mall of Asia",
+    "dateP": "March 15, 2026",
+    "listOfPhotogs": [
+        "Humble Runner",
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"AR Sports PH"
+      ],
+      "photogsURL": [
+		"https://photos.humblerunnerphoto.com/galleries/sante-barley-trilogy-run-asia-manila-leg-1-2026",
+		"https://photos.genuinesole.com/galleries/sante-barley-trilogy-run-asia-leg-1",
+		"https://photos.phrunningoverload.com/galleries/sante-barley-trilogy-run-asia-manila-leg-1-2026",
+        "https://photos.arsportsph.com/galleries/sant-barley-trilogy-run-asia-2026-manila-leg-1"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/hp6jpem9yjq5v7ej"
+  },
+  {
     "nameP": "AYALA PHILIPPINE MARATHON",
     "locationP": "Ayala, Makati City",
     "dateP": "February 22, 2026",
