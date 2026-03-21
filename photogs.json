@@ -1,5 +1,19 @@
 [
     {
+    "nameP": "GCASH Run",
+    "locationP": "Ayala, Makati City",
+    "dateP": "March 22, 2026",
+    "listOfPhotogs": [
+        "CN Creatives X Stories",
+		"Genuine Sole"
+      ],
+      "photogsURL": [
+		"https://photos.cncreatives.com/galleries/gcash-run",
+		"https://photos.genuinesole.com/galleries/gcash-run"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/9rx5zpgbsxqc2qrc"
+  },
+  {
     "nameP": "Pinoy Fitness SUB1 10K Sunset Challenge",
     "locationP": "Vermosa, Cavite",
     "dateP": "March 7, 2026",
