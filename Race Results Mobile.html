@@ -223,7 +223,7 @@
         }
 		
 		.photographers-title {
-        font-size: 13px;
+        font-size: 15px;
         font-weight: 900;
         color: #14532D;
         text-transform: uppercase;
@@ -1218,9 +1218,14 @@ function showNavLoader(){
 		    if (
 			s.includes('cn creatives x stories') ||
 			s.includes('cn creatives × stories') ||
-			(s.includes('cn creatives') && s.includes('stories') && (s.includes(' x ') || s.includes('×')))
+			(s.includes('cn creatives') && s.includes('stories') && (s.includes(' x ') ))
 		  ) return 'CN Creatives x Stories';
 
+		    if (
+			s.includes('cn creatives x smooth finish') ||
+			s.includes('cn creatives × smooth finish') ||
+			(s.includes('cn creatives') && s.includes('smooth') && (s.includes(' x ') ))
+		  ) return 'CN Creatives x Smooth Finish';
 
 		  if (s.includes('cn creatives') || compact.includes('cncreatives')) return 'CN Creatives';
 		  if (s.includes('ar sports') || compact.includes('arsportsph')) return 'AR Sports PH';
@@ -2602,7 +2607,7 @@ function renderRaces() {
 			if (photo.listOfPhotogs && Array.isArray(photo.listOfPhotogs) && photo.listOfPhotogs.length > 0) {
 			  const photographersLabel = document.createElement('div');
 			  photographersLabel.className = 'photographers-title poppins-black';
-			  photographersLabel.textContent = 'LIST OF PHOTOGRAPHERS';
+			  photographersLabel.textContent = 'LIST OF PHOTOGRAPHERS    ';
 
 			  const photographersInstruct = document.createElement('div');
 			  photographersInstruct.className = 'photographers-instruct';
@@ -2614,13 +2619,14 @@ function renderRaces() {
 			  // hierarchy
 			  const photographerOrder = {
 				'CN Creatives x Stories': 1,
-				'CN Creatives': 2,
-				'AR Sports PH': 3,
-				'Genuine Sole': 4,
-				'Humble Runner': 5,
-				'PH Running Overload': 6,
-				'Pinoy Fitness': 7,
-				'Bicolano Runner': 8,
+				'CN Creatives x Smooth Finish': 2,
+				'CN Creatives': 3,
+				'AR Sports PH': 4,
+				'Genuine Sole': 5,
+				'Humble Runner': 6,
+				'PH Running Overload': 7,
+				'Pinoy Fitness': 8,
+				'Bicolano Runner': 9,
 			  };
 
 			  const photographerItems = photo.listOfPhotogs.map((p, i) => ({
@@ -2706,8 +2712,15 @@ function renderRaces() {
 			  const n = normalizePhotographerName(p);
 			  return n === 'CN Creatives x Stories';
 			});
+			
+						const hasCNSmooth = Array.isArray(photo.listOfPhotogs) && photo.listOfPhotogs.some(p => {
+			  const n = normalizePhotographerName(p);
+			  return n === 'CN Creatives x Smooth Finish';
+			});
 
 			const resultsProviderLabel = hasCNStories ? 'CN CREATIVES x STORIES' : 'CN CREATIVES';
+			
+			const resultsProviderLabel2 = hasCNSmooth ? 'CN CREATIVES x SMOOTH FINISH' : 'CN CREATIVES';
 			
 			if (photo.resultsURL) {
 			  resultsButton.textContent = 'VIEW RESULTS';
