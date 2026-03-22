@@ -5,11 +5,17 @@
     "dateP": "March 22, 2026",
     "listOfPhotogs": [
         "CN Creatives X Stories",
-		"Genuine Sole"
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"AR Sports PH",
+		"Humble Runner"
       ],
       "photogsURL": [
 		"https://photos.cncreatives.com/galleries/gcash-run",
-		"https://photos.genuinesole.com/galleries/gcash-run"
+		"https://photos.genuinesole.com/galleries/gcash-run",
+		"https://photos.phrunningoverload.com/galleries/gcash-run",
+		"https://photos.arsportsph.com/galleries/gcash-run",
+		"https://photos.humblerunnerphoto.com/galleries/gcash-run"
       ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/9rx5zpgbsxqc2qrc"
   },
