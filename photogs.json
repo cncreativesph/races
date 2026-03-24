@@ -20,6 +20,42 @@
 	 "resultsURL": "https://results.raceroster.com/v3/events/9rx5zpgbsxqc2qrc"
   },
   {
+    "nameP": "Flight Run",
+    "locationP": "Mall of Asia",
+    "dateP": "March 21, 2026",
+	"resultsURL": "https://rsrjevents.myruntime.com/results/flight-run-2026"
+  },
+  {
+    "nameP": "Smoke10 Half Marathon",
+    "locationP": "Clark, Pampanga",
+    "dateP": "March 15, 2026",
+	"resultsURL": "https://smoke10events.myruntime.com/results/smoke10-half-marathon-2026"
+  },
+  {
+    "nameP": "IRUN Bulacan",
+    "locationP": "Malolos, Bulacan",
+    "dateP": "March 8, 2026",
+	"resultsURL": "https://smoke10events.myruntime.com/results/irun-bulacan-2026#/"
+  },
+  {
+    "nameP": "SM2SM Run",
+    "locationP": "SM Seaside City Cebu",
+    "dateP": "March 8, 2026",
+	"resultsURL": "https://myruntime.com/results/sm2sm-half-marathon-2026#/"
+  },
+  {
+    "nameP": "HeartBeat Run: Stride to the Beat of Hope",
+    "locationP": "Filinvest, Alabang",
+    "dateP": "March 8, 2026",
+	"resultsURL": "https://mnlcityrun.myruntime.com/results/heart-beat-run-2026-stride-to-the-beat-of-hope#/"
+  },
+  {
+    "nameP": "Pet Express: Doggie Run",
+    "locationP": "Mall of Asia",
+    "dateP": "March 7, 2026",
+	"resultsURL": "https://myruntime.com/results/pet-express-doggie-run-2026#/"
+  },
+  {
     "nameP": "Pinoy Fitness SUB1 10K Sunset Challenge",
     "locationP": "Vermosa, Cavite",
     "dateP": "March 7, 2026",
