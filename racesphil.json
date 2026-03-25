@@ -1,7 +1,7 @@
 [
   {
     "name": "EASTWEST DREAM RUN",
-    "distance": "",
+    "distance": "21KM,10KM,5KM,3KM,1KM Dog",
     "location": "Filinvest, Alabang",
     "organizer": "RUNRIO",
     "date": "August 2, 2026",
@@ -10,16 +10,16 @@
   },
   {
     "name": "EASTWEST DREAM RUN",
-    "distance": "",
-    "location": "Clark, Pampanga",
+    "distance": "21KM,10KM,5KM,3KM,1KM Dog",
+    "location": "Filinvest Mimosa Plus, Clark, Pampanga",
     "organizer": "RUNRIO",
     "date": "May 24, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/116383/eastwest-dream-run-2026-clark",
+    "status": "Register"
   },
   {
     "name": "EASTWEST DREAM RUN",
-    "distance": "",
+    "distance": "21KM,10KM,5KM,3KM,1KM Dog",
     "location": "Iloilo",
     "organizer": "RUNRIO",
     "date": "September 20, 2026",
@@ -28,7 +28,7 @@
   },
   {
     "name": "EASTWEST DREAM RUN",
-    "distance": "",
+    "distance": "21KM,10KM,5KM,3KM,1KM Dog",
     "location": "Cagayan De Oro",
     "organizer": "RUNRIO",
     "date": "October 18, 2026",
