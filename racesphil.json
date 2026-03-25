@@ -695,6 +695,15 @@
     "status": "Opening Soon"
   },
   {
+    "name": "Siargao Marathon",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "Surigao del Norte, Siargao Island",
+    "organizer": "KINETIXSPORTS",
+    "date": "June 14, 2026",
+    "website": "https://racerecord.myruntime.com/register/siargao-marathon-2026",
+    "status": "Register"
+  },
+  {
     "name": "AGOO HALF MARATHON",
     "distance": "21KM,10KM,5KM",
     "location": "Agoo Eco Park, La Union",
@@ -1051,8 +1060,8 @@
     "location": "Mall of Asia, Pasay City",
     "organizer": "RSRJ EVENTS MANAGEMENT",
     "date": "May 23, 2026",
-    "website": "https://rsrjevents.myruntime.com/register/athena-olympus-run-2026",
-    "status": "Opening Soon"
+    "website": "https://rsrjevents.myruntime.com/register/poseidon-olympus-run-2026",
+    "status": "Register"
   },
   {
     "name": "ZEUS OLYMPUS RUN",
@@ -1083,12 +1092,12 @@
   },
   {
     "name": "FIT TO RUN - LEG 2",
-    "distance": "21KM,10KM,5KM",
+    "distance": "21KM,16KM,10KM,5KM",
     "location": "Clark, Pampanga",
     "organizer": "SMOKE10 EVENTS MANAGEMENT",
     "date": "July 26, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://smoke10events.myruntime.com/register/fit-to-run-2026-leg-2-clark",
+    "status": "Register"
   },
   {
     "name": "FIT TO RUN - LEG 3",
@@ -1128,12 +1137,12 @@
   },
   {
     "name": "CABALEN HALF MARATHON",
-    "distance": "21KM,10KM,5KM",
+    "distance": "21KM,10KM,5KM,3KM",
     "location": "Clark, Pampanga",
     "organizer": "SMOKE10 EVENTS MANAGEMENT",
     "date": "June 14, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://smoke10events.myruntime.com/register/cabalen-half-marathon-2026",
+    "status": "Register"
   },
   {
     "name": "CLARK HALF MARATHON",
@@ -1204,8 +1213,8 @@
     "location": "Clark, Pampanga",
     "organizer": "SMOKE10 EVENTS MANAGEMENT",
     "date": "September 13, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://smoke10events.myruntime.com/register/pampanga-marathon-2026",
+    "status": "Register"
   },
   {
     "name": "MNL CITY RUN - HEARTBEAT RUN",
@@ -1271,7 +1280,7 @@
     "status": "Register"
   },
   {
-    "name": "IWHITE RUN",
+    "name": "IWhite Korea Run: Your First Love",
     "distance": "16KM,10KM,5KM,3KM",
     "location": "Filinvest, Alabang",
     "organizer": "RULE & RICH EVENTS MANAGEMENT",
