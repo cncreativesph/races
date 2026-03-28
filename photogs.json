@@ -1,5 +1,23 @@
 [
     {
+    "nameP": "Rexona 10 Miler Series",
+    "locationP": "Mall of Asia",
+    "dateP": "March 29, 2026",
+    "listOfPhotogs": [
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"AR Sports PH",
+		"Humble Runner"
+      ],
+      "photogsURL": [
+		"https://photos.genuinesole.com/galleries/gcash-run",
+		"https://photos.phrunningoverload.com/galleries/rexona-10-miler-pasay",
+		"https://photos.arsportsph.com/galleries/rexona-10-miler-pasay",
+		"https://photos.humblerunnerphoto.com/galleries/rexona-10-miler-pasay"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/mfqksjpsjs9tzpkz"
+  },
+  {
     "nameP": "GCASH Run",
     "locationP": "Ayala, Makati City",
     "dateP": "March 22, 2026",
