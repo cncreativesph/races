@@ -745,8 +745,8 @@
     "location": "Crocodile Park, Davao City",
     "organizer": "KINETIXSPORTS",
     "date": "May 9, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://docs.google.com/forms/d/e/1FAIpQLSd903IiuK45YBj2xS6IqFm-zgt7tH-ElA5VdMioK0Nf0h6Hpg/viewform?pli=1",
+    "status": "Register"
   },
   {
     "name": "Siargao Marathon",
@@ -1357,8 +1357,8 @@
     "location": "Filinvest, Alabang",
     "organizer": "RULE & RICH EVENTS MANAGEMENT",
     "date": "May 31, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://mnlcityrun.myruntime.com/register/elorde-the-flash-run-2026-run-like-a-champ",
+    "status": "Register"
   },
   {
     "name": "KAPAMILYA RUN",
@@ -1366,8 +1366,17 @@
     "location": "Filinvest, Alabang",
     "organizer": "RULE & RICH EVENTS MANAGEMENT",
     "date": "June 14, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://mnlcityrun.myruntime.com/register/kapamilya-run-2026",
+    "status": "Register"
+  },
+  {
+    "name": "Wilcon 10-Miler Run",
+    "distance": "16KM,10KM,5KM",
+    "location": "Parqal, Paranaque",
+    "organizer": "RULE & RICH EVENTS MANAGEMENT",
+    "date": "June 21, 2026",
+    "website": "https://mnlcityrun.myruntime.com/register/wilcon-10-miler-run-2026",
+    "status": "Register"
   },
   {
     "name": "PUERTO PRINCESA INTERNATIONAL MARATHON",
