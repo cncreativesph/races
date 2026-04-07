@@ -1,5 +1,17 @@
 [
   {
+    "nameP": "Hades Olympus Run",
+    "locationP": "Mall of Asia",
+    "dateP": "April 5, 2026",
+	"listOfPhotogs": [
+		"Various Photographers",
+      ],
+      "photogsURL": [
+		"https://raceresults.rsrjeventsmanagement.com/events/olympus-run-series-2026-hades-6043/photos"
+      ],
+	"resultsURL": "https://rsrjevents.myruntime.com/results/hades-olympus-run-2026"
+  },
+  {
     "nameP": "ALL WOMEN’S RUN ASIA: SHINE HALF MARATHON",
     "locationP": "Filinvest, Alabang",
     "dateP": "March 29, 2026",
