@@ -1,4 +1,58 @@
 [
+{
+    "name": "SUNNIES RUN",
+    "distance": "21KM,10KM,5KM,1KM Dog",
+    "location": "Ayala, Makati City",
+    "organizer": "RUNRIO",
+    "date": "October 4, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "Robinsons Supermarket’s 18th Fit & Fun Wellness Buddy Run",
+    "distance": "10KM,5KM",
+    "location": "Bridgetowne, Pasig City",
+    "organizer": "Robinsons Supermarket",
+    "date": "July 5, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "PalawanPay Trilogy Marathon",
+    "distance": "16KM,10KM,5KM,3KM,1KM",
+    "location": "UP Diliman",
+    "organizer": "RUNRIO",
+    "date": "August 9, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "PalawanPay Trilogy Marathon",
+    "distance": "21KM,16KM,10KM,5KM,3KM,1KM",
+    "location": "Mandaue City",
+    "organizer": "RUNRIO",
+    "date": "September 27, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "PalawanPay Trilogy Marathon",
+    "distance": "42KM,21KM,16KM,10KM,5KM,3KM,1KM",
+    "location": "Puerto Princesa, Palawan",
+    "organizer": "RUNRIO",
+    "date": "October 18, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "Robinsons Supermarket’s 18th Fit & Fun Wellness Buddy Run",
+    "distance": "10KM,5KM",
+    "location": "Cebu Business Park, Cebu City",
+    "organizer": "Robinsons Supermarket",
+    "date": "August 9, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
   {
     "name": "EASTWEST DREAM RUN",
     "distance": "21KM,10KM,5KM,3KM,1KM Dog",
