@@ -15,7 +15,7 @@
     "organizer": "Robinsons Supermarket",
     "date": "July 5, 2026",
     "website": "https://www.robinsonssupermarketbuddyrun.com/register/manila",
-    "status": "Register"
+    "status": "Event is Full"
   },
   {
     "name": "PalawanPay Trilogy Marathon",
@@ -722,21 +722,30 @@
     "status": "Register"
   },
   {
-    "name": "PRIDE RUN DAVAO",
-    "distance": "10KM,5KM,3KM",
+    "name": "PRIDE RUN",
+    "distance": "16KM,10KM,5KM,3KM,1KM Dog",
     "location": "SM Lanang Premier, Davao City",
     "organizer": "RUNRIO",
     "date": "June 7, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/116588/pride-run-2026-davao",
+    "status": "Register"
   },
   {
-    "name": "HOKA MIDNIGHT RUN ASIA",
-    "distance": "21KM,10KM,5KM",
-    "location": "Davao Global Township, Davao City",
+    "name": "PRIDE RUN",
+    "distance": "16KM,10KM,5KM,3KM,1KM Dog",
+    "location": "Mall of Asia",
     "organizer": "RUNRIO",
-    "date": "May 31, 2026",
-    "website": "https://raceroster.com/events/2026/114523/hoka-midnight-run-asia-2026-davao",
+    "date": "June 21, 2026",
+    "website": "https://raceroster.com/events/2026/116592/pride-run-2026-manila",
+    "status": "Register"
+  },
+  {
+    "name": "PRIDE RUN",
+    "distance": "16KM,10KM,5KM,3KM,1KM Dog",
+    "location": "SM Seaside, Cebu City",
+    "organizer": "RUNRIO",
+    "date": "June 14, 2026",
+    "website": "https://raceroster.com/events/2026/116590/pride-run-2026-cebu",
     "status": "Register"
   },
   {
