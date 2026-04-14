@@ -1115,7 +1115,7 @@ function showNavLoader(){
                         const data = await fetchData('https://raw.githubusercontent.com/cncreativesph/races/main/photogs.json');
                         state.photos = data;
 						setupFilters(data, true); 
-                        renderPhotos();
+                        hardRefreshGridAfterPhotosLoad();
                     } catch (error) {
                         showError(`Failed to load photo data: ${error.message}`);
                     }
@@ -1168,7 +1168,7 @@ function showNavLoader(){
                 
                 const data = await fetchData('https://raw.githubusercontent.com/cncreativesph/races/main/photogs.json');
                 state.photos = data;
-                renderPhotos();
+                hardRefreshGridAfterPhotosLoad();
             } catch (error) {
                 showError(`Failed to load photo data: ${error.message}`);
             }
@@ -3044,6 +3044,13 @@ function renderRaces() {
                 loadData();
             }
         }
+		
+		function hardRefreshGridAfterPhotosLoad() {
+		  state.pagination.page = 1;
+		  raceList.innerHTML = '';
+		  paginationContainer.innerHTML = '';
+		  renderPhotos();
+		}
 		
 
         // Event listeners
