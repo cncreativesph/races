@@ -3136,6 +3136,21 @@ function renderRaces() {
         // Initialize
         loadData();
 		
+		let didInitialPhotoHardRefresh = false;
+
+		function hardRefreshPhotoGridOnce() {
+		  if (didInitialPhotoHardRefresh) return;
+		  if (state.view !== 'photos') return;
+		  if (!state.photos || !state.photos.length) return;
+
+		  didInitialPhotoHardRefresh = true;
+
+		  state.pagination.page = 1;
+		  raceList.innerHTML = '';
+		  paginationContainer.innerHTML = '';
+		  renderPhotos();
+		}
+
 function isIOS() {
   return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
          (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
@@ -3149,6 +3164,16 @@ if (!isIOS()) {
 window.addEventListener('load', () => {
   const navLoader = document.getElementById('navLoader');
   if (navLoader) navLoader.style.display = 'none';
+
+  const tryInitialHardRefresh = () => {
+    if (state.photos && state.photos.length) {
+      hardRefreshPhotoGridOnce();
+    } else {
+      setTimeout(tryInitialHardRefresh, 120);
+    }
+  };
+
+  tryInitialHardRefresh();
 });
 
     </script>
