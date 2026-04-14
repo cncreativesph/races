@@ -1,7 +1,8 @@
 <html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Philippines Race Calendar</title>
+	<meta name="referrer" content="no-referrer">
+    <title>Race Results & Photos</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&amp;display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -51,6 +52,7 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 		
+		
 		/* ✅ STICKY WRAPPER for BOTH yellow promo + blue header */
 	.sticky-top-wrap{
 	  position: sticky;
@@ -63,7 +65,6 @@
 	  z-index: 99999;
 	}
 
-		
         .toggle-button {
             display: flex;
             align-items: center;
@@ -192,26 +193,8 @@
 
 			  /* important so hover feels smooth */
 			  will-change: transform;
-					}
-
-        .race-name {
-            font-size: 17px;
-            font-weight: 900;
-            color: white; /* Changed for better contrast on dark green */
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100%;            
-            text-transform: uppercase;
         }
-		
-		.race-name {
-		  display: inline;          /* IMPORTANT */
-		  width: auto;              /* prevent stretching */
-		  
-		  text-decoration: none;
-		  color: inherit;
-		}
-		
+
 		.race-card:hover {
 		  transform: translateY(-3px);
 		  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
@@ -222,7 +205,17 @@
 		box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
 		}
 		
-		
+        .race-name {
+            font-size: 17px;
+            font-weight: 900;
+            color: white; /* Changed for better contrast on dark green */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            //cursor: pointer;
+            text-transform: uppercase;
+        }
+
         .race-detail {
             font-size: 11px;
             color: rgba(255, 255, 255, 0.85); /* Changed for better contrast on dark green */
@@ -245,14 +238,15 @@
 		.photographers-title {
         font-size: 13px;
         font-weight: 900;
-        color: white;
+        color: #14532D;
         text-transform: uppercase;
 		}
 		
 		.photographers-instruct {
-        font-size: 10px;
+        font-size: 8px;
 		font-style: italic;
-        color: rgba(255, 255, 255, 0.85); /* Changed for better contrast on dark green */
+		color: #4D7C5A;
+
 		}
 
         .register-button {
@@ -265,6 +259,14 @@
             text-transform: uppercase; /* Added all caps */
         }
 
+		.register-button.soon {
+            background-color: #fc650c;
+			margin-left: 50px; 
+            color: black;
+            opacity: 0.7;
+			border: none;
+            pointer-events: none;
+        }
         .register-button.register {
             background-color: #007aff;
             color: white;
@@ -274,7 +276,6 @@
             background-color: #faf31e;
             color: black;
         }
-
 
 		.btn-main-text {
 			font-weight: bold; /* keeps original style */
@@ -297,25 +298,6 @@
 			margin-top: 0.5; /* or -1px if tighter */
 		}
 		
-
-
-        .register-button.results {
-            background-color: #007aff;
-            color: white;
-            font-weight: 900; /* Added bold */
-            text-transform: uppercase; /* Added all caps */
-            font-size: 13px; 
-        }
-
-        .photographer-button {
-            border-radius: 8px;
-            padding: 0.35rem 0.8rem;
-            font-size: 13px;
-			font-weight: 900;
-            margin-right: 0.37rem;
-            margin-bottom: 0.35rem;
-            transition: all 0.2s ease;
-        }
 		.register-button {
 		  background-color: #EAF5EF;
 		  color: #14532D;
@@ -332,12 +314,26 @@
 		  font-size: 13px;
 		  font-weight: 700;
 		  cursor: pointer;
-		  		/* ✨ smooth animation */
-
+		  transition: all 0.15s ease;
 		  white-space: nowrap;
 		  
+		/* ✨ smooth animation */
+		  transition: 
+			transform 0.15s ease,
+			box-shadow 0.15s ease,
+			background-color 0.15s ease,
+			color 0.15s ease;
 		}
 
+        .register-button.results {
+    background-color: #007aff;
+    color: white;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+		
 		.register-button:hover {
 		  background-color: #FFE8A3;
 		  color: #14532D;                 /* ✅ dark green on hover */
@@ -345,35 +341,66 @@
 			box-shadow: 0 4px 10px rgba(20, 83, 45, 0.25);
 		}
 		
-		.register-button:disabled {
-		  opacity: 0.5;
-		
-		  cursor: not-allowed;
-		}
-		
-		.register-button:focus {
-		  outline: none;
+		.register-button:disabled:hover {
+		  transform: none;
 		  box-shadow: none;
+		  background-color: #EAF5EF;
+		  color: #6b7280; /* muted gray */
 		}
 		
-		.register-button.soon {
-            background-color: #fc650c;
-            color: black;
-            opacity: 0.7;
-			border: none;
-            pointer-events: none;
-        }
 
 		/* Active */
 		.register-button:active {
 		  transform: translateY(0);
-		  		  box-shadow: 0 2px 6px rgba(20, 83, 45, 0.25);
+		  box-shadow: 0 2px 6px rgba(20, 83, 45, 0.25);
 		  background-color: #FFD966;
 		}
+.photographer-button {
+min-width: 125px;
+  background-color: #ff66c4;      /* soft cream */
+  color: white;                 /* default text (slightly muted) */
+  border: 1px solid #E5C76B;
+  border-radius: 9999px;          /* pill */
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
 
+/* Hover */
+.photographer-button:hover {
+  background-color: #FFE8A3;
+  color: #14532D;                 /* ✅ dark green on hover */
+  		  transform: translateY(-5px); /* 👈 subtle lift */
+			box-shadow: 0 4px 10px rgba(20, 83, 45, 0.25);
+}
+
+/* Active */
+.photographer-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(20, 83, 45, 0.25);
+		  background-color: #FFD966;
+}
+
+		.photographer-runningphotog {
+			background-color: #ff66c4;      
+			color: white;
+		}
+		
+		.photographer-zion {
+		    background-color: #55cac9;      
+			color: white;
+		}
+		
+		.photographer-bicolano {
+			background-color: #cb6ce6;      
+			color: white;
+		}
+		
         .photographer-cn {
             background-color: #ffcc00;
-            color: black;
+            color: #14532D;
         }
 
         .photographer-ar {
@@ -400,6 +427,47 @@
             background-color: #007aff;
             color: white;
         }
+		
+		.photographer-22pixels {
+            background-color: #545454;
+            color: white;
+        }
+		
+			/* ✅ NEW photographers (unique colors, white text) */
+		.photographer-paksit {
+			background-color: #0F766E; /* teal (not used yet) */
+			color: white;
+		}
+
+		.photographer-pitikidolscebu {
+			background-color: #B45309; /* amber/brown (not used yet) */
+			color: white;
+		}
+
+		.photographer-stefners {
+			background-color: #BE123C; /* rose/red (not used yet) */
+			color: white;
+		}
+
+		.photographer-nomad {
+		  background-color: #1D4ED8; /* deep blue (not used yet) */
+		  color: white;
+		}
+
+		.photographer-jmshutter {
+		  background-color: #7C2D12; /* dark burnt orange */
+		  color: white;
+		}
+
+		.photographer-cieb {
+		  background-color: #4338CA; /* indigo */
+		  color: white;
+		}
+		
+		.photographer-fotopedia {
+		  background-color: #065F46; /* emerald green (not used yet) */
+		  color: white;
+		}
 
         .categories-section {
             background-color: var(--light-green);
@@ -624,56 +692,6 @@
 			  padding: 6px 5px;
 		}
 		
-		.search-bar.error {
-		  border: 1px solid #dc2626;
-		}
-
-		.search-error-overlay {
-		  position: absolute;
-		  right: 38px;              /* before clear (×) button */
-		  top: 50%;
-		  transform: translateY(-50%);
-		  font-size: 11px;
-		  color: #dc2626;
-		  pointer-events: none;
-		  white-space: nowrap;
-		}
-
-		.search-input-wrap {
-		  position: relative;
-		  flex: 1;
-		  height: 100%;          /* ✅ inherit from search-bar */
-		  overflow: hidden;      /* ✅ prevents expansion */
-		}
-
-
-		.search-inline-error {
-		  position: absolute;
-		  top: 50%;
-		  transform: translateY(-50%);
-		  
-		  margin-left: 12px;        /* ✅ space from typed text */
-		  font-size: 11px;
-		  font-style: italic;       /* ✅ italic */
-		  line-height: 1;
-		  color: #dc2626;
-
-		  white-space: nowrap;
-		  pointer-events: none;
-		}
-		
-		@keyframes shake {
-		  0% { transform: translateX(0); }
-		  25% { transform: translateX(-3px); }
-		  50% { transform: translateX(3px); }
-		  75% { transform: translateX(-3px); }
-		  100% { transform: translateX(0); }
-		}
-
-		.search-bar.shake {
-		  animation: shake 180ms ease;
-		}
-
 		/* PixHero text (shows when pagination is hidden) */
 		/* Base PixHero text */
 			.pixhero-fallback {
@@ -843,33 +861,23 @@
         </div>
       </div>
     </div>
-
-    <!-- Blue Header -->
+	
+	
     <div class="header">
-      <div class="flex justify-between items-center mb-2">
-        <h1 class="text-xl poppins-black">Race Calendar - PixHero App</h1>
-      </div>
-
-       
-		  <div class="search-bar flex items-center p-2 mb-2 relative">
-			  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 ml-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-				  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-			  </svg>
-
-			  <div class="search-input-wrap">
-				<input type="text" id="searchInput" placeholder="Search race name, location, organizer, month, year…" class="w-full bg-transparent outline-none text-base text-black">
-				<span id="searchInlineError" class="search-inline-error hidden">Type at least 3 characters</span>
-				<span id="searchErrorOverlay" class="search-error-overlay hidden">Type at least 3 characters</span>
-			  </div>
-
-			  <button id="clearSearchBtn" type="button" class="clear-search-btn hidden">×</button>
-			  <div id="searchSuggestions" class="search-suggestions hidden"></div>
-		  </div>
-		
-
-		</div>	
+        <div class="flex justify-between items-center mb-2">
+            <h1 class="text-xl poppins-black">Race Calendar - PixHero App</h1>
+        </div>
+        
+        <div class="search-bar flex items-center p-2 mb-2 relative">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 ml-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+            <input type="text" id="searchInput" placeholder="Search race name, location, date, month, year…" class="w-full bg-transparent outline-none text-base text-black">
+			 <button id="clearSearchBtn" type="button" class="clear-search-btn hidden">×</button>
+            <div id="searchSuggestions" class="search-suggestions hidden"></div>
+        </div>
     </div>
-
+</div>
     <div class="flex justify-between items-center px-4 py-2">
         <button id="refreshButton" class="toggle-button refresh flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -891,21 +899,6 @@
     </div>
 
     <div id="filtersContainer" class="px-4 py-2" style="display: none;">
-	
-			<!-- Location Filter -->
-		<div id="locationFilterContainer" class="filter-section">
-		  <div class="filter-header" data-filter="location">
-			<h3 class="text-xs font-bold">Location</h3>
-			<svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-gray-500 transition-transform"
-			  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-			  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-			</svg>
-		  </div>
-		  <div class="filter-content" id="locationFilters">
-			<div class="skeleton h-5 w-20 mr-2 "></div>
-		  </div>
-		</div>
-
         <!-- Distance Filter -->
         <div id="distanceFilterContainer" class="filter-section">
             <div class="filter-header" data-filter="distance">
@@ -934,6 +927,19 @@
             </div>
         </div>
         
+		        <!-- Year Filter -->
+        <div id="yearFilterContainer" class="filter-section hidden">
+            <div class="filter-header" data-filter="year">
+                <h3 class="text-xs font-bold">Year</h3>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </div>
+            <div class="filter-content" id="yearFilters">
+                <div class="skeleton h-5 w-16 mr-2 "></div>
+            </div>
+        </div>
+		
         <!-- Month Filter -->
         <div class="filter-section">
             <div class="filter-header" data-filter="month">
@@ -948,18 +954,7 @@
             </div>
         </div>
         
-        <!-- Year Filter -->
-        <div id="yearFilterContainer" class="filter-section hidden">
-            <div class="filter-header" data-filter="year">
-                <h3 class="text-xs font-bold">Year</h3>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-            </div>
-            <div class="filter-content" id="yearFilters">
-                <div class="skeleton h-5 w-16 mr-2 "></div>
-            </div>
-        </div>
+
         
         <!-- Day Filter -->
         <div id="dayFilterContainer" class="filter-section hidden">
@@ -994,16 +989,15 @@
 	  </div>
 	</div>
 	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+	
     <script>
-		let searchErrorTimeout = null;
-		
         // State management
         const state = {
-            view: 'calendar', // 'photos' or 'calendar'
+            view: 'photos', // 'photos' or 'calendar'
             races: [],
             photos: [],
             filters: {
-				location: [], 
                 distance: [],
                 organizer: [],
                 month: [],
@@ -1013,57 +1007,83 @@
             searchTerm: '',
             filtersVisible: true,
             expandedFilters: {
-				location: true,
                 distance: false,
                 organizer: true,
                 month: true,
                 year: true,
-                day: false // Day filter initially expanded
+                day: true // Day filter initially expanded
             },
             suggestions: [],
             hiddenFilters: new Set(), // Track which filters should remain hidden
             pagination: { page: 1, perPage: 25 }
         };
-		
-		const DEFAULT_EXPANDED_FILTERS = {
-			  location: true,
-			  distance: false,
-			  organizer: true,
-			  month: true,
-			  year: true,
-			  day: false
-			};
-					
-		let locations = new Set();
 
         // DOM elements
         const headerTitle = document.querySelector('.header h1');
-		headerTitle.textContent = 'Race Calendar';
+		headerTitle.textContent = 'Race Results & Photos';
         //const toggleViewButton = document.getElementById('toggleViewButton');
         const refreshButton = document.getElementById('refreshButton');
         const searchInput = document.getElementById('searchInput');
 		
 		const clearSearchBtn = document.getElementById('clearSearchBtn');
+		
+let navLottieInstance = null;
+
+function isIOS() {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+         (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+}
+
+function showNavLoader(){
+  const navLoader = document.getElementById('navLoader');
+  const navLottie = document.getElementById('navLottie');
+  const navSpinner = document.getElementById('navSpinner');
+  if (!navLoader) return;
+
+  navLoader.style.display = 'flex';
+
+  if (!window.lottie || !navLottie) {
+    if (navSpinner) navSpinner.style.display = 'block';
+    return;
+  }
+
+  if (navSpinner) navSpinner.style.display = 'none';
+
+  const renderer = isIOS() ? 'canvas' : 'svg';
+
+  if (!navLottieInstance) {
+    navLottieInstance = lottie.loadAnimation({
+      container: navLottie,
+      renderer,
+      loop: true,
+      autoplay: true,
+      path: 'https://raw.githubusercontent.com/cncreativesph/races/main/Lottie.json',
+      rendererSettings: renderer === 'svg'
+        ? { preserveAspectRatio: 'xMidYMid slice' }
+        : { clearCanvas: true }
+    });
+  } else {
+    navLottieInstance.play();
+  }
+}
+
+		
+		// SHOW loader on initial page load
+			document.addEventListener('DOMContentLoaded', () => {
+			  showNavLoader();
+			});
+
+			// HIDE loader when page fully loaded
+			window.addEventListener('load', () => {
+			  const navLoader = document.getElementById('navLoader');
+			  if (navLoader) {
+				navLoader.style.display = 'none';
+			  }
+			});
+
 
 		function toggleClearBtn(){
 		  clearSearchBtn.classList.toggle('hidden', !searchInput.value.trim());
-		}
-
-		const searchInlineError = document.getElementById('searchInlineError');
-
-		function positionInlineError() {
-		  const value = searchInput.value || '';
-		  const span = document.createElement('span');
-		  span.style.visibility = 'hidden';
-		  span.style.whiteSpace = 'pre';
-		  span.style.font = window.getComputedStyle(searchInput).font;
-		  span.textContent = value;
-
-		  document.body.appendChild(span);
-		  const textWidth = span.getBoundingClientRect().width;
-		  document.body.removeChild(span);
-
-		  searchInlineError.style.left = `${8 + textWidth}px`;
 		}
 
 		searchInput.addEventListener('input', () => {
@@ -1087,8 +1107,6 @@
         const toggleFiltersButton = document.getElementById('toggleFiltersButton');
         const filtersContainer = document.getElementById('filtersContainer');
         const distanceFilters = document.getElementById('distanceFilters');
-		const locationFilters = document.getElementById('locationFilters');
-		const locationFilterContainer = document.getElementById('locationFilterContainer');
         const organizerFilters = document.getElementById('organizerFilters');
         const monthFilters = document.getElementById('monthFilters');
         const yearFilters = document.getElementById('yearFilters');
@@ -1100,11 +1118,6 @@
 
         
         const paginationContainer = document.getElementById('paginationContainer');
-
-		// ✅ WEBSITE MODE FLAG
-		// true  = website (hide filters)
-		// false = mobile app (show filters)
-		const IS_WEBSITE = true;
 
 		// Move Refresh button into sticky footer (left of pagination)
 		const stickyFooterBarInner = document.getElementById('stickyFooterBarInner');
@@ -1144,6 +1157,8 @@
             }
         }
 
+
+
         // Load data based on current view
         async function loadData() {
             try {
@@ -1157,7 +1172,6 @@
                 
                 // Reset filters
                 state.filters = {
-					location: [],
                     distance: [],
                     organizer: [],
                     month: [],
@@ -1166,18 +1180,13 @@
                 };
                 
                 // Show/hide filters based on view
-                filtersContainer.style.display = IS_WEBSITE
-				  ? 'none'
-				  : (state.view === 'photos' ? 'none' : 'block');
+                filtersContainer.style.display = 'block';
                 
-                // ✅ Hide filter toggle button on website
-				toggleFiltersButton.style.display = IS_WEBSITE ? 'none' : 'inline-flex';
-
-				if (state.view === 'photos') {
-					try {
-						const data = await fetchData('https://raw.githubusercontent.com/cncreativesph/races/main/photogs.json');
-
-										state.photos = data;
+                if (state.view === 'photos') {
+                    try {
+                        const data = await fetchData('https://raw.githubusercontent.com/cncreativesph/races/main/photogs.json');
+                        state.photos = data;
+						setupFilters(data, true); 
                         renderPhotos();
 						resetToDefault();
                     } catch (error) {
@@ -1270,7 +1279,29 @@
 			if (name.includes('PINOY FITNESS')) return 'PINOY FITNESS';
             return name;
         }
+		
+		function normalizePhotographerName(input) {
+		  if (!input) return '';
+		  const raw = String(input).trim();
+		  const s = raw.toLowerCase().replace(/\s+/g, ' ');
 
+		  // Handle common variants
+		  const compact = s.replace(/\s/g, '');
+
+		  if (s.includes('cn creatives') || compact.includes('cncreatives')) return 'CN Creatives';
+		  if (s.includes('ar sports') || compact.includes('arsportsph')) return 'AR Sports PH';
+		  if (s.includes('genuine sole') || compact.includes('genuinesole')) return 'Genuine Sole';
+		  if (s.includes('humble runner') || compact.includes('humblerunner')) return 'Humble Runner';
+		  if (s.includes('ph running overload') || (s.includes('ph running') && s.includes('overload'))) return 'PH Running Overload';
+		  if (s.includes('pinoy fitness') || compact.includes('pinoyfitness')) return 'Pinoy Fitness';
+		  if (s.includes('22 pixels') || compact.includes('22pixels')) return '22Pixels';
+		  if (s.includes('running photographers') || compact.includes('runningphotographers')) return 'Running Photographers';
+		  if (s.includes('run zion') || compact.includes('runzion')) return 'Run Zion';
+		  if (s.includes('bicolano runner') || compact.includes('bicolanorunner')) return 'Bicolano Runner';
+
+		  // Unknown photographer → just cleaned
+		  return raw.replace(/\s+/g, ' ');
+		}
 
 		function normalizeLocation(loc) {
 		  if (!loc) return '';
@@ -1294,16 +1325,19 @@
 		  if (s.includes('vermosa')) return 'Vermosa, Imus, Cavite';
 
 		  // Quirino
-	
 		  if (
 			  (s.includes('quirino') && s.includes('grandstand')) ||
-			  s.includes('quirino grand stand')
+			  s.includes('quirino grandstand') ||
+			  s.includes('quirino grandstand, manila')
 			) {
 			  return 'Quirino Grandstand, City of Manila';
 			}
 
 		  // Fort Santiago
 		  if (s.includes('fort santiago')) return 'Fort Santiago, Intramuros, City of Manila';
+		  
+		  // Clark
+		  if (s.includes('clark')) return 'Clark, Pampanga';
 
 		  // default: title case-ish (optional)
 		  return loc.trim();
@@ -1354,12 +1388,84 @@
 			  return s.toUpperCase();
 			}
 
+		const PH_TZ = 'Asia/Manila';
 
-	
+		function getTodayPHStart() {
+		  // start of "today" in PH time
+		  const parts = new Intl.DateTimeFormat('en-CA', {
+			timeZone: PH_TZ,
+			year: 'numeric',
+			month: '2-digit',
+			day: '2-digit'
+		  }).formatToParts(new Date());
+
+		  const y = parts.find(p => p.type === 'year').value;
+		  const m = parts.find(p => p.type === 'month').value;
+		  const d = parts.find(p => p.type === 'day').value;
+
+		  return new Date(`${y}-${m}-${d}T00:00:00+08:00`);
+		}
+
+		function parseDatePHStart(dateStr) {
+		  if (!dateStr) return null;
+
+		  // If it's YYYY-MM-DD, force PH midnight
+		  if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr.trim())) {
+			return new Date(`${dateStr.trim()}T00:00:00+08:00`);
+		  }
+
+		  // Otherwise parse, then convert to PH calendar date (midnight PH)
+		  const d = new Date(dateStr);
+		  if (isNaN(d.getTime())) return null;
+
+		  const parts = new Intl.DateTimeFormat('en-CA', {
+			timeZone: PH_TZ,
+			year: 'numeric',
+			month: '2-digit',
+			day: '2-digit'
+		  }).formatToParts(d);
+
+		  const y = parts.find(p => p.type === 'year').value;
+		  const m = parts.find(p => p.type === 'month').value;
+		  const day = parts.find(p => p.type === 'day').value;
+
+		  return new Date(`${y}-${m}-${day}T00:00:00+08:00`);
+		}
+
+		// ✅ PH Time helpers (Asia/Manila)
+		function getTodayPHMidnight() {
+		  const parts = new Intl.DateTimeFormat('en-CA', {
+			timeZone: 'Asia/Manila',
+			year: 'numeric',
+			month: '2-digit',
+			day: '2-digit'
+		  }).formatToParts(new Date());
+
+		  const y = Number(parts.find(p => p.type === 'year').value);
+		  const m = Number(parts.find(p => p.type === 'month').value);
+		  const d = Number(parts.find(p => p.type === 'day').value);
+
+		  // local Date object, but representing PH calendar date at midnight
+		  return new Date(y, m - 1, d, 0, 0, 0, 0);
+		}
+
+		function parseYMDToLocalMidnight(dateStr) {
+		  if (!dateStr) return null;
+
+		  // Supports: "YYYY-MM-DD" (and also "YYYY-MM-DDTHH:mm..." by slicing)
+		  const m = String(dateStr).match(/^(\d{4})-(\d{2})-(\d{2})/);
+		  if (m) return new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]), 0, 0, 0, 0);
+
+		  // fallback
+		  const d = new Date(dateStr);
+		  if (isNaN(d.getTime())) return null;
+		  return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0, 0);
+		}
+
+		
         // Setup filters based on data
         function setupFilters(data, isPhotos) {
             // Extract unique values for filters
-			locations = new Set();
             const distances = new Set();
             const organizers = new Set();
             const months = new Set();
@@ -1374,18 +1480,6 @@
             const currentYear = today.getFullYear();
             
             data.forEach(item => {
-			
-			// Process locations (Calendar view only)
-			if (!isPhotos) {
-			  const rawLocation = item.location;
-				if (rawLocation) {
-				  const normLoc = normalizeLocation(rawLocation);
-				  const group = getLocationGroupFromNormalized(normLoc);
-				  locations.add(group);
-				}
-
-			}
-
                 // Process distances
                 const distanceField = isPhotos ? item.distanceP : item.distance;
                 if (distanceField) {
@@ -1400,7 +1494,7 @@
                     if (['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA'].includes(normalizedOrg)) {
                         organizers.add(normalizedOrg);
                     } else {
-                        organizers.add('OTHERS');
+                        organizers.add('Others');
                     }
                 }
                 
@@ -1411,7 +1505,7 @@
                     if (!isNaN(date.getTime())) {
                         // For calendar view, only include future dates
                         // For photos view, only include current and past dates
-                        const shouldInclude = isPhotos ? date <= today : date > today;
+                        const shouldInclude = isPhotos ? date <= today : date >= today;
                         
                         if (shouldInclude) {
                             // Month
@@ -1429,8 +1523,10 @@
                             years.add(year);
                             
                             // Day
-                            const dayName = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(date);
-							days.add(dayName);
+                            if (!isPhotos) {
+							  const dayName = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(date);
+							  days.add(dayName);
+							}
                         }
                     }
                 }
@@ -1440,8 +1536,6 @@
 			  state.searchTerm = '';
 			  searchInput.value = '';
 			  searchSuggestions.classList.add('hidden');
-			  clearSearchError();
-			  toggleClearBtn(); 
 			}
 			
 			
@@ -1452,101 +1546,22 @@
                 state.hiddenFilters.add('distance');
             }
             
-            // Hide Day filter if only Sunday races or no races
-            const showDayFilter = days.size > 0;
-            dayFilterContainer.classList.toggle('hidden', !showDayFilter);
-            state.hiddenFilters.delete('day');
-            if (!showDayFilter) {
-                state.hiddenFilters.add('day');
-            }
+            // Day filter: NEVER show in Photos view
+			const showDayFilter = (!isPhotos && days.size > 0);
+			dayFilterContainer.classList.toggle('hidden', !showDayFilter);
+			state.hiddenFilters.delete('day');
+			if (!showDayFilter) state.hiddenFilters.add('day');
             
             // Render distance filters (only for calendar view)
             if (!isPhotos) {
-				// Render location filters (Calendar view)
-					locationFilters.innerHTML = "";
-
-					// All chip
-					const allLocChip = document.createElement("div");
-					allLocChip.className = `filter-chip ${state.filters.location.length === 0 ? "active" : ""}`;
-					allLocChip.textContent = "All";
-					allLocChip.addEventListener("click", () => {
-					  clearSearchOnFilterChange();
-					  state.pagination.page = 1;
-					  state.filters.location = [];
-					  updateFilters();
-					  renderCurrentView();
-					});
-					locationFilters.appendChild(allLocChip);
-					
-					// Sorted location groups (alphabetical, but you can keep your preferred order if you want later)
-					const LOCATION_FILTER_ORDER = [
-					  "NCR",
-					  "Cavite",
-					  "Luzon (Outside NCR & Cavite)",
-					  "Visayas",
-					  "Mindanao",
-					  "Others"
-					];
-
-					LOCATION_FILTER_ORDER.forEach(loc => {
-					  // optional: show only groups that exist in the data
-					  // if (!locations.has(loc)) return;
-
-					  const chip = document.createElement("div");
-					  chip.className = `filter-chip ${state.filters.location.includes(loc) ? "active" : ""}`;
-					  chip.textContent = loc;
-
-					  chip.addEventListener("click", () => {
-						clearSearchOnFilterChange();
-						state.pagination.page = 1;
-
-						if (state.filters.location.includes(loc)) {
-						  state.filters.location = state.filters.location.filter(x => x !== loc);
-						} else {
-						  state.filters.location.push(loc);
-						}
-
-						updateFilters();
-						renderCurrentView();
-					  });
-
-					  locationFilters.appendChild(chip);
-					});
-
-
-			
                 distanceFilters.innerHTML = '';
                 
                 // Sort distances by numeric value (descending)
                 const sortedDistances = Array.from(distances).sort((a, b) => {
-				  const parseDistance = (value) => {
-					const km = value.match(/^(\d+(\.\d+)?)\s*KM/i);
-					const m  = value.match(/^(\d+(\.\d+)?)\s*M$/i);
-
-					if (km) return { type: 'KM', value: parseFloat(km[1]) };
-					if (m)  return { type: 'M',  value: parseFloat(m[1]) };
-
-					return { type: 'OTHER', value };
-				  };
-
-				  const da = parseDistance(a);
-				  const db = parseDistance(b);
-
-				  // 1️⃣ KM → M → OTHER
-				  const typeRank = { KM: 1, M: 2, OTHER: 3 };
-				  if (typeRank[da.type] !== typeRank[db.type]) {
-					return typeRank[da.type] - typeRank[db.type];
-				  }
-
-				  // 2️⃣ Same unit → bigger first
-				  if (da.type === 'KM' || da.type === 'M') {
-					return db.value - da.value;
-				  }
-
-				  // 3️⃣ OTHER → alphabetical
-				  return da.value.localeCompare(db.value);
-				});
-
+                    const numA = parseInt(a.match(/\d+/) || [0]);
+                    const numB = parseInt(b.match(/\d+/) || [0]);
+                    return numB - numA; // Descending order
+                });
                 
                 // Add "All" option first
                 const allChip = document.createElement('div');
@@ -1606,7 +1621,7 @@
                 organizerFilters.appendChild(allChip);
                 
                 // Add specific organizers
-                ['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA', 'OTHERS'].forEach(organizer => {
+                ['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA', 'Others'].forEach(organizer => {
                     const chip = document.createElement('div');
                     chip.className = `filter-chip ${state.filters.organizer.includes(organizer) ? 'active' : ''}`;
                     chip.textContent = organizer.toUpperCase();
@@ -1689,7 +1704,7 @@
                 yearFilters.appendChild(allYearChip);
                 
                 // Add individual year options
-                Array.from(years).sort().forEach(year => {
+                Array.from(years).sort((a, b) => parseInt(b) - parseInt(a)).forEach(year => {
                     const chip = document.createElement('div');
                     chip.className = `filter-chip ${state.filters.year.includes(year) ? 'active' : ''}`;
                     chip.textContent = year;
@@ -1752,17 +1767,6 @@
 
         // Update filter UI
         function updateFilters() {
-		
-			// Location filters
-			document.querySelectorAll('#locationFilters .filter-chip').forEach(chip => {
-			  const isAll = chip.textContent === 'All';
-			  const isActive = isAll
-				? state.filters.location.length === 0
-				: state.filters.location.includes(chip.textContent);
-
-			  chip.classList.toggle('active', isActive);
-			});
-
             // Distance filters
             document.querySelectorAll('#distanceFilters .filter-chip').forEach(chip => {
                 const isAll = chip.textContent === 'All';
@@ -1873,9 +1877,22 @@
             if (name.includes('humble runner')) return 'photographer-humble';
             if (name.includes('ph running')) return 'photographer-ph';
             if (name.includes('pinoy fitness')) return 'photographer-pinoy';
+			if (name.includes('22pixels')) return 'photographer-22pixels';
+			if (name.includes('running photographers')) return 'photographer-runningphotog';
+			if (name.includes('run zion')) return 'photographer-zion';
+			if (name.includes('bicolano runner')) return 'photographer-bicolano';
+			if (name.includes('paksit photos')) return 'photographer-paksit';
+			if (name.includes('pitik idols cebu')) return 'photographer-pitikidolscebu';
+			if (name.includes('stefners photography')) return 'photographer-stefners';
+			if (name.includes('nomad photography')) return 'photographer-nomad';
+			if (name.includes('jm shutter')) return 'photographer-jmshutter';
+			if (name.includes('cieb media')) return 'photographer-cieb';
+			if (name.includes('fotopedia')) return 'photographer-fotopedia';
             return '';
         }
 
+
+		
         // Generate search suggestions
         function generateSearchSuggestions() {
             const searchTerm = searchInput.value.toLowerCase().trim();
@@ -1891,15 +1908,6 @@
                 console.error('Invalid data format for suggestions');
                 return;
             }
-			
-			const LOCATION_GROUP_SUGGESTIONS = [
-			  "NCR",
-			  "Cavite",
-			  "Luzon (Outside NCR & Cavite)",
-			  "Visayas",
-			  "Mindanao"
-			];
-
             
             // Month names for suggestions
             const monthNames = [
@@ -1914,32 +1922,30 @@
                 }
             });
 			
-			const dayNames = ['Sunday', 'Saturday'];
-			dayNames.forEach(day => {
-				if (day.toLowerCase().includes(searchTerm)) {
-					suggestions.add(day);
-				}
-			});
-			
-			// ✅ Add location group suggestions
-			LOCATION_GROUP_SUGGESTIONS.forEach(locGroup => {
-			  if (locGroup.toLowerCase().includes(searchTerm)) {
-				suggestions.add(locGroup);
-			  }
-			});
 
 						
             data.forEach(item => {
-                const name = state.view === 'photos' ? item.nameP : item.name;
-                const location = state.view === 'photos' ? item.locationP : item.location;
-                const distance = state.view === 'photos' ? item.distanceP : item.distance;
-                const organizer = state.view === 'photos' ? '' : item.organizer;
-                const date = state.view === 'photos' ? item.dateP : item.date;
+                const todayPH = getTodayPHStart();
+
+				const name = state.view === 'photos' ? item.nameP : item.name;
+				const location = state.view === 'photos' ? item.locationP : item.location;
+				const distance = state.view === 'photos' ? item.distanceP : item.distance;
+				const organizer = state.view === 'photos' ? '' : item.organizer;
+				const date = state.view === 'photos' ? item.dateP : item.date;
+
+				// ✅ Photos view: skip FUTURE races so they won't appear in suggestions
+				if (state.view === 'photos' && date) {
+					const itemDate = parseDatePHStart(date) || new Date(date);
+					if (itemDate && !isNaN(itemDate.getTime()) && itemDate > todayPH) {
+						return; // skip this item completely
+					}
+				}
                 
                 // Add race name suggestions
-                if (name && name.toLowerCase().includes(searchTerm)) {
-                    suggestions.add(name);
-                }
+                const nameNorm = name ? name.toUpperCase() : '';
+				if (nameNorm && nameNorm.toLowerCase().includes(searchTerm)) {
+					suggestions.add(nameNorm);
+				}
                 
                 // Add location suggestions
                 const locNorm = normalizeLocation(location);
@@ -1947,49 +1953,34 @@
 					suggestions.add(locNorm);
 				}
 								
-                // Add organizer suggestions
-                if (organizer) {
-					const orgNorm = normalizeOrganizerName(organizer);
-					if (orgNorm && orgNorm.toLowerCase().includes(searchTerm)) {
-						suggestions.add(orgNorm);
-					}
-				}
                 
-                // Add distance suggestions
-                if (distance) {
-                    distance.split(',').forEach(d => {
-                        const distNorm = normalizeDistance(d);
-						if (distNorm && distNorm.toLowerCase().includes(searchTerm)) {
-						  suggestions.add(distNorm);
-						}
-                    });
-                }
                 
                 // Add date suggestions
                 if (date) {
-                    const itemDate = new Date(date);
-                    if (!isNaN(itemDate.getTime())) {
-                        const monthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(itemDate);
-                        const shortMonthName = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(itemDate);
-                        const day = itemDate.getDate();
-                        const year = itemDate.getFullYear();
-						const weekdayName = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(itemDate);
-                        
-                        const formattedDate = `${monthName} ${day}, ${year}`;
-                        
-                        if (
-							monthName.toLowerCase().includes(searchTerm) ||
-							shortMonthName.toLowerCase().includes(searchTerm) ||
-							formattedDate.toLowerCase().includes(searchTerm) ||
-							weekdayName.toLowerCase().includes(searchTerm)
-						) {
-							suggestions.add(String(formattedDate));
-							suggestions.add(String(monthName));
-							suggestions.add(String(year));
-							suggestions.add(String(weekdayName));
-						}
-                    }
-                }
+				  const itemDatePH = parseDatePHStart(date);
+				  if (!itemDatePH) return;
+
+				  // ✅ Photos view: DO NOT suggest future dates
+				  if (state.view === 'photos' && itemDatePH > getTodayPHStart()) return;
+
+				  const monthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(itemDatePH);
+				  const shortMonthName = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(itemDatePH);
+				  const day = itemDatePH.getDate();
+				  const year = itemDatePH.getFullYear();
+
+				  const formattedDate = `${monthName} ${day}, ${year}`;
+
+				  if (
+					monthName.toLowerCase().includes(searchTerm) ||
+					shortMonthName.toLowerCase().includes(searchTerm) ||
+					formattedDate.toLowerCase().includes(searchTerm)
+				  ) {
+					suggestions.add(formattedDate);
+					suggestions.add(monthName);
+					suggestions.add(String(year)); // ✅ make year string
+				  }
+				}
+
 				
 				
             });
@@ -2003,36 +1994,28 @@
                     const item = document.createElement('div');
                     item.className = 'suggestion-item';
                     item.textContent = String(suggestion).toUpperCase();
-                    item.addEventListener('click', () => {
-					  const picked = String(suggestion);
+                    // Stop iOS from focusing the input (which triggers zoom)
+					item.addEventListener('pointerdown', (e) => {
+					  e.preventDefault();
+					});
 
-					  // ✅ If user clicked a location group, apply location filter
-					  if (LOCATION_GROUP_SUGGESTIONS.includes(picked)) {
-						resetFiltersOnly();
-						state.filters.location = [picked];
-						state.pagination.page = 1;
+					item.addEventListener('click', (e) => {
+					  e.preventDefault();
 
-						// clear text search so filtering is purely by location filter
-						searchInput.value = picked;
-						state.searchTerm = '';
-						searchSuggestions.classList.add('hidden');
+					  resetFiltersOnly();
+					  searchInput.value = suggestion;
+					  state.searchTerm = String(suggestion).trim();
+					  searchSuggestions.classList.add('hidden');
 
-						updateFilters();
+					  // IMPORTANT: remove focus so Safari won't zoom
+					  searchInput.blur();
+
+					  if (state.view === 'photos') {
+						loadPhotoData();
+					  } else {
 						renderCurrentView();
-						return;
 					  }
-						resetFiltersOnly();   
-                        searchInput.value = String(suggestion);
-						state.searchTerm = String(suggestion);
-                        searchSuggestions.classList.add('hidden');
-                        
-                        // If in photos view, fetch fresh data when selecting a suggestion
-                        if (state.view === 'photos') {
-                            loadPhotoData();
-                        } else {
-                            renderCurrentView();
-                        }
-                    });
+					});
                     searchSuggestions.appendChild(item);
                 });
                 searchSuggestions.classList.remove('hidden');
@@ -2044,10 +2027,15 @@
         // Render races
         
         function setCalendarPage(p) {
-            state.pagination.page = p;
-            renderRaces();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+		  state.pagination.page = p;
+
+		  // ✅ works for both tabs
+		  if (state.view === 'photos') renderPhotos();
+		  else renderRaces();
+
+		  // ✅ scroll to top (your sticky footer stays)
+		  window.scrollTo({ top: 0, behavior: 'smooth' });
+		}
 
         function renderCalendarPagination(totalItems) {
             const perPage = state.pagination.perPage;
@@ -2094,7 +2082,7 @@
             prev.onclick = () => setCalendarPage(currentPage - 1);
             paginationContainer.appendChild(prev);
 
-            // Show only 5 page buttons at a time
+            // Show only 3 page buttons at a time
 			const windowSize = 3;
 			const half = Math.floor(windowSize / 2); // 1
 
@@ -2123,6 +2111,58 @@
             next.onclick = () => setCalendarPage(currentPage + 1);
             paginationContainer.appendChild(next);
         }
+		
+		function setPhotosPage(p) {
+  state.pagination.page = p;
+  renderPhotos();
+  // scroll to top pagination (safe even if sticky)
+  paginationContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function renderPhotosPagination(totalItems) {
+  const perPage = state.pagination.perPage;
+  const totalPages = Math.max(1, Math.ceil(totalItems / perPage));
+  const currentPage = Math.min(state.pagination.page, totalPages);
+  state.pagination.page = currentPage;
+
+  if (totalItems <= perPage) {
+    paginationContainer.innerHTML = '';
+    const label = document.createElement('div');
+    label.className = 'pagination-empty poppins-black';
+    label.textContent = 'Download the PixHero app to enjoy more features';
+    paginationContainer.appendChild(label);
+    return;
+  }
+
+  paginationContainer.innerHTML = '';
+
+  const info = document.createElement('div');
+  info.className = 'pagination-info';
+  info.textContent = `Page ${currentPage} of ${totalPages}`;
+  paginationContainer.appendChild(info);
+
+  const prev = document.createElement('button');
+  prev.className = 'pagination-button';
+  prev.textContent = 'Prev';
+  prev.disabled = currentPage === 1;
+  prev.onclick = () => setPhotosPage(currentPage - 1);
+  paginationContainer.appendChild(prev);
+
+  for (let i = Math.max(1, currentPage - 2); i <= Math.min(totalPages, currentPage + 2); i++) {
+    const b = document.createElement('button');
+    b.className = 'pagination-button' + (i === currentPage ? ' active' : '');
+    b.textContent = i;
+    b.onclick = () => setPhotosPage(i);
+    paginationContainer.appendChild(b);
+  }
+
+  const next = document.createElement('button');
+  next.className = 'pagination-button';
+  next.textContent = 'Next';
+  next.disabled = currentPage === totalPages;
+  next.onclick = () => setPhotosPage(currentPage + 1);
+  paginationContainer.appendChild(next);
+}
     
 function normalizeLocation(raw) {
   if (!raw) return raw;
@@ -2151,8 +2191,7 @@ function normalizeLocation(raw) {
     v === 'up diliman, quezon'
   ) return 'UP Diliman, Quezon City';
 
-
-    // Vermosa (include Imus variants)
+   // Vermosa (include Imus variants)
 	if (
 	  v === 'vermosa' ||
 	  v === 'vermosa cavite' ||
@@ -2170,7 +2209,8 @@ function normalizeLocation(raw) {
   // Quirino Grandstand
   if (
     v === 'quirino grandstand' ||
-    v === 'quirino grandstand, manila city'
+    v === 'quirino grandstand, manila city' ||
+    v === 'Quirino Grandstand, MANILA'
   ) return 'Quirino Grandstand, City of Manila';
 
   // Fort Santiago
@@ -2180,103 +2220,15 @@ function normalizeLocation(raw) {
     v === 'fort santiago, manila' ||
     v === 'fort santiago, manila city'
   ) return 'Fort Santiago, Intramuros, City of Manila';
+  
+  // Clark
+  if (
+    v === 'clark pampanga' ||
+    v === 'clark, pampanga' 
+  ) return 'Clark, Pampanga';
 
   return raw; // default
 }
-
-// ===== Location grouping (Calendar view) =====
-
-const LOCATION_GROUPS = [
-  {
-    name: "NCR",
-    keywords: [
-      "caloocan",
-      "las piñas", "las pinas",
-      "makati",
-      "malabon",
-      "mandaluyong",
-      "manila",
-      "marikina",
-      "muntinlupa",
-      "navotas",
-      "parañaque", "paranaque",
-      "pasay",
-      "pasig",
-      "quezon city",
-      "san juan",
-      "taguig",
-      "valenzuela",
-      "pateros"
-    ]
-  },
-  { name: "Cavite", keywords: ["cavite"] },
-  {
-    name: "Luzon (Outside NCR & Cavite)",
-	  keywords: [
-		// Pampanga
-		"pampanga", "san fernando", "angeles", "clark", "guagua",
-		
-		// Bulacan
-		"bulacan", "baliwag", "malolos", "meycauayan", "marilao",
-		"plaridel", "san jose del monte", "sjdm", "calumpit",
-		"guiguinto", "balagtas", "bocaue", "pulilan",
-		
-		// Laguna
-		"laguna", "calamba", "los baños", "los banos", "biñan", "binan",
-		"sta rosa", "santa rosa", "san pablo", "cabuyao",
-		
-		// Batangas
-		"batangas", "lipa", "tanauan", "sto tomas", "santo tomas",
-		
-		// Rizal
-		"rizal", "antipolo", "cainta", "taytay", "angono",
-		
-		// North Luzon
-		"tarlac", "bataan", "zambales", "nueva ecija",
-		"pangasinan", "la union", "ilocos", "benguet", "baguio",
-		
-		// South Luzon / Bicol
-		"quezon province", "lucena",
-		"bicol", "albay", "camarines", "naga", "sorsogon",
-		
-		// Palawan
-		"palawan", "puerto princesa"
-	  ]
-  },
-  {
-    name: "Visayas",
-    keywords: [
-      "cebu", "iloilo", "bacolod", "bohol",
-      "leyte", "tacloban",
-      "dumaguete", "roxas", "kalibo", "boracay"
-    ]
-  },
-  {
-    name: "Mindanao",
-    keywords: [
-      "davao",
-      "cagayan de oro", "cdo",
-      "zamboanga",
-      "general santos", "gensan",
-      "butuan",
-      "bukidnon",
-      "surigao"
-    ]
-  }
-];
-
-function getLocationGroupFromNormalized(normLoc) {
-  const s = (normLoc || "").toLowerCase();
-
-  for (const group of LOCATION_GROUPS) {
-    if (group.keywords.some(k => s.includes(k))) {
-      return group.name;
-    }
-  }
-
-  return "Others"; // ✅ unmatched locations go here
-}
-
 
 function normalizeKey(s) {
   return (s || '')
@@ -2301,7 +2253,7 @@ function normalizeLocation(rawLocation) {
     s === 'fort santiago, manila city'
   ) return 'Fort Santiago, Intramuros, City of Manila';
 
-  
+  // Quirino Grandstand
   if (
   (s.includes('quirino') && s.includes('grandstand')) ||
   s.includes('quirino grand stand')
@@ -2339,9 +2291,17 @@ function normalizeLocation(rawLocation) {
     return 'UP Diliman, Quezon City';
   }
 
-if (s === 'vermosa' || s === 'vermosa cavite' || s === 'vermosa cavite city'|| s === 'vermosa, cavite' || s === 'vermosa, cavite city') {
-  return 'Vermosa, Imus, Cavite';
-}
+  // Vermosa
+  if (s === 'vermosa' || s === 'vermosa cavite' || s === 'vermosa cavite city'|| s === 'vermosa, cavite' || s === 'vermosa, cavite city') {
+    return 'Vermosa, Imus, Cavite';
+  }
+  
+  // Clark
+  if (
+    s === 'clark pampanga' ||
+    s === 'clark, pampanga' 
+  ) return 'Clark, Pampanga';
+
 
   // default (unchanged)
   return rawLocation;
@@ -2349,39 +2309,56 @@ if (s === 'vermosa' || s === 'vermosa cavite' || s === 'vermosa cavite city'|| s
 
 function normalizeDistanceLabel(raw) {
   let s = (raw || '').toString().trim().replace(/\s+/g, ' ');
+  if (!s) return s;
 
-  // DOG category (force exact casing)
-  if (/dog/i.test(s)) return '1KM Dog';
+  // ✅ If it's not a "distance-like" label (ex: 2-Man Relay), leave it as-is
+  // (no km/m, no pure number, no "k")
+  const looksLikeDistance = /(\d)/.test(s) && (/\b(km|m)\b/i.test(s) || /\bk\b/i.test(s) || /^\d+(\.\d+)?$/.test(s));
+  if (!looksLikeDistance && /relay/i.test(s)) return s;
 
-  // Get first number
-  const m = s.match(/(\d+)/);
-  if (!m) return s;
+  // Extract number (supports decimals like 2.5, 1.5)
+  const numMatch = s.match(/(\d+(?:\.\d+)?)/);
+  if (!numMatch) return s;
 
-  const n = parseInt(m[1], 10);
-  if (!Number.isFinite(n)) return s;
+  let numStr = numMatch[1];               // "2.5"
+  numStr = numStr.replace(/\.0+$/, '');   // "2.0" -> "2"
 
-  // Force: "21" / "21k" / "21 km" / "21KM" => "21KM"
-  return `${n}KM`;
+  const hasKM = /\bkm\b/i.test(s) || /\bk\b/i.test(s);
+  const hasM  = /\bm\b/i.test(s) && !hasKM;
+
+  // DOG (keep number + "KM Dog")
+  if (/dog/i.test(s)) {
+    // default to 1 if weird formatting
+    const n = numStr || '1';
+    return `${n}KM Dog`;
+  }
+
+  // ✅ meters should stay meters (711M, 500M)
+  if (hasM) return `${numStr}M`;
+
+  // ✅ default to KM
+  return `${numStr}KM`;
 }
+
 
 	
 function renderRaces() {
             const filteredRaces = filterData(state.races, false);
 			
-            // ✅ ADD THIS LINE HERE
-			filteredRaces.sort((a, b) => {
-				const dateA = new Date(a.date);
-				const dateB = new Date(b.date);
+            filteredRaces.sort((a, b) => {
+			  const da = parseYMDToLocalMidnight(a.date);
+			  const db = parseYMDToLocalMidnight(b.date);
 
-				// 1️⃣ Event Date (ascending)
-				if (!isNaN(dateA) && !isNaN(dateB) && dateA.getTime() !== dateB.getTime()) {
-					return dateA - dateB;
-				}
+			  const ta = da ? da.getTime() : -Infinity;
+			  const tb = db ? db.getTime() : -Infinity;
 
-				// 2️⃣ Alphabetical by race name
-				const nameA = (a.name || '').toLowerCase();
-				const nameB = (b.name || '').toLowerCase();
-				return nameA.localeCompare(nameB);
+			  // 1️⃣ Event Date (DESC)
+			  if (ta !== tb) return tb - ta;
+
+			  // 2️⃣ Alphabetical by race name (ASC)
+			  const nameA = (a.name || '').toLowerCase();
+			  const nameB = (b.name || '').toLowerCase();
+			  return nameA.localeCompare(nameB);
 			});
             
             const perPage = state.pagination.perPage;
@@ -2421,12 +2398,12 @@ function renderRaces() {
                 raceName.textContent = race.name ? race.name.toUpperCase() : 'UNNAMED RACE';
                 
                 // Make race name clickable if website is available
-                //if (race.website) {
-                //    raceName.addEventListener('click', () => {
-                //        window.open(race.website, '_blank');
-                //    });
-                //    raceName.style.cursor = 'pointer';
-                //}
+                if (race.website) {
+                    raceName.addEventListener('click', () => {
+                        window.open(race.website, '_blank');
+                    });
+                   // raceName.style.cursor = 'pointer';
+                }
                 
                 detailsSection.appendChild(raceName);
                 
@@ -2508,10 +2485,10 @@ function renderRaces() {
 					
                     if (buttonType === 'full') {
 						registerButton.innerHTML = `
-						
+							<button class="register-button full">
 							  <div class="btn-main-text">EVENT IS FULL</div>
 							  <div class="btn-sub-text">(View Details)</div>
-						
+							</button>
 						`;
 					} else {
 						registerButton.textContent = buttonText;
@@ -2546,37 +2523,100 @@ function renderRaces() {
                 `;
                 return;
             }
-            
+			
+
             raceList.innerHTML = '';
             
             // Filter photos if search term exists
-            let photosToDisplay = state.photos;
-            if (state.searchTerm) {
-                const searchLower = state.searchTerm.toLowerCase();
-                photosToDisplay = state.photos.filter(photo => {
-                    return (
-                        (photo.nameP && photo.nameP.toLowerCase().includes(searchLower)) ||
-                        (photo.locationP && photo.locationP.toLowerCase().includes(searchLower)) ||
-                        (photo.dateP && formatDate(photo.dateP).toLowerCase().includes(searchLower)) ||
-                        (photo.distanceP && photo.distanceP.toLowerCase().includes(searchLower)) ||
-                        (photo.listOfPhotogs && photo.listOfPhotogs.some(p => p.toLowerCase().includes(searchLower)))
-                    );
-                });
-            }
+			let photosToDisplay = state.photos;
+
+			// ✅ Remove FUTURE dates in PH time (today is based on Asia/Manila)
+			const todayPH = getTodayPHMidnight();
+			photosToDisplay = photosToDisplay.filter(photo => {
+			  if (!photo.dateP) return true;
+			  const d = parseYMDToLocalMidnight(photo.dateP);
+			  if (!d) return true;
+			  return d <= todayPH; // ✅ hide Jan 3, 2026+ when todayPH is Jan 2, 2026
+			});
+
+			// ---- SEARCH filter ----
+			if (state.searchTerm) {
+			  const searchLower = String(state.searchTerm).toLowerCase();
+			  photosToDisplay = photosToDisplay.filter(photo => {
+				return (
+				  (photo.nameP && photo.nameP.toLowerCase().includes(searchLower)) ||
+				  (photo.locationP && normalizeLocation(photo.locationP).toLowerCase().includes(searchLower)) ||
+				  (photo.dateP && formatDate(photo.dateP).toLowerCase().includes(searchLower)) ||
+				  (photo.distanceP && photo.distanceP.toLowerCase().includes(searchLower)) ||
+				  (photo.listOfPhotogs && photo.listOfPhotogs.some(p => p.toLowerCase().includes(searchLower)))
+				);
+			  });
+			}
             
-            if (photosToDisplay.length === 0) {
-                raceList.innerHTML = `
-                    <div class="p-4 text-center text-gray-500">
+            // ---- MONTH / YEAR filters (Photos view) ----
+			photosToDisplay = photosToDisplay.filter(photo => {
+			  if (!photo.dateP) return true;
+
+			  const d = new Date(photo.dateP);
+			  if (isNaN(d.getTime())) return true;
+
+			  // Month
+			  if (state.filters.month.length > 0) {
+				const monthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(d);
+				if (!state.filters.month.includes(monthName)) return false;
+			  }
+
+			  // Year
+			  if (state.filters.year.length > 0) {
+				const y = d.getFullYear().toString();
+				if (!state.filters.year.includes(y)) return false;
+			  }
+
+			  return true;
+			});
+			
+			if (photosToDisplay.length === 0) {
+			  raceList.innerHTML = `
+				<div class="p-4 text-center text-gray-500">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <p>No results found. Try a different keyword</p>
+                        <p>No races match your filters</p>
                     </div>
-                `;
-                return;
-            }
+			  `;
+			  return;
+			}
             
-            photosToDisplay.forEach(photo => {
+			raceList.innerHTML = '';
+			
+			photosToDisplay.sort((a, b) => {
+			  const da = parseYMDToLocalMidnight(a.dateP);
+			  const db = parseYMDToLocalMidnight(b.dateP);
+
+			  const ta = da ? da.getTime() : -Infinity;
+			  const tb = db ? db.getTime() : -Infinity;
+
+			  if (ta !== tb) return tb - ta; // DESC
+
+			  const na = (a.nameP || '').toLowerCase();
+			  const nb = (b.nameP || '').toLowerCase();
+			  return na.localeCompare(nb); // ASC
+			});
+			
+			const perPage = state.pagination.perPage;
+			const totalItems = photosToDisplay.length;
+			const totalPages = Math.max(1, Math.ceil(totalItems / perPage));
+			if (state.pagination.page > totalPages) state.pagination.page = 1;
+
+			const startIndex = (state.pagination.page - 1) * perPage;
+			const endIndex = startIndex + perPage;
+			const pageItems = photosToDisplay.slice(startIndex, endIndex);
+
+				// ✅ render pagination for PHOTOS
+				renderPhotosPagination(totalItems);
+
+				// ✅ render only current page
+				pageItems.forEach(photo => {
                 const card = document.createElement('div');
                 card.className = 'race-card';
                 
@@ -2609,116 +2649,145 @@ function renderRaces() {
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
-                        ${photo.locationP}
+                        ${normalizeLocation(photo.locationP)}
                     `;
                     detailsSection.appendChild(location);
                 }
                 
                 card.appendChild(detailsSection);
 				
-				// Add photographers section
-                if (photo.listOfPhotogs && Array.isArray(photo.listOfPhotogs) && photo.listOfPhotogs.length > 0) {
-                    const photographersLabel = document.createElement('div');
-                    photographersLabel.className = 'photographers-title poppins-black';
-                    photographersLabel.textContent = 'LIST OF PHOTOGRAPHERS';
-                    
-					
-					const photographersInstruct = document.createElement('div');
-                    photographersInstruct.className = 'photographers-instruct';
-                    photographersInstruct.textContent = 'Click the photographer\'s name to view photos';
-					
-                    const photographersContainer = document.createElement('div');
-                    photographersContainer.className = 'flex flex-wrap mt-1';
-                    
-                    // Sort photographers according to the specified hierarchy
-                    const photographerOrder = {
-                        'CN Creatives': 1,
-                        'AR Sports PH': 2,
-                        'Genuine Sole': 3,
-                        'Humble Runner': 4,
-                        'PH Running Overload': 5,
-                        'Pinoy Fitness': 6
-                    };
-                    
-                    const sortedPhotographers = [...photo.listOfPhotogs].sort((a, b) => {
-                        const orderA = photographerOrder[a] || 999;
-                        const orderB = photographerOrder[b] || 999;
-                        return orderA - orderB;
-                    });
-                    
-                    sortedPhotographers.forEach((photographer, index) => {
-                        const button = document.createElement('button');
-                        button.className = `photographer-button ${getPhotographerClass(photographer)}`;
-                        button.textContent = photographer;
-                        
-                        if (photo.photogsURL && Array.isArray(photo.photogsURL) && photo.photogsURL[index]) {
-                            button.addEventListener('click', () => {
-                                window.open(photo.photogsURL[index], '_blank');
-                            });
-                        }
-                        
-                        photographersContainer.appendChild(button);
-                    });
-                    
-                    const photographersSection = document.createElement('div');
-                    photographersSection.className = 'mt-2';
-                    photographersSection.appendChild(photographersLabel);
-					photographersSection.appendChild(photographersInstruct);
-                    photographersSection.appendChild(photographersContainer);
-                    card.appendChild(photographersSection);
-                }
-				
-                
-                // Categories section with results button
-                if (photo.distanceP) {
-                    const categoriesSection = document.createElement('div');
-                    categoriesSection.className = 'categories-section';
-                    
-                    const categoriesDiv = document.createElement('div');
-                    categoriesDiv.className = 'flex flex-wrap flex-1';
-                    
-                    photo.distanceP.split(',').forEach(category => {
-                        const chip = document.createElement('span');
-                        chip.className = `category-chip ${getCategoryColorClass(category)}`;
-                        chip.textContent = normalizeDistanceLabel(category);
-                        categoriesDiv.appendChild(chip);
-                    });
-                    
-                    categoriesSection.appendChild(categoriesDiv);
-                    
-                    // Results button
-                    const resultsButton = document.createElement('button');
-                    resultsButton.className = 'register-button results';
-                    resultsButton.textContent = 'VIEW RESULTS';
-                    
-                    // If there's a resultsURL, make the button open it
-                    if (photo.resultsURL) {
-                        resultsButton.addEventListener('click', () => {
-                            window.open(photo.resultsURL, '_blank');
-                        });
-                    }
-                    
-                    categoriesSection.appendChild(resultsButton);
-                    card.appendChild(categoriesSection);
-                }
+			// ✅ ONE bottom block: photographers + results (NO distance chips)
+			const bottomSection = document.createElement('div');
+			bottomSection.className = 'categories-section';
+
+			// LEFT side container (photographers)
+			const leftWrap = document.createElement('div');
+			leftWrap.className = 'flex flex-col flex-1 min-w-0';
+
+			// Title
+			if (photo.listOfPhotogs && Array.isArray(photo.listOfPhotogs) && photo.listOfPhotogs.length > 0) {
+			  const photographersLabel = document.createElement('div');
+			  photographersLabel.className = 'photographers-title poppins-black';
+			  photographersLabel.textContent = 'LIST OF PHOTOGRAPHERS';
+
+			  const photographersInstruct = document.createElement('div');
+			  photographersInstruct.className = 'photographers-instruct';
+			  photographersInstruct.textContent = "Click the photographer's name to view photos";
+
+			  const photographersContainer = document.createElement('div');
+			  photographersContainer.className = 'flex flex-wrap gap-1 mt-1';
+
+			  // hierarchy
+			  const photographerOrder = {
+				'CN Creatives': 1,
+				'AR Sports PH': 2,
+				'Genuine Sole': 3,
+				'Humble Runner': 4,
+				'PH Running Overload': 5,
+				'Pinoy Fitness': 6,
+				'Bicolano Runner': 7,
+			  };
+
+			  const photographerItems = photo.listOfPhotogs.map((p, i) => ({
+				raw: p,
+				name: normalizePhotographerName(p),
+				url: (photo.photogsURL && Array.isArray(photo.photogsURL)) ? photo.photogsURL[i] : null
+			  }));
+
+			  photographerItems.sort((a, b) => {
+				const orderA = photographerOrder[a.name] || 999;
+				const orderB = photographerOrder[b.name] || 999;
+				if (orderA !== orderB) return orderA - orderB;
+				return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+			  });
+
+			  photographerItems.forEach(p => {
+				  const button = document.createElement('button');
+				  button.className = `photographer-button ${getPhotographerClass(p.name)} mr-1 mb-1.5`;
+				  button.textContent = p.name;
+
+				  if (p.url) {
+					button.addEventListener('click', () => {
+					  const samePageDomains = [
+						'photos.cncreatives.com',
+						'photos.humblerunnerphoto.com',
+						'photos.genuinesole.com',
+						'photos.phrunningoverload.com',
+						'photos.arsportsph.com'
+					  ];
+
+					  const openSamePage = samePageDomains.some(d => p.url.includes(d));
+
+					  if (openSamePage) {
+  sessionStorage.setItem('scrollY', window.scrollY);
+
+  if (isIOS()) {
+    // iOS → normal spinner only
+    const navLoader = document.getElementById('navLoader');
+    const navSpinner = document.getElementById('navSpinner');
+    const navLottie = document.getElementById('navLottie');
+
+    if (navLoader) navLoader.style.display = 'flex';
+    if (navSpinner) navSpinner.style.display = 'block';
+    if (navLottie) navLottie.style.display = 'none';
+  } else {
+    showNavLoader();
+  }
+
+  setTimeout(() => {
+    window.location.href = p.url;
+  }, 50);
+
+} else {
+  window.open(p.url, '_blank');
+}
+
+
+					});
+
+				  }
+
+				  photographersContainer.appendChild(button);
+				});
+
+			  leftWrap.appendChild(photographersLabel);
+			// small line gap
+const spacer = document.createElement('div');
+spacer.style.height = '1px';
+leftWrap.appendChild(spacer);
+
+			//leftWrap.appendChild(photographersInstruct);
+leftWrap.appendChild(spacer);
+			  leftWrap.appendChild(photographersContainer);
+			
+			}
+
+			// RIGHT side container (results button)
+			const resultsButton = document.createElement('button');
+			resultsButton.className = 'register-button results';
+
+			if (photo.resultsURL) {
+			  resultsButton.textContent = 'VIEW RESULTS';
+			  resultsButton.addEventListener('click', () => {
+				window.open(photo.resultsURL, '_blank');
+			  });
+			} else {
+			  resultsButton.className = 'register-button soon';
+			  resultsButton.textContent = 'NO RESULTS';
+			  resultsButton.disabled = true;          // ✅ disable
+			}
+
+			// ✅ assemble
+			bottomSection.appendChild(leftWrap);
+			bottomSection.appendChild(resultsButton);
+			card.appendChild(bottomSection);
+
                 
                 
                 
                 raceList.appendChild(card);
 				
-			const goTopBtn = document.createElement('button');
-			goTopBtn.type = 'button'; // 🔥 IMPORTANT
-			goTopBtn.textContent = 'Go to the top';
-			goTopBtn.className = 'go-top-btn';
 
-			goTopBtn.addEventListener('click', () => {
-				paginationContainer.scrollIntoView({
-					behavior: 'smooth',
-					block: 'start'
-				});
-			});
-
-			raceList.appendChild(goTopBtn);
 			
             });
         }
@@ -2731,56 +2800,37 @@ function renderRaces() {
             }
             
             // For photos view, return all data without filtering
-            if (isPhotos) {
-                return data;
-            }
-            
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-            
-            return data.filter(item => {
-                const name = item.name;
-                const date = item.date;
-                const location = item.location;
-                const distance = item.distance;
-                const organizer = item.organizer;
-                
-                // Date filter - only show future dates for races
-                if (date) {
-					const itemDate = new Date(date);
-					if (!isNaN(itemDate.getTime())) {
-						itemDate.setHours(0, 0, 0, 0);
-						if (itemDate <= today) return false;  // ✅ blocks past AND today
-					}
-				}
-				
-				if (state.filters.year && state.filters.year.length > 0 && date) {
-				  const itemDate = new Date(date);
-				  if (!isNaN(itemDate.getTime())) {
-					const y = itemDate.getFullYear().toString();
-					if (!state.filters.year.includes(y)) return false;
+            const todayPH = getTodayPHStart();
+
+			return data.filter(item => {
+			  const name = isPhotos ? item.nameP : item.name;
+				const date = isPhotos ? item.dateP : item.date;
+				const location = isPhotos ? item.locationP : item.location;
+				const distance = isPhotos ? item.distanceP : item.distance;
+				const organizer = isPhotos ? '' : item.organizer;
+
+			  // ✅ Date filter using PH time
+			  if (date) {
+				const itemDatePH = parseDatePHStart(date);
+				if (itemDatePH) {
+				  if (isPhotos) {
+					// Photos view: show only today/past
+					if (itemDatePH > todayPH) return false;
+				  } else {
+					// Calendar view: show only today/future
+					if (itemDatePH < todayPH) return false;
 				  }
 				}
-                
-				// Location filter
-			if (state.filters.location.length > 0) {
-			  const normLoc = normalizeLocation(item.location || item.locationP || "");
-			  const locGroup = getLocationGroupFromNormalized(normLoc);
-
-			  if (!state.filters.location.includes(locGroup)) {
-				return false;
 			  }
-			}
-
+                
                 // Search term filter
                 if (state.searchTerm) {
-                    const searchLower = state.searchTerm.toLowerCase();
+                    const searchLower = String(state.searchTerm).toLowerCase();
 					
-					const dayName = (date && !isNaN(new Date(date).getTime()))
-					  ? new Intl.DateTimeFormat('en-US', { weekday: 'long' })
-						  .format(new Date(date))
-						  .toLowerCase()
-					  : '';
+					const dayNames = ['sunday','saturday'];
+					const dayName = date && !isNaN(new Date(date).getTime())
+						? dayNames[new Date(date).getDay()]
+						: '';
 							  
                     const rawSearch = state.searchTerm.trim();
 					const looksLikeDistance = /^\d+(?:\.\d+)?\s*(km|k|m)?(\s|$)/i.test(rawSearch);
@@ -2796,7 +2846,7 @@ function renderRaces() {
 					  // ✅ IMPORTANT: if search looks like a distance, do NOT match race name (prevents 1KM matching 21KM in name)
 					  (!looksLikeDistance && name && name.toLowerCase().includes(searchLower)) ||
 
-					  (normalizeKey(normalizeLocation(location)).includes(normalizeKey(searchLower))) ||
+					  (location && location.toLowerCase().includes(searchLower)) ||
 					  (organizer && organizer.toLowerCase().includes(searchLower)) ||
 
 					  // ✅ Distance/category match (supports BOTH: numeric distances + text categories like 2-MAN RELAY)
@@ -2899,13 +2949,7 @@ function renderRaces() {
                     
                     if (!matchesSearch && !matchesDate) return false;
                 }
-
-
-								// Location group
-				const normLoc = normalizeLocation(item.location || item.locationP || "");
-				const locGroup = getLocationGroupFromNormalized(normLoc);
-				locations.add(locGroup);
-
+                
                 // Distance filter
                 if (state.filters.distance.length > 0 && distance) {
 				  const itemDistances = distance
@@ -2921,7 +2965,7 @@ function renderRaces() {
                 if (state.filters.organizer.length > 0) {
                     const normalizedOrganizer = normalizeOrganizerName(organizer);
                     
-                    if (state.filters.organizer.includes('OTHERS')) {
+                    if (state.filters.organizer.includes('Others')) {
                         if (['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA'].includes(normalizedOrganizer) && 
                             !state.filters.organizer.includes(normalizedOrganizer)) {
                             return false;
@@ -2998,7 +3042,6 @@ function renderRaces() {
             
             // Reset filters and search
             state.filters = {
-				  location: [],
                 distance: [],
                 organizer: [],
                 month: [],
@@ -3023,7 +3066,6 @@ function renderRaces() {
 		
 		function resetFiltersOnly() {
 			state.filters = {
-				location: [],
 				distance: [],
 				organizer: [],
 				month: [],
@@ -3033,51 +3075,13 @@ function renderRaces() {
 
 			// optional but recommended: go back to page 1 after new search
 			if (state.pagination) state.pagination.page = 1;
-			toggleClearBtn(); 
 
 			updateFilters(); // updates UI chips to "All"
 		}
-		
-		function restoreDefaultFilterUI() {
-		  // restore "Hide / Show All Filters" state
-		  state.filtersVisible = true;
-
-		  // restore default expanded/collapsed behavior
-		  state.expandedFilters = { ...DEFAULT_EXPANDED_FILTERS };
-
-		  // unhide all filter sections (except intentionally hidden ones)
-		  document.querySelectorAll('.filter-section').forEach(section => {
-			const filterName =
-			  section.querySelector('.filter-header')?.getAttribute('data-filter');
-
-			if (!filterName || !state.hiddenFilters.has(filterName)) {
-			  section.classList.remove('hidden');
-			}
-		  });
-
-		  // restore button label
-		  toggleFiltersButton.innerHTML = `
-			<span>Hide All Filters</span>
-			<svg xmlns="http://www.w3.org/2000/svg"
-			  class="h-4 w-4 ml-1"
-			  fill="none"
-			  viewBox="0 0 24 24"
-			  stroke="currentColor">
-			  <path stroke-linecap="round" stroke-linejoin="round"
-				stroke-width="2"
-				d="M5 15l7-7 7 7" />
-			</svg>
-		  `;
-
-		  // apply expanded/collapsed state to contents + arrows
-		  updateFilterVisibility();
-		}
-
 
         // Reset to default state
         function resetToDefault() {
             state.filters = {
-				location: [],
                 distance: [],
                 organizer: [],
                 month: [],
@@ -3087,32 +3091,17 @@ function renderRaces() {
             state.searchTerm = '';
             searchInput.value = '';
             searchSuggestions.classList.add('hidden');
-			toggleClearBtn(); 
             state.pagination.page = 1;
             updateFilters();
-			clearSearchError();
-
-			// ✅ ADD THIS LINE
-			restoreDefaultFilterUI();
-
-			if (state.view === 'photos') {
-			  loadPhotoData();
-			} else {
-			  loadData();
-			}
-
+            
+            // If in photos view, fetch fresh data when refreshing
+            if (state.view === 'photos') {
+                loadPhotoData();
+            } else {
+                loadData();
+            }
         }
 		
-		function clearSearchError() {
-		  const searchBar = document.querySelector('.search-bar');
-		  const searchInlineError = document.getElementById('searchInlineError');
-
-		  searchBar.classList.remove('error', 'shake');
-
-		  if (searchInlineError) {
-			searchInlineError.classList.add('hidden');
-		  }
-		}
 
         // Event listeners
         //toggleViewButton.addEventListener('click', toggleView);
@@ -3121,116 +3110,29 @@ function renderRaces() {
         
         searchInput.addEventListener('input', (e) => {
             generateSearchSuggestions();
-			 const searchError = document.getElementById('searchError');
-			searchError.style.display = 'none';
         });
         
-		searchInput.addEventListener('input', () => {
-		  searchBar.classList.remove('error');
-		   searchInlineError.classList.add('hidden');
-		});
-
-		const searchBar = document.querySelector('.search-bar');
-		const searchErrorOverlay = document.getElementById('searchErrorOverlay');
 		searchInput.addEventListener('keydown', (e) => {
-		  if (e.key !== 'Enter') return;
-		  e.preventDefault();
-
-		  const value = searchInput.value.trim();
-		  const nonSpaceLength = value.replace(/\s/g, '').length;
-
-		  const searchInlineError = document.getElementById('searchInlineError');
-
-		function positionInlineError() {
-		  const value = searchInput.value || '';
-		  const temp = document.createElement('span');
-		  temp.style.visibility = 'hidden';
-		  temp.style.whiteSpace = 'pre';
-		  temp.style.font = window.getComputedStyle(searchInput).font;
-		  temp.textContent = value;
-
-		  document.body.appendChild(temp);
-		  const width = temp.getBoundingClientRect().width;
-		  document.body.removeChild(temp);
-
-		  searchInlineError.style.left = `${16 + width}px`;
-		}
-		
-		
-
-		if (nonSpaceLength < 3) {
-		  searchBar.classList.add('error');
-
-		  // 🫨 shake on invalid Enter
-		  searchBar.classList.add('shake');
-		  setTimeout(() => searchBar.classList.remove('shake'), 200);
-
-		  if (nonSpaceLength > 0) {
-			searchInlineError.classList.remove('hidden');
-			positionInlineError();
-
-			// ⏱️ auto-hide after 5 seconds
-			clearTimeout(searchErrorTimeout);
-			searchErrorTimeout = setTimeout(() => {
-			  clearSearchError();
-			}, 3000);
-		  }
-
-		  searchSuggestions.classList.add('hidden');
-		  return;
-		}
-
-
-
-
-		  // ✅ clear error if valid
-		  searchBar.classList.remove('error');
-		  searchErrorOverlay.classList.add('hidden');
-
-
-		  const LOCATION_GROUP_SUGGESTIONS = [
-			"NCR",
-			"Cavite",
-			"Luzon (Outside NCR & Cavite)",
-			"Visayas",
-			"Mindanao"
-		  ];
-
-		  // ✅ Case-insensitive + partial location match
-		  const lowerValue = value.toLowerCase();
-		  const matchedLocation = LOCATION_GROUP_SUGGESTIONS.find(loc =>
-			loc.toLowerCase().includes(lowerValue)
-		  );
-
-		  // ✅ Location filter via Enter
-		  if (matchedLocation) {
-			resetFiltersOnly();
-			state.filters.location = [matchedLocation];
-			state.searchTerm = '';
-			state.pagination.page = 1;
-
-			updateFilters();
-			renderCurrentView();
+		  if (e.key === 'Enter') {
+			resetFiltersOnly();               //  reset ALL filters to "All"
+			state.pagination.page = 1; 
+			state.searchTerm = searchInput.value;
 			searchSuggestions.classList.add('hidden');
-			return;
-		  }
 
-		  // ✅ Normal text search
-		  resetFiltersOnly();
-		  state.pagination.page = 1;
-		  state.searchTerm = value;
-		  searchSuggestions.classList.add('hidden');
+			updateFilters(); // refresh chip UI (All becomes active)
 
-		  updateFilters();
+			// Apply search term
+			state.searchTerm = searchInput.value.trim();
+			searchSuggestions.classList.add('hidden');
 
-		  if (state.view === 'photos') {
-			loadPhotoData();
-		  } else {
-			renderCurrentView();
+			// Re-render
+			if (state.view === 'photos') {
+			  loadPhotoData();
+			} else {
+			  renderCurrentView();
+			}
 		  }
 		});
-
-
         
         // Close suggestions when clicking outside
         document.addEventListener('click', (e) => {
@@ -3245,10 +3147,13 @@ function renderRaces() {
             
             if (state.filtersVisible) {
                 document.querySelectorAll('.filter-section').forEach(section => {
-                    const filterId = section.id.replace('FilterContainer', '');
-                    if (!state.hiddenFilters.has(filterId)) {
-                        section.classList.remove('hidden');
-                    }
+                    const filterId =
+					  section.querySelector('.filter-header')?.dataset.filter ||
+					  section.id.replace('FilterContainer', '');
+
+					if (!state.hiddenFilters.has(filterId)) {
+					  section.classList.remove('hidden');
+					}
                 });
                 toggleFiltersButton.innerHTML = `
                     <span>Hide All Filters</span>
@@ -3280,11 +3185,85 @@ function renderRaces() {
 
         // Initialize
         loadData();
+		
+function isIOS() {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+         (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+}
+
+// ✅ show initial loader ONLY if NOT iOS
+if (!isIOS()) {
+
+}
+
+window.addEventListener('load', () => {
+  const navLoader = document.getElementById('navLoader');
+  if (navLoader) navLoader.style.display = 'none';
+});
+
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9405435a5773fee1',t:'MTc0NzMzOTY2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe>
+<button
+  id="photoBackBtn"
+  style="
+    display:none;
+    position:fixed;
+    bottom:18px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:1001;
+    padding:10px 16px;
+    font-size:14px;
+    font-weight:700;
+    border-radius:9999px;
+    border:1px solid #0a5f38;
+    background:#ffffff;
+    color:#0a5f38;
+  "
+>
+  ← Back
+</button>
+<!-- Loading Overlay (Lottie) -->
+<div
+  id="navLoader"
+  style="display:none; position:fixed; inset:0; z-index:2000;
+         background:rgba(255,255,255,0.85);
+         backdrop-filter: blur(2px);
+         align-items:center; justify-content:center;"
+>
+  <div
+    style="
+    width:120px;
+    height:120px;
+    border-radius:100%;
+    overflow:hidden;
+    background:transparent;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  "
+  >
+    <div id="navLottie" style="width:80px;height:80px;"></div>
+
+    <div
+      id="navSpinner"
+      style="display:none;width:46px;height:46px;
+             border:5px solid rgba(10,95,56,0.2);
+             border-top-color:#0a5f38;
+             border-radius:50%;
+             animation:spin 0.9s linear infinite;"
+    ></div>
+  </div>
+
+  <style>
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
 
 </body></html>
-
 
 
 
