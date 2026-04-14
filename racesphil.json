@@ -1,5 +1,32 @@
 [
 {
+    "name": "OYM TRILOGY - LEG 1",
+    "distance": "16KM,10KM,5KM",
+    "location": "Ayala, Makati City",
+    "organizer": "ON YOUR MARK",
+    "date": "May 24, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+{
+    "name": "OYM TRILOGY - LEG 2",
+    "distance": "21KM,16KM,10KM,5KM",
+    "location": "Ayala, Makati City",
+    "organizer": "ON YOUR MARK",
+    "date": "September 27, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },  
+  {
+    "name": "OYM TRILOGY - LEG 3",
+    "distance": "26KM,16KM,10KM,5KM",
+    "location": "Ayala, Makati City",
+    "organizer": "ON YOUR MARK",
+    "date": "November 15, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },  
+{
     "name": "SUNNIES RUN",
     "distance": "21KM,10KM,5KM,1KM Dog",
     "location": "Ayala, Makati City",
@@ -320,8 +347,8 @@
     "location": "SM Center Pulilan, Bulacan",
     "organizer": "TEAM MALOFIT",
     "date": "August 9, 2026",
-    "website": "https://teammalofit.myruntime.com/register/bhm2026/",
-    "status": "Opening Soon"
+    "website": "https://teammalofit.myruntime.com/register/bulacanmarathon",
+    "status": "Register"
   },
    {
     "name": "TAKBO PARA SA KALIKASAN - FIRE RUN",
