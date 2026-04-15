@@ -793,7 +793,15 @@
     "website": "https://racerecord.myruntime.com/register/siargao-marathon-2026",
     "status": "Register"
   },
-
+  {
+    "name": "AGOO HALF MARATHON",
+    "distance": "21KM,10KM,5KM",
+    "location": "Agoo Eco Park, La Union",
+    "organizer": "SLOWFOOTRUNNER EVENTS",
+    "date": "May 17, 2026",
+    "website": "https://docs.google.com/forms/d/e/1FAIpQLSd8iltU64fhHuCoytH10UUW6V3oYIm5y3IfMM6efXIUNJolTw/viewform",
+    "status": "Register"
+  },
   {
     "name": "REXONA 10 MILER",
     "distance": "16KM,10KM,5KM",
