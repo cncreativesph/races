@@ -1,5 +1,25 @@
 [
   {
+    "nameP": "TECNO CAMON 50 Series Earth Day Run",
+    "locationP": "Mall of Asia",
+    "dateP": "April 19, 2026",
+    "listOfPhotogs": [
+		"CN Creatives X Smooth x Stories",
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"AR Sports PH",
+		"Humble Runner"
+      ],
+      "photogsURL": [
+		"https://photos.runrioinc.com/galleries/tecno-camon-50-series-earth-day-run",
+		"https://photos.genuinesole.com/galleries/earth-day-run-manila-2026",
+		"https://photos.phrunningoverload.com/galleries/tecno-camon-earth-day-run",
+		"https://photos.arsportsph.com/galleries/tecno-camon-earth-day-run",
+		"https://photos.humblerunnerphoto.com/galleries/tecno-camon-earth-day-run"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/nsuvcuncnahb5z3e"
+  },
+  {
     "nameP": "REV Manila Half Marathon",
     "locationP": "Quirino Grandstand, City of Manila",
     "dateP": "April 12, 2026",
