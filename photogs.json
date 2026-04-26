@@ -1,5 +1,33 @@
 [
   {
+    "nameP": "Southstar Drug Run for Wellness",
+    "locationP": "UP DILIMAN",
+    "dateP": "April 26, 2026",
+    "listOfPhotogs": [
+        "AR Sports PH"
+      ],
+      "photogsURL": [
+        "https://photos.arsportsph.com/galleries/quakerfit-run"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/3np5gq22c3kb64mu"
+  },
+  {
+    "nameP": "QuakerFit Run",
+    "locationP": "Ayala, Makati City",
+    "dateP": "April 26, 2026",
+    "listOfPhotogs": [
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"Humble Runner"
+      ],
+      "photogsURL": [
+		"https://photos.genuinesole.com/galleries/quaker-fit-run",
+		"https://photos.phrunningoverload.com/galleries/quakerfit-run",
+		"https://photos.humblerunnerphoto.com/galleries/quakerfit-run"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/asfmbwnqdefv4mzg"
+  },
+  {
     "nameP": "TECNO CAMON 50 Series Earth Day Run",
     "locationP": "Mall of Asia",
     "dateP": "April 19, 2026",
