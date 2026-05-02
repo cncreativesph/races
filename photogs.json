@@ -1,5 +1,23 @@
 [
   {
+    "nameP": "Star Wars Night Run",
+    "locationP": "Mall of Asia",
+    "dateP": "May 3, 2026",
+    "listOfPhotogs": [
+		"Genuine Sole",
+		"PH RunninG Overload",
+		"AR Sports PH",
+		"Humble Runner"
+      ],
+      "photogsURL": [
+		"https://photos.genuinesole.com/galleries/star-wars-night-run",
+		"https://photos.phrunningoverload.com/galleries/star-wars-night-run",
+		"https://photos.arsportsph.com/galleries/star-wars-night-run",
+		"https://photos.humblerunnerphoto.com/galleries/star-wars-night-run"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/skek7a5u9zy6atvp"
+  },
+  {
     "nameP": "Southstar Drug Run for Wellness",
     "locationP": "UP DILIMAN",
     "dateP": "April 26, 2026",
