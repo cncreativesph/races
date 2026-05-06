@@ -1,5 +1,14 @@
 [
-{
+    {
+    "name": "Decathlon Run",
+    "distance": "",
+    "location": "Mall of Asia",
+    "organizer": "RUNRIO",
+    "date": "August 30, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
     "name": "PUMA PHILIPPINE HALF SERIES",
     "distance": "21KM,10KM,5KM",
     "location": "Iloilo",
@@ -59,8 +68,8 @@
     "location": "Ayala, Makati City",
     "organizer": "ON YOUR MARK",
     "date": "June 14, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://oymevents.com/event/trilogy-2026-leg-1/",
+    "status": "Register"
   },
 {
     "name": "OYM TRILOGY - LEG 2",
@@ -68,17 +77,17 @@
     "location": "Ayala, Makati City",
     "organizer": "ON YOUR MARK",
     "date": "September 27, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://oymevents.com/event/trilogy-2026-leg-2/",
+    "status": "Register"
   },  
   {
     "name": "OYM TRILOGY - LEG 3",
     "distance": "26KM,16KM,10KM,5KM",
     "location": "Ayala, Makati City",
     "organizer": "ON YOUR MARK",
-    "date": "November 15, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "date": "December 13, 2026",
+    "website": "https://oymevents.com/event/trilogy-2026-leg-3/",
+    "status": "Register"
   },  
 {
     "name": "SUNNIES RUN",
