@@ -4,12 +4,14 @@
     "locationP": "Mall of Asia",
     "dateP": "May 3, 2026",
     "listOfPhotogs": [
+		"CN Creatives x Smooth Finish",
 		"Genuine Sole",
 		"PH RunninG Overload",
 		"AR Sports PH",
 		"Humble Runner"
       ],
       "photogsURL": [
+	  "https://photos.runrioinc.com/galleries/star-wars-night-run",
 		"https://photos.genuinesole.com/galleries/star-wars-night-run",
 		"https://photos.phrunningoverload.com/galleries/star-wars-night-run",
 		"https://photos.arsportsph.com/galleries/star-wars-night-run",
