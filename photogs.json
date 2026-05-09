@@ -92,12 +92,16 @@
     "locationP": "Filinvest, Alabang",
     "dateP": "May 9, 2026",
     "listOfPhotogs": [
-
-		"Humble Runner"
+		"AR Sports PH",
+		"Humble Runner",
+		"CN Creatives",
+		"Genuine Sole"
       ],
       "photogsURL": [
-
-		"https://photos.humblerunnerphoto.com/galleries/the-music-run-manila"
+		"https://photos.arsportsph.com/galleries/the-music-run-manila",
+		"https://photos.humblerunnerphoto.com/galleries/the-music-run-manila",
+		"https://photos.cncreatives.com/galleries/the-music-run-manila",
+		"https://photos.genuinesole.com/galleries/the-music-run-2026"
       ]
   },
   {
