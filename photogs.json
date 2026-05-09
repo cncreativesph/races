@@ -1,23 +1,15 @@
 [
   {
-    "nameP": "Star Wars Night Run",
-    "locationP": "Mall of Asia",
-    "dateP": "May 3, 2026",
+    "nameP": "Popeye Run Manila",
+    "locationP": "CCP Complex, Pasay City",
+    "dateP": "May 9, 2026",
     "listOfPhotogs": [
-		"CN Creatives x Smooth Finish",
-		"Genuine Sole",
-		"PH RunninG Overload",
-		"AR Sports PH",
-		"Humble Runner"
+        "Run Zion"
       ],
       "photogsURL": [
-	  "https://photos.runrioinc.com/galleries/star-wars-night-run",
-		"https://photos.genuinesole.com/galleries/star-wars-night-run",
-		"https://photos.phrunningoverload.com/galleries/star-wars-night-run",
-		"https://photos.arsportsph.com/galleries/star-wars-night-run",
-		"https://photos.humblerunnerphoto.com/galleries/star-wars-night-run"
+        "https://www.facebook.com/media/set/?set=a.1276786921315596&type=3"
       ],
-	 "resultsURL": "https://results.raceroster.com/v3/events/skek7a5u9zy6atvp"
+	 "resultsURL": "https://empower.myruntime.com/results/popeye-run-manila#/"
   },
   {
     "nameP": "Star Wars Night Run",
