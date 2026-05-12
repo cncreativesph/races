@@ -14,8 +14,8 @@
     "location": "Iloilo",
     "organizer": "RUNRIO",
     "date": "July 12, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/125490/puma-philippine-half-marathon-series-2026-iloilo-leg",
+    "status": "Register"
   },
   {
     "name": "PUMA PHILIPPINE HALF SERIES",
@@ -828,6 +828,15 @@
     "organizer": "RUNRIO",
     "date": "June 14, 2026",
     "website": "https://raceroster.com/events/2026/116590/pride-run-2026-cebu",
+    "status": "Register"
+  },
+  {
+    "name": "QC RUN FOR PRIDE",
+    "distance": "5KM",
+    "location": "Tomas Morato, Quezon City",
+    "organizer": "RUNRIO",
+    "date": "June 6, 2026",
+    "website": "https://raceroster.com/events/2026/125483/qc-run-for-pride-2026",
     "status": "Register"
   },
   {
