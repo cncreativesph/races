@@ -1,4 +1,17 @@
 [
+	
+  {
+    "nameP": "Panasonic Run",
+    "locationP": "Mall of Asia",
+    "dateP": "May 16, 2026",
+    "listOfPhotogs": [
+        "CN Creatives"
+      ],
+      "photogsURL": [
+        "https://photos.runrioinc.com/galleries/panasonic-run"
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/mq2bd3akce6nereg"
+  },
   {
     "nameP": "Popeye Run Manila",
     "locationP": "CCP Complex, Pasay City",
