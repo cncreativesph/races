@@ -1,5 +1,17 @@
 [
-	
+	  {
+    "nameP": "Sante Barley Trilogy Run Asia Leg 2",
+    "locationP": "Mall of Asia",
+    "dateP": "May 17, 2026",
+    "listOfPhotogs": [
+		"CN Creatives"
+      ],
+      "photogsURL": [
+		  "https://photos.runrioinc.com/galleries/TRALeg2"
+
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/j9trcswn72bj3de4?_gl=1*17dzo5j*_gcl_au*MTI0NDYzMDY4OC4xNzc1NTMxMzg5LjU5MDEzNDcwMS4xNzc4ODQ5NTAzLjE3Nzg4NDk3MDk."
+  },
   {
     "nameP": "Panasonic Run",
     "locationP": "Mall of Asia",
