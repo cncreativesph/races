@@ -6,11 +6,13 @@
     "dateP": "May 16, 2026",
     "listOfPhotogs": [
         "CN Creatives",
-		"Humble Runner"
+		"Humble Runner",
+		"Genuine Sole"
       ],
       "photogsURL": [
         "https://photos.runrioinc.com/galleries/panasonic-run",
-		  "https://findmyshots.com/events/7427cdb1-b90c-4bc1-915c-a025cb25ae7c?photographerId=3201b560-f10a-4aaf-8366-b76545267581"
+		  "https://findmyshots.com/events/7427cdb1-b90c-4bc1-915c-a025cb25ae7c?photographerId=3201b560-f10a-4aaf-8366-b76545267581",
+		  "https://findmyshots.com/events/panasonic-run-2026?photographerId=9183a343-72fb-488f-a931-3c9676d1ab14"
       ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/mq2bd3akce6nereg"
   },
