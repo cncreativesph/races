@@ -4,14 +4,12 @@
     "locationP": "Mall of Asia",
     "dateP": "May 17, 2026",
     "listOfPhotogs": [
-		"CN Creatives",
 		"PH Running Overload",
 		"AR Sports PH",
 		"Humble Runner",
 		"Genuine Sole"
       ],
       "photogsURL": [
-		  "https://photos.runrioinc.com/galleries/TRALeg2",
 		  "https://photos.phrunningoverload.com/galleries/sante-barley-trilogy-run-asia",
 		  "https://photos.arsportsph.com/galleries/sante-barley-trilogy-run-asia-leg-2",
 		  "https://findmyshots.com/s/thesantbarley-humblerunner",
