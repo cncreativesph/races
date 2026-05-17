@@ -5,11 +5,13 @@
     "dateP": "May 17, 2026",
     "listOfPhotogs": [
 		"CN Creatives",
-		"PH Running Overload"
+		"PH Running Overload",
+		"AR Sports PH"
       ],
       "photogsURL": [
 		  "https://photos.runrioinc.com/galleries/TRALeg2",
-		  "https://photos.phrunningoverload.com/galleries/sante-barley-trilogy-run-asia"
+		  "https://photos.phrunningoverload.com/galleries/sante-barley-trilogy-run-asia",
+		  "https://photos.arsportsph.com/galleries/sante-barley-trilogy-run-asia-leg-2"
 
       ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/j9trcswn72bj3de4?_gl=1*17dzo5j*_gcl_au*MTI0NDYzMDY4OC4xNzc1NTMxMzg5LjU5MDEzNDcwMS4xNzc4ODQ5NTAzLjE3Nzg4NDk3MDk."
