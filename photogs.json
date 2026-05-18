@@ -5,15 +5,12 @@
     "dateP": "May 17, 2026",
     "listOfPhotogs": [
 		"Humble Runner",
-		"Genuine Sole",
-		"PH RunninG Overload",
-		"AR Sports PH"
+		"Genuine Sole"
       ],
       "photogsURL": [
-		  "https://photos.humblerunnerphoto.com/galleries/sante-barley-trilogy-run-asia",
-		  "https://findmyshots.com/s/thesantbarley-genuinesole",
-		  "https://photos.phrunningoverload.com/galleries/sante-barley-trilogy-run-asia",
-		  "https://photos.arsportsph.com/galleries/sante-barley-trilogy-run-asia-leg-2"
+		  "https://findmyshots.com/s/thesantbarley-humblerunner",
+		  "https://findmyshots.com/s/thesantbarley-genuinesole"
+		  
 
 
       ],
