@@ -143,7 +143,7 @@
   {
     "nameP": "Poseidon Olympus Run",
     "locationP": "Mall of Asia",
-    "dateP": "May 24, 2026",
+    "dateP": "May 23, 2026",
 	"listOfPhotogs": [
 		"Various Photographers"
       ],
@@ -549,6 +549,18 @@
         ""
       ],
 	"resultsURL": "https://greenmediaevents.myruntime.com/results/earth-run-2025"
+  },
+  {
+    "nameP": "TAKBO PARA SA KALIKASAN - FIRE RUN",
+    "locationP": "Quirino Grandstand",
+    "dateP": "May 24, 2026",
+    "listOfPhotogs": [
+
+      ],
+      "photogsURL": [
+        ""
+      ],
+	"resultsURL": "https://greenmediaevents.myruntime.com/results/fire-run-2026"
   },
   {
     "nameP": "McDonald's Stripes Run",
