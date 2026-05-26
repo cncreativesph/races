@@ -1,4 +1,13 @@
-[
+[    
+{
+    "name": "Just One Fun Run",
+    "distance": "21KM,10KM,5KM",
+    "location": "Vermosa, Cavite",
+    "organizer": "TBR Dream Team",
+    "date": "June 20, 2026",
+    "website": "https://runjustone.myruntime.com/register",
+    "status": "Register"
+  },
 {
     "name": "Mercury Drug Suki Dash",
     "distance": "10KM,5KM,3KM",
@@ -158,8 +167,8 @@
     "location": "Filinvest, Alabang",
     "organizer": "RUNRIO",
     "date": "August 2, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/116385/eastwest-dream-run-2026-manila",
+    "status": "Register"
   },
   {
     "name": "EASTWEST DREAM RUN",
