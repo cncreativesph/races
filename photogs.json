@@ -1,4 +1,20 @@
 [
+ {
+    "nameP": "Sparkle Run",
+    "locationP": "Quirino Grandstand, Manila",
+    "dateP": "May 30, 2026",
+    "listOfPhotogs": [
+		"Humble Runner"
+      ],
+      "photogsURL": [
+		  "https://findmyshots.com/s/sparklerun2026-humblerunner"
+		  
+
+
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/r5mjw26dkr3zraup"
+  },
+
 	  {
     "nameP": "Sante Barley Trilogy Run Asia Leg 2",
     "locationP": "Mall of Asia",
