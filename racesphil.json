@@ -14,8 +14,8 @@
     "location": "Filinvest, Alabang",
     "organizer": "RUNRIO",
     "date": "August 30, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/130269/mercury-drug-suki-dash-2026",
+    "status": "Register"
   },
     {
     "name": "Decathlon Run",
@@ -41,8 +41,8 @@
     "location": "Davao City",
     "organizer": "RUNRIO",
     "date": "July 19, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/125493/puma-philippine-half-marathon-series-2026-davao-leg",
+    "status": "Register"
   },
   {
     "name": "PUMA PHILIPPINE HALF SERIES",
@@ -50,8 +50,8 @@
     "location": "Cebu City",
     "organizer": "RUNRIO",
     "date": "August 2, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/127013/puma-philippine-half-marathon-series-2026-cebu-leg",
+    "status": "Register"
   },
   {
     "name": "PUMA PHILIPPINE HALF SERIES",
@@ -59,8 +59,8 @@
     "location": "Clark, Pampanga",
     "organizer": "RUNRIO",
     "date": "August 23, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/127015/puma-philippine-half-marathon-series-2026-clark-leg",
+    "status": "Register"
   },
   {
     "name": "PUMA PHILIPPINE HALF SERIES",
@@ -68,8 +68,8 @@
     "location": "Cagayan De Oro",
     "organizer": "RUNRIO",
     "date": "September 6, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/127014/puma-philippine-half-marathon-series-2026-cdo-leg",
+    "status": "Register"
   },
     {
     "name": "PUMA PHILIPPINE HALF SERIES",
@@ -77,6 +77,15 @@
     "location": "Mall of Asia",
     "organizer": "RUNRIO",
     "date": "October 11, 2026",
+    "website": "https://raceroster.com/events/2026/127016/puma-philippine-half-marathon-series-2026-manila-leg",
+    "status": "Register"
+  },
+    {
+    "name": "PRU POP RUN",
+    "distance": "30KM,21KM,10KM,5KM,3KM",
+    "location": "Ayala, Makati City",
+    "organizer": "SUNRISE EVENTS",
+    "date": "August 30, 2026",
     "website": "",
     "status": "Opening Soon"
   },
@@ -446,8 +455,8 @@
     "location": "Quirino Grandstand, Manila",
     "organizer": "GREEN MEDIA EVENTS",
     "date": "July 26, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://greenmediaevents.myruntime.com/register/water-run-2026",
+    "status": "Register"
   },
    {
     "name": "TAKBO PARA SA KALIKASAN - AIR RUN",
@@ -1224,8 +1233,8 @@
     "location": "Mall of Asia, Pasay City",
     "organizer": "RSRJ EVENTS MANAGEMENT",
     "date": "August 23, 2026",
-    "website": "https://rsrjevents.myruntime.com/register/athena-olympus-run-2026",
-    "status": "Opening Soon"
+    "website": "https://rsrjevents.myruntime.com/register/zeus-olympus-run-2026",
+    "status": "Register"
   },
   {
     "name": "VINTA MARATHON DIA DE ZAMBOANGA",
