@@ -1,5 +1,20 @@
 [
 	  {
+    "nameP": "BPI Best Life Run",
+    "locationP": "Ayala, Makati City",
+    "dateP": "June 7, 2026",
+    "listOfPhotogs": [
+		"Humble Runner"
+      ],
+      "photogsURL": [
+		  "https://photos.cncreatives.com/galleries/2026BPI"
+		  
+
+
+      ],
+	 "resultsURL": "https://results.raceroster.com/v3/events/a5352rsegepwedst"
+  },
+	  {
     "nameP": "SpongeBob Run",
     "locationP": "Ayala, Makati City",
     "dateP": "May 31, 2026",
@@ -12,7 +27,7 @@
 
 
       ],
-	 "resultsURL": "https://results.raceroster.com/v3/events/a5352rsegepwedst"
+	 "resultsURL": ""
   },
   {
     "nameP": "JCI Manila Colorfest Carnival Run",
