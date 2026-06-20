@@ -1,4 +1,32 @@
-[  {
+[   {
+    "nameP": "Pride Run",
+    "locationP": "Mall of Asia",
+    "dateP": "June 21, 2026",
+    "listOfPhotogs": [
+		"CN Creatives"
+      ],
+      "photogsURL": [
+		  "https://photos.cncreatives.com/galleries/2026PrideRun"
+		  
+
+
+      ]
+  },
+	{
+    "nameP": "Just One Fun Run",
+    "locationP": "Vermosa, Cavite",
+    "dateP": "June 20, 2026",
+    "listOfPhotogs": [
+		"CN Creatives"
+      ],
+      "photogsURL": [
+		  "https://photos.cncreatives.com/galleries/just-one-fun-run"
+		  
+
+
+      ],
+	  	 "resultsURL": "https://runjustone.myruntime.com/results/just-one-fun-run-2026#/"
+  },{
     "nameP": "Galaxy Manila Marathon",
     "locationP": "Mall of Asia",
     "dateP": "June 12, 2026",
