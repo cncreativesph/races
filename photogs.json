@@ -1,4 +1,19 @@
 [   {
+    "nameP": "Wilcon 10-Miler Run",
+    "locationP": "Parqal, Paranaque",
+    "dateP": "June 21, 2026",
+    "listOfPhotogs": [
+		"Genuine Sole"
+      ],
+      "photogsURL": [
+		  "https://photos.genuinesole.com/galleries/wilcon-10-miler-run-2026"
+		  
+
+
+      ],
+	 "resultsURL": "https://mnlcityrun.myruntime.com/results/wilcon-10-miler-run-2026"
+  },
+  {
     "nameP": "Pride Run",
     "locationP": "Mall of Asia",
     "dateP": "June 21, 2026",
