@@ -1,4 +1,13 @@
 [    
+    {
+    "name": "MILO Marathon Walk, Run & Roll",
+    "distance": "10KM,5KM,3KM,1KM",
+    "location": "UP Diliman",
+    "organizer": "RUNRIO",
+    "date": "July 26, 2026",
+    "website": "https://raceroster.com/events/2026/130742/2026-milo-marathon-walk-run-and-roll",
+    "status": "Register"
+  },
   {
     "name": "Colorfest Electric Night Run",
     "distance": "21KM,10KM,5KM,3KM",
@@ -1422,8 +1431,8 @@
     "location": "Filinvest, Alabang",
     "organizer": "RULE & RICH EVENTS MANAGEMENT",
     "date": "July 26, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://mnlcityrun.myruntime.com/register/aqua-run-2026",
+    "status": "Register"
   },
   {
     "name": "MNL CITY RUN - ECOFEST RUN",
