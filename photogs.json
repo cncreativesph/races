@@ -332,6 +332,21 @@
       ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/mfqksjpsjs9tzpkz"
   },
+	
+  {
+    "nameP": "Rexona 10 Miler Series",
+    "locationP": "Quirino Grandstand, Manila",
+    "dateP": "June 28, 2026",
+    "listOfPhotogs": [
+		"CN Creatives"
+		
+      ],
+      "photogsURL": [
+		"https://photos.cncreatives.com/galleries/2026RexonaManila"
+
+      ]
+	 
+  },
   {
     "nameP": "GCASH Run",
     "locationP": "Ayala, Makati City",
