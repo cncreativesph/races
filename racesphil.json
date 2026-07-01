@@ -122,8 +122,8 @@
     "location": "Ayala, Makati City",
     "organizer": "SUNRISE EVENTS",
     "date": "August 30, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://registration.sunriseevents.com.ph/packages/pru-run-pop-2026",
+    "status": "Register"
   },
   {
     "name": "OYM TRILOGY - LEG 1",
@@ -605,6 +605,33 @@
     "status": "Register"
   },
   {
+    "name": "Hi-Precision Diagnostics - Run for your Life",
+    "distance": "16KM,10KM,5KM,3KM,1KM",
+    "location": "Filinvest, Alabang",
+    "organizer": "RUNRIO",
+    "date": "November 8, 2026",
+    "website": "https://raceroster.com/events/2026/118921/hi-precision-diagnostics-run-for-your-life-2026",
+    "status": "Register"
+  },
+   {
+    "name": "JCO RUN",
+    "distance": "12KM,5KM",
+    "location": "Mall of Asia",
+    "organizer": "RUNRIO",
+    "date": "October 10, 2026",
+    "website": "https://raceroster.com/events/2026/138621/jco-run-2026",
+    "status": "Opening Soon"
+  },
+   {
+    "name": "ONE PIECE RUN",
+    "distance": "10KM,5KM,3KM,1KM",
+    "location": "Mall of Asia",
+    "organizer": "RUNRIO",
+    "date": "September 26, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
     "name": "REV QUEZON CITY HALF MARATHON",
     "distance": "21KM,10KM,5KM",
     "location": "UP Diliman, Quezon City",
@@ -774,6 +801,15 @@
     "organizer": "GREEN MEDIA EVENTS",
     "date": "March 22, 2026",
     "website": "https://greenmediaevents.myruntime.com/register/race-to-serve-apo-half-marathon-2026",
+    "status": "Register"
+  },
+  {
+    "name": "APO HALF MARATHON",
+    "distance": "21KM,10KM,5KM",
+    "location": "Vermosa, Cavite",
+    "organizer": "GREEN MEDIA EVENTS",
+    "date": "September 6, 2026",
+    "website": "https://greenmediaevents.myruntime.com/register/race-to-serve-apo-half-marathon-2026-vermosa",
     "status": "Register"
   },
   {
@@ -1206,8 +1242,8 @@
     "location": "Filinvest, Alabang, Muntinlupa City",
     "organizer": "PINOY FITNESS & PEP SQUAD EVENTS",
     "date": "October 24, 2026",
-    "website": "https://pinoyfitness.myruntime.com/register/pf-sub1-10k-challenge-2026",
-    "status": "Opening Soon"
+    "website": "https://pinoyfitness.myruntime.com/register/pf-mamaw-run-2026",
+    "status": "Register"
   },
   {
     "name": "GALAXY MANILA MARATHON",
@@ -1305,8 +1341,8 @@
     "location": "Clark, Pampanga",
     "organizer": "SMOKE10 EVENTS MANAGEMENT",
     "date": "November 8, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://smoke10events.myruntime.com/register/fit-to-run-2026-leg-3-clark",
+    "status": "Register"
   },
   {
     "name": "DECATHLON HALF MARATHON - LEG 1",
