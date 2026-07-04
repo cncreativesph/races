@@ -1,4 +1,33 @@
 [   {
+    "nameP": "REV Tri-City Half Marathon",
+    "locationP": "Quirino, Grandstand",
+    "dateP": "April 12, 2026",
+    "listOfPhotogs": [
+		"Humble Runner",
+		"AR Sports PH",
+		"PH Running Overload"
+      ],
+      "photogsURL": [
+		  "https://photos.humblerunnerphoto.com/galleries/rev-manila-half-marathon",
+		  "https://photos.arsportsph.com/galleries/rev-manila-half-marathon",
+		  "https://photos.phrunningoverload.com/galleries/rev-manila-half-marathon"
+      ],
+
+  },
+	{
+    "nameP": "REV Tri-City Half Marathon",
+    "locationP": "Ayala, Makati",
+    "dateP": "July 5, 2026",
+    "listOfPhotogs": [
+		"RUNRIO"
+      ],
+      "photogsURL": [
+		  "https://photos.cncreatives.com/galleries/2026REVMakati"
+		  
+      ],
+
+  },
+	{
     "nameP": "Wilcon 10-Miler Run",
     "locationP": "Parqal, Paranaque",
     "dateP": "June 21, 2026",
