@@ -1,4 +1,26 @@
-[   {
+[   	{
+    "nameP": "PUMA Philippine Half Marathon",
+    "locationP": "SM City Iloilo",
+    "dateP": "July 12, 2026",
+
+ "resultsURL": "https://results.raceroster.com/v3/events/w6zm4s2x9wjp2hy4"
+
+  },
+  {
+    "nameP": "Singlife Cebu International Marathon",
+    "locationP": "SM Seaside City, Cebu",
+    "dateP": "July 12, 2026",
+    "listOfPhotogs": [
+		"Various Photographers"
+      ],
+      "photogsURL": [
+		  "https://findmyshots.com/events/singlife-cebu-international-marathon-2026?organization=smoothfinishphotography"
+		  
+      ],
+ "resultsURL": "https://results.raceroster.com/v3/events/34qgaph327e3a6f5"
+
+  },
+  {
     "nameP": "REV Tri-City Half Marathon",
     "locationP": "Quirino, Grandstand",
     "dateP": "April 12, 2026",
