@@ -1,4 +1,12 @@
-[    
+[      {
+    "name": "PCSO CHARITY RUN",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Ayala, Makati",
+    "organizer": "RUNRIO",
+    "date": "October 18, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
     {
     "name": "MILO Marathon Walk, Run & Roll",
     "distance": "10KM,5KM,3KM,1KM",
@@ -628,8 +636,8 @@
     "location": "Mall of Asia",
     "organizer": "RUNRIO",
     "date": "September 26, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/139138/one-piece-run-2026",
+    "status": "Register"
   },
   {
     "name": "REV QUEZON CITY HALF MARATHON",
