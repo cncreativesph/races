@@ -1,4 +1,19 @@
-[   	{
+[   	,
+	{
+    "nameP": "HOKA Midnight Run Asia",
+    "locationP": "Mall of Asia",
+    "dateP": "July 18, 2026",
+    "listOfPhotogs": [
+		"RUNRIO"
+      ],
+      "photogsURL": [
+		  "https://photos.cncreatives.com/galleries/2026HRMA"
+		  
+      ],
+ "resultsURL": ""
+
+  },
+	{
     "nameP": "PUMA Philippine Half Marathon",
     "locationP": "SM City Iloilo",
     "dateP": "July 12, 2026",
