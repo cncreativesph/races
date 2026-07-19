@@ -5,11 +5,13 @@
     "dateP": "July 18, 2026",
     "listOfPhotogs": [
 		"Humble Runner",
-		"Genuine Sole"
+		"Genuine Sole",
+		"Other Photographers"
       ],
       "photogsURL": [
 		  "https://findmyshots.com/s/hoka-midnight-run-asia-manila-humblerunner",
-		  "https://findmyshots.com/s/hoka-midnight-run-asia-manila-genuinesole"
+		  "https://findmyshots.com/s/hoka-midnight-run-asia-manila-genuinesole",
+		  "https://findmyshots.com/s/hoka-midnight-run-asia-manila-cncreatives"
 		  
       ],
  "resultsURL": ""
