@@ -1,4 +1,30 @@
 [   
+{
+    "nameP": "Colorfest ACER Electric AI Night Run",
+    "locationP": "Mall of Asia",
+    "dateP": "August 1, 2026",
+    "listOfPhotogs": [
+		"CN Creatives"
+      ],
+      "photogsURL": [
+		  "https://cncreatives.com/subscribe2"
+      ],
+ "resultsURL": ""
+
+  }	,
+  {
+    "nameP": "EastWest Dream Run",
+    "locationP": "Filinvest, Alabang",
+    "dateP": "August 2, 2026",
+    "listOfPhotogs": [
+		"CN Creatives"
+      ],
+      "photogsURL": [
+		  "https://cncreatives.com/subscribe"
+      ],
+ "resultsURL": ""
+
+  }	,
 	{
     "nameP": "MILO Marathon Walk, Run, & Roll",
     "locationP": "UP Diliman",
