@@ -1,21 +1,11 @@
-[ 
-    {
-    "name": "DISNEY RUN PHILIPPINES",
-    "distance": "10KM,5KM,3KM",
-    "location": "Mall of Asia",
-    "organizer": "RUNRIO",
-    "date": "September 27, 2026",
-    "website": "https://raceroster.com/events/2026/139732/disney-run-philippines-2026",
-    "status": "Register"
-  },
-    {
+[      {
     "name": "PCSO CHARITY RUN",
     "distance": "21KM,10KM,5KM,3KM",
     "location": "Ayala, Makati",
     "organizer": "RUNRIO",
     "date": "October 18, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/139797/pcso-charity-run-2026",
+    "status": "Register"
   },
     {
     "name": "MILO Marathon Walk, Run & Roll",
@@ -176,8 +166,8 @@
     "location": "Ayala, Makati City",
     "organizer": "RUNRIO",
     "date": "October 4, 2026",
-    "website": "https://raceroster.com/events/2026/139360/sunnies-run-2026",
-    "status": "Register"
+    "website": "",
+    "status": "Opening Soon"
   },
   {
     "name": "Robinsons Supermarket’s 18th Fit & Fun Wellness Buddy Run",
@@ -324,13 +314,13 @@
     "status": "Register"
   },
   {
-    "name": "Marvel Run",
-    "distance": "",
-    "location": "",
+    "name": "Disney Run",
+    "distance": "10KM,5KM,3KM",
+    "location": "Mall of Asia",
     "organizer": "RUNRIO",
     "date": "September 27, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/139732/disney-run-philippines-2026",
+    "status": "Event is Full"
   },
   {
     "name": "Marvel Avengers Run",
@@ -518,8 +508,8 @@
     "location": "Quirino Grandstand, Manila",
     "organizer": "GREEN MEDIA EVENTS",
     "date": "September 20, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://greenmediaevents.myruntime.com/register/air-run-2026",
+    "status": "Register"
   },
    {
     "name": "TAKBO PARA SA KALIKASAN - EARTH RUN",
@@ -655,8 +645,8 @@
     "location": "UP Diliman, Quezon City",
     "organizer": "RUNRIO",
     "date": "December 13, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/139853/rev-tri-city-half-marathon-quezon-city",
+    "status": "Register"
   },
   {
     "name": "TCS CLARK ANIMO INTERNATIONAL MARATHON",
@@ -1079,8 +1069,8 @@
     "location": "Cebu City",
     "organizer": "RUNRIO",
     "date": "September 6, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/139965/2026-national-milo-marathon-cebu",
+    "status": "Register"
   },
   {
     "name": "MILO NATIONAL MARATHON",
@@ -1223,8 +1213,8 @@
     "location": "Cagayan de Oro City",
     "organizer": "RUNRIO",
     "date": "December 13, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/130696/singlife-cagayan-de-oro-marathon-2026",
+    "status": "Register"
   },
       {
     "name": "EARTH DAY RUN",
@@ -1372,22 +1362,13 @@
     "status": "Register"
   },
   {
-    "name": "DECATHLON RUN - LEG 2",
-    "distance": "16KM,10KM,5KM,3KM",
+    "name": "DECATHLON RUN 25KM Challenge",
+    "distance": "25KM,16KM,10KM,5KM",
     "location": "Clark, Pampanga",
     "organizer": "SMOKE10 EVENTS MANAGEMENT",
-    "date": "December 13, 2026",
-    "website": "",
-    "status": "Opening Soon"
-  },
-  {
-    "name": "DECATHLON RUN - LEG 3",
-    "distance": "16KM,10KM,5KM,3KM",
-    "location": "Clark, Pampanga",
-    "organizer": "SMOKE10 EVENTS MANAGEMENT",
-    "date": "December 27, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "date": "October 11, 2026",
+    "website": "https://smoke10events.myruntime.com/register/decathlon-25km-challenge-2026",
+    "status": "Register"
   },
   {
     "name": "CABALEN HALF MARATHON",
@@ -1397,15 +1378,6 @@
     "date": "June 14, 2026",
     "website": "https://smoke10events.myruntime.com/register/cabalen-half-marathon-2026",
     "status": "Register"
-  },
-  {
-    "name": "CLARK HALF MARATHON",
-    "distance": "21KM,10KM,5KM",
-    "location": "Clark, Pampanga",
-    "organizer": "SMOKE10 EVENTS MANAGEMENT",
-    "date": "October 11, 2026",
-    "website": "",
-    "status": "Opening Soon"
   },
   {
     "name": "IRUN TARLAC",
@@ -1451,15 +1423,6 @@
     "date": "January 24, 2026",
     "website": "https://smoke10events.myruntime.com/register/pampanga-to-bulacan-ultramarathon-2026",
     "status": "Event is Full"
-  },
-  {
-    "name": "FIVE STAR HALF MARATHON",
-    "distance": "21KM,10KM,5KM",
-    "location": "Clark, Pampanga",
-    "organizer": "SMOKE10 EVENTS MANAGEMENT",
-    "date": "December 6, 2026",
-    "website": "",
-    "status": "Opening Soon"
   },
   {
     "name": "PAMPANGA MARATHON",
