@@ -32,7 +32,7 @@
     "organizer": "RUNRIO",
     "date": "October 3, 2026",
     "website": "https://raceroster.com/events/2026/139265/pokemon-run-30",
-    "status": "Event is Full"
+    "status": "Register"
   },
       {
     "name": "POKEMON RUN",
@@ -41,7 +41,7 @@
     "organizer": "RUNRIO",
     "date": "October 4, 2026",
     "website": "https://raceroster.com/events/2026/139265/pokemon-run-30",
-    "status": "Event is Full"
+    "status": "Register"
   },
 {
     "name": "Just One Fun Run",
@@ -59,7 +59,7 @@
     "organizer": "RUNRIO",
     "date": "August 30, 2026",
     "website": "https://raceroster.com/events/2026/130269/mercury-drug-suki-dash-2026",
-    "status": "Register"
+    "status": "Event is Full"
   },
     {
     "name": "Decathlon Run",
@@ -167,7 +167,7 @@
     "organizer": "RUNRIO",
     "date": "October 4, 2026",
     "website": "https://raceroster.com/events/2026/139360/sunnies-run-2026",
-    "status": "Register"
+    "status": "Event is Full"
   },
   {
     "name": "Robinsons Supermarket’s 18th Fit & Fun Wellness Buddy Run",
@@ -482,7 +482,7 @@
     "organizer": "TEAM MALOFIT",
     "date": "August 9, 2026",
     "website": "https://teammalofit.myruntime.com/register/bulacanmarathon",
-    "status": "Register"
+    "status": "Event is Full"
   },
    {
     "name": "TAKBO PARA SA KALIKASAN - FIRE RUN",
@@ -628,7 +628,7 @@
     "organizer": "RUNRIO",
     "date": "October 10, 2026",
     "website": "https://raceroster.com/events/2026/138621/jco-run-2026",
-    "status": "Register"
+    "status": "Event is Full"
   },
    {
     "name": "ONE PIECE RUN",
@@ -1039,24 +1039,6 @@
   {
     "name": "MILO NATIONAL MARATHON",
     "distance": "21KM,10KM,5KM,3KM",
-    "location": "General Santos City, South Cotabato",
-    "organizer": "RUNRIO",
-    "date": "August 9, 2026",
-    "website": "",
-    "status": "Opening Soon"
-  },
-  {
-    "name": "MILO NATIONAL MARATHON",
-    "distance": "21KM,10KM,5KM,3KM",
-    "location": "Dipolog City, Zamboanga del Norte",
-    "organizer": "RUNRIO",
-    "date": "August 16, 2026",
-    "website": "",
-    "status": "Opening Soon"
-  },
-  {
-    "name": "MILO NATIONAL MARATHON",
-    "distance": "21KM,10KM,5KM,3KM",
     "location": "Cagayan de Oro",
     "organizer": "RUNRIO",
     "date": "August 23, 2026",
@@ -1314,7 +1296,7 @@
     "organizer": "RSRJ EVENTS MANAGEMENT",
     "date": "August 23, 2026",
     "website": "https://rsrjevents.myruntime.com/register/zeus-olympus-run-2026",
-    "status": "Register"
+    "status": "Event is Full"
   },
   {
     "name": "VINTA MARATHON DIA DE ZAMBOANGA",
