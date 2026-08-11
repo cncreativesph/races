@@ -1,4 +1,39 @@
-[   
+[     {
+    "nameP": "Bulacan Marathon",
+    "locationP": "Pulilan, Bulacan",
+    "dateP": "August 9, 2026",
+	"listOfPhotogs": [
+		"Various Photographers"
+      ],
+    "photogsURL": [
+		"https://momentping.com/run/bulacan-marathon"
+      ],
+	"resultsURL": "https://teammalofit.myruntime.com/results/bulacanmarathon#/"
+  },
+   {
+    "nameP": "Kik’s Fun Run",
+    "locationP": "Mall of Asia",
+    "dateP": "August 1, 2026",
+	"listOfPhotogs": [
+		"Various Photographers"
+      ],
+    "photogsURL": [
+		"https://raceresults.rsrjeventsmanagement.com/events/kicks-fun-run-2026-6180/photos"
+      ],
+	"resultsURL": "https://rsrjevents.myruntime.com/results/kiks-fun-run-2026#/"
+  },
+     {
+    "nameP": "I Am a Patriot: Takbo Para sa Bayan",
+    "locationP": "Mall of Asia",
+    "dateP": "July 25, 2026",
+	"listOfPhotogs": [
+		"Various Photographers"
+      ],
+    "photogsURL": [
+		"https://raceresults.rsrjeventsmanagement.com/events/i-am-a-patriot-takbo-para-sa-bayan-6159/photos"
+      ],
+	"resultsURL": "https://rsrjevents.myruntime.com/results/i-am-a-patriot-takbo-para-sa-bayan-2026#/"
+  },
 {
     "nameP": "Colorfest ACER Electric AI Night Run",
     "locationP": "Mall of Asia",
