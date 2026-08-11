@@ -1,4 +1,32 @@
-[       {
+[   
+  {
+    "name": "ARMYNAVY RUN",
+    "distance": "21KM,10KM,5KM",
+    "location": "Ayala, Makati City",
+    "organizer": "RUNRIO",
+    "date": "February 7, 2027",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
+    "name": "DAILYFIX POWER RUN",
+    "distance": "16KM,10KM,5KM,3KM,1Km DOG",
+    "location": "Mall of Asia, pasay City",
+    "organizer": "RUNRIO",
+    "date": "January 10, 2027",
+    "website": "",
+    "status": "Opening Soon"
+  },
+   {
+    "name": "CEBU MARATHON",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "SM Seaside City Cebu - CCLEX",
+    "organizer": "Cebu City Sports Commission x CEBU EXECUTIVE RUNNERS CLUB",
+    "date": "January 10, 2027",
+    "website": "https://www.cebumarathon.com.ph/",
+    "status": "Opening Soon"
+  },
+  {
     "name": "NIKE AFTER DARK TOUR",
     "distance": "10KM",
     "location": "Quirino Grandstand",
@@ -1270,7 +1298,7 @@
     "organizer": "BIM",
     "date": "August 30, 2026",
     "website": "https://megatechph.com/events/bim-2026",
-    "status": "Register"
+    "status": "Event is Full"
   },
   {
     "name": "AIA ROCK 'N' ROLL MANILA",
