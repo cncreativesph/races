@@ -10,6 +10,40 @@
       ],
 	"resultsURL": "https://teammalofit.myruntime.com/results/bulacanmarathon#/"
   },
+  {
+    "nameP": "Angat Bayanihan Run",
+    "locationP": "Ayala, Makati",
+    "dateP": "July 19, 2026",
+	"listOfPhotogs": [
+		"Various Photographers"
+      ],
+    "photogsURL": [
+		"https://momentping.com/run/angat-bayanihan-run-2026"
+      ],
+	"resultsURL": "https://myruntime.com/results/angat-bayanihan-run-2026#/"
+  },
+  {
+    "nameP": "Takbo para sa Kalikasan - Water Run",
+    "locationP": "Quirino Grandstand, Manila",
+    "dateP": "July 26, 2026",
+	"listOfPhotogs": [
+		"Various Photographers"
+      ],
+    "photogsURL": [
+		"https://momentping.com/run/takbo-para-sa-kalikasan-water-run-2026"
+      ],
+	"resultsURL": "https://greenmediaevents.myruntime.com/results/water-run-2026#/"
+  },
+  {
+    "nameP": "Takbo para sa Kalikasan - Fire Run",
+    "locationP": "Quirino Grandstand, Manila",
+    "dateP": "May 24, 2026",
+	"listOfPhotogs": [
+		"Various Photographers"
+      ],
+
+	"resultsURL": "https://greenmediaevents.myruntime.com/results/fire-run-2026#/"
+  },
    {
     "nameP": "Kik’s Fun Run",
     "locationP": "Mall of Asia",
