@@ -1,4 +1,31 @@
-[      {
+[       {
+    "name": "NIKE AFTER DARK TOUR",
+    "distance": "10KM",
+    "location": "Quirino Grandstand",
+    "organizer": "RUNRIO",
+    "date": "November 21, 2026",
+    "website": "https://www.afterdarktour.nike.com/en/manila",
+    "status": "Event is Full"
+  },
+  {
+    "name": "THE MUSIC RUN MANILA",
+    "distance": "10KM,5KM",
+    "location": "Mall of Asia",
+    "organizer": "HYVESPORTS",
+    "date": "August 22, 2026",
+    "website": "https://raceonic.com/events/the-music-run-volume-2/register",
+    "status": "Register"
+  },
+  {
+    "name": "National University Bulldogs Run",
+    "distance": "12.5KM,5KM,3KM",
+    "location": "Mall of Asia",
+    "organizer": "National University",
+    "date": "October 17, 2026",
+    "website": "https://nu-bulldogs-run.onrender.com/",
+    "status": "Register"
+  },
+  {
     "name": "PCSO CHARITY RUN",
     "distance": "21KM,10KM,5KM,3KM",
     "location": "Ayala, Makati",
@@ -321,15 +348,6 @@
     "date": "September 27, 2026",
     "website": "https://raceroster.com/events/2026/139732/disney-run-philippines-2026",
     "status": "Event is Full"
-  },
-  {
-    "name": "Marvel Avengers Run",
-    "distance": "",
-    "location": "",
-    "organizer": "RUNRIO",
-    "date": "November 29, 2026",
-    "website": "",
-    "status": "Opening Soon"
   },
   {
     "name": "CEBU MARATHON",
@@ -1054,15 +1072,7 @@
     "website": "https://raceroster.com/events/2026/139965/2026-national-milo-marathon-cebu",
     "status": "Register"
   },
-  {
-    "name": "MILO NATIONAL MARATHON",
-    "distance": "21KM,10KM,5KM,3KM",
-    "location": "Tagbiliran City, Bohol",
-    "organizer": "RUNRIO",
-    "date": "September 13, 2026",
-    "website": "",
-    "status": "Opening Soon"
-  },
+
   {
     "name": "MILO NATIONAL MARATHON",
     "distance": "21KM,10KM,5KM,3KM",
@@ -1096,6 +1106,15 @@
     "location": "Urdaneta City, Pangasinan",
     "organizer": "RUNRIO",
     "date": "November 8, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  }, 
+  {
+    "name": "MILO NATIONAL MARATHON",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "Passi, Iloilo",
+    "organizer": "RUNRIO",
+    "date": "October 25, 2026",
     "website": "",
     "status": "Opening Soon"
   },
@@ -1439,8 +1458,8 @@
     "location": "Filinvest, Alabang",
     "organizer": "RULE & RICH EVENTS MANAGEMENT",
     "date": "October 4, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://mnlcityrun.myruntime.com/register/ecofest-run-2026",
+    "status": "Register"
   },
   {
     "name": "MNL CITY RUN - THE GIFT OF RUNNING",
