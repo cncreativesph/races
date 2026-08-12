@@ -1,4 +1,12 @@
-[   
+[   {
+    "name": "PMC KABAYANIHAN RUN",
+    "distance": "50KM,42KM,21KM,10KM,5KM,3.2KM",
+    "location": "Fort Bonifacio, Taguig City",
+    "organizer": "Philippine Marine Corps",
+    "date": "August 30, 2026",
+    "website": "https://myruntime.com/register/pmc-kabayanihan-run-2026-taguig",
+    "status": "Register"
+  }, 
  {
     "name": "PUREGOLD HAKOT RELAY",
     "distance": "8KM,3KM",
