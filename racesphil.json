@@ -1,4 +1,14 @@
-[    {
+[   
+  {
+    "name": "Run BGC",
+    "distance": "16KM,10KM,5KM,1KM",
+    "location": "BGC, Taguig",
+    "organizer": "RUNRIO",
+    "date": "November 29, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },   
+    {
     "name": "HOME CREDIT TAKBO PARA SA LIFE",
     "distance": "16KM,10KM,5KM,3KM",
     "location": "Mall of Asia, Pasay City",
