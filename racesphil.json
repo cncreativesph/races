@@ -1,4 +1,13 @@
-[   {
+[    {
+    "name": "HOME CREDIT TAKBO PARA SA LIFE",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RUNRIO",
+    "date": "January 17, 2027",
+    "website": "",
+    "status": "Opening Soon"
+  },
+  {
     "name": "PMC KABAYANIHAN RUN",
     "distance": "50KM,42KM,21KM,10KM,5KM,3.2KM",
     "location": "Fort Bonifacio, Taguig City",
@@ -56,10 +65,10 @@
     "name": "CEBU MARATHON",
     "distance": "42KM,21KM,10KM,5KM",
     "location": "SM Seaside City Cebu - CCLEX",
-    "organizer": "Cebu City Sports Commission x CEBU EXECUTIVE RUNNERS CLUB",
+    "organizer": "DJT Events x Cebu City Sports Commission x CEBU EXECUTIVE RUNNERS CLUB",
     "date": "January 10, 2027",
     "website": "https://www.cebumarathon.com.ph/",
-    "status": "Opening Soon"
+    "status": "Register"
   },
   {
     "name": "NIKE AFTER DARK TOUR",
