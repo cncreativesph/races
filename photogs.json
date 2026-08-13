@@ -1,4 +1,16 @@
-[     {
+[      {
+    "nameP": "Rexona 10 Miler Series",
+    "locationP": "UP Diliman",
+    "dateP": "August 16, 2026",
+    "listOfPhotogs": [
+		"RUNRIO"
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe"
+      ],
+	 "resultsURL": ""
+  },
+  {
     "nameP": "Bulacan Marathon",
     "locationP": "Pulilan, Bulacan",
     "dateP": "August 9, 2026",
