@@ -3,12 +3,14 @@
     "locationP": "UP Diliman",
     "dateP": "August 16, 2026",
     "listOfPhotogs": [
-		"RUNRIO",
-		"Humble Runner"
+		"Other Photographers",
+		"Humble Runner",
+		"Genuine Sole"
       ],
       "photogsURL": [
-		"https://cncreatives.com/subscribe",
-		"https://findmyshots.com/s/rexona-10-miler-series-2026-quezon-city-humblerunn"
+		"https://findmyshots.com/s/rexona-10-miler-series-2026-quezon-city-cncreative",
+		"https://findmyshots.com/s/rexona-10-miler-series-2026-quezon-city-humblerunn",
+		"https://findmyshots.com/s/rexona-10-miler-series-2026-quezon-city-genuinesol"
       ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/wey5tabdnmdhz4s4"
   },
