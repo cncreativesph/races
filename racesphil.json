@@ -1,14 +1,4 @@
-[   
-  {
-    "name": "Run BGC",
-    "distance": "16KM,10KM,5KM,1KM",
-    "location": "BGC, Taguig",
-    "organizer": "RUNRIO",
-    "date": "November 29, 2026",
-    "website": "",
-    "status": "Opening Soon"
-  },   
-    {
+[    {
     "name": "HOME CREDIT TAKBO PARA SA LIFE",
     "distance": "16KM,10KM,5KM,3KM",
     "location": "Mall of Asia, Pasay City",
@@ -68,8 +58,8 @@
     "location": "Mall of Asia, pasay City",
     "organizer": "RUNRIO",
     "date": "January 10, 2027",
-    "website": "https://raceroster.com/events/2027/140346/dailyfix-power-run-2027",
-    "status": "Register"
+    "website": "",
+    "status": "Opening Soon"
   },
    {
     "name": "CEBU MARATHON",
@@ -292,7 +282,7 @@
     "distance": "16KM,10KM,5KM,3KM,1KM",
     "location": "Mall of Asia",
     "organizer": "RUNRIO",
-    "date": "August 9, 2026",
+    "date": "November 28, 2026",
     "website": "https://raceroster.com/events/2026/125539/palawanpay-trilogy-marathon-manila-2026",
     "status": "Register"
   },
