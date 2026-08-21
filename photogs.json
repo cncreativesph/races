@@ -1,4 +1,29 @@
-[      {
+[   {
+    "nameP": "PUMA Clark City Half Marathon",
+    "locationP": "Clark, Pampanga",
+    "dateP": "August 23, 2026",
+    "listOfPhotogs": [
+		"CN Creatives"
+	
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe"
+	  ],
+	 "resultsURL": ""
+  }, {
+    "nameP": "Great UP Run",
+    "locationP": "UP Diliman",
+    "dateP": "August 23, 2026",
+    "listOfPhotogs": [
+		"CN Creatives"
+	
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe2"
+	  ],
+	 "resultsURL": ""
+  },
+	{
     "nameP": "Rexona 10 Miler Series",
     "locationP": "UP Diliman",
     "dateP": "August 16, 2026",
