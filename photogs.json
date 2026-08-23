@@ -15,11 +15,13 @@
     "locationP": "UP Diliman",
     "dateP": "August 23, 2026",
     "listOfPhotogs": [
-		"Humble Runner"
+		"Humble Runner",
+		"Genuine Sole"
 	
       ],
       "photogsURL": [
-		"https://findmyshots.com/s/the-great-up-run-2026-humblerunner"
+		"https://findmyshots.com/s/the-great-up-run-2026-humblerunner",
+		"https://findmyshots.com/s/the-great-up-run-2026-genuinesole"
 	  ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/fc965ueh5umbs9y9"
   },
