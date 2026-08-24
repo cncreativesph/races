@@ -25,6 +25,30 @@
 	  ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/fc965ueh5umbs9y9"
   },
+  {
+    "nameP": "Zeus Olympus Run",
+    "locationP": "Mall of Asia",
+    "dateP": "August 23, 2026",
+	"listOfPhotogs": [
+		"Various Photographers"
+      ],
+    "photogsURL": [
+		""
+      ],
+	"resultsURL": "https://rsrjevents.myruntime.com/results/zeus-olympus-run-2026#/"
+  },
+    {
+    "nameP": "IRUNPH Agri Run",
+    "locationP": "Filinvest, Alabang",
+    "dateP": "August 23, 2026",
+	"listOfPhotogs": [
+		"Various Photographers"
+      ],
+    "photogsURL": [
+		""
+      ],
+	"resultsURL": "https://tv8mediaproductions.myruntime.com/results/irunph-agri-run-2026"
+  },
 	{
     "nameP": "Rexona 10 Miler Series",
     "locationP": "UP Diliman",
