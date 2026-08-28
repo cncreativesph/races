@@ -1,4 +1,23 @@
-[    {
+[   
+  {
+    "name": "BULACAN HALF MARATHON",
+    "distance": "21KM,10KM,5KM",
+    "location": "Bulacan",
+    "organizer": "TEAM MALOFIT",
+    "date": "February 21, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+    {
+    "name": "BE GRAND BOHOL INTERNATIONAL MARATHON",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "Panglao, Bohol",
+    "organizer": "BIM",
+    "date": "August 22, 2026",
+    "website": "https://megatechph.com/events/bim-2027",
+    "status": "Register"
+  },
+  {
     "name": "CAR-FREE SUNDAYS AT AYALA AVE. TURNS 3",
     "distance": "10KM,5KM",
     "location": "Ayala, Makati",
@@ -7,12 +26,57 @@
     "website": "https://raceroster.com/events/2026/140530/car-free-sundays-at-ayala-ave-turns-3",
     "status": "Register"
   },
+    {
+    "name": "RUN ORTIGAS",
+    "distance": "16KM,10KM,5KM,1KM Dog",
+    "location": "Ortigas East, Pasig City",
+    "organizer": "RUNRIO",
+    "date": "November 15, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
   {
     "name": "RUN BGC",
     "distance": "16KM,10KM,5KM,1KM Dog",
     "location": "BGC, Taguig City",
     "organizer": "RUNRIO",
     "date": "November 29, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+   {
+    "name": "MCDONALD'S STRIPES RUN PURPLE EDITION",
+    "distance": "15KM,10KM,5KM,3KM,1KM,1KM Dog",
+    "location": "Mall of Asia",
+    "organizer": "RUNRIO",
+    "date": "December 6, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+     {
+    "name": "MCDONALD'S STRIPES RUN PURPLE EDITION",
+    "distance": "15KM,10KM,5KM,3KM,1KM,1KM Dog",
+    "location": "Cebu City",
+    "organizer": "RUNRIO",
+    "date": "November 15, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+      {
+    "name": "MCDONALD'S STRIPES RUN PURPLE EDITION",
+    "distance": "15KM,10KM,5KM,3KM,1KM,1KM Dog",
+    "location": "Davao City",
+    "organizer": "RUNRIO",
+    "date": "November 29, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
+      {
+    "name": "MCDONALD'S STRIPES RUN PURPLE EDITION",
+    "distance": "15KM,10KM,5KM,3KM,1KM,1KM Dog",
+    "location": "Clark, Pampanga",
+    "organizer": "RUNRIO",
+    "date": "November 7, 2026",
     "website": "",
     "status": "Opening Soon"
   },
@@ -59,6 +123,15 @@
     "organizer": "TV8 Media Productions",
     "date": "August 23, 2026",
     "website": "https://tv8mediaproductions.myruntime.com/register/irunph-agri-run-2026",
+    "status": "Register"
+  },
+     {
+    "name": "Space Run",
+    "distance": "10KM,5KM,3KM",
+    "location": "UP Diliman",
+    "organizer": "TV8 Media Productions",
+    "date": "December 6, 2026",
+    "website": "https://tv8mediaproductions.myruntime.com/register/space-run-2026",
     "status": "Register"
   },
   {
