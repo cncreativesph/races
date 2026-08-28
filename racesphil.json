@@ -149,8 +149,8 @@
     "location": "Mall of Asia, pasay City",
     "organizer": "RUNRIO",
     "date": "January 10, 2027",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2027/140346/dailyfix-power-run-2027",
+    "status": "Register"
   },
    {
     "name": "CEBU MARATHON",
@@ -392,8 +392,8 @@
     "location": "Puerto Princesa, Palawan",
     "organizer": "RUNRIO",
     "date": "October 18, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/129712/palawanpay-trilogy-marathon-palawan-2026",
+    "status": "Register"
   },
   {
     "name": "Robinsons Supermarket’s 18th Fit & Fun Wellness Buddy Run",
@@ -694,12 +694,12 @@
   },
    {
     "name": "TAKBO PARA SA KALIKASAN - EARTH RUN",
-    "distance": "25KM,10KM,5KM",
+    "distance": "25KM,10KM,5KM,1KM",
     "location": "Quirino Grandstand, Manila",
     "organizer": "GREEN MEDIA EVENTS",
     "date": "November 15, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://greenmediaevents.myruntime.com/register/earth-run-2026",
+    "status": "Register"
   },
   {
     "name": "WATSONS X UNILAB: SHARE THE ALAGA RUN",
@@ -767,12 +767,30 @@
     "status": "Event is Full"
   },
   {
-    "name": "WOMEN’S RUN PH",
+    "name": "LACTACYD WOMEN’S RUN PH",
     "distance": "10KM,5KM,1KM Kids",
     "location": "Ayala, Makati",
     "organizer": "RUNRIO",
     "date": "October 25, 2026",
     "website": "https://raceroster.com/events/2026/115582/lactacyd-womens-run-ph-makati",
+    "status": "Register"
+  },
+    {
+    "name": "LACTACYD WOMEN’S RUN PH",
+    "distance": "16KM,10KM,5KM,1KM Kids",
+    "location": "SM Lanang, Davao City",
+    "organizer": "RUNRIO",
+    "date": "January 17, 2027",
+    "website": "https://raceroster.com/events/2027/130746/lactacyd-womens-run-ph-davao",
+    "status": "Register"
+  },
+      {
+    "name": "LACTACYD WOMEN’S RUN PH",
+    "distance": "16KM,10KM,5KM,1KM Kids",
+    "location": "SM City Iloilo, Iloilo City",
+    "organizer": "RUNRIO",
+    "date": "July 18, 2027",
+    "website": "https://raceroster.com/events/2027/134590/lactacyd-womens-run-ph-iloilo",
     "status": "Register"
   },
   {
@@ -1489,6 +1507,69 @@
     "website": "https://smoke10events.myruntime.com/register/vinta-marathon-dia-de-zamboanga-2026",
     "status": "Register"
   },
+   {
+    "name": "Clark Phil-Kor Half Marathon",
+    "distance": "21KM,10KM,5KM,3KM",
+    "location": "CDC Clark Parade Grounds, Pampanga",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "November 22, 2026",
+    "website": "https://smoke10events.myruntime.com/register/clark-phil-kor-half-marathon-2026",
+    "status": "Register"
+  },
+     {
+    "name": "Ecozones Color Run Fest 2026 Leg 4",
+    "distance": "10KM,5KM,3KM",
+    "location": "New Clark City, Tarlac",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "December 5, 2026",
+    "website": "https://smoke10events.myruntime.com/register/ecozones-color-run-fest-2026-leg-4",
+    "status": "Register"
+  },
+       {
+    "name": "Ecozones Color Run Fest Leg 2",
+    "distance": "10KM,5KM,3KM",
+    "location": "Camp John Hay, Baguio City",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "August 30, 2026",
+    "website": "https://smoke10events.myruntime.com/register/ecozones-color-run-fest-2026-leg-2",
+    "status": "Register"
+  },
+       {
+    "name": "iRun Subic Bay Leg 3",
+    "distance": "42KM,21KM,16KM,10KM,5KM",
+    "location": "Remy Field, Subic Bay",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "November 29, 2026",
+    "website": "https://smoke10events.myruntime.com/register/irun-subic-bay-2026-leg-3",
+    "status": "Register"
+  },
+         {
+    "name": "Smile for Miles: 16 Kilometer Challenge",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "CDC Clark Parade Grounds, Pampanga",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "October 4, 2026",
+    "website": "https://smoke10events.myruntime.com/register/smile-for-miles-16-kilometer-challenge-2026",
+    "status": "Register"
+  },
+         {
+    "name": "Cabalen Ultramarathon",
+    "distance": "100KM,50KM,25KM,10KM",
+    "location": "New Clark City, Capas, Tarlac",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "September 26, 2026",
+    "website": "https://smoke10events.myruntime.com/register/cabalen-ultramarathon-2026",
+    "status": "Register"
+  },
+         {
+    "name": "Isla Del Fuego Marathon",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "Siquijor Blvd, Siquijor",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "September 6, 2026",
+    "website": "https://smoke10events.myruntime.com/register/isla-del-fuego-marathon-2026",
+    "status": "Register"
+  },
   {
     "name": "FIT TO RUN - LEG 1",
     "distance": "16KM,10KM,5KM,3KM",
@@ -1514,6 +1595,15 @@
     "organizer": "SMOKE10 EVENTS MANAGEMENT",
     "date": "November 8, 2026",
     "website": "https://smoke10events.myruntime.com/register/fit-to-run-2026-leg-3-clark",
+    "status": "Register"
+  },
+    {
+    "name": "FIT TO RUN - LEG 3",
+    "distance": "32KM,21KM,10KM,5KM",
+    "location": "Bacolod City Government Center, Bacolod City",
+    "organizer": "SMOKE10 EVENTS MANAGEMENT",
+    "date": "November 15, 2026",
+    "website": "https://smoke10events.myruntime.com/register/fit-to-run-2026-leg-3-bacolod",
     "status": "Register"
   },
   {
