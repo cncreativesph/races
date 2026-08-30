@@ -3,13 +3,15 @@
     "locationP": "Mall of Asia",
     "dateP": "August 30, 2026",
     "listOfPhotogs": [
-		"CN Creatives"
+		"Humble Runner",
+		"Genuine Sole"
 	
       ],
       "photogsURL": [
-		"https://cncreatives.com/subscribe"
+		"https://findmyshots.com/s/decathlon-run-2026-humblerunner",
+		"https://findmyshots.com/s/decathlon-run-2026-genuinesole"
 	  ],
-	 "resultsURL": ""
+	 "resultsURL": "https://results.raceroster.com/v3/events/esbd72u9rqay3ur3"
   },
 	{
     "nameP": "Mercury Suki Dash",
