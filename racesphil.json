@@ -32,7 +32,7 @@
     "organizer": "RUNRIO",
     "date": "September 6, 2026",
     "website": "https://raceroster.com/events/2026/140530/car-free-sundays-at-ayala-ave-turns-3",
-    "status": "Register"
+    "status": "Event is Full"
   },
     {
     "name": "RUN ORTIGAS",
@@ -122,6 +122,15 @@
     "organizer": "EXTRIBE",
     "date": "December 5, 2026",
     "website": "https://www.facebook.com/share/p/1Ez65uRFRw/",
+    "status": "Event is Full"
+  },
+     {
+    "name": "IRUNPH Pasko Run 2",
+    "distance": "10KM,5KM,3KM",
+    "location": "Filinvest, Alabang",
+    "organizer": "TV8 Media Productions",
+    "date": "December 13, 2026",
+    "website": "https://tv8mediaproductions.myruntime.com/register/irunph-pasko-run-2",
     "status": "Event is Full"
   },
    {
@@ -1025,7 +1034,7 @@
     "organizer": "GREEN MEDIA EVENTS",
     "date": "September 6, 2026",
     "website": "https://greenmediaevents.myruntime.com/register/race-to-serve-apo-half-marathon-2026-vermosa",
-    "status": "Register"
+    "status": "Event is Full"
   },
   {
     "name": "MAPUA: RUN FOR THE FUTURE",
