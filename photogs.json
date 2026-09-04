@@ -1,4 +1,17 @@
-[    {
+[  	{
+    "nameP": "Spider-Man Web Warriors Run",
+    "locationP": "Mall of Asia",
+    "dateP": "September 5, 2026",
+    "listOfPhotogs": [
+		"RUNRIO"
+	
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe"
+	  ],
+	 "resultsURL": ""
+  },
+  {
     "nameP": "Decathlon Run",
     "locationP": "Mall of Asia",
     "dateP": "August 30, 2026",
