@@ -1,4 +1,30 @@
 [  	{
+    "nameP": "Sante Barley Trilogy Run Asia Leg 3",
+    "locationP": "Mall of Asia",
+    "dateP": "September 6, 2026",
+    "listOfPhotogs": [
+		"RUNRIO"
+	
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe"
+	  ],
+	 "resultsURL": ""
+  },
+  {
+    "nameP": "CAR-FREE SUNDAYS AT AYALA AVE. TURNS 3",
+    "locationP": "Ayala, Makati",
+    "dateP": "September 6, 2026",
+    "listOfPhotogs": [
+		"RUNRIO"
+	
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe3"
+	  ],
+	 "resultsURL": ""
+  },
+  {
     "nameP": "Spider-Man Web Warriors Run",
     "locationP": "Mall of Asia",
     "dateP": "September 5, 2026",
@@ -10,7 +36,7 @@
       "photogsURL": [
 		"https://findmyshots.com/s/spider-man-web-warriors-run-2026-humblerunner",
 		"https://findmyshots.com/s/spider-man-web-warriors-run-2026-genuinesole"
-	  ], 
+	  ],
 	 "resultsURL": "https://results.raceroster.com/v3/events/jqmax6e5khn2vkef"
   },
   {
