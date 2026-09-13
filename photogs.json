@@ -1,4 +1,15 @@
-[  	{
+[  	 	{
+    "nameP": "The Music Run Manila",
+    "locationP": "Mall of Asia",
+    "dateP": "September 13, 2026",
+    "listOfPhotogs": [
+		"Humble Runner"
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe2"
+      ],
+	 "resultsURL": ""
+  },{
     "nameP": "Rexona 10 Miler Series",
     "locationP": "Ayala, Makati",
     "dateP": "September 13, 2026",
@@ -8,8 +19,9 @@
       "photogsURL": [
 		"https://cncreatives.com/subscribe"
       ],
-	 "resultsURL": ""
-  },{
+	 "resultsURL": "https://results.raceroster.com/v3/events/g2m6n4vhv92gsjv2"
+  },
+	{
     "nameP": "Sante Barley Trilogy Run Asia - Leg 3",
     "locationP": "Mall of Asia",
     "dateP": "September 6, 2026",
