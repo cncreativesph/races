@@ -7,6 +7,15 @@
     "website": "",
     "status": "Opening Soon"
   },
+     {
+    "name": "XIAOMI POP RUN",
+    "distance": "",
+    "location": "",
+    "organizer": "",
+    "date": "October 24, 2026",
+    "website": "",
+    "status": "Opening Soon"
+  },
   {
     "name": "BULACAN HALF MARATHON",
     "distance": "21KM,10KM,5KM",
@@ -36,12 +45,12 @@
   },
     {
     "name": "RUN ORTIGAS",
-    "distance": "16KM,10KM,5KM,1KM Dog",
+    "distance": "21KM,10KM,5KM,1KM Dog",
     "location": "Ortigas East, Pasig City",
     "organizer": "RUNRIO",
     "date": "November 15, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/141516/run-ortigas-2026",
+    "status": "Register"
   },
   {
     "name": "RUN BGC",
