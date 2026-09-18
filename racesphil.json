@@ -1,4 +1,23 @@
-[      {
+[       
+  {
+    "name": "Sagisag Half Marathon",
+    "distance": "21KM,10KM,5KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RSRJ EVENTS MANAGEMENT",
+    "date": "September 19, 2026",
+    "website": "https://rsrjevents.myruntime.com/register/sagisag-half-marathon-manila-leg-2026",
+    "status": "Event is Full"
+  },
+    {
+    "name": "Pink Run",
+    "distance": "10KM,5KM",
+    "location": "Fort Santiago, Intramuros, Manila",
+    "organizer": "Empower PH",
+    "date": "September 19, 2026",
+    "website": "https://empower.myruntime.com/register/pink-run-leg-3",
+    "status": "Event is Full"
+  },
+  {
     "name": "HELLO KITTY RUN",
     "distance": "10KM,5KM,3KM,1KM",
     "location": "Mall of Asia",
@@ -716,7 +735,7 @@
     "organizer": "GREEN MEDIA EVENTS",
     "date": "September 20, 2026",
     "website": "https://greenmediaevents.myruntime.com/register/air-run-2026",
-    "status": "Register"
+    "status": "Event is Full"
   },
    {
     "name": "TAKBO PARA SA KALIKASAN - EARTH RUN",
