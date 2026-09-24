@@ -1,5 +1,37 @@
 
-[ {
+[  {
+    "nameP": "Disney Run Philippines",
+    "locationP": "Mall of Asia",
+    "dateP": "September 27, 2026",
+    
+    "listOfPhotogs": [
+	"RUNRIO"
+		
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe2"
+      ],
+	 "resultsURL": ""
+	
+      
+  },
+  {
+    "nameP": "One Piece Run",
+    "locationP": "Mall of Asia",
+    "dateP": "September 26, 2026",
+    
+    "listOfPhotogs": [
+	"RUNRIO"
+		
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe"
+      ],
+	 "resultsURL": ""
+	
+      
+  },
+  {
     "nameP": "Singlife One Clark International Marathon",
     "locationP": "Clark Parade Grounds, Pampanga",
     "dateP": "September 20, 2026",
