@@ -5,11 +5,13 @@
     "dateP": "September 27, 2026",
     
     "listOfPhotogs": [
-	"RUNRIO"
+	"Humble Runner",
+		"Genuine Sole"
 		
       ],
       "photogsURL": [
-		"https://cncreatives.com/subscribe2"
+		"https://findmyshots.com/events/disney-run-philippines-2026?photographerId=3201b560-f10a-4aaf-8366-b76545267581",
+		  "https://findmyshots.com/s/disney-run-philippines-2026-genuinesole"
       ],
 	 "resultsURL": ""
 	
@@ -21,11 +23,13 @@
     "dateP": "September 26, 2026",
     
     "listOfPhotogs": [
-	"Humble Runner"
+	"Humble Runner",
+		"Genuine Sole"
 		
       ],
       "photogsURL": [
-		"https://findmyshots.com/s/one-piece-run-2026-humblerunner"
+		"https://findmyshots.com/s/one-piece-run-2026-humblerunner",
+		  "https://findmyshots.com/s/one-piece-run-2026-genuinesole"
       ],
 	 "resultsURL": "https://results.raceroster.com/v2/en-US/results/cj3phyhjh7aja6te/results"
 	
