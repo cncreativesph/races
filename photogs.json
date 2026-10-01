@@ -1,14 +1,27 @@
 
 [ {
-    "nameP": "Pokemon RUN 30 - Race Pack Collection",
+    "nameP": "Pokemon RUN 30 (September 29 to October 1)- Race Pack Collection",
     "locationP": "Mall of Asia",
-    "dateP": "September 28, 2026",
+    "dateP": "October 1, 2026",
     "listOfPhotogs": [
-		"RUNRIO"
+		"Various Photographers"
       ],
       "photogsURL": [
 		"https://cncreatives.com/subscribe"
-      ]
+      ],
+	"notesP": "Photos are still being uploaded."
+  }, 	
+	{
+    "nameP": "Pokemon RUN 30 (September 28 to 29)- Race Pack Collection",
+    "locationP": "Mall of Asia",
+    "dateP": "September 28, 2026",
+    "listOfPhotogs": [
+		"Various Photographers"
+      ],
+      "photogsURL": [
+		"https://findmyshots.com/s/pokemon-run-30-humblerunner"
+      ],
+		"notesP": "Use facial recognition to see your photos"
   }, 	 	
 	{
     "nameP": "Disney Run Philippines",
