@@ -229,6 +229,12 @@
         text-transform: uppercase;
 		}
 		
+		.photographers-note {
+			font-size: 10px;
+			color: #4D7C5A;
+			margin-top: 1px;
+		}
+
 		.photographers-instruct {
         font-size: 8px;
 		font-style: italic;
@@ -2619,6 +2625,19 @@ function renderRaces() {
 			  photographersLabel.className = 'photographers-title poppins-black';
 			  photographersLabel.textContent = 'LIST OF PHOTOGRAPHERS     ';
 
+// Optional notesP from JSON
+const notesP = typeof photo.notesP === 'string'
+    ? photo.notesP.trim()
+    : '';
+
+let photographersNote = null;
+
+if (notesP) {
+    photographersNote = document.createElement('div');
+    photographersNote.className = 'photographers-note';
+    photographersNote.textContent = notesP;
+}
+
 			  const photographersInstruct = document.createElement('div');
 			  photographersInstruct.className = 'photographers-instruct';
 			  photographersInstruct.textContent = "Click the photographer's name to view photos";
@@ -2703,7 +2722,11 @@ function renderRaces() {
 				});
 
 
-			  leftWrap.appendChild(photographersLabel);
+leftWrap.appendChild(photographersLabel);
+
+if (photographersNote) {
+    leftWrap.appendChild(photographersNote);
+}
 			// small line gap
 			const spacer = document.createElement('div');
 			spacer.style.height = '1px';
