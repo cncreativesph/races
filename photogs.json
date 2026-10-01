@@ -110,6 +110,7 @@
       "photogsURL": [
 		"https://findmyshots.com/s/the-music-run-manila-humblerunner"
       ],
+	  "resultsStatus": "No Result",
 	 "resultsURL": ""
   },{
     "nameP": "Rexona 10 Miler Series",
@@ -151,6 +152,7 @@
       "photogsURL": [
 		"https://findmyshots.com/s/car-free-sundays-at-ayala-ave-turns-3-humblerunner"
 	  ],
+	    "resultsStatus": "No Result",
 	 "resultsURL": ""
   },
   {
@@ -725,7 +727,8 @@
 		"https://photos.humblerunnerphoto.com/galleries/the-music-run-manila",
 		"https://photos.cncreatives.com/galleries/the-music-run-manila",
 		"https://photos.genuinesole.com/galleries/the-music-run-2026"
-      ]
+      ] ,
+	  "resultsStatus": "No Result",
   },
   {
     "nameP": "Hades Olympus Run",
