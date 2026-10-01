@@ -229,11 +229,12 @@
         text-transform: uppercase;
 		}
 		
-		.photographers-note {
-			font-size: 10px;
-			color: #4D7C5A;
-			margin-top: 1px;
-		}
+.photographers-note {
+    font-size: 10px;
+    color: red;
+    font-style: italic;
+    margin-top: 1px;
+}
 
 		.photographers-instruct {
         font-size: 8px;
@@ -2738,8 +2739,11 @@ if (photographersNote) {
 			}
 
 			// RIGHT side container (results button)
-			const resultsButton = document.createElement('button');
-			resultsButton.className = 'register-button results';
+			const resultsStatus = typeof photo.resultsStatus === 'string'
+			  ? photo.resultsStatus.trim()
+			  : '';
+
+			let resultsButton = null;
 			
 			const normalizedPhotogs = Array.isArray(photo.listOfPhotogs)
 			  ? photo.listOfPhotogs.map(p => normalizePhotographerName(p))
@@ -2751,21 +2755,41 @@ if (photographersNote) {
 			  normalizedPhotogs.includes('CN Creatives x Stories') ? 'CN CREATIVES x STORIES' :
 			  'CN CREATIVES';
 			
-			if (photo.resultsURL) {
-			  resultsButton.textContent = 'VIEW RESULTS';
-			  resultsButton.addEventListener('click', () => {
-				window.open(photo.resultsURL, '_blank');
-			  });
-			} else {
-			  resultsButton.className = 'register-button soon';
-			  resultsButton.textContent = 'NO RESULTS';
-			  resultsButton.disabled = true;          // ✅ disable
-			}
+			// If results URL exists, show VIEW RESULTS
+				if (photo.resultsURL) {
+				  resultsButton = document.createElement('button');
+				  resultsButton.className = 'register-button results';
+				  resultsButton.textContent = 'VIEW RESULTS';
 
-			// ✅ assemble
-			bottomSection.appendChild(leftWrap);
-			bottomSection.appendChild(resultsButton);
-			card.appendChild(bottomSection);
+				  resultsButton.addEventListener('click', () => {
+					window.open(photo.resultsURL, '_blank');
+				  });
+				}
+
+				// Pending
+				else if (resultsStatus === 'Pending') {
+				  resultsButton = document.createElement('button');
+				  resultsButton.className = 'register-button soon';
+				  resultsButton.textContent = 'PENDING RESULTS';
+				  resultsButton.disabled = true;
+				}
+
+				// No Result
+				else if (resultsStatus === 'No Result') {
+				  resultsButton = document.createElement('button');
+				  resultsButton.className = 'register-button soon';
+				  resultsButton.textContent = 'NO RESULTS';
+				  resultsButton.disabled = true;
+				}
+
+				// assemble
+				bottomSection.appendChild(leftWrap);
+
+				if (resultsButton) {
+				  bottomSection.appendChild(resultsButton);
+				}
+
+				card.appendChild(bottomSection);
 
                 
                 
