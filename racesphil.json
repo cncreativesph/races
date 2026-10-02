@@ -1,4 +1,31 @@
 [       
+    {
+    "name": "Great UP Run",
+    "distance": "",
+    "location": "UP Diliman",
+    "organizer": "RUNRIO",
+    "date": "January 24, 2027",
+    "website": "",
+    "status": "Opening Soon"
+  },
+      {
+    "name": "PSE Bull Run",
+    "distance": "",
+    "location": "Ayala, Makati",
+    "organizer": "RUNRIO",
+    "date": "January 24, 2027",
+    "website": "",
+    "status": "Opening Soon"
+  },
+      {
+    "name": "Women's Run Half Marathon",
+    "distance": "21KM,10KM,5KM,1KM KIDS",
+    "location": "Mall of Asia",
+    "organizer": "RUNRIO",
+    "date": "March 13, 2027",
+    "website": "https://raceroster.com/events/2027/140437/2027-womens-run-half-marathon",
+    "status": "Register"
+  },
   {
     "name": "Sagisag Half Marathon",
     "distance": "21KM,10KM,5KM",
