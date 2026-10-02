@@ -1,6 +1,20 @@
 
 [ {
-    "nameP": "Pokemon RUN 30 (October 2)- Race Pack Collection",
+    "nameP": "Pokemon RUN 30 - Race Day",
+    "locationP": "Mall of Asia",
+    "dateP": "October 3, 2026",
+    "listOfPhotogs": [
+		"RUNRIO"
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe" 
+      ],
+	"notesP": "Photos are still being uploaded. Enter your email and we'll let know you once completed.", 
+	"resultsStatus": "No Results",
+	 "resultsURL": ""
+  }, 	
+	{
+    "nameP": "Pokemon RUN 30 (October 2) - Race Pack Collection",
     "locationP": "Mall of Asia",
     "dateP": "October 2, 2026",
     "listOfPhotogs": [
@@ -12,7 +26,7 @@
 	"notesP": "Photos are still being uploaded. Enter your email and we'll let know you once completed."
   }, 	
 	{
-    "nameP": "Pokemon RUN 30 (September 28 to October 1)- Race Pack Collection",
+    "nameP": "Pokemon RUN 30 (September 28 to October 1) - Race Pack Collection",
     "locationP": "Mall of Asia",
     "dateP": "September 28, 2026",
     "listOfPhotogs": [
