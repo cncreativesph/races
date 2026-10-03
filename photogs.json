@@ -1,5 +1,19 @@
 
-[ {
+[{
+    "nameP": "Sunnies Run",
+    "locationP": "Ayala, Makati",
+    "dateP": "October 4, 2026",
+    "listOfPhotogs": [
+		"RUNRIO"
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe3" 
+      ],
+	"notesP": "Photos are still being uploaded. Enter your email and we'll let know you once completed.", 
+	"resultsStatus": "Pending Results",
+	 "resultsURL": ""
+  }, 	
+	{
     "nameP": "Pokemon RUN 30 - Day 2",
     "locationP": "Mall of Asia",
     "dateP": "October 4, 2026",
