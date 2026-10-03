@@ -1,8 +1,8 @@
 
 [ {
-    "nameP": "Pokemon RUN 30 - Race Day",
+    "nameP": "Pokemon RUN 30 - Day 2",
     "locationP": "Mall of Asia",
-    "dateP": "October 3, 2026",
+    "dateP": "October 4, 2026",
     "listOfPhotogs": [
 		"RUNRIO"
       ],
@@ -13,7 +13,20 @@
 	"resultsStatus": "No Results",
 	 "resultsURL": ""
   }, 	
-
+{
+    "nameP": "Pokemon RUN 30 - Day 1",
+    "locationP": "Mall of Asia",
+    "dateP": "October 3, 2026",
+    "listOfPhotogs": [
+		"Humble Runner"
+      ],
+      "photogsURL": [
+		"https://findmyshots.com/s/pokemon-run-30-humblerunner" 
+      ],
+	"notesP": "Use your bib number or facial recognition, whichever displays more photos", 
+	"resultsStatus": "No Results",
+	 "resultsURL": ""
+  }, 	
 	{
     "nameP": "Pokemon RUN 30 - Race Pack Collection",
     "locationP": "Mall of Asia",
