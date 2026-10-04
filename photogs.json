@@ -13,33 +13,20 @@
 	 "resultsURL": "https://results.raceroster.com/v3/events/4ajkh227rp77v2fv"
   }, 	
 	{
-    "nameP": "Pokemon RUN 30 - Day 2",
+    "nameP": "Pokemon RUN 30",
     "locationP": "Mall of Asia",
-    "dateP": "October 4, 2026",
+    "dateP": "October 3, 2026",
     "listOfPhotogs": [
-		"RUNRIO"
+		"Various Photographers"
       ],
       "photogsURL": [
-		"https://cncreatives.com/subscribe" 
+		"https://findmyshots.com/s/pokemon-run-30-humblerunner" 
       ],
 	"notesP": "Photos are still being uploaded. Enter your email and we'll let know you once completed.", 
 	"resultsStatus": "No Results",
 	 "resultsURL": ""
   }, 	
-{
-    "nameP": "Pokemon RUN 30 - Day 1",
-    "locationP": "Mall of Asia",
-    "dateP": "October 3, 2026",
-    "listOfPhotogs": [
-		"Humble Runner"
-      ],
-      "photogsURL": [
-		"https://findmyshots.com/s/pokemon-run-30-humblerunner" 
-      ],
-	"notesP": "Use your bib number or facial recognition, whichever displays more photos", 
-	"resultsStatus": "No Results",
-	 "resultsURL": ""
-  }, 	
+
 	{
     "nameP": "Pokemon RUN 30 - Race Pack Collection",
     "locationP": "Mall of Asia",
