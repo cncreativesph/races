@@ -1,5 +1,21 @@
 
-[{
+[
+	{
+    "nameP": "JCO Run Philippines",
+    "locationP": "Mall of Asia",
+    "dateP": "October 10, 2026",
+    "listOfPhotogs": [
+		"RUNRIO"
+		
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe4" 
+      ],
+	"notesP": "Upload in-progress. Enter your email and we'll notify you once completed", 
+	"resultsStatus": "",
+	 "resultsURL": ""
+  }, 	
+	{
     "nameP": "Sunnies Run",
     "locationP": "Ayala, Makati",
     "dateP": "October 4, 2026",
