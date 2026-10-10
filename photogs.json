@@ -1,5 +1,18 @@
 
-[
+[	{
+    "nameP": "PUMA Manila Half Marathon",
+    "locationP": "Mall of Asia",
+    "dateP": "October 11, 2026",
+    "listOfPhotogs": [
+		"RUNRIO"
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe5" 
+      ],
+	"notesP": "Upload in-progress. Enter your email & we'll notify you once the photos are available", 
+	"resultsStatus": "Pending Results",
+	 "resultsURL": ""
+  }, 	
 	{
     "nameP": "JCO Run Philippines",
     "locationP": "Mall of Asia",
