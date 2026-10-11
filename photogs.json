@@ -4,12 +4,14 @@
     "locationP": "Mall of Asia",
     "dateP": "October 11, 2026",
     "listOfPhotogs": [
-		"RUNRIO"
+		"Humble Runner",
+		"Genuine Sole"
       ],
       "photogsURL": [
-		"https://cncreatives.com/subscribe5" 
+		"https://findmyshots.com/s/puma-philippine-half-marathon-series-2026-manila-h" ,
+		  "https://findmyshots.com/s/puma-philippine-half-marathon-series-2026-manila-g"
       ],
-	"notesP": "Upload in-progress. Enter your email & we'll notify you once the photos are available", 
+	"notesP": "Using bib number displays more photos. Use facial recognition if your bib was not visible.", 
 
 	 "resultsURL": "https://results.raceroster.com/v3/events/x7vsdfsrd6fdpx6m"
   }, 	
