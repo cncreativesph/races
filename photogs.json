@@ -1,5 +1,33 @@
 
-[	{
+[		{
+    "nameP": "PCSO Charity Run",
+    "locationP": "Ayala, Makati",
+    "dateP": "October 18, 2026",
+    "listOfPhotogs": [
+		"RUNRIO"
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe" 
+      ],
+	"notesP": "Upload in-progress. Enter your email & we'll notify you once available.", 
+	"resultsStatus": "Pending",
+	 "resultsURL": ""
+  }, 	
+	{
+    "nameP": "Yakult 10-Miler Run",
+    "locationP": "Mall of Asia",
+    "dateP": "October 18, 2026",
+    "listOfPhotogs": [
+		"Hyvesports"
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe2" 
+      ],
+	"notesP": "Upload in-progress. Enter your email & we'll notify you once available.", 
+	"resultsStatus": "Pending",
+	 "resultsURL": "https://registration.yakult10miler.com/results/34th-yakult-10-miler-trilogy-manila#/"
+  }, 	
+	{
     "nameP": "PUMA Manila Half Marathon",
     "locationP": "Mall of Asia",
     "dateP": "October 11, 2026",
