@@ -4,12 +4,14 @@
     "locationP": "Ayala, Makati",
     "dateP": "October 18, 2026",
     "listOfPhotogs": [
-		"RUNRIO"
+		"Humble Runner",
+		"Genuine Sole"
       ],
       "photogsURL": [
-		"https://cncreatives.com/subscribe" 
+		"https://findmyshots.com/s/pcso-charity-run-2026-humblerunner" ,
+		  "https://findmyshots.com/s/pcso-charity-run-2026-genuinesole"
       ],
-	"notesP": "Upload in-progress. Enter your email & we'll notify you once available.", 
+	"notesP": "Using bib number displays more photos. Use facial recognition if your bib was not visible.", 
 	"resultsStatus": "Pending",
 	 "resultsURL": "https://results.raceroster.com/v3/events/59qtfbpjatx2ag7t"
   }, 	
