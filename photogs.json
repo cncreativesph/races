@@ -18,10 +18,12 @@
     "locationP": "Mall of Asia",
     "dateP": "October 18, 2026",
     "listOfPhotogs": [
-		"Humble Runner"
+		"Humble Runner",
+		"Genuine Sole"
       ],
       "photogsURL": [
-		"https://findmyshots.com/s/34th-yakult-10-miler-trilogy-manila-humblerunner" 
+		"https://findmyshots.com/s/34th-yakult-10-miler-trilogy-manila-humblerunner" ,
+		  "https://findmyshots.com/s/34th-yakult-10-miler-trilogy-manila-genuinesole"
       ],
 	"notesP": "Upload in-progress. Enter your email & we'll notify you once available.", 
 	"resultsStatus": "Pending",
