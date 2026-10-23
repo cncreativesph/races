@@ -777,7 +777,7 @@
     "distance": "25KM,10KM,5KM,1KM",
     "location": "Quirino Grandstand, Manila",
     "organizer": "GREEN MEDIA EVENTS",
-    "date": "November 15, 2026",
+    "date": "January 23, 2026",
     "website": "https://greenmediaevents.myruntime.com/register/earth-run-2026",
     "status": "Register"
   },
@@ -1364,11 +1364,11 @@
   {
     "name": "MILO NATIONAL MARATHON",
     "distance": "21KM,10KM,5KM,3KM",
-    "location": "Urdaneta City, Pangasinan",
+    "location": "Lingayen, Pangasinan",
     "organizer": "RUNRIO",
     "date": "November 8, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://raceroster.com/events/2026/165194/2026-national-milo-marathon-lingayen-leg",
+    "status": "Register"
   }, 
   {
     "name": "MILO NATIONAL MARATHON",
@@ -1796,12 +1796,12 @@
   },
   {
     "name": "MNL CITY RUN - THE GIFT OF RUNNING",
-    "distance": "21KM,10KM,5KM,3KM",
+    "distance": "21KM,10KM,5KM,3KM,1KM Dog",
     "location": "Filinvest, Alabang",
     "organizer": "RULE & RICH EVENTS MANAGEMENT",
     "date": "December 6, 2026",
-    "website": "",
-    "status": "Opening Soon"
+    "website": "https://mnlcityrun.myruntime.com/register/the-gift-of-running-2026",
+    "status": "Register"
   },
  
   {
