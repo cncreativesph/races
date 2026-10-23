@@ -1,4 +1,31 @@
-[         {
+[  {
+    "name": "The Maverick Run",
+    "distance": "16KM,10KM,5KM,1.5KM Dog",
+    "location": "Parqal, Aseana City, Paranaque",
+    "organizer": "RSRJ EVENTS MANAGEMENT",
+    "date": "November 28, 2026",
+    "website": "https://rsrjevents.myruntime.com/register/the-maverick-run-2026",
+    "status": "Register"
+  },
+    {
+    "name": "Flight Run - Leg 2",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RSRJ EVENTS MANAGEMENT",
+    "date": "November 21, 2026",
+    "website": "https://rsrjevents.myruntime.com/register/flight-run-2026-leg-2",
+    "status": "Register"
+  },
+        {
+    "name": "MX3 Run for Life",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "Mall of Asia, Pasay City",
+    "organizer": "RSRJ EVENTS MANAGEMENT",
+    "date": "December 12, 2026",
+    "website": "https://myruntime.com/register/mx3-run-for-life-2026",
+    "status": "Register"
+  },
+    {
     "name": "PF SUB1 10K Challenge",
     "distance": "10KM",
     "location": "Ayala, Makati",
