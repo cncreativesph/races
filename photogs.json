@@ -4,10 +4,12 @@
     "locationP": "Ayala, Makati",
     "dateP": "October 25, 2026",
     "listOfPhotogs": [
-		"RUNRIO"
+		"RUNRIO",
+		"Humble Runner"
       ],
       "photogsURL": [
-		"https://cncreatives.com/subscribe"
+		"https://cncreatives.com/subscribe",
+		  "https://findmyshots.com/s/lactacyd-womens-run-ph-makati-humblerunner"
       ],
 	"notesP": "Upload in-progress. Enter your email & we'll let you know once completed.", 
 		"resultsStatus": "Pending",
