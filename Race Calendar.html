@@ -1041,6 +1041,12 @@
 
     // FAVORITES STORAGE
     const FAVORITES_KEY = 'pixhero_favorite_races_v1';
+	console.log('Current URL:', location.href);
+console.log('Storage origin:', location.origin);
+console.log(
+    'Saved favorites:',
+    localStorage.getItem(FAVORITES_KEY)
+);
 
     let favoriteRaceKeys = new Set();
 
