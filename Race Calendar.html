@@ -768,6 +768,98 @@
 			  to { opacity: 1; filter: blur(0); }
 			}
 		}
+		
+/* FAVORITES CONTROL BELOW SEARCH */
+.favorites-control {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 7px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.favorites-label-star {
+    color: #ff3b30;
+    font-size: 23px;
+    line-height: 1;
+}
+
+.favorites-control-text {
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.favorites-segment {
+    display: inline-flex;
+    flex-shrink: 0;
+    gap: 2px;
+    padding: 3px;
+    margin-left: 2px;
+    background: rgba(255,255,255,0.20);
+    border-radius: 9px;
+}
+
+.favorites-option {
+    min-width: 42px;
+    padding: 6px 10px;
+    background: transparent;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.favorites-option.active {
+    background: white;
+    color: #0a5f38;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.12);
+}
+
+/* RACE NAME WITH STAR */
+.race-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 3px;
+}
+
+.race-title-row .race-name {
+    flex: 1;
+    min-width: 0;
+}
+
+.favorite-star {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 20px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.favorite-star svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 1.8;
+    stroke-linejoin: round;
+    transition: fill 0.2s, stroke 0.2s;
+}
+
+.favorite-star.is-favorite svg {
+    fill: #ff3b30 !important;
+    stroke: #ff3b30 !important;
+}
 
         </style>
         
@@ -794,11 +886,28 @@
 			</div>
 				<button id="clearSearchBtn" type="button" class="clear-search-btn hidden">×</button>
 
-            <div id="searchSuggestions" class="search-suggestions hidden"></div>
-		
+                        <div id="searchSuggestions" class="search-suggestions hidden"></div>
 
         </div>
-			
+
+        <!-- Show Favorite Races -->
+        <div class="favorites-control">
+            <span id="favoritesLabelStar" class="favorites-label-star">♡</span>
+            <span class="favorites-control-text">Show Favorite Races</span>
+
+            <div class="favorites-segment" role="group"
+                 aria-label="Show Favorite Races">
+                <button type="button"
+                        class="favorites-option"
+                        data-favorites="yes"
+                        aria-pressed="false">Yes</button>
+                <button type="button"
+                        class="favorites-option active"
+                        data-favorites="no"
+                        aria-pressed="true">No</button>
+            </div>
+        </div>
+
     </div>
 
     <div class="flex justify-between items-center px-4 py-2">
@@ -821,10 +930,12 @@
 	
     </div>
 
-    <div id="filtersContainer" class="px-4 py-2" style="display: none;">
-	
-			<!-- Location Filter -->
-		<div id="locationFilterContainer" class="filter-section">
+<div id="filtersContainer" class="px-4 py-2" style="display: none;">
+
+
+
+    <!-- Location Filter -->
+    <div id="locationFilterContainer" class="filter-section">
 		  <div class="filter-header" data-filter="location">
 			<h3 class="text-xs font-bold">Location</h3>
 			<svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-gray-500 transition-transform"
@@ -925,8 +1036,54 @@
 	  </div>
 	</div>
 	
-    <script>
-		let searchErrorTimeout = null;
+<script>
+    let searchErrorTimeout = null;
+
+    // FAVORITES STORAGE
+    const FAVORITES_KEY = 'pixhero_favorite_races_v1';
+
+    let favoriteRaceKeys = new Set();
+
+    try {
+        const saved = JSON.parse(
+            localStorage.getItem(FAVORITES_KEY) || '[]'
+        );
+
+        if (Array.isArray(saved)) {
+            favoriteRaceKeys = new Set(saved);
+        }
+    } catch (error) {
+        console.warn('Favorites could not be loaded:', error);
+    }
+
+    let favoritesOnly = false;
+
+    function raceFavoriteKey(race) {
+        return JSON.stringify([
+            String(race.name || '').trim().toLowerCase(),
+            String(race.date || '').trim().toLowerCase(),
+            String(race.location || '').trim().toLowerCase()
+        ]);
+    }
+
+    function toggleRaceFavorite(race) {
+        const key = raceFavoriteKey(race);
+
+        if (favoriteRaceKeys.has(key)) {
+            favoriteRaceKeys.delete(key);
+        } else {
+            favoriteRaceKeys.add(key);
+        }
+
+        try {
+            localStorage.setItem(
+                FAVORITES_KEY,
+                JSON.stringify([...favoriteRaceKeys])
+            );
+        } catch (error) {
+            console.warn('Favorites could not be saved:', error);
+        }
+    }
 		
         // State management
         const state = {
@@ -2362,18 +2519,72 @@ function renderRaces() {
                 detailsSection.className = 'action-section';
                 
                 const raceName = document.createElement('h3');
-                raceName.className = 'race-name poppins-black';
-                raceName.textContent = race.name ? race.name.toUpperCase() : 'UNNAMED RACE';
-                
-                // Make race name clickable if website is available
-                //if (race.website) {
-                //    raceName.addEventListener('click', () => {
-                //        window.open(race.website, '_blank');
-                //    });
-                //    raceName.style.cursor = 'pointer';
-                //}
-                
-                detailsSection.appendChild(raceName);
+raceName.className = 'race-name poppins-black';
+raceName.textContent = race.name
+    ? race.name.toUpperCase()
+    : 'UNNAMED RACE';
+
+// Race title row
+const raceTitleRow = document.createElement('div');
+raceTitleRow.className = 'race-title-row';
+
+// Favorite button
+const favoriteButton = document.createElement('button');
+favoriteButton.type = 'button';
+favoriteButton.className = 'favorite-star';
+
+const raceKey = raceFavoriteKey(race);
+
+function updateFavoriteStar() {
+    const isFavorite = favoriteRaceKeys.has(raceKey);
+
+    favoriteButton.classList.toggle(
+        'is-favorite',
+        isFavorite
+    );
+
+    favoriteButton.setAttribute(
+        'aria-pressed',
+        String(isFavorite)
+    );
+
+    favoriteButton.setAttribute(
+        'aria-label',
+        isFavorite ? 'Remove from favorites' : 'Add to favorites'
+    );
+}
+
+favoriteButton.innerHTML = `
+<svg viewBox="0 0 24 24"
+     xmlns="http://www.w3.org/2000/svg"
+     aria-hidden="true">
+    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0
+             L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78
+             7.78l1.06 1.06L12 21.23l7.78-7.78
+             1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+</svg>
+`;
+
+updateFavoriteStar();
+
+favoriteButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    toggleRaceFavorite(race);
+    updateFavoriteStar();
+
+    // Refresh immediately when Favorites Only is active
+    if (favoritesOnly) {
+        state.pagination.page = 1;
+        renderRaces();
+    }
+});
+
+raceTitleRow.appendChild(favoriteButton);
+raceTitleRow.appendChild(raceName);
+
+detailsSection.appendChild(raceTitleRow);
                 
                 if (race.location) {
                     const location = document.createElement('div');
@@ -2683,14 +2894,20 @@ function renderRaces() {
             const today = new Date();
             today.setHours(0, 0, 0, 0);
             
-            return data.filter(item => {
-                const name = item.name;
-                const date = item.date;
-                const location = item.location;
-                const distance = item.distance;
-                const organizer = item.organizer;
-                
-                // Date filter - only show future dates for races
+return data.filter(item => {
+    const name = item.name;
+    const date = item.date;
+    const location = item.location;
+    const distance = item.distance;
+    const organizer = item.organizer;
+
+    // FAVORITES FILTER
+    if (!isPhotos && favoritesOnly &&
+        !favoriteRaceKeys.has(raceFavoriteKey(item))) {
+        return false;
+    }
+
+    // Date filter - only show future dates for races
                 if (date) {
 					const itemDate = new Date(date);
 					if (!isNaN(itemDate.getTime())) {
@@ -3059,10 +3276,51 @@ function renderRaces() {
 		  }
 		}
 
-        // Event listeners
-        //toggleViewButton.addEventListener('click', toggleView);
-        
-        refreshButton.addEventListener('click', resetToDefault);
+ // Event listeners
+//toggleViewButton.addEventListener('click', toggleView);
+
+// FAVORITES YES / NO CONTROL
+const favoriteOptions =
+    document.querySelectorAll('.favorites-option');
+
+const favoritesLabelStar =
+    document.getElementById('favoritesLabelStar');
+
+function updateFavoritesControl() {
+    // Solid yellow when Yes, outlined when No
+favoritesLabelStar.textContent =
+    favoritesOnly ? '♥' : '♡';
+
+    // Update selected Yes / No button
+    favoriteOptions.forEach(button => {
+        const isActive = button.dataset.favorites ===
+            (favoritesOnly ? 'yes' : 'no');
+
+        button.classList.toggle('active', isActive);
+        button.setAttribute('aria-pressed', String(isActive));
+    });
+}
+
+favoriteOptions.forEach(button => {
+    button.addEventListener('click', () => {
+        favoritesOnly = button.dataset.favorites === 'yes';
+
+        updateFavoritesControl();
+
+        state.pagination.page = 1;
+        renderRaces();
+    });
+});
+
+// REFRESH BUTTON
+refreshButton.addEventListener('click', () => {
+    favoritesOnly = false;
+    updateFavoritesControl();
+    resetToDefault();
+});
+
+// Set initial appearance
+updateFavoritesControl();
         
         searchInput.addEventListener('input', (e) => {
             generateSearchSuggestions();
