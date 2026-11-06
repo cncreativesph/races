@@ -1,5 +1,20 @@
 
-[	{
+[{
+    "nameP": "MCDONALD'S STRIPES RUN",
+    "locationP": "Clark, Pampanga",
+    "dateP": "November 7, 2026",
+    "listOfPhotogs": [
+		"RUNRIO"
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe" ,
+		  ""
+      ],
+	"notesP": "Upload in-progress. Enter your email and we'll let you know once done", 
+	"resultsStatus": "Pending",
+	 "resultsURL": ""
+  }, 	
+	{
     "nameP": "Lactacyd Women's Run PH",
     "locationP": "Ayala, Makati",
     "dateP": "October 25, 2026",
