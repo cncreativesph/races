@@ -1041,6 +1041,20 @@
 
     // FAVORITES STORAGE
     const FAVORITES_KEY = 'pixhero_favorite_races_v1';
+
+    // iOS STORAGE DIAGNOSTIC
+    console.log('Race Calendar URL:', window.location.href);
+    console.log('Storage Origin:', window.location.origin);
+    console.log('Inside iframe:', window.self !== window.top);
+
+    try {
+        console.log(
+            'Saved Favorites:',
+            localStorage.getItem(FAVORITES_KEY)
+        );
+    } catch (error) {
+        console.error('Storage Error:', error);
+    }
 	console.log('Current URL:', location.href);
 console.log('Storage origin:', location.origin);
 console.log(
