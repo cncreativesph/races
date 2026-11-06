@@ -1,4 +1,67 @@
-[    {
+[         {
+    "name": "FunRide PH presented by BYD",
+    "distance": "21KM,10KM,5KM",
+    "location": "Quirino Grandstand, Manila",
+    "organizer": "Myriad / Alden Richards",
+    "date": "December 19, 2026",
+    "website": "https://www.funrideph.com/events/funride-mnl-2026",
+    "status": "Register"
+  }, 
+    {
+    "name": "Quezon City QC Eco Run",
+    "distance": "10KM,5KM",
+    "location": "Quezon City Hall",
+    "organizer": "Quezon City Government",
+    "date": "November 29, 2026",
+    "website": "https://qcecorun.myruntime.com/register",
+    "status": "Event is Full" 
+  },
+    {
+    "name": "The Good Run",
+    "distance": "10KM,5KM,2KM",
+    "location": "UP Diliman",
+    "organizer": "Good Neighbors Philippines",
+    "date": "November 22, 2026",
+    "website": "https://myruntime.com/register/the-good-run-2026",
+    "status": "Register"
+  }, 
+    {
+    "name": "FATIMA - Faster. Farther. Finer.",
+    "distance": "10KM,5KM,3KM,1KM,1KM Dog",
+    "location": "Ayala, Makati",
+    "organizer": "Fatima University",
+    "date": "January 31, 2027",
+    "website": "https://myruntime.com/register/fatima-faster-farther-finer-2026",
+    "status": "Register"
+  }, 
+    {
+    "name": "Pink Run",
+    "distance": "21KM,10KM,5KM",
+    "location": "Vermosa, Cavite",
+    "organizer": "Empower",
+    "date": "March 28, 2027",
+    "website": "https://empower.myruntime.com/register/pink-run-the-half-marathon-2027",
+    "status": "Register"
+  }, 
+    {
+    "name": "Angat Bayanihan Run",
+    "distance": "5KM,3KM,1KM",
+    "location": "Maginhawa Street, Quezon City",
+    "organizer": "WEKENRUN",
+    "date": "December 5, 2026",
+    "website": "https://angatbuhay.myruntime.com/register/angat-bayanihan-run-2026-qc",
+    "status": "Event is Full"
+  }, 
+     {
+    "name": "Angat Bayanihan Run",
+    "distance": "10KM,5KM,3KM,1KM",
+    "location": "Veranza Mall, General Santos City",
+    "organizer": "WEKENRUN",
+    "date": "November 29, 2026",
+    "website": "https://angatbuhay.myruntime.com/register/angat-bayanihan-run-2026-gensan",
+    "status": "Register"
+  }, 
+    {
     "name": "AYALA TACBO",
     "distance": "21KM,10KM,5KM,3KM,1KM,1KM DOG",
     "location": "Ayala, makati City",
