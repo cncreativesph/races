@@ -1,4 +1,21 @@
-[  
+[    {
+    "name": "AYALA TACBO",
+    "distance": "21KM,10KM,5KM,3KM,1KM,1KM DOG",
+    "location": "Ayala, makati City",
+    "organizer": "RUnRIO",
+    "date": "January 17, 2027",
+    "website": "",
+    "status": "Opening Soon"
+  },  
+    {
+    "name": "AYALA PHILIPPINE MARATHON",
+    "distance": "42KM,21KM,10KM,5KM",
+    "location": "Ayala, Makati City",
+    "organizer": "RUNRIO",
+    "date": "April 4, 2027",
+    "website": "",
+    "status": "Opening Soon"
+  },
     {
     "name": "Cebu Pacific Every Juan Run",
     "distance": "21KM,10KM,5KM",
@@ -205,6 +222,15 @@
     "organizer": "RUNRIO",
     "date": "January 17, 2027",
     "website": "https://raceroster.com/events/2027/140706/home-credit-takbo-number-parasalife-2027",
+    "status": "Register"
+  },
+      {
+    "name": "HOME CREDIT TAKBO PARA SA LIFE",
+    "distance": "16KM,10KM,5KM,3KM",
+    "location": "SM Lanang, Davao",
+    "organizer": "RUNRIO",
+    "date": "February 21, 2027",
+    "website": "https://raceroster.com/events/2027/166021/home-credit-takbo-number-parasalife-2027-davao",
     "status": "Register"
   },
   {
@@ -545,7 +571,7 @@
     "distance": "21KM,10KM,5KM,3KM,1KM Dog",
     "location": "Filinvest Mimosa Plus, Clark, Pampanga",
     "organizer": "RUNRIO",
-    "date": "January 17, 2026",
+    "date": "January 17, 2027",
     "website": "https://raceroster.com/events/2026/116383/eastwest-dream-run-2026-clark",
     "status": "Register"
   },
