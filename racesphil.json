@@ -1,4 +1,14 @@
-[         {
+[    
+    {
+    "name": "Race for Life",
+    "distance": "20KM,15K,10KM,5KM,3KM,1KM",
+    "location": "Mall of Asia",
+    "organizer": "Real Life Foundation",
+    "date": "May 22, 2027",
+    "website": "",
+    "status": "Opening Soon"
+  },
+    {
     "name": "Cycles & Brew Coffee Run & Rave",
     "distance": "21KM,10KM,5KM,3KM,1KM Dog",
     "location": "Clark, Pampanga",
