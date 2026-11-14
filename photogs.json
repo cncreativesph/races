@@ -1,5 +1,33 @@
 
 [
+		{
+    "nameP": "HOKA MIDNIGHT RUN ASIA",
+    "locationP": "Clark Parade Grounds, Pampanga",
+    "dateP": "November 14, 2026",
+    "listOfPhotogs": [
+		"RUNRIO"
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe"
+	  ],
+	"notesP": "Upload in-progress. Enter your email & we'll let you know once done.", 
+	"resultsStatus": "Pending",
+	 "resultsURL": ""
+  }, 	
+	{
+    "nameP": "RUN ORTIGAS",
+    "locationP": "Ortigas East, Pasig",
+    "dateP": "November 15, 2026",
+    "listOfPhotogs": [
+		"RUNRIO"
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe2"
+	  ],
+	"notesP": "Upload in-progress. Enter your email & we'll let you know once done.", 
+	"resultsStatus": "Pending",
+	 "resultsURL": ""
+  }, 	
 	{
     "nameP": "HI-PRECISION RUN FOR YOUR LIFE",
     "locationP": "Filinvest, Alabang",
