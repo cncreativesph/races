@@ -5,12 +5,14 @@
     "locationP": "Clark Parade Grounds, Pampanga",
     "dateP": "November 14, 2026",
     "listOfPhotogs": [
-		"RUNRIO"
+		"Humble Runner",
+		"Genuine Sole"
       ],
       "photogsURL": [
-		"https://cncreatives.com/subscribe"
+		"https://findmyshots.com/s/hoka-midnight-run-asia-2026-clark-humblerunner",
+		  "https://findmyshots.com/s/hoka-midnight-run-asia-2026-clark-genuinesole"
 	  ],
-	"notesP": "Upload in-progress. Enter your email & we'll let you know once done.", 
+	"notesP": "Using bib number displays more photos. Use facial recognition if your bib was not visible.", 
 	"resultsStatus": "Pending",
 	 "resultsURL": "https://results.raceroster.com/v3/events/zkc77h9rdefnhnby"
   }, 	
