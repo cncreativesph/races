@@ -1,5 +1,19 @@
 
 [{
+    "nameP": "HELLO KITTY RUN",
+    "locationP": "Mall of Asia",
+    "dateP": "November 21, 2026",
+    "listOfPhotogs": [
+		"RUNRIO"
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe3"
+	  ],
+	"notesP": "Race Expo - Pending Upload", 
+	"resultsStatus": "Pending",
+	 "resultsURL": ""
+  }, 	
+	{
     "nameP": "Nike After Dark Tour",
     "locationP": "Quirino Grandstand, Manila",
     "dateP": "November 22, 2026",
