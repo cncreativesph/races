@@ -1618,14 +1618,6 @@ console.log(
             pagination: { page: 1, perPage: 25 }
         };
 		
-		const DEFAULT_EXPANDED_FILTERS = {
-			  location: true,
-			  distance: false,
-			  organizer: true,
-			  month: true,
-			  year: true,
-			  day: false
-			};
 					
 		let locations = new Set();
 
@@ -2416,27 +2408,26 @@ console.log(
 
         // Update filter visibility based on expanded state
         function updateFilterVisibility() {
+            // Keep the user's visibility choices when new filter chips are loaded.
             Object.keys(state.expandedFilters).forEach(filter => {
                 const content = document.getElementById(`${filter}Filters`);
                 const header = document.querySelector(`.filter-header[data-filter="${filter}"]`);
-                const container = document.getElementById(`${filter}FilterContainer`);
-                
-                // Skip if this filter should be hidden
-                if (state.hiddenFilters.has(filter)) {
-                    if (container) container.classList.add('hidden');
-                    return;
+                const section = header?.closest('.filter-section');
+                if (section) {
+                    section.classList.toggle('hidden', !state.filtersVisible || state.hiddenFilters.has(filter));
                 }
-                
                 if (content && header) {
-                    if (state.expandedFilters[filter]) {
-                        content.classList.remove('hidden');
-                        header.querySelector('svg').classList.remove('rotate-180');
-                    } else {
-                        content.classList.add('hidden');
-                        header.querySelector('svg').classList.add('rotate-180');
-                    }
+                    const expanded = Boolean(state.expandedFilters[filter]);
+                    content.classList.toggle('hidden', !expanded);
+                    header.querySelector('svg')?.classList.toggle('rotate-180', !expanded);
                 }
             });
+            toggleFiltersButton.innerHTML = `
+                <span>${state.filtersVisible ? 'Hide All Filters' : 'Show All Filters'}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${state.filtersVisible ? 'M5 15l7-7 7 7' : 'M19 9l-7 7-7-7'}" />
+                </svg>
+            `;
         }
 
         // Format date string
@@ -3801,42 +3792,6 @@ return data.filter(item => {
 			updateFilters(); // updates UI chips to "All"
 		}
 		
-		function restoreDefaultFilterUI() {
-		  // restore "Hide / Show All Filters" state
-		  state.filtersVisible = true;
-
-		  // restore default expanded/collapsed behavior
-		  state.expandedFilters = { ...DEFAULT_EXPANDED_FILTERS };
-
-		  // unhide all filter sections (except intentionally hidden ones)
-		  document.querySelectorAll('.filter-section').forEach(section => {
-			const filterName =
-			  section.querySelector('.filter-header')?.getAttribute('data-filter');
-
-			if (!filterName || !state.hiddenFilters.has(filterName)) {
-			  section.classList.remove('hidden');
-			}
-		  });
-
-		  // restore button label
-		  toggleFiltersButton.innerHTML = `
-			<span>Hide All Filters</span>
-			<svg xmlns="http://www.w3.org/2000/svg"
-			  class="h-4 w-4 ml-1"
-			  fill="none"
-			  viewBox="0 0 24 24"
-			  stroke="currentColor">
-			  <path stroke-linecap="round" stroke-linejoin="round"
-				stroke-width="2"
-				d="M5 15l7-7 7 7" />
-			</svg>
-		  `;
-
-		  // apply expanded/collapsed state to contents + arrows
-		  updateFilterVisibility();
-		}
-
-
         // Reset to default state
         function resetToDefault() {
             state.filters = {
@@ -3855,8 +3810,8 @@ return data.filter(item => {
             updateFilters();
 			clearSearchError();
 
-			// ✅ ADD THIS LINE
-			restoreDefaultFilterUI();
+			// Refresh clears selections, but preserves the filter visibility state.
+			updateFilterVisibility();
 
 			if (state.view === 'photos') {
 			  return loadPhotoData();
@@ -4055,33 +4010,9 @@ updateFavoritesControl();
         // Toggle all filters
         toggleFiltersButton.addEventListener('click', () => {
             state.filtersVisible = !state.filtersVisible;
-            
-            if (state.filtersVisible) {
-                document.querySelectorAll('.filter-section').forEach(section => {
-                    const filterId = section.id.replace('FilterContainer', '');
-                    if (!state.hiddenFilters.has(filterId)) {
-                        section.classList.remove('hidden');
-                    }
-                });
-                toggleFiltersButton.innerHTML = `
-                    <span>Hide All Filters</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-                    </svg>
-                `;
-            } else {
-                document.querySelectorAll('.filter-section').forEach(section => {
-                    section.classList.add('hidden');
-                });
-                toggleFiltersButton.innerHTML = `
-                    <span>Show All Filters</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                `;
-            }
+            updateFilterVisibility();
         });
-        
+
         // Filter section toggle handlers
         document.querySelectorAll('.filter-header').forEach(header => {
             header.addEventListener('click', () => {
