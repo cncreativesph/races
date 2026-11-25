@@ -64,11 +64,13 @@
     "dateP": "November 14, 2026",
     "listOfPhotogs": [
 		"Humble Runner",
-		"Genuine Sole"
+		"Genuine Sole",
+		"1"
       ],
       "photogsURL": [
 		"https://findmyshots.com/s/hoka-midnight-run-asia-2026-clark-humblerunner",
-		  "https://findmyshots.com/s/hoka-midnight-run-asia-2026-clark-genuinesole"
+		  "https://findmyshots.com/s/hoka-midnight-run-asia-2026-clark-genuinesole",
+		  "https://cncreatives.com/subscribe4"
 	  ],
 	"notesP": "Using bib number displays more photos. Use facial recognition if your bib was not visible.", 
 	"resultsStatus": "Pending",
