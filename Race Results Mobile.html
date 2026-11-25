@@ -1121,9 +1121,9 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
     --pagination-height: 60px;
   }
   @media (max-width: 768px), (pointer: coarse) {
-    :root { --native-nav-clearance: 150px; }
+    :root { --native-nav-clearance: 90px; }
   }
-  html.ios-compact { --native-nav-clearance: 150px; }
+  html.ios-compact { --native-nav-clearance: 90px; }
   body.pb-20 {
     padding-bottom: calc(var(--native-nav-clearance) + var(--pagination-height) + env(safe-area-inset-bottom, 0px) + 18px);
   }
@@ -1208,13 +1208,12 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
 </style>
 
 <style id="pixhero-match-calendar-pagination">
-  /* Match the Calendar's physical footer dimensions at its 90% iOS zoom.
-     Keep the Results page itself at 100% scaling. */
+  /* Use full-size Results controls on iOS for easier tapping. */
   #paginationContainer { align-items: center; }
   #paginationContainer .pagination-empty { min-width: 0; overflow-wrap: anywhere; }
   html.ios-compact #stickyFooterBar {
-    zoom: 0.9;
-    --footer-local-clearance: 166.6667px;
+    zoom: 1;
+    --footer-local-clearance: 90px;
   }
 </style>
 
@@ -1226,11 +1225,85 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
     color: #A8A8A8; cursor: grab; touch-action: none;
     user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
   }
-  #paginationDragHandle .drag-grip {
-    width: 38px; height: 4px; border-radius: 999px; background: currentColor;
+  #paginationDragHandle .drag-label {
+    font-size: 11px; font-weight: 400; line-height: 1.4; letter-spacing: .1px;
   }
   #paginationDragHandle:focus-visible { outline: 2px solid #60A5FA; outline-offset: -2px; }
   #stickyFooterBar.is-dragging #paginationDragHandle { cursor: grabbing; color: #F3F3F3; }
+</style>
+<style id="pixhero-large-pagination-controls">
+  #stickyFooterBar { padding: 7px 9px 9px; }
+  #paginationDragHandle { height: 25px; margin: -3px 0 4px; }
+  #stickyFooterBarInner { gap: 6px; flex-wrap: wrap; align-items: center; }
+  #stickyFooterBarInner .sticky-refresh-btn {
+    min-height: 44px; height: 44px; min-width: 76px; padding: 0 8px;
+    font-size: 12px; gap: 5px; border-radius: 12px;
+  }
+  #stickyFooterBarInner .sticky-refresh-btn svg { width: 17px; height: 17px; }
+  #paginationContainer { flex: 1 1 280px; gap: 5px; align-items: center; }
+  #paginationContainer .pagination-info { font-size: 11px; }
+  #paginationContainer .pagination-controls { gap: 2px; max-width: 100%; }
+  #paginationContainer .pagination-button {
+    height: 44px; min-width: 40px; padding: 0 5px; font-size: 13px; gap: 3px;
+  }
+  #paginationContainer .pagination-button svg { width: 13px; height: 13px; }
+  #paginationContainer.pagination-single { flex: 1 1 0; }
+  @media (max-width: 420px) {
+    #paginationContainer:not(.pagination-single) { flex: 1 1 100%; }
+    #paginationContainer .pagination-controls { margin-left: auto; }
+  }
+  @media (max-width: 340px) {
+    #paginationContainer .pagination-controls { width: 100%; justify-content: space-between; }
+    #paginationContainer .pagination-button { min-width: 38px; padding: 0 4px; }
+  }
+</style>
+<style id="pixhero-spacious-pagination">
+  /* Two rows: utility controls above a full-width row of page buttons. */
+  #stickyFooterBar {
+    display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center; column-gap: 8px; row-gap: 7px;
+    padding: 9px 11px 11px;
+  }
+  #stickyFooterBarInner, #paginationContainer { display: contents; }
+  #stickyFooterBarInner .sticky-refresh-btn {
+    grid-column: 1; grid-row: 1; justify-self: start;
+    min-width: 84px; height: 44px; padding: 0 9px;
+    font-size: 12px;
+  }
+  #paginationDragHandle {
+    grid-column: 2; grid-row: 1; justify-self: stretch;
+    width: 100%; height: 44px; margin: 0; padding: 0 2px;
+  }
+  #paginationDragHandle .drag-label {
+    font-size: 11px; font-weight: 400; text-align: center; line-height: 1.35;
+  }
+  #paginationContainer .pagination-info {
+    grid-column: 3; grid-row: 1; justify-self: end;
+    font-size: 11px; margin: 0; white-space: nowrap;
+  }
+  #paginationContainer .pagination-controls {
+    grid-column: 1 / -1; grid-row: 2;
+    width: 100%; min-width: 0; margin: 0;
+    display: flex; justify-content: space-between; gap: 7px;
+  }
+  #paginationContainer .pagination-button {
+    flex: 1 1 0; min-width: 44px; height: 44px;
+    padding: 0 5px; font-size: 13px; gap: 3px;
+  }
+  #paginationContainer .pagination-button:first-child,
+  #paginationContainer .pagination-button:last-child { flex: 1.45 1 0; min-width: 60px; }
+  #paginationContainer .pagination-empty {
+    grid-column: 1 / -1; grid-row: 2; text-align: center;
+    margin: 0; padding: 5px 0; max-width: none;
+  }
+  @media (max-width: 360px) {
+    #stickyFooterBar { padding: 8px; column-gap: 4px; row-gap: 6px; }
+    #stickyFooterBarInner .sticky-refresh-btn { min-width: 74px; padding: 0 6px; }
+    #paginationContainer .pagination-controls { gap: 4px; }
+    #paginationContainer .pagination-button { min-width: 38px; padding: 0 3px; }
+    #paginationContainer .pagination-button:first-child,
+    #paginationContainer .pagination-button:last-child { min-width: 55px; }
+  }
 </style>
 </head>
 <body class="pb-20">
@@ -1354,8 +1427,8 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
 
 	<!-- Sticky bottom controls -->
 	<div id="stickyFooterBar">
-      <div id="paginationDragHandle" role="slider" tabindex="0" aria-label="Pagination bar height; drag up or down" aria-orientation="vertical" aria-valuemin="110" aria-valuemax="150" aria-valuenow="150" title="Drag up or down. Double-click or press Home to reset.">
-        <span class="drag-grip" aria-hidden="true"></span>
+      <div id="paginationDragHandle" role="slider" tabindex="0" aria-label="Hold and move pagination bar up or down" aria-orientation="vertical" aria-valuemin="84" aria-valuemax="90" aria-valuenow="90" title="Hold and move up or down. Double-click or press Home to reset.">
+        <span class="drag-label" aria-hidden="true">↕ Hold and move</span>
       </div>
 	  <div id="stickyFooterBarInner">
 		
@@ -2508,7 +2581,7 @@ function showNavLoader(){
 
             const next = document.createElement('button');
             next.className = 'pagination-button';
-            next.innerHTML = '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span>NEXT</span>';
+            next.innerHTML = '<span>NEXT</span><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>';
   next.setAttribute('aria-label', 'Next page');
   next.title = 'Next page';
             next.disabled = currentPage === totalPages;
@@ -2571,7 +2644,7 @@ function renderPhotosPagination(totalItems) {
 
   const next = document.createElement('button');
   next.className = 'pagination-button';
-  next.innerHTML = '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span>NEXT</span>';
+  next.innerHTML = '<span>NEXT</span><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>';
   next.setAttribute('aria-label', 'Next page');
   next.title = 'Next page';
   next.disabled = currentPage === totalPages;
@@ -3759,9 +3832,9 @@ window.addEventListener('load', () => {
   const header = document.querySelector('.header');
   const mobile = window.matchMedia('(max-width: 768px), (pointer: coarse)');
   const ios = root.classList.contains('ios-compact');
-  const scale = ios ? 0.9 : 1;
-  const storageKey = 'pixhero.results.pagination.clearance.v1';
-  const defaultOffset = () => mobile.matches || ios ? 150 : 12;
+  const scale = 1;
+  const storageKey = 'pixhero.results.pagination.clearance.v2';
+  const defaultOffset = () => mobile.matches || ios ? 90 : 12;
   let preferred = defaultOffset();
   try {
     const saved = localStorage.getItem(storageKey);
@@ -3774,7 +3847,7 @@ window.addEventListener('load', () => {
     const viewport = window.innerHeight;
     const safe = Math.max(0, viewport - rect.bottom - applied);
     const headerBottom = header ? Math.max(0, header.getBoundingClientRect().bottom) : 0;
-    const min = mobile.matches || ios ? 110 : 12;
+    const min = mobile.matches || ios ? 84 : 12;
     const max = Math.max(min, Math.floor(viewport - headerBottom - rect.height - safe - 16));
     return { min, max };
   }
