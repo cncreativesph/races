@@ -1055,11 +1055,10 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
     padding: 0 32px 0 5px;
     line-height: normal;
   }
-  /* Match the input and placeholder font metrics while the empty field is idle. */
-  #searchInput:placeholder-shown:not(:focus),
-  html.ios-compact #searchInput:placeholder-shown:not(:focus) {
-    font-size: 14px;
-  }
+  /* Never change the input font size on focus. iOS may auto-zoom if the
+     effective font size is below 16px at the moment the field is tapped. */
+  #searchInput { font-size: 16px; }
+  html.ios-compact #searchInput { font-size: 18px; }
   #searchInput::placeholder {
     font-size: 14px;
     line-height: normal;
@@ -1352,7 +1351,7 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
             </svg>
 			<div class="search-input-wrap">
-            <input type="text" id="searchInput" placeholder="Search race name, location, organizer, month, year…" class="w-full bg-transparent outline-none text-base text-black">
+            <input type="text" id="searchInput" enterkeyhint="search" placeholder="Search race name, location, organizer, month, year…" class="w-full bg-transparent outline-none text-base text-black">
 				<span id="searchInlineError" class="search-inline-error hidden">
 				  Type at least 3 characters
 				</span>
@@ -3923,7 +3922,7 @@ updateFavoritesControl();
 		const searchBar = document.querySelector('.search-bar');
 		const searchErrorOverlay = document.getElementById('searchErrorOverlay');
 		searchInput.addEventListener('keydown', (e) => {
-		  if (e.key !== 'Enter') return;
+		  if (e.key !== 'Enter' || e.isComposing || e.keyCode === 229) return;
 		  e.preventDefault();
 
 		  const value = searchInput.value.trim();
@@ -3972,6 +3971,11 @@ updateFavoritesControl();
 
 
 
+
+          // A valid search resets the draggable footer, including its saved position.
+          // Blur first to dismiss the keyboard; the footer recalculates on resize.
+          searchInput.blur();
+          document.dispatchEvent(new Event('pixhero:search-submit'));
 
 		  // ✅ clear error if valid
 		  searchBar.classList.remove('error');
@@ -4211,11 +4215,19 @@ updateFavoritesControl();
   // footer visible during the resulting scroll clamp and layout changes.
   let refreshCount = 0;
   let refreshGraceUntil = 0;
+  let searchGraceUntil = 0;
   function keepPaginationVisible() {
     lastScroll = scrollPosition();
     accumulated = 0;
     bar.classList.remove('is-scroll-hidden');
   }
+  document.addEventListener('pixhero:search-submit', () => {
+    // Use the configured default, not a previously dragged/saved position.
+    // Ignore scroll clamping while the keyboard closes and results reflow.
+    searchGraceUntil = performance.now() + 800;
+    reset();
+    keepPaginationVisible();
+  });
   document.addEventListener('pixhero:refresh-start', () => {
     refreshCount++;
     keepPaginationVisible();
@@ -4231,7 +4243,7 @@ updateFavoritesControl();
     const current = scrollPosition();
     const delta = current - lastScroll;
     lastScroll = current;
-    if (drag || refreshCount > 0 || performance.now() < refreshGraceUntil) {
+    if (drag || refreshCount > 0 || performance.now() < Math.max(refreshGraceUntil, searchGraceUntil)) {
       accumulated = 0;
       bar.classList.remove('is-scroll-hidden');
       return;
