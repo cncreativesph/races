@@ -1074,17 +1074,17 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
     --pagination-height: 60px;
   }
   @media (max-width: 768px), (pointer: coarse) {
-    :root { --native-nav-clearance: 90px; }
+    :root { --native-nav-clearance: 95px; --native-nav-content-reserve: 90px; }
   }
-  /* Compensate for the 90% HTML zoom: 100px becomes 90px. */
-  html.ios-compact { --native-nav-clearance: 100px; }
+  /* Document padding is expressed in Calendar's 90%-zoom layout units. */
+  html.ios-compact { --native-nav-clearance: 105.555556px; --native-nav-content-reserve: 100px; }
   body.pb-20 {
-    padding-bottom: calc(var(--native-nav-clearance) + var(--pagination-height) + env(safe-area-inset-bottom, 0px) + 18px);
+    padding-bottom: calc(max(var(--native-nav-clearance), var(--native-nav-content-reserve, 12px)) + var(--pagination-height) + env(safe-area-inset-bottom, 0px) + 18px);
   }
   #stickyFooterBar {
     left: 12px;
     right: 12px;
-    bottom: calc(var(--native-nav-clearance) + env(safe-area-inset-bottom, 0px));
+    bottom: calc(var(--footer-local-clearance, var(--native-nav-clearance)) + env(safe-area-inset-bottom, 0px));
     padding: 7px 9px;
     background: #202020;
     border: 1px solid #383838;
@@ -1108,7 +1108,7 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   }
   #paginationContainer {
     flex: 1 1 auto; min-width: 0; justify-content: flex-end;
-    flex-wrap: wrap; gap: 4px; align-items: center;
+    flex-wrap: wrap; gap: 4px;
   }
   #paginationContainer .pagination-info {
     flex: 0 0 auto; margin-right: auto; font-size: 11px;
@@ -1124,7 +1124,7 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   }
   #paginationContainer .pagination-button svg { width: 17px; height: 17px; }
   #paginationContainer .pagination-empty {
-    flex: 1 1 auto; max-width: none; min-width: 0; font-size: 12px; text-align: left; overflow-wrap: anywhere;
+    flex: 1 1 auto; max-width: none; font-size: 12px; text-align: left;
   }
   @media (max-width: 380px) {
     #stickyFooterBar { left: 8px; right: 8px; padding: 6px; }
@@ -1185,6 +1185,150 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   }
   /* Keep the search dropdown above the rounded sticky header and race cards. */
   .header .search-suggestions { z-index: 1100; }
+</style>
+
+<style id="pixhero-labeled-pagination">
+  #stickyFooterBarInner { flex-wrap: wrap; gap: 6px; }
+  #stickyFooterBarInner .sticky-refresh-btn {
+    flex: 0 0 auto; width: auto; min-width: 0; height: 36px;
+    padding: 0 8px; gap: 4px; font-size: 11px; white-space: nowrap;
+  }
+  #stickyFooterBarInner .sticky-refresh-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+  #paginationContainer { flex: 1 1 215px; min-width: 0; gap: 4px; justify-content: space-between; }
+  #paginationContainer .pagination-info { flex: 0 0 auto; margin-right: 0; white-space: nowrap; }
+  #paginationContainer .pagination-controls { display: flex; flex: 0 0 auto; align-items: center; gap: 3px; margin-left: auto; }
+  #paginationContainer .pagination-button {
+    height: 36px; min-width: 28px; padding: 0 5px;
+    font-size: 11px; gap: 2px; white-space: nowrap;
+  }
+  #paginationContainer .pagination-button svg { width: 12px; height: 12px; flex-shrink: 0; }
+  #paginationContainer.pagination-single { flex: 1 1 0; }
+  @media (max-width: 380px) {
+    #paginationContainer { flex-basis: 205px; }
+    #paginationContainer .pagination-button { min-width: 26px; padding: 0 4px; }
+    #paginationContainer .pagination-controls { gap: 2px; }
+  }
+</style>
+<style id="pixhero-match-calendar-pagination">
+  /* Match the Results footer at effective 100% while Calendar content remains at 90%. */
+  #paginationContainer { align-items: center; }
+  #paginationContainer .pagination-empty { min-width: 0; overflow-wrap: anywhere; }
+  html.ios-compact #stickyFooterBar {
+    zoom: 1.1111111111;
+    --footer-local-clearance: 95px;
+  }
+</style>
+<style id="pixhero-draggable-pagination">
+  #paginationDragHandle {
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; height: 26px; margin: -3px 0 3px; padding: 0;
+    border: 0; border-radius: 12px; background: transparent;
+    color: #A8A8A8; cursor: grab; touch-action: none;
+    user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
+  }
+  #paginationDragHandle .drag-label {
+    font-size: 11px; font-weight: 400; line-height: 1.4; letter-spacing: .1px;
+  }
+  #paginationDragHandle:focus-visible { outline: 2px solid #60A5FA; outline-offset: -2px; }
+  #stickyFooterBar.is-dragging #paginationDragHandle { cursor: grabbing; color: #F3F3F3; }
+</style>
+<style id="pixhero-large-pagination-controls">
+  #stickyFooterBar { padding: 7px 9px 9px; }
+  #paginationDragHandle { height: 25px; margin: -3px 0 4px; }
+  #stickyFooterBarInner { gap: 6px; flex-wrap: wrap; align-items: center; }
+  #stickyFooterBarInner .sticky-refresh-btn {
+    min-height: 44px; height: 44px; min-width: 76px; padding: 0 8px;
+    font-size: 12px; gap: 5px; border-radius: 12px;
+  }
+  #stickyFooterBarInner .sticky-refresh-btn svg { width: 17px; height: 17px; }
+  #paginationContainer { flex: 1 1 280px; gap: 5px; align-items: center; }
+  #paginationContainer .pagination-info { font-size: 11px; }
+  #paginationContainer .pagination-controls { gap: 2px; max-width: 100%; }
+  #paginationContainer .pagination-button {
+    height: 44px; min-width: 40px; padding: 0 5px; font-size: 13px; gap: 3px;
+  }
+  #paginationContainer .pagination-button svg { width: 13px; height: 13px; }
+  #paginationContainer.pagination-single { flex: 1 1 0; }
+  @media (max-width: 420px) {
+    #paginationContainer:not(.pagination-single) { flex: 1 1 100%; }
+    #paginationContainer .pagination-controls { margin-left: auto; }
+  }
+  @media (max-width: 340px) {
+    #paginationContainer .pagination-controls { width: 100%; justify-content: space-between; }
+    #paginationContainer .pagination-button { min-width: 38px; padding: 0 4px; }
+  }
+</style>
+<style id="pixhero-one-line-pagination">
+  #stickyFooterBar { display: block; padding: 7px 9px 9px; }
+  #paginationDragHandle { width: 100%; height: 27px; margin: -3px 0 4px; padding: 0; }
+  #paginationDragHandle .drag-label { font-size: 11px; font-weight: 400; white-space: nowrap; }
+  #stickyFooterBarInner {
+    display: flex; flex-wrap: nowrap; align-items: center; gap: 6px;
+    justify-content: space-between; overflow-x: auto; scrollbar-width: none;
+  }
+  #stickyFooterBarInner::-webkit-scrollbar { display: none; }
+  #stickyFooterBarInner .sticky-refresh-btn {
+    flex: 0 0 auto; width: auto; min-width: 74px; height: 44px;
+    padding: 0 7px; font-size: 12px; gap: 4px;
+  }
+  #stickyFooterBarInner .sticky-refresh-btn svg { width: 15px; height: 15px; }
+  #paginationContainer, #paginationContainer:not(.pagination-single) {
+    display: flex; flex: 1 0 auto; flex-wrap: nowrap; align-items: center;
+    justify-content: space-between; gap: 5px; min-width: 0;
+  }
+  #paginationContainer .pagination-info {
+    flex: 0 0 auto; margin: 0; font-size: 11px; white-space: nowrap;
+  }
+  #paginationContainer .pagination-controls {
+    display: flex; flex: 0 0 auto; width: auto; max-width: none;
+    align-items: center; justify-content: flex-end; gap: 3px; margin-left: auto;
+  }
+  #paginationContainer .pagination-button {
+    flex: 0 0 auto; min-width: 32px; height: 44px; padding: 0 5px;
+    font-size: 12px; gap: 2px;
+  }
+  #paginationContainer .pagination-button:first-child,
+  #paginationContainer .pagination-button:last-child { min-width: 42px; }
+  #paginationContainer .pagination-button svg { width: 12px; height: 12px; }
+  #paginationContainer.pagination-single { flex: 1 1 0; }
+  #paginationContainer .pagination-empty {
+    flex: 1 1 auto; min-width: 0; margin: 0; max-width: none; text-align: center;
+  }
+  @media (max-width: 400px) {
+    #stickyFooterBar { left: 8px; right: 8px; padding: 7px; }
+    #stickyFooterBarInner { gap: 4px; }
+    #stickyFooterBarInner .sticky-refresh-btn { min-width: 66px; padding: 0 5px; font-size: 11px; gap: 3px; }
+    #stickyFooterBarInner .sticky-refresh-btn svg { width: 13px; height: 13px; }
+    #paginationContainer, #paginationContainer:not(.pagination-single) { gap: 3px; }
+    #paginationContainer .pagination-info { font-size: 10px; }
+    #paginationContainer .pagination-controls { gap: 2px; }
+    #paginationContainer .pagination-button { min-width: 29px; padding: 0 3px; font-size: 11px; }
+    #paginationContainer .pagination-button:first-child,
+    #paginationContainer .pagination-button:last-child { min-width: 36px; }
+  }
+  @media (max-width: 350px) {
+    #paginationContainer .pagination-button svg { display: none; }
+    #paginationContainer .pagination-button { min-width: 25px; }
+    #paginationContainer .pagination-button:first-child,
+    #paginationContainer .pagination-button:last-child { min-width: 32px; }
+    #stickyFooterBarInner .sticky-refresh-btn { min-width: 60px; }
+  }
+</style>
+<style id="pixhero-scroll-aware-pagination">
+  #stickyFooterBar {
+    opacity: 1; visibility: visible;
+    transition: opacity 180ms ease, visibility 0s linear;
+  }
+  #stickyFooterBar.is-scroll-hidden {
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity 180ms ease, visibility 0s linear 180ms;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #stickyFooterBar, #stickyFooterBar.is-scroll-hidden { transition: none; }
+  }
+</style>
+<style id="pixhero-calendar-footer-fit">
+  #paginationContainer.pagination-single .pagination-empty { white-space: normal; }
 </style>
 
 </head>
@@ -1354,6 +1498,9 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
 
 	<!-- Sticky bottom controls -->
 	<div id="stickyFooterBar">
+      <div id="paginationDragHandle" role="slider" tabindex="0" aria-label="Hold and move pagination bar up or down" aria-orientation="vertical" aria-valuemin="90" aria-valuemax="95" aria-valuenow="95" title="Hold and move up or down. Double-click or press Home to reset.">
+        <span class="drag-label" aria-hidden="true">↕ Hold and move up or down</span>
+      </div>
 	  <div id="stickyFooterBarInner">
 		
 		<div id="paginationContainer" class="flex justify-center items-center gap-2"></div>
@@ -3914,11 +4061,120 @@ updateFavoritesControl();
 (function () {
   const bar = document.getElementById('stickyFooterBar');
   if (!bar) return;
-  // offsetHeight is in layout CSS pixels, before the 90% iOS zoom.
-  const measure = () => document.documentElement.style.setProperty('--pagination-height', Math.ceil(bar.offsetHeight) + 'px');
+  const root = document.documentElement;
+  const handle = document.getElementById('paginationDragHandle');
+  const header = document.querySelector('.header');
+  const mobile = window.matchMedia('(max-width: 768px), (pointer: coarse)');
+  const ios = root.classList.contains('ios-compact');
+  const documentScale = ios ? 0.9 : 1;
+  const footerScale = 1;
+  const storageKey = 'pixhero.calendar.pagination.clearance.v3';
+  const minimumOffset = () => mobile.matches || ios ? 90 : 12;
+  const defaultOffset = () => mobile.matches || ios ? 95 : 12;
+  let preferred = defaultOffset();
+  try {
+    const saved = localStorage.getItem(storageKey);
+    if (saved !== null && Number.isFinite(Number(saved))) preferred = Number(saved);
+  } catch (_) { /* WebView storage may be disabled. */ }
+  let applied = defaultOffset();
+  let drag = null;
+  function bounds() {
+    const rect = bar.getBoundingClientRect();
+    const viewport = window.innerHeight;
+    const local = parseFloat(bar.style.getPropertyValue('--footer-local-clearance') || getComputedStyle(bar).getPropertyValue('--footer-local-clearance') || getComputedStyle(root).getPropertyValue('--native-nav-clearance')) || 0;
+    const safe = Math.max(0, viewport - rect.bottom - local * footerScale);
+    const headerBottom = header ? Math.max(0, header.getBoundingClientRect().bottom) : 0;
+    const min = minimumOffset(); // Keep clear of the native bottom navigation.
+    const max = Math.max(min, Math.floor(viewport - headerBottom - rect.height - safe - 16));
+    return { min, max };
+  }
+  function apply(value) {
+    const { min, max } = bounds();
+    applied = Math.round(Math.min(max, Math.max(min, value)));
+    root.style.setProperty('--native-nav-clearance', (applied / documentScale) + 'px');
+    bar.style.setProperty('--footer-local-clearance', (applied / footerScale) + 'px');
+    handle.setAttribute('aria-valuemin', min);
+    handle.setAttribute('aria-valuemax', max);
+    handle.setAttribute('aria-valuenow', applied);
+    handle.setAttribute('aria-valuetext', applied + ' pixels from bottom');
+    root.style.setProperty('--pagination-height', Math.ceil(bar.getBoundingClientRect().height / documentScale) + 'px');
+  }
+  function save() {
+    try { localStorage.setItem(storageKey, String(preferred)); } catch (_) {}
+  }
+  function reset() { preferred = defaultOffset(); apply(preferred); save(); }
+  handle.addEventListener('pointerdown', event => {
+    if (!event.isPrimary || event.button !== 0 || drag) return;
+    event.preventDefault();
+    drag = { id: event.pointerId, y: event.clientY, start: applied };
+    handle.setPointerCapture(event.pointerId);
+    bar.classList.add('is-dragging');
+  });
+  handle.addEventListener('pointermove', event => {
+    if (!drag || event.pointerId !== drag.id) return;
+    apply(drag.start + drag.y - event.clientY);
+  });
+  function endDrag(event) {
+    if (!drag || event.pointerId !== drag.id) return;
+    drag = null;
+    bar.classList.remove('is-dragging');
+    preferred = applied;
+    save();
+  }
+  handle.addEventListener('pointerup', endDrag);
+  handle.addEventListener('pointercancel', endDrag);
+  handle.addEventListener('lostpointercapture', endDrag);
+  handle.addEventListener('dblclick', reset);
+  handle.addEventListener('keydown', event => {
+    if (event.key === 'Home') { event.preventDefault(); reset(); return; }
+    if (event.key !== 'ArrowUp' && event.key !== 'ArrowDown' && event.key !== 'End') return;
+    event.preventDefault();
+    apply(event.key === 'End' ? bounds().max : applied + (event.key === 'ArrowUp' ? 10 : -10));
+    preferred = applied; save();
+  });
+  const measure = () => apply(drag ? applied : preferred);
   measure();
-  if ('ResizeObserver' in window) new ResizeObserver(measure).observe(bar);
+  if ('ResizeObserver' in window) {
+    const observer = new ResizeObserver(measure);
+    observer.observe(bar);
+    if (header) observer.observe(header);
+  }
   window.addEventListener('resize', measure);
+
+  // Use document scroll direction (not finger direction). Ignore elastic
+  // overscroll and tiny movements, and never hide while the bar is dragged.
+  function scrollPosition() {
+    const scrolling = document.scrollingElement || root;
+    const max = Math.max(0, scrolling.scrollHeight - scrolling.clientHeight);
+    return Math.min(max, Math.max(0, window.scrollY || scrolling.scrollTop || 0));
+  }
+  let lastScroll = scrollPosition();
+  let scrollFrame = 0;
+  let accumulated = 0;
+  const scrollThreshold = 10;
+  function updateVisibility() {
+    scrollFrame = 0;
+    const current = scrollPosition();
+    const delta = current - lastScroll;
+    lastScroll = current;
+    if (drag) {
+      accumulated = 0;
+      bar.classList.remove('is-scroll-hidden');
+      return;
+    }
+    if (!delta) return;
+    if (Math.sign(delta) !== Math.sign(accumulated)) accumulated = 0;
+    accumulated += delta;
+    if (Math.abs(accumulated) < scrollThreshold) return;
+    // Up toward older scroll positions: hide. Down the page: show.
+    bar.classList.toggle('is-scroll-hidden', accumulated < 0);
+    accumulated = 0;
+  }
+  window.addEventListener('scroll', () => {
+    if (!scrollFrame) scrollFrame = requestAnimationFrame(updateVisibility);
+  }, { passive: true });
+  window.addEventListener('resize', () => { lastScroll = scrollPosition(); accumulated = 0; });
+  bar.addEventListener('focusin', () => bar.classList.remove('is-scroll-hidden'));
 })();
 </script>
 
