@@ -2,6 +2,17 @@
 <html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Initialize the iOS viewport before external scripts or the first paint. -->
+    <script data-cfasync="false">
+      (function () {
+        var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+          (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        if (!isIOS) return;
+        document.documentElement.classList.add('ios-compact');
+        document.querySelector('meta[name="viewport"]').setAttribute('content',
+          'width=device-width, initial-scale=1.0, maximum-scale=1.0');
+      })();
+    </script>
     <title>Philippines Race Calendar</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&amp;display=swap" rel="stylesheet">
@@ -1016,18 +1027,12 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
-  /* Keep the search field at an effective 16px to reduce iOS focus zoom. */
+  /* 20px at 90% page zoom gives an effective 18px input on iOS. */
   html.ios-compact #searchInput {
-    font-size: 18px;
+    font-size: 20px;
   }
 </style>
-<script>
-  (function () {
-    var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) ||
-      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-    if (isIOS) document.documentElement.classList.add('ios-compact');
-  })();
-</script>
+
 
 <!-- Sticky header: title, search and favorite controls stay visible. -->
 <style id="pixhero-sticky-header">
@@ -1058,11 +1063,12 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   /* Never change the input font size on focus. iOS may auto-zoom if the
      effective font size is below 16px at the moment the field is tapped. */
   #searchInput { font-size: 16px; }
-  html.ios-compact #searchInput { font-size: 18px; }
+  html.ios-compact #searchInput { font-size: 20px !important; }
   #searchInput::placeholder {
     font-size: 14px;
     line-height: normal;
   }
+  html.ios-compact #searchInput::placeholder { font-size: 18px; }
 </style>
 
 <style id="pixhero-stacked-floating-footer">
@@ -1076,7 +1082,7 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
     :root { --native-nav-clearance: 10px; --native-nav-content-reserve: 90px; }
   }
   /* Document padding is expressed in Calendar's 90%-zoom layout units. */
-  html.ios-compact { --native-nav-clearance: 11.111111px; --native-nav-content-reserve: 100px; }
+  html.ios-compact { --native-nav-clearance: 22.222222px; --native-nav-content-reserve: 100px; }
   body.pb-20 {
     padding-bottom: calc(max(var(--native-nav-clearance), var(--native-nav-content-reserve, 12px)) + var(--pagination-height) + env(safe-area-inset-bottom, 0px) + 18px);
   }
@@ -1214,7 +1220,7 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   #paginationContainer .pagination-empty { min-width: 0; overflow-wrap: anywhere; }
   html.ios-compact #stickyFooterBar {
     zoom: 1;
-    --footer-local-clearance: 11.111111px;
+    --footer-local-clearance: 22.222222px;
   }
 </style>
 <style id="pixhero-draggable-pagination">
@@ -1658,7 +1664,13 @@ console.log(
 		  toggleClearBtn();
 		});
 
+        function resetPaginationForSearch() {
+          document.dispatchEvent(new Event('pixhero:search-submit'));
+        }
+
 		clearSearchBtn.addEventListener('click', () => {
+          resetPaginationForSearch();
+          state.pagination.page = 1;
 		  searchInput.value = '';
 		  state.searchTerm = '';
 		  searchSuggestions.classList.add('hidden');
@@ -2029,6 +2041,7 @@ console.log(
             });
             
 			function clearSearchOnFilterChange() {
+              resetPaginationForSearch();
 			  state.searchTerm = '';
 			  searchInput.value = '';
 			  searchSuggestions.classList.add('hidden');
@@ -2690,6 +2703,10 @@ console.log(
 
       item.addEventListener('click', () => {
         const picked = String(suggestion);
+        searchInput.blur();
+        resetPaginationForSearch();
+        state.pagination.page = 1;
+        clearSearchError();
 
         if (LOCATION_SUGGESTIONS.includes(picked)) {
 		  resetFiltersOnly();
@@ -2705,6 +2722,7 @@ console.log(
 		  state.pagination.page = 1;
 
 		  searchInput.value = picked;
+          toggleClearBtn();
 		  state.searchTerm = '';
 		  searchSuggestions.classList.add('hidden');
 
@@ -2716,6 +2734,7 @@ console.log(
 
         resetFiltersOnly();
         searchInput.value = picked;
+        toggleClearBtn();
         state.searchTerm = picked;
         searchSuggestions.classList.add('hidden');
 
@@ -3884,7 +3903,9 @@ function updateFavoritesControl() {
 
 favoriteOptions.forEach(button => {
     button.addEventListener('click', () => {
-        favoritesOnly = button.dataset.favorites === 'yes';
+        const nextFavoritesOnly = button.dataset.favorites === 'yes';
+        if (nextFavoritesOnly !== favoritesOnly) resetPaginationForSearch();
+        favoritesOnly = nextFavoritesOnly;
 
         updateFavoritesControl();
 
@@ -3975,7 +3996,7 @@ updateFavoritesControl();
           // A valid search resets the draggable footer, including its saved position.
           // Blur first to dismiss the keyboard; the footer recalculates on resize.
           searchInput.blur();
-          document.dispatchEvent(new Event('pixhero:search-submit'));
+          resetPaginationForSearch();
 
 		  // ✅ clear error if valid
 		  searchBar.classList.remove('error');
@@ -4087,9 +4108,9 @@ updateFavoritesControl();
   const ios = root.classList.contains('ios-compact');
   const documentScale = ios ? 0.9 : 1;
   const footerScale = documentScale;
-  const storageKey = 'pixhero.calendar.pagination.clearance.v5';
-  const minimumOffset = () => mobile.matches || ios ? 10 : 12;
-  const defaultOffset = () => mobile.matches || ios ? 10 : 12;
+  const storageKey = ios ? 'pixhero.calendar.pagination.clearance.v6' : 'pixhero.calendar.pagination.clearance.v5';
+  const minimumOffset = () => ios ? 20 : (mobile.matches ? 10 : 12);
+  const defaultOffset = () => ios ? 20 : (mobile.matches ? 10 : 12);
   let preferred = defaultOffset();
   try {
     const saved = localStorage.getItem(storageKey);
