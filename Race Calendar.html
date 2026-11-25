@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" class="ios-compact"><head>
+<html lang="en"><head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- iOS-only diagnostic build: literal 90% layout sizes, no device detection. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Detect iOS before external scripts or the first paint. -->
     <script data-cfasync="false">
-      document.documentElement.classList.add('ios-compact');
-      document.documentElement.dataset.pixheroLayout = '90.5-test';
+      (function () {
+        var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+          (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        if (!isIOS) return;
+        document.documentElement.classList.add('ios-compact');
+      })();
     </script>
-    <style id="pixhero-fixed-ios-content-scale">
-      html:root { --pixhero-unit: 0.9px !important; font-size: 14.4px !important;
-        -webkit-text-size-adjust: 100% !important; text-size-adjust: 100% !important; }
-    </style>
     <title>Philippines Race Calendar</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&amp;display=swap" rel="stylesheet">
@@ -33,7 +33,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
+            font-family: 'Poppins', sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -45,12 +45,12 @@
         }
 
         .poppins-black {
-            font-family: "Poppins", sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-weight: 900;
         }
 
         .poppins-regular {
-            font-family: "Poppins", sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-weight: 400;
         }
 
@@ -58,15 +58,15 @@
             background: linear-gradient(135deg, #0066cc, #5856d6);
             color: white;
             padding: 1.5rem 1rem;
-            border-radius: 0 0 18px 18px;
-            box-shadow: 0 3.6px 10.8px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .toggle-button {
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 18px;
+            border-radius: 20px;
             padding: 0.5rem 1rem;
             font-size: 0.85rem;
             transition: all 0.3s ease;
@@ -87,10 +87,10 @@
 
         .search-bar {
 			position: relative;
-			height: 45px;
+			height: 50px;
             background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 10.8px;
-            box-shadow: 0 1.8px 7.2px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .search-bar input {
@@ -103,18 +103,18 @@
             left: 0;
             right: 0;
             background-color: white;
-            border-radius: 0 0 10.8px 10.8px;
-            box-shadow: 0 3.6px 10.8px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             z-index: 10;
-            max-height: 180px;
+            max-height: 200px;
             overflow-y: auto;
         }
 
         .suggestion-item {
-			font-size: 14.4px; /* prevent iOS zoom */
+			font-size: 16px; /* prevent iOS zoom */
 			line-height: 1.2;
             padding: 0.75rem 1rem;
-            border-bottom: 0.9px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
             cursor: pointer;
             color: black;
         }
@@ -133,9 +133,9 @@
             justify-content: space-between;
             align-items: center;
             padding: 0.5rem 0;
-			padding-top: 1.8px;
-			padding-bottom: 1.8px;
-			margin-bottom: 7.2px; 
+			padding-top: 2px;
+			padding-bottom: 2px;
+			margin-bottom: 8px; 
             cursor: pointer;
         }
 		
@@ -159,9 +159,9 @@
 
         .filter-chip {
             background-color: var(--background);
-            border-radius: 14.4px;
+            border-radius: 16px;
             padding: 0.25rem 0.6rem;
-            font-size: 9.9px;
+            font-size: 11px;
             margin-right: 0.35rem;
             margin-bottom: 0.35rem;
             transition: all 0.2s ease;
@@ -176,11 +176,11 @@
 
         .race-card {
             background-color: var(--card-bg);
-            border-radius: 14.4px;
+            border-radius: 16px;
             padding: 1rem;
             margin-bottom: 1rem;
-            box-shadow: 0 1.8px 7.2px rgba(0, 0, 0, 0.05);
-            border: 0.9px solid var(--card-border);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--card-border);
             color: white; /* Added for better contrast on dark green */
 			
 			  /* keep it calm by default */
@@ -193,7 +193,7 @@
 					}
 
         .race-name {
-            font-size: 15.3px;
+            font-size: 17px;
             font-weight: 900;
             color: white; /* Changed for better contrast on dark green */
             overflow: hidden;
@@ -211,29 +211,29 @@
 		}
 		
 		.race-card:hover {
-		  transform: translateY(-2.7px);
-		  box-shadow: 0 5.4px 12.6px rgba(0, 0, 0, 0.08);
+		  transform: translateY(-3px);
+		  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
 		}
 		
 		.race-card:active {
-		transform: translateY(-0.9px);
-		box-shadow: 0 2.7px 7.2px rgba(0, 0, 0, 0.12);
+		transform: translateY(-1px);
+		box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
 		}
 		
 		
         .race-detail {
-            font-size: 9.9px;
+            font-size: 11px;
             color: rgba(255, 255, 255, 0.85); /* Changed for better contrast on dark green */
             display: flex;
             align-items: center;
             margin-top: 0.35rem;
-            letter-spacing: -0.18px;
+            letter-spacing: -0.2px;
         }
 
         .category-chip {
             padding: 0.25rem 0.5rem;
-            border-radius: 10.8px;
-            font-size: 7.92px;
+            border-radius: 12px;
+            font-size: 8.8px;
             margin-right: 0.35rem;
             margin-bottom: 0.35rem;
             color: white;
@@ -241,22 +241,22 @@
         }
 		
 		.photographers-title {
-        font-size: 11.7px;
+        font-size: 13px;
         font-weight: 900;
         color: white;
         text-transform: uppercase;
 		}
 		
 		.photographers-instruct {
-        font-size: 9px;
+        font-size: 10px;
 		font-style: italic;
         color: rgba(255, 255, 255, 0.85); /* Changed for better contrast on dark green */
 		}
 
         .register-button {
-            border-radius: 10.8px;
+            border-radius: 12px;
             padding: 0.25rem 0.5rem;
-            font-size: 11.7px; 
+            font-size: 13px; 
             transition: all 0.2s ease;
             white-space: nowrap;
             font-weight: 900; /* Added bold */
@@ -279,10 +279,10 @@
 		}
 
 		.btn-sub-text {
-			font-size: 9px;
+			font-size: 10px;
 			font-style: italic;
 			font-weight: normal;
-			margin-top: 1.8px;
+			margin-top: 2px;
 			line-height: 1;
 		}
 		
@@ -302,13 +302,13 @@
             color: white;
             font-weight: 900; /* Added bold */
             text-transform: uppercase; /* Added all caps */
-            font-size: 11.7px; 
+            font-size: 13px; 
         }
 
         .photographer-button {
-            border-radius: 7.2px;
+            border-radius: 8px;
             padding: 0.35rem 0.8rem;
-            font-size: 11.7px;
+            font-size: 13px;
 			font-weight: 900;
             margin-right: 0.37rem;
             margin-bottom: 0.35rem;
@@ -317,17 +317,17 @@
 		.register-button {
 		  background-color: #EAF5EF;
 		  color: #14532D;
-		border: 0.9px solid #E5C76B;
-		  border-radius: 8999.1px;
+		border: 1px solid #E5C76B;
+		  border-radius: 9999px;
 
-		  min-width: 112.5px;        /* ✅ fixed width */
-		  height: 36px;        /* ✅ fixed height */
+		  min-width: 125px;        /* ✅ fixed width */
+		  height: 40px;        /* ✅ fixed height */
 
 		
 		  align-items: center;
 		  justify-content: center;
 
-		  font-size: 11.7px;
+		  font-size: 13px;
 		  font-weight: 700;
 		  cursor: pointer;
 		  		/* ✨ smooth animation */
@@ -339,8 +339,8 @@
 		.register-button:hover {
 		  background-color: #FFE8A3;
 		  color: #14532D;                 /* ✅ dark green on hover */
-		  transform: translateY(-4.5px); /* 👈 subtle lift */
-			box-shadow: 0 3.6px 9px rgba(20, 83, 45, 0.25);
+		  transform: translateY(-5px); /* 👈 subtle lift */
+			box-shadow: 0 4px 10px rgba(20, 83, 45, 0.25);
 		}
 		
 		.register-button:disabled {
@@ -365,7 +365,7 @@
 		/* Active */
 		.register-button:active {
 		  transform: translateY(0);
-		  		  box-shadow: 0 1.8px 5.4px rgba(20, 83, 45, 0.25);
+		  		  box-shadow: 0 2px 6px rgba(20, 83, 45, 0.25);
 		  background-color: #FFD966;
 		}
 
@@ -402,36 +402,36 @@
         .categories-section {
             background-color: var(--light-green);
             padding: 0.75rem;
-            border-radius: 10.8px;
+            border-radius: 12px;
             margin-top: 0.75rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 		#paginationContainer {
-		font-size: 10.8px;
+		font-size: 12px;
 		color: #0a5f38;
-		margin-top: 10.8px;     /* space above pagination */
-		margin-bottom: 3.6px;   /* tight gap to first race */
+		margin-top: 12px;     /* space above pagination */
+		margin-bottom: 4px;   /* tight gap to first race */
 		padding: 0;
 	}
 
 	#paginationContainer .pagination-info {
-		font-size: 10.8px;
+		font-size: 12px;
 		color: #0a5f38;
 	}
 
 	#paginationContainer .pagination-button {
-		font-size: 10.8px;
-		padding: 7.2px 10.8px;
-		min-width: 36px;
-		height: 36px;
+		font-size: 12px;
+		padding: 8px 12px;
+		min-width: 40px;
+		height: 40px;
 
 		color: #0a5f38;
-		border: 0.9px solid #0a5f38;
+		border: 1px solid #0a5f38;
 		background-color: transparent;
 
-		border-radius: 5.4px;
+		border-radius: 6px;
 		cursor: pointer;
 	}
 
@@ -457,17 +457,17 @@
 	  right: 0;
 	  bottom: 0;
 	  background: #fff;
-	  border-top: 0.9px solid rgba(10, 95, 56, 0.25);
+	  border-top: 1px solid rgba(10, 95, 56, 0.25);
 	  z-index: 999;
-	  padding: 9px 10.8px;
-	  padding-bottom: 16.2px; 
+	  padding: 10px 12px;
+	  padding-bottom: 18px; 
 	}
 
 	#stickyFooterBarInner {
 	  display: flex;
 	  align-items: center;
 	  justify-content: flex-start; /* LEFT align everything */
-	  gap: 16.2px;                   /* standard spacing */
+	  gap: 18px;                   /* standard spacing */
 	}
 		
 	#stickyFooterBarInner .sticky-refresh-btn{
@@ -475,15 +475,15 @@
 	  align-items: center;
 	  justify-content: center;
 
-	  font-size: 10.8px;
-	  padding: 7.2px 10.8px;
-	  min-width: 36px;
-	  height: 36px;
+	  font-size: 12px;
+	  padding: 8px 12px;
+	  min-width: 40px;
+	  height: 40px;
 
 	  color: #0a5f38;
-	  border: 0.9px solid #0a5f38;
+	  border: 1px solid #0a5f38;
 	  background-color: transparent;
-	  border-radius: 5.4px;
+	  border-radius: 6px;
 	  cursor: pointer;
 	}
 
@@ -496,7 +496,7 @@
 	  display: flex;
 	  justify-content: flex-start;  /* LEFT */
 	  align-items: center;
-	  gap: 7.2px;
+	  gap: 8px;
 
 	  flex: 0 0 auto;               /* don't stretch / don't center */
 	  margin: 0 !important;
@@ -505,19 +505,19 @@
 
 	/* so last card isn't hidden behind the sticky bar */
 	body {
-	  padding-bottom: 81px;
+	  padding-bottom: 90px;
 	}
 	
 	.go-top-btn {
 		display: block;
-		margin: 14.4px auto 5.4px; /* smaller bottom gap */
-		padding: 9px 12.6px;
-		font-size: 12.6px;
+		margin: 16px auto 6px; /* smaller bottom gap */
+		padding: 10px 14px;
+		font-size: 14px;
 
 		color: #0a5f38;
 		background-color: transparent;
-		border: 0.9px solid #0a5f38;
-		border-radius: 5.4px;
+		border: 1px solid #0a5f38;
+		border-radius: 6px;
 		cursor: pointer;
 	}
 
@@ -528,7 +528,7 @@
             background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
             background-size: 200% 100%;
             animation: loading 1.5s infinite;
-            border-radius: 7.2px;
+            border-radius: 8px;
         }
 
         @keyframes loading {
@@ -553,10 +553,10 @@
         .pagination-button {
             background-color: rgba(255,255,255,0.12);
             color: white;
-            border: 0.9px solid rgba(255,255,255,0.25);
-            border-radius: 9px;
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 10px;
             padding: 0.35rem 0.6rem;
-            font-size: 9.9px;
+            font-size: 11px;
             font-weight: 900;
             text-transform: uppercase;
         }
@@ -569,7 +569,7 @@
             pointer-events: none;
         }
         .pagination-info {
-            font-size: 9.9px;
+            font-size: 11px;
             color: rgba(255,255,255,0.85);
             font-weight: 900;
         }
@@ -577,26 +577,26 @@
 		.sticky-refresh-btn{
 		  display:flex;
 		  align-items:center;
-		  gap:5.4px;
+		  gap:6px;
 		}
 		
 		#paginationContainer .pagination-empty{
 		  color: #0a5f38;
-		  font-size: 12.6px;
+		  font-size: 14px;
 		  font-weight: 900; /* extra safe even if poppins-black already does it */
 		}
 		
 		.search-wrap { position: relative; }
 		.clear-search-btn{
 		  position:absolute;
-		  right:9px;
+		  right:10px;
 		  top:50%;
 		  transform:translateY(-50%);
 		  border:none;
 		  background:transparent;
-		  width: 32.4px;          /* bigger hit area */
-		  height: 32.4px;
-		  font-size: 27px;
+		  width: 36px;          /* bigger hit area */
+		  height: 36px;
+		  font-size: 30px;
 		  cursor:pointer;
 		  color:#0a5f38;
 		  line-height:1;
@@ -605,22 +605,22 @@
 		
 		.clear-search-btn.hidden{ display:none; }
 		#searchInput{
-			padding-right:28.8px; 
-			 font-size: 14.4px;
+			padding-right:32px; 
+			 font-size: 16px;
 			  line-height: 1.2;
-			  padding: 5.4px 4.5px;
+			  padding: 6px 5px;
 		}
 		
 		.search-bar.error {
-		  border: 0.9px solid #dc2626;
+		  border: 1px solid #dc2626;
 		}
 
 		.search-error-overlay {
 		  position: absolute;
-		  right: 34.2px;              /* before clear (×) button */
+		  right: 38px;              /* before clear (×) button */
 		  top: 50%;
 		  transform: translateY(-50%);
-		  font-size: 9.9px;
+		  font-size: 11px;
 		  color: #dc2626;
 		  pointer-events: none;
 		  white-space: nowrap;
@@ -639,8 +639,8 @@
 		  top: 50%;
 		  transform: translateY(-50%);
 		  
-		  margin-left: 10.8px;        /* ✅ space from typed text */
-		  font-size: 9.9px;
+		  margin-left: 12px;        /* ✅ space from typed text */
+		  font-size: 11px;
 		  font-style: italic;       /* ✅ italic */
 		  line-height: 1;
 		  color: #dc2626;
@@ -651,9 +651,9 @@
 		
 		@keyframes shake {
 		  0% { transform: translateX(0); }
-		  25% { transform: translateX(-2.7px); }
-		  50% { transform: translateX(2.7px); }
-		  75% { transform: translateX(-2.7px); }
+		  25% { transform: translateX(-3px); }
+		  50% { transform: translateX(3px); }
+		  75% { transform: translateX(-3px); }
 		  100% { transform: translateX(0); }
 		}
 
@@ -664,9 +664,9 @@
 		/* PixHero text (shows when pagination is hidden) */
 		/* Base PixHero text */
 			.pixhero-fallback {
-			  font-family: "Poppins", sans-serif;
+			  font-family: 'Poppins', sans-serif;
 			  font-weight: 900;
-			  font-size: 12.6px;
+			  font-size: 14px;
 			  color: #0a5f38;
 			}
 
@@ -678,13 +678,13 @@
 
 			.pixhero-slide-up {
 			  opacity: 0;
-			  transform: translateY(7.2px);
+			  transform: translateY(8px);
 			  animation: slideUp 2500ms ease-out forwards;
 			}
 
 			.pixhero-slide-left {
 			  opacity: 0;
-			  transform: translateX(7.2px);
+			  transform: translateX(8px);
 			  animation: slideLeft 2500ms ease-out forwards;
 			}
 
@@ -721,7 +721,7 @@
 			/* Extra animation variants */
 			.pixhero-slide-right {
 			  opacity: 0;
-			  transform: translateX(-7.2px);
+			  transform: translateX(-8px);
 			  animation: slideRight 500ms ease-out forwards;
 			}
 
@@ -739,13 +739,13 @@
 
 			.pixhero-float {
 			  opacity: 0;
-			  transform: translateY(10.8px);
+			  transform: translateY(12px);
 			  animation: floatUp 600ms ease-out forwards;
 			}
 
 			.pixhero-blur-in {
 			  opacity: 0;
-			  filter: blur(5.4px);
+			  filter: blur(6px);
 			  animation: blurIn 550ms ease-out forwards;
 			}
 
@@ -775,20 +775,20 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 6.3px;
-    margin-top: 7.2px;
+    gap: 7px;
+    margin-top: 8px;
     flex-wrap: wrap;
 }
 
 .favorites-label-star {
     color: #ff3b30;
-    font-size: 20.7px;
+    font-size: 23px;
     line-height: 1;
 }
 
 .favorites-control-text {
     color: white;
-    font-size: 10.8px;
+    font-size: 12px;
     font-weight: 700;
     white-space: nowrap;
 }
@@ -796,21 +796,21 @@
 .favorites-segment {
     display: inline-flex;
     flex-shrink: 0;
-    gap: 1.8px;
-    padding: 2.7px;
-    margin-left: 1.8px;
+    gap: 2px;
+    padding: 3px;
+    margin-left: 2px;
     background: rgba(255,255,255,0.20);
-    border-radius: 8.1px;
+    border-radius: 9px;
 }
 
 .favorites-option {
-    min-width: 37.8px;
-    padding: 5.4px 9px;
+    min-width: 42px;
+    padding: 6px 10px;
     background: transparent;
     border: none;
-    border-radius: 6.3px;
+    border-radius: 7px;
     color: white;
-    font-size: 10.8px;
+    font-size: 12px;
     font-weight: 700;
     cursor: pointer;
 }
@@ -818,7 +818,7 @@
 .favorites-option.active {
     background: white;
     color: #0066cc;
-    box-shadow: 0 1.8px 4.5px rgba(0,0,0,0.12);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.12);
 }
 
 /* RACE NAME WITH STAR */
@@ -826,7 +826,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 2.7px;
+    gap: 3px;
 }
 
 .race-title-row .race-name {
@@ -839,8 +839,8 @@
     align-items: center;
     justify-content: flex-start;
     flex-shrink: 0;
-    width: 18px;
-    height: 32.4px;
+    width: 20px;
+    height: 36px;
     padding: 0;
     border: none;
     background: transparent;
@@ -848,8 +848,8 @@
 }
 
 .favorite-star svg {
-    width: 16.2px;
-    height: 16.2px;
+    width: 18px;
+    height: 18px;
     fill: none;
     stroke: #ffffff;
     stroke-width: 1.8;
@@ -864,7 +864,7 @@
 
         </style>
         
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb;}::after,::before{--tw-content:"";}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}body{margin:0;line-height:inherit;}hr{height:0;color:inherit;border-top-width:0.9px;}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted;}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;}a{color:inherit;text-decoration:inherit;}b,strong{font-weight:bolder;}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em;}small{font-size:80%;}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}sub{bottom:-.25em;}sup{top:-.5em;}table{text-indent:0;border-color:inherit;border-collapse:collapse;}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0;}button,select{text-transform:none;}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none;}:-moz-focusring{outline:auto;}:-moz-ui-invalid{box-shadow:none;}progress{vertical-align:baseline;}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto;}[type=search]{-webkit-appearance:textfield;outline-offset:-1.8px;}::-webkit-search-decoration{-webkit-appearance:none;}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit;}summary{display:list-item;}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0;}fieldset{margin:0;padding:0;}legend{padding:0;}menu,ol,ul{list-style:none;margin:0;padding:0;}dialog{padding:0;}textarea{resize:vertical;}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af;}[role=button],button{cursor:pointer;}:disabled{cursor:default;}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle;}img,video{max-width:100%;height:auto;}[hidden]:where(:not([hidden=until-found])){display:none;}.relative{position:relative;}.mb-1{margin-bottom:0.25rem;}.mb-2{margin-bottom:0.5rem;}.mb-3{margin-bottom:0.75rem;}.mb-4{margin-bottom:1rem;}.ml-1{margin-left:0.25rem;}.mr-1{margin-right:0.25rem;}.mr-2{margin-right:0.5rem;}.mt-2{margin-top:0.5rem;}.mt-1{margin-top:0.25rem;}.flex{display:flex;}.hidden{display:none;}.h-24{height:6rem;}.h-4{height:1rem;}.h-5{height:1.25rem;}.h-3{height:0.75rem;}.w-16{width:4rem;}.w-20{width:5rem;}.w-24{width:6rem;}.w-4{width:1rem;}.w-5{width:1.25rem;}.w-full{width:100%;}.w-3{width:0.75rem;}.flex-1{flex:1 1 0%;}.rotate-180{--tw-rotate:180deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));}.flex-wrap{flex-wrap:wrap;}.items-center{align-items:center;}.justify-center{justify-content:center;}.justify-between{justify-content:space-between;}.rounded-full{border-radius:8999.1px;}.bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246 / var(--tw-bg-opacity, 1));}.bg-transparent{background-color:transparent;}.p-2{padding:0.5rem;}.px-3{padding-left:0.75rem;padding-right:0.75rem;}.px-4{padding-left:1rem;padding-right:1rem;}.py-1{padding-top:0.25rem;padding-bottom:0.25rem;}.py-2{padding-top:0.5rem;padding-bottom:0.5rem;}.pb-20{padding-bottom:5rem;}.pt-1{padding-top:0.25rem;}.text-sm{font-size:0.875rem;line-height:1.25rem;}.text-xl{font-size:1.25rem;line-height:1.75rem;}.text-xs{font-size:0.75rem;line-height:1rem;}.font-bold{font-weight:700;}.text-black{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1));}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1));}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1));}.outline-none{outline:1.8px solid transparent;outline-offset:1.8px;}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms;}</style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.relative{position:relative}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.ml-1{margin-left:0.25rem}.mr-1{margin-right:0.25rem}.mr-2{margin-right:0.5rem}.mt-2{margin-top:0.5rem}.mt-1{margin-top:0.25rem}.flex{display:flex}.hidden{display:none}.h-24{height:6rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-3{height:0.75rem}.w-16{width:4rem}.w-20{width:5rem}.w-24{width:6rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-full{width:100%}.w-3{width:0.75rem}.flex-1{flex:1 1 0%}.rotate-180{--tw-rotate:180deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.rounded-full{border-radius:9999px}.bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246 / var(--tw-bg-opacity, 1))}.bg-transparent{background-color:transparent}.p-2{padding:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.pb-20{padding-bottom:5rem}.pt-1{padding-top:0.25rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.text-black{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.outline-none{outline:2px solid transparent;outline-offset:2px}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}</style>
 <style id="pixhero-threads-dark">
 /* PixHero — Threads-inspired dark theme
    Add after the existing styles. Race distance and registration status
@@ -887,21 +887,21 @@
 }
 html, body { background: var(--background); color: var(--text-primary); }
 *, .poppins-black, .poppins-regular, .pixhero-fallback {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .header {
   background: var(--background);
   color: var(--text-primary);
   border-radius: 0;
-  border-bottom: 0.9px solid var(--card-border);
+  border-bottom: 1px solid var(--card-border);
   box-shadow: none;
 }
 
 .search-bar {
   background: var(--secondary-color);
-  border: 0.9px solid var(--card-border);
-  border-radius: 12.6px;
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
   box-shadow: none;
 }
 .search-bar:focus-within { border-color: #707070; }
@@ -909,7 +909,7 @@ html, body { background: var(--background); color: var(--text-primary); }
 .search-bar input, #searchInput { color: var(--text-primary); caret-color: var(--text-primary); }
 #searchInput::placeholder {
   color: var(--text-secondary);
-  font-size: 12.6px;
+  font-size: 14px;
   font-weight: 400;
   opacity: 1;
 }
@@ -917,15 +917,15 @@ html, body { background: var(--background); color: var(--text-primary); }
 .clear-search-btn { color: var(--text-secondary); }
 .search-suggestions {
   background: var(--secondary-color);
-  border: 0.9px solid var(--card-border);
-  box-shadow: 0 5.4px 14.4px #0005;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 6px 16px #0005;
 }
 .suggestion-item { color: var(--text-primary); border-bottom-color: var(--card-border); }
 .suggestion-item:last-child { border-bottom: 0; }
 .suggestion-item:hover { background: var(--surface-hover); }
 .search-inline-error, .search-error-overlay { color: #F87171; }
 .favorites-control-text { color: var(--text-primary);  }
-.favorites-segment { background: var(--secondary-color); border: 0.9px solid var(--card-border); }
+.favorites-segment { background: var(--secondary-color); border: 1px solid var(--card-border); }
 .favorites-option { color: var(--text-secondary);  }
 .favorites-option.active { background: var(--accent-color); color: var(--on-accent); box-shadow: none; }
 .favorite-star svg { stroke: var(--text-secondary); }
@@ -936,23 +936,23 @@ html, body { background: var(--background); color: var(--text-primary); }
 .filter-chip.active, .filter-chip.active:hover { background: var(--accent-color); color: var(--on-accent);  }
 #toggleFiltersButton, .toggle-button.refresh, .toggle-button.calendar, .toggle-button.photos {
   background: var(--secondary-color);
-  border: 0.9px solid var(--control-border);
+  border: 1px solid var(--control-border);
   color: var(--text-primary);
   box-shadow: none;
 }
 #toggleFiltersButton:hover, .toggle-button:hover { background: var(--surface-hover); }
 .race-card {
   background: var(--card-bg);
-  border: 0.9px solid var(--card-border);
+  border: 1px solid var(--card-border);
   color: var(--text-primary);
-  border-radius: 12.6px;
+  border-radius: 14px;
   box-shadow: none;
   will-change: auto;
 }
 .race-card:hover, .race-card:active { transform: none; box-shadow: none; }
 .race-name { color: var(--text-primary);   }
 .race-detail { color: var(--text-secondary); }
-.categories-section { background: var(--light-green); border-radius: 9px; gap: 5.4px; }
+.categories-section { background: var(--light-green); border-radius: 10px; gap: 6px; }
 
 /* Distance badges use their exact-category CSS variables. */
 .register-button {
@@ -983,12 +983,12 @@ html, body { background: var(--background); color: var(--text-primary); }
 .photographer-button {
   background: transparent;
   color: var(--text-primary);
-  border: 0.9px solid var(--control-border);
-  border-radius: 899.1px;
+  border: 1px solid var(--control-border);
+  border-radius: 999px;
   
 }
 .photographer-button:hover { background: var(--surface-hover); }
-#stickyFooterBar { background: var(--background); border-top: 0.9px solid var(--card-border); }
+#stickyFooterBar { background: var(--background); border-top: 1px solid var(--card-border); }
 #paginationContainer, #paginationContainer .pagination-info,
 #paginationContainer .pagination-empty, .pixhero-fallback {
   color: var(--text-secondary); 
@@ -996,9 +996,9 @@ html, body { background: var(--background); color: var(--text-primary); }
 #paginationContainer .pagination-button, #stickyFooterBarInner .sticky-refresh-btn, .go-top-btn,
 .pagination-button {
   color: var(--text-primary);
-  border: 0.9px solid var(--control-border);
+  border: 1px solid var(--control-border);
   background: transparent;
-  border-radius: 7.2px;
+  border-radius: 8px;
   
 }
 #paginationContainer .pagination-button:hover:not(.active):not(:disabled),
@@ -1012,7 +1012,7 @@ html, body { background: var(--background); color: var(--text-primary); }
   background: linear-gradient(90deg, #1C1C1C 25%, #303030 50%, #1C1C1C 75%);
   background-size: 200% 100%;
 }
-button:focus-visible, .filter-chip:focus-visible { outline: 1.8px solid #BDBDBD; outline-offset: 1.8px; }
+button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; outline-offset: 2px; }
 /* Keep the existing compact mobile layout, allowing distance chips to wrap. */
 .categories-section > .flex-1 { min-width: 0; }
 
@@ -1020,7 +1020,13 @@ button:focus-visible, .filter-chip:focus-visible { outline: 1.8px solid #BDBDBD;
 
 <!-- iOS / iPadOS compact display: 90% of the original interface size. -->
 <style id="pixhero-ios-compact">
-  /* Search input stays at a real 18px, including before focus. */
+  html.ios-compact {
+    zoom: 0.9;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  /* Match Results' 16px input as closely as possible while keeping the
+     effective iOS size above the usual 16px focus-zoom threshold. */
   html.ios-compact #searchInput {
     font-size: 18px;
   }
@@ -1050,18 +1056,20 @@ button:focus-visible, .filter-chip:focus-visible { outline: 1.8px solid #BDBDBD;
     display: block;
     height: 100%;
     min-width: 0;
-    padding: 0 28.8px 0 4.5px;
+    padding: 0 32px 0 5px;
     line-height: normal;
   }
   /* Never change the input font size on focus. iOS may auto-zoom if the
      effective font size is below 16px at the moment the field is tapped. */
-  #searchInput { font-size: 14.4px; }
+  #searchInput { font-size: 16px; }
   html.ios-compact #searchInput { font-size: 18px !important; }
   #searchInput::placeholder {
-    font-size: 12.6px;
+    font-size: 14px;
     line-height: normal;
   }
-  html.ios-compact #searchInput::placeholder { font-size: 16.2px; }
+  /* Results uses a 14px Poppins placeholder at 100% scale. Compensate for
+     Calendar's 90% CSS zoom to match that visible size on iOS. */
+  html.ios-compact #searchInput::placeholder { font-size: 15.555556px; }
 </style>
 
 <style id="pixhero-stacked-floating-footer">
@@ -1074,62 +1082,62 @@ button:focus-visible, .filter-chip:focus-visible { outline: 1.8px solid #BDBDBD;
   @media (max-width: 768px), (pointer: coarse) {
     :root { --native-nav-clearance: 10px; --native-nav-content-reserve: 90px; }
   }
-  /* Clearance and measured heights are actual viewport CSS pixels. */
-  html.ios-compact { --native-nav-clearance: 20px; --native-nav-content-reserve: 90px; }
+  /* Document padding is expressed in Calendar's 90%-zoom layout units. */
+  html.ios-compact { --native-nav-clearance: 22.222222px; --native-nav-content-reserve: 100px; }
   body.pb-20 {
-    padding-bottom: calc(max(var(--native-nav-clearance), var(--native-nav-content-reserve, 10.8px)) + var(--pagination-height) + env(safe-area-inset-bottom, 0px) + 16.2px);
+    padding-bottom: calc(max(var(--native-nav-clearance), var(--native-nav-content-reserve, 12px)) + var(--pagination-height) + env(safe-area-inset-bottom, 0px) + 18px);
   }
   #stickyFooterBar {
-    left: 10.8px;
-    right: 10.8px;
+    left: 12px;
+    right: 12px;
     bottom: calc(var(--footer-local-clearance, var(--native-nav-clearance)) + env(safe-area-inset-bottom, 0px));
-    padding: 6.3px 8.1px;
+    padding: 7px 9px;
     background: #202020;
-    border: 0.9px solid #383838;
-    border-radius: 21.6px;
-    box-shadow: 0 3.6px 14.4px rgba(0,0,0,.28);
+    border: 1px solid #383838;
+    border-radius: 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.28);
     box-sizing: border-box;
   }
   #stickyFooterBarInner {
-    gap: 7.2px;
+    gap: 8px;
     justify-content: space-between;
     overflow: visible;
     flex-wrap: nowrap;
   }
   #stickyFooterBarInner .sticky-refresh-btn {
-    flex: 0 0 36px;
-    width: 36px; min-width: 36px; height: 36px;
-    padding: 0; border: 0.9px solid #484848; border-radius: 12.6px;
+    flex: 0 0 40px;
+    width: 40px; min-width: 40px; height: 40px;
+    padding: 0; border: 1px solid #484848; border-radius: 14px;
   }
   #stickyFooterBarInner .sticky-refresh-btn svg {
-    width: 16.2px; height: 16.2px; margin: 0;
+    width: 18px; height: 18px; margin: 0;
   }
   #paginationContainer {
     flex: 1 1 auto; min-width: 0; justify-content: flex-end;
-    flex-wrap: wrap; gap: 3.6px;
+    flex-wrap: wrap; gap: 4px;
   }
   #paginationContainer .pagination-info {
-    flex: 0 0 auto; margin-right: auto; font-size: 9.9px;
+    flex: 0 0 auto; margin-right: auto; font-size: 11px;
   }
   #paginationContainer .pagination-button {
-    flex: 0 0 auto; min-width: 28.8px; height: 32.4px; padding: 0 5.4px;
+    flex: 0 0 auto; min-width: 32px; height: 36px; padding: 0 6px;
     display: inline-flex; align-items: center; justify-content: center;
-    border: 0.9px solid transparent; border-radius: 9px;
-    font-size: 10.8px;
+    border: 1px solid transparent; border-radius: 10px;
+    font-size: 12px;
   }
   #paginationContainer .pagination-button.active {
     background: #F3F3F3; color: #101010; border-color: #F3F3F3;
   }
-  #paginationContainer .pagination-button svg { width: 15.3px; height: 15.3px; }
+  #paginationContainer .pagination-button svg { width: 17px; height: 17px; }
   #paginationContainer .pagination-empty {
-    flex: 1 1 auto; max-width: none; font-size: 10.8px; text-align: left;
+    flex: 1 1 auto; max-width: none; font-size: 12px; text-align: left;
   }
   @media (max-width: 380px) {
-    #stickyFooterBar { left: 7.2px; right: 7.2px; padding: 5.4px; }
-    #stickyFooterBarInner { gap: 4.5px; }
-    #paginationContainer { gap: 1.8px; }
-    #paginationContainer .pagination-info { font-size: 9px; }
-    #paginationContainer .pagination-button { min-width: 25.2px; padding: 0 3.6px; }
+    #stickyFooterBar { left: 8px; right: 8px; padding: 6px; }
+    #stickyFooterBarInner { gap: 5px; }
+    #paginationContainer { gap: 2px; }
+    #paginationContainer .pagination-info { font-size: 10px; }
+    #paginationContainer .pagination-button { min-width: 28px; padding: 0 4px; }
   }
 </style>
 
@@ -1137,47 +1145,47 @@ button:focus-visible, .filter-chip:focus-visible { outline: 1.8px solid #BDBDBD;
 <style id="pixhero-labeled-pagination-heart">
   #favoritesLabelStar {
     display: inline-flex; align-items: center; justify-content: center;
-    flex: 0 0 20.7px; width: 20.7px; height: 20.7px; line-height: 1;
+    flex: 0 0 23px; width: 23px; height: 23px; line-height: 1;
     color: #ff3b30;
   }
   #favoritesLabelStar svg {
-    display: block; width: 20.7px; height: 20.7px; flex-shrink: 0;
+    display: block; width: 23px; height: 23px; flex-shrink: 0;
     fill: none; stroke: currentColor; stroke-width: 1.5;
     stroke-linecap: round; stroke-linejoin: round;
     transition: fill .15s ease;
   }
   #favoritesLabelStar.is-filled svg { fill: currentColor; }
-  #stickyFooterBarInner { flex-wrap: wrap; gap: 5.4px; }
+  #stickyFooterBarInner { flex-wrap: wrap; gap: 6px; }
   #stickyFooterBarInner .sticky-refresh-btn {
-    flex: 0 0 auto; width: auto; min-width: 0; height: 32.4px;
-    padding: 0 7.2px; gap: 3.6px; font-size: 9.9px; white-space: nowrap;
+    flex: 0 0 auto; width: auto; min-width: 0; height: 36px;
+    padding: 0 8px; gap: 4px; font-size: 11px; white-space: nowrap;
   }
-  #stickyFooterBarInner .sticky-refresh-btn svg { width: 13.5px; height: 13.5px; flex-shrink: 0; }
-  #paginationContainer { flex: 1 1 193.5px; min-width: 0; gap: 3.6px; justify-content: space-between; }
+  #stickyFooterBarInner .sticky-refresh-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+  #paginationContainer { flex: 1 1 215px; min-width: 0; gap: 4px; justify-content: space-between; }
   #paginationContainer .pagination-info { flex: 0 0 auto; margin-right: 0; white-space: nowrap; }
-  #paginationContainer .pagination-controls { display: flex; flex: 0 0 auto; align-items: center; gap: 2.7px; margin-left: auto; }
+  #paginationContainer .pagination-controls { display: flex; flex: 0 0 auto; align-items: center; gap: 3px; margin-left: auto; }
   #paginationContainer .pagination-button {
-    height: 32.4px; min-width: 25.2px; padding: 0 4.5px;
-    font-size: 9.9px; gap: 1.8px; white-space: nowrap;
+    height: 36px; min-width: 28px; padding: 0 5px;
+    font-size: 11px; gap: 2px; white-space: nowrap;
   }
-  #paginationContainer .pagination-button svg { width: 10.8px; height: 10.8px; flex-shrink: 0; }
+  #paginationContainer .pagination-button svg { width: 12px; height: 12px; flex-shrink: 0; }
   #paginationContainer.pagination-single { flex: 1 1 0; }
   @media (max-width: 380px) {
-    #paginationContainer { flex-basis: 184.5px; }
-    #paginationContainer .pagination-button { min-width: 23.4px; padding: 0 3.6px; }
-    #paginationContainer .pagination-controls { gap: 1.8px; }
+    #paginationContainer { flex-basis: 205px; }
+    #paginationContainer .pagination-button { min-width: 26px; padding: 0 4px; }
+    #paginationContainer .pagination-controls { gap: 2px; }
   }
 </style>
 
 <style id="pixhero-rounded-calendar-header">
   /* Match the native floating navigation bar: charcoal, 24px rounded edges. */
   .header {
-    top: 7.2px;
-    margin: 7.2px 10.8px 0;
+    top: 8px;
+    margin: 8px 12px 0;
     background: #202020;
-    border: 0.9px solid var(--card-border);
-    border-radius: 21.6px;
-    box-shadow: 0 3.6px 12.6px rgba(0,0,0,.22);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.22);
     overflow: visible;
     padding: 1.25rem 1rem;
   }
@@ -1186,45 +1194,46 @@ button:focus-visible, .filter-chip:focus-visible { outline: 1.8px solid #BDBDBD;
 </style>
 
 <style id="pixhero-labeled-pagination">
-  #stickyFooterBarInner { flex-wrap: wrap; gap: 5.4px; }
+  #stickyFooterBarInner { flex-wrap: wrap; gap: 6px; }
   #stickyFooterBarInner .sticky-refresh-btn {
-    flex: 0 0 auto; width: auto; min-width: 0; height: 32.4px;
-    padding: 0 7.2px; gap: 3.6px; font-size: 9.9px; white-space: nowrap;
+    flex: 0 0 auto; width: auto; min-width: 0; height: 36px;
+    padding: 0 8px; gap: 4px; font-size: 11px; white-space: nowrap;
   }
-  #stickyFooterBarInner .sticky-refresh-btn svg { width: 13.5px; height: 13.5px; flex-shrink: 0; }
-  #paginationContainer { flex: 1 1 193.5px; min-width: 0; gap: 3.6px; justify-content: space-between; }
+  #stickyFooterBarInner .sticky-refresh-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+  #paginationContainer { flex: 1 1 215px; min-width: 0; gap: 4px; justify-content: space-between; }
   #paginationContainer .pagination-info { flex: 0 0 auto; margin-right: 0; white-space: nowrap; }
-  #paginationContainer .pagination-controls { display: flex; flex: 0 0 auto; align-items: center; gap: 2.7px; margin-left: auto; }
+  #paginationContainer .pagination-controls { display: flex; flex: 0 0 auto; align-items: center; gap: 3px; margin-left: auto; }
   #paginationContainer .pagination-button {
-    height: 32.4px; min-width: 25.2px; padding: 0 4.5px;
-    font-size: 9.9px; gap: 1.8px; white-space: nowrap;
+    height: 36px; min-width: 28px; padding: 0 5px;
+    font-size: 11px; gap: 2px; white-space: nowrap;
   }
-  #paginationContainer .pagination-button svg { width: 10.8px; height: 10.8px; flex-shrink: 0; }
+  #paginationContainer .pagination-button svg { width: 12px; height: 12px; flex-shrink: 0; }
   #paginationContainer.pagination-single { flex: 1 1 0; }
   @media (max-width: 380px) {
-    #paginationContainer { flex-basis: 184.5px; }
-    #paginationContainer .pagination-button { min-width: 23.4px; padding: 0 3.6px; }
-    #paginationContainer .pagination-controls { gap: 1.8px; }
+    #paginationContainer { flex-basis: 205px; }
+    #paginationContainer .pagination-button { min-width: 26px; padding: 0 4px; }
+    #paginationContainer .pagination-controls { gap: 2px; }
   }
 </style>
 <style id="pixhero-match-calendar-pagination">
-  /* The footer uses the same explicit sizing units as the Calendar. */
+  /* Keep the entire Calendar footer at the same 90% iOS zoom as the document. */
   #paginationContainer { align-items: center; }
   #paginationContainer .pagination-empty { min-width: 0; overflow-wrap: anywhere; }
   html.ios-compact #stickyFooterBar {
-    --footer-local-clearance: 20px;
+    zoom: 1;
+    --footer-local-clearance: 22.222222px;
   }
 </style>
 <style id="pixhero-draggable-pagination">
   #paginationDragHandle {
     display: flex; align-items: center; justify-content: center;
-    width: 100%; height: 23.4px; margin: -2.7px 0 2.7px; padding: 0;
-    border: 0; border-radius: 10.8px; background: transparent;
+    width: 100%; height: 26px; margin: -3px 0 3px; padding: 0;
+    border: 0; border-radius: 12px; background: transparent;
     color: #A8A8A8; cursor: grab; touch-action: none;
     user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
   }
   #paginationDragHandle .drag-label {
-    font-size: 9.9px; font-weight: 400; line-height: 1.4; letter-spacing: 0.09px;
+    font-size: 11px; font-weight: 400; line-height: 1.4; letter-spacing: .1px;
   }
   /* Reserve touch gestures for the drag controller, including blank flex gaps.
      Horizontal overflow remains swipeable via the controller. */
@@ -1235,25 +1244,25 @@ button:focus-visible, .filter-chip:focus-visible { outline: 1.8px solid #BDBDBD;
   #stickyFooterBar { cursor: grab; }
   #stickyFooterBar.is-dragging, #stickyFooterBar.is-dragging * { cursor: grabbing !important; }
   #stickyFooterBar button:disabled { pointer-events: none; }
-  #paginationDragHandle:focus-visible { outline: 1.8px solid #60A5FA; outline-offset: -1.8px; }
+  #paginationDragHandle:focus-visible { outline: 2px solid #60A5FA; outline-offset: -2px; }
   #stickyFooterBar.is-dragging #paginationDragHandle { cursor: grabbing; color: #F3F3F3; }
 </style>
 <style id="pixhero-large-pagination-controls">
-  #stickyFooterBar { padding: 6.3px 8.1px 8.1px; }
-  #paginationDragHandle { height: 22.5px; margin: -2.7px 0 3.6px; }
-  #stickyFooterBarInner { gap: 5.4px; flex-wrap: wrap; align-items: center; }
+  #stickyFooterBar { padding: 7px 9px 9px; }
+  #paginationDragHandle { height: 25px; margin: -3px 0 4px; }
+  #stickyFooterBarInner { gap: 6px; flex-wrap: wrap; align-items: center; }
   #stickyFooterBarInner .sticky-refresh-btn {
-    min-height: 39.6px; height: 39.6px; min-width: 68.4px; padding: 0 7.2px;
-    font-size: 10.8px; gap: 4.5px; border-radius: 10.8px;
+    min-height: 44px; height: 44px; min-width: 76px; padding: 0 8px;
+    font-size: 12px; gap: 5px; border-radius: 12px;
   }
-  #stickyFooterBarInner .sticky-refresh-btn svg { width: 15.3px; height: 15.3px; }
-  #paginationContainer { flex: 1 1 252px; gap: 4.5px; align-items: center; }
-  #paginationContainer .pagination-info { font-size: 9.9px; }
-  #paginationContainer .pagination-controls { gap: 1.8px; max-width: 100%; }
+  #stickyFooterBarInner .sticky-refresh-btn svg { width: 17px; height: 17px; }
+  #paginationContainer { flex: 1 1 280px; gap: 5px; align-items: center; }
+  #paginationContainer .pagination-info { font-size: 11px; }
+  #paginationContainer .pagination-controls { gap: 2px; max-width: 100%; }
   #paginationContainer .pagination-button {
-    height: 39.6px; min-width: 36px; padding: 0 4.5px; font-size: 11.7px; gap: 2.7px;
+    height: 44px; min-width: 40px; padding: 0 5px; font-size: 13px; gap: 3px;
   }
-  #paginationContainer .pagination-button svg { width: 11.7px; height: 11.7px; }
+  #paginationContainer .pagination-button svg { width: 13px; height: 13px; }
   #paginationContainer.pagination-single { flex: 1 1 0; }
   @media (max-width: 420px) {
     #paginationContainer:not(.pagination-single) { flex: 1 1 100%; }
@@ -1261,63 +1270,63 @@ button:focus-visible, .filter-chip:focus-visible { outline: 1.8px solid #BDBDBD;
   }
   @media (max-width: 340px) {
     #paginationContainer .pagination-controls { width: 100%; justify-content: space-between; }
-    #paginationContainer .pagination-button { min-width: 34.2px; padding: 0 3.6px; }
+    #paginationContainer .pagination-button { min-width: 38px; padding: 0 4px; }
   }
 </style>
 <style id="pixhero-one-line-pagination">
-  #stickyFooterBar { display: block; padding: 6.3px 8.1px 8.1px; }
-  #paginationDragHandle { width: 100%; height: 24.3px; margin: -2.7px 0 3.6px; padding: 0; }
-  #paginationDragHandle .drag-label { font-size: 9.9px; font-weight: 400; white-space: nowrap; }
+  #stickyFooterBar { display: block; padding: 7px 9px 9px; }
+  #paginationDragHandle { width: 100%; height: 27px; margin: -3px 0 4px; padding: 0; }
+  #paginationDragHandle .drag-label { font-size: 11px; font-weight: 400; white-space: nowrap; }
   #stickyFooterBarInner {
-    display: flex; flex-wrap: nowrap; align-items: center; gap: 5.4px;
+    display: flex; flex-wrap: nowrap; align-items: center; gap: 6px;
     justify-content: space-between; overflow-x: auto; scrollbar-width: none;
   }
   #stickyFooterBarInner::-webkit-scrollbar { display: none; }
   #stickyFooterBarInner .sticky-refresh-btn {
-    flex: 0 0 auto; width: auto; min-width: 66.6px; height: 39.6px;
-    padding: 0 6.3px; font-size: 10.8px; gap: 3.6px;
+    flex: 0 0 auto; width: auto; min-width: 74px; height: 44px;
+    padding: 0 7px; font-size: 12px; gap: 4px;
   }
-  #stickyFooterBarInner .sticky-refresh-btn svg { width: 13.5px; height: 13.5px; }
+  #stickyFooterBarInner .sticky-refresh-btn svg { width: 15px; height: 15px; }
   #paginationContainer, #paginationContainer:not(.pagination-single) {
     display: flex; flex: 1 0 auto; flex-wrap: nowrap; align-items: center;
-    justify-content: space-between; gap: 4.5px; min-width: 0;
+    justify-content: space-between; gap: 5px; min-width: 0;
   }
   #paginationContainer .pagination-info {
-    flex: 0 0 auto; margin: 0; font-size: 9.9px; white-space: nowrap;
+    flex: 0 0 auto; margin: 0; font-size: 11px; white-space: nowrap;
   }
   #paginationContainer .pagination-controls {
     display: flex; flex: 0 0 auto; width: auto; max-width: none;
-    align-items: center; justify-content: flex-end; gap: 2.7px; margin-left: auto;
+    align-items: center; justify-content: flex-end; gap: 3px; margin-left: auto;
   }
   #paginationContainer .pagination-button {
-    flex: 0 0 auto; min-width: 28.8px; height: 39.6px; padding: 0 4.5px;
-    font-size: 10.8px; gap: 1.8px;
+    flex: 0 0 auto; min-width: 32px; height: 44px; padding: 0 5px;
+    font-size: 12px; gap: 2px;
   }
   #paginationContainer .pagination-button:first-child,
-  #paginationContainer .pagination-button:last-child { min-width: 37.8px; }
-  #paginationContainer .pagination-button svg { width: 10.8px; height: 10.8px; }
+  #paginationContainer .pagination-button:last-child { min-width: 42px; }
+  #paginationContainer .pagination-button svg { width: 12px; height: 12px; }
   #paginationContainer.pagination-single { flex: 1 1 0; }
   #paginationContainer .pagination-empty {
     flex: 1 1 auto; min-width: 0; margin: 0; max-width: none; text-align: center;
   }
   @media (max-width: 400px) {
-    #stickyFooterBar { left: 7.2px; right: 7.2px; padding: 6.3px; }
-    #stickyFooterBarInner { gap: 3.6px; }
-    #stickyFooterBarInner .sticky-refresh-btn { min-width: 59.4px; padding: 0 4.5px; font-size: 9.9px; gap: 2.7px; }
-    #stickyFooterBarInner .sticky-refresh-btn svg { width: 11.7px; height: 11.7px; }
-    #paginationContainer, #paginationContainer:not(.pagination-single) { gap: 2.7px; }
-    #paginationContainer .pagination-info { font-size: 9px; }
-    #paginationContainer .pagination-controls { gap: 1.8px; }
-    #paginationContainer .pagination-button { min-width: 26.1px; padding: 0 2.7px; font-size: 9.9px; }
+    #stickyFooterBar { left: 8px; right: 8px; padding: 7px; }
+    #stickyFooterBarInner { gap: 4px; }
+    #stickyFooterBarInner .sticky-refresh-btn { min-width: 66px; padding: 0 5px; font-size: 11px; gap: 3px; }
+    #stickyFooterBarInner .sticky-refresh-btn svg { width: 13px; height: 13px; }
+    #paginationContainer, #paginationContainer:not(.pagination-single) { gap: 3px; }
+    #paginationContainer .pagination-info { font-size: 10px; }
+    #paginationContainer .pagination-controls { gap: 2px; }
+    #paginationContainer .pagination-button { min-width: 29px; padding: 0 3px; font-size: 11px; }
     #paginationContainer .pagination-button:first-child,
-    #paginationContainer .pagination-button:last-child { min-width: 32.4px; }
+    #paginationContainer .pagination-button:last-child { min-width: 36px; }
   }
   @media (max-width: 350px) {
     #paginationContainer .pagination-button svg { display: none; }
-    #paginationContainer .pagination-button { min-width: 22.5px; }
+    #paginationContainer .pagination-button { min-width: 25px; }
     #paginationContainer .pagination-button:first-child,
-    #paginationContainer .pagination-button:last-child { min-width: 28.8px; }
-    #stickyFooterBarInner .sticky-refresh-btn { min-width: 54px; }
+    #paginationContainer .pagination-button:last-child { min-width: 32px; }
+    #stickyFooterBarInner .sticky-refresh-btn { min-width: 60px; }
   }
 </style>
 <style id="pixhero-scroll-aware-pagination">
@@ -1337,18 +1346,6 @@ button:focus-visible, .filter-chip:focus-visible { outline: 1.8px solid #BDBDBD;
   #paginationContainer.pagination-single .pagination-empty { white-space: normal; }
 </style>
 
-<style id="pixhero-ios-input-stable-size">
-  html.ios-compact #searchInput { font-size: 18px !important; }
-  html.ios-compact #searchInput::placeholder { font-size: 16.2px !important; }
-  @supports (-webkit-touch-callout: none) {
-    @media (pointer: coarse) {
-      :root:not(.pixhero-full-size) #searchInput { font-size: 18px !important; }
-      :root:not(.pixhero-full-size) #searchInput::placeholder { font-size: 16.2px !important; }
-      :root:not(.pixhero-full-size) { --native-nav-clearance: 20px; }
-      :root:not(.pixhero-full-size) #stickyFooterBar { --footer-local-clearance: 20px; }
-    }
-  }
-</style>
 </head>
 <body class="pb-20">
     <div class="header">
@@ -1356,7 +1353,6 @@ button:focus-visible, .filter-chip:focus-visible { outline: 1.8px solid #BDBDBD;
             <h1 class="text-xl poppins-black">Race Calendar - PixHero App</h1>
         </div>
         
-        <div id="pixheroScaleTest" style="font:11px/1.35 monospace;color:#FACC15;white-space:pre-wrap;margin-bottom:5px;">90.5 TEST | loading measurements</div>
         <div class="search-bar flex items-center p-2 mb-2 relative">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 ml-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -1658,7 +1654,7 @@ console.log(
 		  span.textContent = value;
 
 		  document.body.appendChild(span);
-		  const textWidth = span.getBoundingClientRect().width / (parseFloat(getComputedStyle(document.body).zoom) || 1);
+		  const textWidth = span.getBoundingClientRect().width / (parseFloat(getComputedStyle(document.documentElement).zoom) || 1);
 		  document.body.removeChild(span);
 
 		  searchInlineError.style.left = `${8 + textWidth}px`;
@@ -3965,7 +3961,7 @@ updateFavoritesControl();
 		  temp.textContent = value;
 
 		  document.body.appendChild(temp);
-		  const width = temp.getBoundingClientRect().width / (parseFloat(getComputedStyle(document.body).zoom) || 1);
+		  const width = temp.getBoundingClientRect().width / (parseFloat(getComputedStyle(document.documentElement).zoom) || 1);
 		  document.body.removeChild(temp);
 
 		  searchInlineError.style.left = `${16 + width}px`;
@@ -4110,8 +4106,8 @@ updateFavoritesControl();
   const inner = document.getElementById('stickyFooterBarInner');
   const header = document.querySelector('.header');
   const mobile = window.matchMedia('(max-width: 768px), (pointer: coarse)');
-  const ios = root.classList.contains('ios-compact') || Math.abs(parseFloat(getComputedStyle(root).getPropertyValue('--pixhero-unit')) - 0.9) < 0.001;
-  const documentScale = 1; // Layout dimensions are already scaled in CSS.
+  const ios = root.classList.contains('ios-compact');
+  const documentScale = ios ? 0.9 : 1;
   const footerScale = documentScale;
   const storageKey = ios ? 'pixhero.calendar.pagination.clearance.v6' : 'pixhero.calendar.pagination.clearance.v5';
   const minimumOffset = () => ios ? 20 : (mobile.matches ? 10 : 12);
@@ -4290,30 +4286,4 @@ updateFavoritesControl();
 })();
 </script>
 
-
-<script data-cfasync="false">
-(function () {
-  const root = document.documentElement;
-  const panel = document.getElementById('pixheroScaleTest');
-  const input = document.getElementById('searchInput');
-  function update() {
-    const vv = window.visualViewport;
-    const race = document.querySelector('.race-name');
-    const refresh = document.querySelector('.sticky-refresh-btn');
-    const read = el => el ? getComputedStyle(el).fontSize : 'loading';
-    panel.textContent = '90.5 TEST | root ' + getComputedStyle(root).fontSize +
-      ' | viewport ' + (vv ? Math.round(vv.scale * 100) + '%' : 'n/a') +
-      '\nRace font ' + read(race) + ' | input ' + read(input) +
-      ' | refresh ' + (refresh ? refresh.getBoundingClientRect().height.toFixed(1) + 'px' : 'n/a');
-  }
-  update();
-  window.addEventListener('pageshow', update);
-  window.addEventListener('resize', update);
-  if (window.visualViewport) window.visualViewport.addEventListener('resize', update);
-  document.addEventListener('focusin', update);
-  document.addEventListener('focusout', update);
-  const list = document.getElementById('raceList');
-  if (list && 'MutationObserver' in window) new MutationObserver(update).observe(list, {childList:true,subtree:true});
-})();
-</script>
 </body></html>
