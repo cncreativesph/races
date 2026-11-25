@@ -1121,9 +1121,9 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
     --pagination-height: 60px;
   }
   @media (max-width: 768px), (pointer: coarse) {
-    :root { --native-nav-clearance: 65px; --native-nav-content-reserve: 90px; }
+    :root { --native-nav-clearance: 95px; --native-nav-content-reserve: 90px; }
   }
-  html.ios-compact { --native-nav-clearance: 65px; --native-nav-content-reserve: 90px; }
+  html.ios-compact { --native-nav-clearance: 95px; --native-nav-content-reserve: 90px; }
   body.pb-20 {
     padding-bottom: calc(max(var(--native-nav-clearance), var(--native-nav-content-reserve, 12px)) + var(--pagination-height) + env(safe-area-inset-bottom, 0px) + 18px);
   }
@@ -1213,7 +1213,7 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   #paginationContainer .pagination-empty { min-width: 0; overflow-wrap: anywhere; }
   html.ios-compact #stickyFooterBar {
     zoom: 1;
-    --footer-local-clearance: 65px;
+    --footer-local-clearance: 95px;
   }
 </style>
 
@@ -1311,6 +1311,19 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
     #paginationContainer .pagination-button:first-child,
     #paginationContainer .pagination-button:last-child { min-width: 32px; }
     #stickyFooterBarInner .sticky-refresh-btn { min-width: 60px; }
+  }
+</style>
+<style id="pixhero-scroll-aware-pagination">
+  #stickyFooterBar {
+    opacity: 1; visibility: visible;
+    transition: opacity 180ms ease, visibility 0s linear;
+  }
+  #stickyFooterBar.is-scroll-hidden {
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity 180ms ease, visibility 0s linear 180ms;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #stickyFooterBar, #stickyFooterBar.is-scroll-hidden { transition: none; }
   }
 </style>
 </head>
@@ -1435,7 +1448,7 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
 
 	<!-- Sticky bottom controls -->
 	<div id="stickyFooterBar">
-      <div id="paginationDragHandle" role="slider" tabindex="0" aria-label="Hold and move pagination bar up or down" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="65" aria-valuenow="65" title="Hold and move up or down. Double-click or press Home to reset.">
+      <div id="paginationDragHandle" role="slider" tabindex="0" aria-label="Hold and move pagination bar up or down" aria-orientation="vertical" aria-valuemin="90" aria-valuemax="95" aria-valuenow="95" title="Hold and move up or down. Double-click or press Home to reset.">
         <span class="drag-label" aria-hidden="true">↕ Hold and move up or down</span>
       </div>
 	  <div id="stickyFooterBarInner">
@@ -3842,7 +3855,8 @@ window.addEventListener('load', () => {
   const ios = root.classList.contains('ios-compact');
   const scale = 1;
   const storageKey = 'pixhero.results.pagination.clearance.v3';
-  const defaultOffset = () => mobile.matches || ios ? 65 : 12;
+  const minimumOffset = () => mobile.matches || ios ? 90 : 12;
+  const defaultOffset = () => mobile.matches || ios ? 95 : 12;
   let preferred = defaultOffset();
   try {
     const saved = localStorage.getItem(storageKey);
@@ -3853,9 +3867,10 @@ window.addEventListener('load', () => {
   function bounds() {
     const rect = bar.getBoundingClientRect();
     const viewport = window.innerHeight;
-    const safe = Math.max(0, viewport - rect.bottom - applied);
+    const local = parseFloat(bar.style.getPropertyValue('--footer-local-clearance') || getComputedStyle(bar).getPropertyValue('--footer-local-clearance') || getComputedStyle(root).getPropertyValue('--native-nav-clearance')) || 0;
+    const safe = Math.max(0, viewport - rect.bottom - local);
     const headerBottom = header ? Math.max(0, header.getBoundingClientRect().bottom) : 0;
-    const min = 0; // Allow movement down to the WebView safe-area edge.
+    const min = minimumOffset(); // Keep clear of the native bottom navigation.
     const max = Math.max(min, Math.floor(viewport - headerBottom - rect.height - safe - 16));
     return { min, max };
   }
@@ -3911,6 +3926,41 @@ window.addEventListener('load', () => {
     if (header) observer.observe(header);
   }
   window.addEventListener('resize', measure);
+
+  // Use document scroll direction (not finger direction). Ignore elastic
+  // overscroll and tiny movements, and never hide while the bar is dragged.
+  function scrollPosition() {
+    const scrolling = document.scrollingElement || root;
+    const max = Math.max(0, scrolling.scrollHeight - scrolling.clientHeight);
+    return Math.min(max, Math.max(0, window.scrollY || scrolling.scrollTop || 0));
+  }
+  let lastScroll = scrollPosition();
+  let scrollFrame = 0;
+  let accumulated = 0;
+  const scrollThreshold = 10;
+  function updateVisibility() {
+    scrollFrame = 0;
+    const current = scrollPosition();
+    const delta = current - lastScroll;
+    lastScroll = current;
+    if (drag) {
+      accumulated = 0;
+      bar.classList.remove('is-scroll-hidden');
+      return;
+    }
+    if (!delta) return;
+    if (Math.sign(delta) !== Math.sign(accumulated)) accumulated = 0;
+    accumulated += delta;
+    if (Math.abs(accumulated) < scrollThreshold) return;
+    // Up toward older scroll positions: hide. Down the page: show.
+    bar.classList.toggle('is-scroll-hidden', accumulated < 0);
+    accumulated = 0;
+  }
+  window.addEventListener('scroll', () => {
+    if (!scrollFrame) scrollFrame = requestAnimationFrame(updateVisibility);
+  }, { passive: true });
+  window.addEventListener('resize', () => { lastScroll = scrollPosition(); accumulated = 0; });
+  bar.addEventListener('focusin', () => bar.classList.remove('is-scroll-hidden'));
 })();
 </script>
 
