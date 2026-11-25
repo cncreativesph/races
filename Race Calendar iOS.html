@@ -909,7 +909,7 @@ html, body { background: var(--background); color: var(--text-primary); }
 .search-bar input, #searchInput { color: var(--text-primary); caret-color: var(--text-primary); }
 #searchInput::placeholder {
   color: var(--text-secondary);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
   opacity: 1;
 }
@@ -1064,11 +1064,11 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   #searchInput { font-size: 16px; }
   html.ios-compact #searchInput { font-size: 18px !important; }
   #searchInput::placeholder {
-    font-size: 12px;
+    font-size: 13px;
     line-height: normal;
   }
-  /* Keep the visible hint at 12px on iOS despite 90% CSS zoom. */
-  html.ios-compact #searchInput::placeholder { font-size: 13.333333px; }
+  /* Keep the visible hint at 13px on iOS despite 90% CSS zoom. */
+  html.ios-compact #searchInput::placeholder { font-size: 14.444444px; }
 </style>
 
 <style id="pixhero-stacked-floating-footer">
@@ -4109,7 +4109,7 @@ updateFavoritesControl();
   const documentScale = ios ? 0.9 : 1;
   const footerScale = documentScale;
   const storageKey = ios ? 'pixhero.calendar.pagination.clearance.v7' : 'pixhero.calendar.pagination.clearance.v5';
-  const minimumOffset = () => ios ? 20 : (mobile.matches ? 10 : 12);
+  const minimumOffset = () => ios ? 25 : (mobile.matches ? 10 : 12);
   const defaultOffset = () => ios ? 25 : (mobile.matches ? 10 : 12);
   let preferred = defaultOffset();
   try {
