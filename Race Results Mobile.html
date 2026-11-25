@@ -1184,6 +1184,29 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   }
 </style>
 
+<style id="pixhero-labeled-pagination">
+  #stickyFooterBarInner { flex-wrap: wrap; gap: 6px; }
+  #stickyFooterBarInner .sticky-refresh-btn {
+    flex: 0 0 auto; width: auto; min-width: 0; height: 36px;
+    padding: 0 8px; gap: 4px; font-size: 11px; white-space: nowrap;
+  }
+  #stickyFooterBarInner .sticky-refresh-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+  #paginationContainer { flex: 1 1 215px; min-width: 0; gap: 4px; justify-content: space-between; }
+  #paginationContainer .pagination-info { flex: 0 0 auto; margin-right: 0; white-space: nowrap; }
+  #paginationContainer .pagination-controls { display: flex; flex: 0 0 auto; align-items: center; gap: 3px; margin-left: auto; }
+  #paginationContainer .pagination-button {
+    height: 36px; min-width: 28px; padding: 0 5px;
+    font-size: 11px; gap: 2px; white-space: nowrap;
+  }
+  #paginationContainer .pagination-button svg { width: 12px; height: 12px; flex-shrink: 0; }
+  #paginationContainer.pagination-single { flex: 1 1 0; }
+  @media (max-width: 380px) {
+    #paginationContainer { flex-basis: 205px; }
+    #paginationContainer .pagination-button { min-width: 26px; padding: 0 4px; }
+    #paginationContainer .pagination-controls { gap: 2px; }
+  }
+</style>
+
 </head>
 <body class="pb-20">
     <div class="header">
@@ -1206,7 +1229,8 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
             </svg>
-</button>
+            <span>Refresh</span>
+        </button>
 
 
 
@@ -2386,6 +2410,8 @@ function showNavLoader(){
             const currentPage = Math.min(state.pagination.page, totalPages);
             state.pagination.page = currentPage;
 
+			paginationContainer.classList.toggle('pagination-single', totalItems <= perPage);
+
 			if (totalItems <= perPage) {
 			  paginationContainer.innerHTML = '';
 
@@ -2417,15 +2443,18 @@ function showNavLoader(){
             info.className = 'pagination-info';
             info.textContent = `Page ${currentPage} of ${totalPages}`;
             paginationContainer.appendChild(info);
+            const pageControls = document.createElement('div');
+            pageControls.className = 'pagination-controls';
+            paginationContainer.appendChild(pageControls);
 
             const prev = document.createElement('button');
             prev.className = 'pagination-button';
-            prev.innerHTML = '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>';
+            prev.innerHTML = '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg><span>PREV</span>';
   prev.setAttribute('aria-label', 'Previous page');
   prev.title = 'Previous page';
             prev.disabled = currentPage === 1;
             prev.onclick = () => setCalendarPage(currentPage - 1);
-            paginationContainer.appendChild(prev);
+            pageControls.appendChild(prev);
 
             // Show only 3 page buttons at a time
 			const windowSize = 3;
@@ -2445,18 +2474,18 @@ function showNavLoader(){
 			  b.className = 'pagination-button' + (i === currentPage ? ' active' : '');
 			  b.textContent = i;
 			  b.onclick = () => setCalendarPage(i);
-			  paginationContainer.appendChild(b);
+			  pageControls.appendChild(b);
 			}
 
 
             const next = document.createElement('button');
             next.className = 'pagination-button';
-            next.innerHTML = '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>';
+            next.innerHTML = '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span>NEXT</span>';
   next.setAttribute('aria-label', 'Next page');
   next.title = 'Next page';
             next.disabled = currentPage === totalPages;
             next.onclick = () => setCalendarPage(currentPage + 1);
-            paginationContainer.appendChild(next);
+            pageControls.appendChild(next);
         }
 		
 		function setPhotosPage(p) {
@@ -2471,6 +2500,8 @@ function renderPhotosPagination(totalItems) {
   const totalPages = Math.max(1, Math.ceil(totalItems / perPage));
   const currentPage = Math.min(state.pagination.page, totalPages);
   state.pagination.page = currentPage;
+
+  paginationContainer.classList.toggle('pagination-single', totalItems <= perPage);
 
   if (totalItems <= perPage) {
     paginationContainer.innerHTML = '';
@@ -2487,15 +2518,18 @@ function renderPhotosPagination(totalItems) {
   info.className = 'pagination-info';
   info.textContent = `Page ${currentPage} of ${totalPages}`;
   paginationContainer.appendChild(info);
+  const pageControls = document.createElement('div');
+  pageControls.className = 'pagination-controls';
+  paginationContainer.appendChild(pageControls);
 
   const prev = document.createElement('button');
   prev.className = 'pagination-button';
-  prev.innerHTML = '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>';
+  prev.innerHTML = '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg><span>PREV</span>';
   prev.setAttribute('aria-label', 'Previous page');
   prev.title = 'Previous page';
   prev.disabled = currentPage === 1;
   prev.onclick = () => setPhotosPage(currentPage - 1);
-  paginationContainer.appendChild(prev);
+  pageControls.appendChild(prev);
 
   const start = Math.max(1, Math.min(currentPage - 1, totalPages - 2));
   const end = Math.min(totalPages, start + 2);
@@ -2504,17 +2538,17 @@ function renderPhotosPagination(totalItems) {
     b.className = 'pagination-button' + (i === currentPage ? ' active' : '');
     b.textContent = i;
     b.onclick = () => setPhotosPage(i);
-    paginationContainer.appendChild(b);
+    pageControls.appendChild(b);
   }
 
   const next = document.createElement('button');
   next.className = 'pagination-button';
-  next.innerHTML = '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>';
+  next.innerHTML = '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span>NEXT</span>';
   next.setAttribute('aria-label', 'Next page');
   next.title = 'Next page';
   next.disabled = currentPage === totalPages;
   next.onclick = () => setPhotosPage(currentPage + 1);
-  paginationContainer.appendChild(next);
+  pageControls.appendChild(next);
 }
     
 function normalizeLocation(raw) {
