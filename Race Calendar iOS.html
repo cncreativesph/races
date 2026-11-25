@@ -908,7 +908,12 @@ html, body { background: var(--background); color: var(--text-primary); }
 .search-bar:focus-within { border-color: #707070; }
 .search-bar.error { border-color: #F87171; }
 .search-bar input, #searchInput { color: var(--text-primary); caret-color: var(--text-primary); }
-#searchInput::placeholder { color: var(--text-secondary); }
+#searchInput::placeholder {
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 1;
+}
 .search-bar .text-gray-500, .filter-header svg { color: var(--text-secondary); }
 .clear-search-btn { color: var(--text-secondary); }
 .search-suggestions {
@@ -1033,6 +1038,18 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
     if (isIOS) document.documentElement.classList.add('ios-compact');
   })();
 </script>
+
+<!-- Sticky header: title, search and favorite controls stay visible. -->
+<style id="pixhero-sticky-header">
+  .header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--background);
+    overflow: visible;
+  }
+</style>
 
 </head>
 <body class="pb-20">
