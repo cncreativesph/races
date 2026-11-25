@@ -1121,9 +1121,9 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
     --pagination-height: 60px;
   }
   @media (max-width: 768px), (pointer: coarse) {
-    :root { --native-nav-clearance: 90px; }
+    :root { --native-nav-clearance: 100px; }
   }
-  html.ios-compact { --native-nav-clearance: 90px; }
+  html.ios-compact { --native-nav-clearance: 100px; }
   body.pb-20 {
     padding-bottom: calc(var(--native-nav-clearance) + var(--pagination-height) + env(safe-area-inset-bottom, 0px) + 18px);
   }
@@ -1207,6 +1207,16 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   }
 </style>
 
+<style id="pixhero-match-calendar-pagination">
+  /* Match the Calendar's physical footer dimensions at its 90% iOS zoom.
+     Keep the Results page itself at 100% scaling. */
+  #paginationContainer { align-items: center; }
+  #paginationContainer .pagination-empty { min-width: 0; overflow-wrap: anywhere; }
+  html.ios-compact #stickyFooterBar {
+    zoom: 0.9;
+    --native-nav-clearance: 111px;
+  }
+</style>
 </head>
 <body class="pb-20">
     <div class="header">
