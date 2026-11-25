@@ -4069,8 +4069,8 @@ updateFavoritesControl();
   const documentScale = ios ? 0.9 : 1;
   const footerScale = 1;
   const storageKey = 'pixhero.calendar.pagination.clearance.v3';
-  const minimumOffset = () => mobile.matches || ios ? 90 : 12;
-  const defaultOffset = () => mobile.matches || ios ? 95 : 12;
+  const minimumOffset = () => mobile.matches || ios ? 70 : 12;
+  const defaultOffset = () => mobile.matches || ios ? 75 : 12;
   let preferred = defaultOffset();
   try {
     const saved = localStorage.getItem(storageKey);
