@@ -1121,9 +1121,9 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
     --pagination-height: 60px;
   }
   @media (max-width: 768px), (pointer: coarse) {
-    :root { --native-nav-clearance: 95px; --native-nav-content-reserve: 90px; }
+    :root { --native-nav-clearance: 50px; --native-nav-content-reserve: 90px; }
   }
-  html.ios-compact { --native-nav-clearance: 95px; --native-nav-content-reserve: 90px; }
+  html.ios-compact { --native-nav-clearance: 50px; --native-nav-content-reserve: 90px; }
   body.pb-20 {
     padding-bottom: calc(max(var(--native-nav-clearance), var(--native-nav-content-reserve, 12px)) + var(--pagination-height) + env(safe-area-inset-bottom, 0px) + 18px);
   }
@@ -1213,7 +1213,7 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   #paginationContainer .pagination-empty { min-width: 0; overflow-wrap: anywhere; }
   html.ios-compact #stickyFooterBar {
     zoom: 1;
-    --footer-local-clearance: 95px;
+    --footer-local-clearance: 50px;
   }
 </style>
 
@@ -1228,6 +1228,15 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   #paginationDragHandle .drag-label {
     font-size: 11px; font-weight: 400; line-height: 1.4; letter-spacing: .1px;
   }
+  /* The entire bar accepts vertical gestures; horizontal swipes can still
+     scroll the single-row controls on narrow screens. */
+  #stickyFooterBar, #stickyFooterBarInner {
+    touch-action: pan-x; user-select: none; -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+  #stickyFooterBar { cursor: grab; }
+  #stickyFooterBar.is-dragging, #stickyFooterBar.is-dragging * { cursor: grabbing !important; }
+  #stickyFooterBar button:disabled { pointer-events: none; }
   #paginationDragHandle:focus-visible { outline: 2px solid #60A5FA; outline-offset: -2px; }
   #stickyFooterBar.is-dragging #paginationDragHandle { cursor: grabbing; color: #F3F3F3; }
 </style>
@@ -1448,7 +1457,7 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
 
 	<!-- Sticky bottom controls -->
 	<div id="stickyFooterBar">
-      <div id="paginationDragHandle" role="slider" tabindex="0" aria-label="Hold and move pagination bar up or down" aria-orientation="vertical" aria-valuemin="90" aria-valuemax="95" aria-valuenow="95" title="Hold and move up or down. Double-click or press Home to reset.">
+      <div id="paginationDragHandle" role="slider" tabindex="0" aria-label="Hold and move pagination bar up or down" aria-orientation="vertical" aria-valuemin="50" aria-valuemax="50" aria-valuenow="50" title="Hold and move up or down. Double-click or press Home to reset.">
         <span class="drag-label" aria-hidden="true">↕ Hold and move up or down</span>
       </div>
 	  <div id="stickyFooterBarInner">
@@ -3854,9 +3863,9 @@ window.addEventListener('load', () => {
   const mobile = window.matchMedia('(max-width: 768px), (pointer: coarse)');
   const ios = root.classList.contains('ios-compact');
   const scale = 1;
-  const storageKey = 'pixhero.results.pagination.clearance.v3';
-  const minimumOffset = () => mobile.matches || ios ? 90 : 12;
-  const defaultOffset = () => mobile.matches || ios ? 95 : 12;
+  const storageKey = 'pixhero.results.pagination.clearance.v4';
+  const minimumOffset = () => mobile.matches || ios ? 50 : 12;
+  const defaultOffset = () => mobile.matches || ios ? 50 : 12;
   let preferred = defaultOffset();
   try {
     const saved = localStorage.getItem(storageKey);
@@ -3889,27 +3898,49 @@ window.addEventListener('load', () => {
     try { localStorage.setItem(storageKey, String(preferred)); } catch (_) {}
   }
   function reset() { preferred = defaultOffset(); apply(preferred); save(); }
-  handle.addEventListener('pointerdown', event => {
+  // A normal tap activates the original button. A vertical movement of
+  // at least 7 CSS pixels turns the same gesture into a drag instead.
+  let suppressClick = false;
+  bar.addEventListener('pointerdown', event => {
     if (!event.isPrimary || event.button !== 0 || drag) return;
-    event.preventDefault();
-    drag = { id: event.pointerId, y: event.clientY, start: applied };
-    handle.setPointerCapture(event.pointerId);
-    bar.classList.add('is-dragging');
-  });
-  handle.addEventListener('pointermove', event => {
+    suppressClick = false;
+    drag = { id: event.pointerId, x: event.clientX, y: event.clientY, start: applied, moved: false };
+  }, true);
+  window.addEventListener('pointermove', event => {
     if (!drag || event.pointerId !== drag.id) return;
-    apply(drag.start + drag.y - event.clientY);
-  });
+    const dx = event.clientX - drag.x;
+    const dy = event.clientY - drag.y;
+    if (!drag.moved) {
+      if (Math.abs(dy) < 7 || Math.abs(dy) < Math.abs(dx)) return;
+      drag.moved = true;
+      suppressClick = true;
+      bar.classList.add('is-dragging');
+      bar.classList.remove('is-scroll-hidden');
+      try { bar.setPointerCapture(event.pointerId); } catch (_) {}
+    }
+    if (event.cancelable) event.preventDefault();
+    apply(drag.start - dy);
+  }, { passive: false });
   function endDrag(event) {
     if (!drag || event.pointerId !== drag.id) return;
+    const moved = drag.moved;
     drag = null;
     bar.classList.remove('is-dragging');
-    preferred = applied;
-    save();
+    if (moved) { preferred = applied; save(); }
   }
-  handle.addEventListener('pointerup', endDrag);
-  handle.addEventListener('pointercancel', endDrag);
-  handle.addEventListener('lostpointercapture', endDrag);
+  window.addEventListener('pointerup', endDrag);
+  window.addEventListener('pointercancel', endDrag);
+  bar.addEventListener('lostpointercapture', event => {
+    if (event.target === bar) endDrag(event);
+  });
+  // Stop the synthesized click after dragging from a Refresh/page button.
+  // The next real pointerdown resets the flag; keyboard clicks still work.
+  bar.addEventListener('click', event => {
+    if (!suppressClick || event.detail === 0) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    suppressClick = false;
+  }, true);
   handle.addEventListener('dblclick', reset);
   handle.addEventListener('keydown', event => {
     if (event.key === 'Home') { event.preventDefault(); reset(); return; }
