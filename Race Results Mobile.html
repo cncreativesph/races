@@ -1069,6 +1069,49 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   }
   .photo-results-action svg { width: 15px; height: 15px; flex-shrink: 0; }
 </style>
+
+<style id="pixhero-rounded-header-original-no-results">
+  /* Match the native floating navigation bar: charcoal, 24px rounded edges. */
+  .header {
+    top: 8px;
+    margin: 8px 12px 0;
+    background: #202020;
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.22);
+    overflow: visible;
+    padding: 1.25rem 1rem;
+  }
+  /* Keep the search dropdown above the rounded sticky header and race cards. */
+  .header .search-suggestions { z-index: 1100; }
+  /* NO RESULTS: neutral gray for a permanently unavailable result. */
+  .register-button.no-results,
+  .register-button.no-results:hover,
+  .register-button.no-results:active,
+  .register-button.no-results:disabled,
+  .register-button.no-results:disabled:hover {
+    background-color: #383838;
+    color: #B5B5B5;
+    opacity: 1;
+    border: none;
+    box-shadow: none;
+    transform: none;
+    pointer-events: none;
+    cursor: default;
+  }
+</style>
+<style id="pixhero-pending-results-yellow">
+  /* Pending race results: yellow; keep other statuses unchanged. */
+  .photo-results-action .register-button.soon,
+  .photo-results-action .register-button.soon:hover,
+  .photo-results-action .register-button.soon:active,
+  .photo-results-action .register-button.soon:disabled,
+  .photo-results-action .register-button.soon:disabled:hover {
+    background-color: #FACC15;
+    color: #101010;
+    opacity: 1;
+  }
+</style>
 </head>
 <body class="pb-20">
     <div class="header">
@@ -3050,7 +3093,7 @@ if (photographersNote) {
 				// No Result
 				else if (resultsStatus === 'No Result') {
 				  resultsButton = document.createElement('button');
-				  resultsButton.className = 'register-button soon';
+				  resultsButton.className = 'register-button no-results';
 				  resultsButton.textContent = 'NO RESULTS';
 				  resultsButton.disabled = true;
 				}
