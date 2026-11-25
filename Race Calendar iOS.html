@@ -2,17 +2,25 @@
 <html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Initialize the iOS viewport before external scripts or the first paint. -->
+    <!-- Keep native WebView viewport scale separate from Calendar content scale. -->
     <script data-cfasync="false">
       (function () {
+        var touchWebKit = typeof CSS !== 'undefined' && CSS.supports('-webkit-touch-callout', 'none') &&
+          (navigator.maxTouchPoints > 0 || window.matchMedia('(pointer: coarse)').matches);
         var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) ||
-          (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+          (/iPhone|iPad|iPod/i.test(navigator.platform || '')) ||
+          (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) || touchWebKit;
         if (!isIOS) return;
         document.documentElement.classList.add('ios-compact');
         document.querySelector('meta[name="viewport"]').setAttribute('content',
-          'width=device-width, initial-scale=1.0, maximum-scale=1.0');
+          'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no');
       })();
     </script>
+    <style id="pixhero-fixed-ios-content-scale">
+      /* Scale the content, not the document root/visual viewport. */
+      html.ios-compact { zoom: 1 !important; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+      html.ios-compact body { zoom: 0.9 !important; }
+    </style>
     <title>Philippines Race Calendar</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&amp;display=swap" rel="stylesheet">
@@ -1022,11 +1030,7 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
 
 <!-- iOS / iPadOS compact display: 90% of the original interface size. -->
 <style id="pixhero-ios-compact">
-  html.ios-compact {
-    zoom: 0.9;
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-  }
+  /* The early pixhero-fixed-ios-content-scale style owns the 90% body zoom. */
   /* 20px at 90% page zoom gives an effective 18px input on iOS. */
   html.ios-compact #searchInput {
     font-size: 20px;
@@ -1653,7 +1657,7 @@ console.log(
 		  span.textContent = value;
 
 		  document.body.appendChild(span);
-		  const textWidth = span.getBoundingClientRect().width / (parseFloat(getComputedStyle(document.documentElement).zoom) || 1);
+		  const textWidth = span.getBoundingClientRect().width / (parseFloat(getComputedStyle(document.body).zoom) || 1);
 		  document.body.removeChild(span);
 
 		  searchInlineError.style.left = `${8 + textWidth}px`;
@@ -3960,7 +3964,7 @@ updateFavoritesControl();
 		  temp.textContent = value;
 
 		  document.body.appendChild(temp);
-		  const width = temp.getBoundingClientRect().width / (parseFloat(getComputedStyle(document.documentElement).zoom) || 1);
+		  const width = temp.getBoundingClientRect().width / (parseFloat(getComputedStyle(document.body).zoom) || 1);
 		  document.body.removeChild(temp);
 
 		  searchInlineError.style.left = `${16 + width}px`;
