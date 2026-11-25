@@ -1,10 +1,25 @@
 
-[{
+[
+	{
+    "nameP": "Run BGC",
+    "locationP": "Bonifacio High Street, Taguig City",
+    "dateP": "November 25, 2026",
+    "listOfPhotogs": [
+		"Various Photographers"
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe2"
+	  ],
+	"notesP": "Race Expo - Pending Upload", 
+	"resultsStatus": "Pending",
+	 "resultsURL": ""
+  }, 	
+	{
     "nameP": "HELLO KITTY RUN",
     "locationP": "Mall of Asia",
-    "dateP": "November 24, 2026",
+    "dateP": "November 25, 2026",
     "listOfPhotogs": [
-		"RUNRIO"
+		"Various Photographers"
       ],
       "photogsURL": [
 		"https://cncreatives.com/subscribe3"
