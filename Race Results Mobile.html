@@ -1228,10 +1228,10 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   #paginationDragHandle .drag-label {
     font-size: 11px; font-weight: 400; line-height: 1.4; letter-spacing: .1px;
   }
-  /* The entire bar accepts vertical gestures; horizontal swipes can still
-     scroll the single-row controls on narrow screens. */
-  #stickyFooterBar, #stickyFooterBarInner {
-    touch-action: pan-x; user-select: none; -webkit-user-select: none;
+  /* Reserve touch gestures for the drag controller, including blank flex gaps.
+     Horizontal overflow remains swipeable via the controller. */
+  #stickyFooterBar, #stickyFooterBar * {
+    touch-action: none; user-select: none; -webkit-user-select: none;
     -webkit-touch-callout: none;
   }
   #stickyFooterBar { cursor: grab; }
@@ -1457,7 +1457,7 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
 
 	<!-- Sticky bottom controls -->
 	<div id="stickyFooterBar">
-      <div id="paginationDragHandle" role="slider" tabindex="0" aria-label="Hold and move pagination bar up or down" aria-orientation="vertical" aria-valuemin="50" aria-valuemax="50" aria-valuenow="50" title="Hold and move up or down. Double-click or press Home to reset.">
+      <div id="paginationDragHandle" role="slider" tabindex="0" aria-label="Hold and move pagination bar up or down" aria-orientation="vertical" aria-valuemin="10" aria-valuemax="10" aria-valuenow="10" title="Hold and move up or down. Double-click or press Home to reset.">
         <span class="drag-label" aria-hidden="true">↕ Hold and move up or down</span>
       </div>
 	  <div id="stickyFooterBarInner">
@@ -3685,9 +3685,9 @@ if (photographersNote) {
             
             // If in photos view, fetch fresh data when refreshing
             if (state.view === 'photos') {
-                loadPhotoData();
+                return loadPhotoData();
             } else {
-                loadData();
+                return loadData();
             }
         }
 		
@@ -3695,7 +3695,14 @@ if (photographersNote) {
         // Event listeners
         //toggleViewButton.addEventListener('click', toggleView);
         
-        refreshButton.addEventListener('click', resetToDefault);
+        refreshButton.addEventListener('click', async () => {
+            document.dispatchEvent(new Event('pixhero:refresh-start'));
+            try {
+                await resetToDefault();
+            } finally {
+                document.dispatchEvent(new Event('pixhero:refresh-end'));
+            }
+        });
         
         searchInput.addEventListener('input', (e) => {
             generateSearchSuggestions();
@@ -3859,6 +3866,7 @@ window.addEventListener('load', () => {
   if (!bar) return;
   const root = document.documentElement;
   const handle = document.getElementById('paginationDragHandle');
+  const inner = document.getElementById('stickyFooterBarInner');
   const header = document.querySelector('.header');
   const mobile = window.matchMedia('(max-width: 768px), (pointer: coarse)');
   const ios = root.classList.contains('ios-compact');
@@ -3883,11 +3891,12 @@ window.addEventListener('load', () => {
     const max = Math.max(min, Math.floor(viewport - headerBottom - rect.height - safe - 16));
     return { min, max };
   }
-  function apply(value) {
-    const { min, max } = bounds();
+  function apply(value, limits = bounds(), moving = false) {
+    const { min, max } = limits;
     applied = Math.round(Math.min(max, Math.max(min, value)));
-    root.style.setProperty('--native-nav-clearance', applied + 'px');
     bar.style.setProperty('--footer-local-clearance', (applied / scale) + 'px');
+    if (moving) return; // Commit page padding only after the gesture ends.
+    root.style.setProperty('--native-nav-clearance', applied + 'px');
     handle.setAttribute('aria-valuemin', min);
     handle.setAttribute('aria-valuemax', max);
     handle.setAttribute('aria-valuenow', applied);
@@ -3898,41 +3907,58 @@ window.addEventListener('load', () => {
     try { localStorage.setItem(storageKey, String(preferred)); } catch (_) {}
   }
   function reset() { preferred = defaultOffset(); apply(preferred); save(); }
-  // A normal tap activates the original button. A vertical movement of
-  // at least 7 CSS pixels turns the same gesture into a drag instead.
+  // A small vertical movement starts a drag, including in empty flex space.
+  // Preserve ordinary taps and allow intentional horizontal swipes if needed.
   let suppressClick = false;
   bar.addEventListener('pointerdown', event => {
     if (!event.isPrimary || event.button !== 0 || drag) return;
     suppressClick = false;
-    drag = { id: event.pointerId, x: event.clientX, y: event.clientY, start: applied, moved: false };
+    drag = { id: event.pointerId, x: event.clientX, y: event.clientY,
+      start: applied, limits: bounds(), mode: null,
+      scrollStart: inner.scrollLeft, canScroll: inner.scrollWidth > inner.clientWidth + 1 };
+    // Capture on the original element so a normal tap still reaches its button.
+    try { event.target.setPointerCapture(event.pointerId); } catch (_) {}
   }, true);
   window.addEventListener('pointermove', event => {
     if (!drag || event.pointerId !== drag.id) return;
     const dx = event.clientX - drag.x;
     const dy = event.clientY - drag.y;
-    if (!drag.moved) {
-      if (Math.abs(dy) < 7 || Math.abs(dy) < Math.abs(dx)) return;
-      drag.moved = true;
+    const ax = Math.abs(dx), ay = Math.abs(dy);
+    if (!drag.mode) {
+      if (drag.canScroll && ax >= 10 && ax > ay * 2) drag.mode = 'horizontal';
+      else if (ay >= 3) drag.mode = 'vertical';
+      else return;
       suppressClick = true;
-      bar.classList.add('is-dragging');
+      if (drag.mode === 'vertical') bar.classList.add('is-dragging');
       bar.classList.remove('is-scroll-hidden');
       try { bar.setPointerCapture(event.pointerId); } catch (_) {}
     }
     if (event.cancelable) event.preventDefault();
-    apply(drag.start - dy);
+    if (drag.mode === 'horizontal') inner.scrollLeft = drag.scrollStart - dx;
+    else apply(drag.start - dy, drag.limits, true);
   }, { passive: false });
+  // Extra WebKit protection against native scrolling during a touch drag.
+  bar.addEventListener('touchmove', event => {
+    if (drag && event.touches.length === 1 && event.cancelable) {
+      const touch = event.touches[0];
+      if (drag.mode || Math.abs(touch.clientY - drag.y) >= 3 ||
+          Math.abs(touch.clientX - drag.x) >= 10) event.preventDefault();
+    }
+  }, { passive: false });
+  bar.addEventListener('contextmenu', event => event.preventDefault());
   function endDrag(event) {
     if (!drag || event.pointerId !== drag.id) return;
-    const moved = drag.moved;
+    const mode = drag.mode;
     drag = null;
     bar.classList.remove('is-dragging');
-    if (moved) { preferred = applied; save(); }
+    if (mode === 'vertical') { apply(applied); preferred = applied; save(); }
   }
   window.addEventListener('pointerup', endDrag);
   window.addEventListener('pointercancel', endDrag);
   bar.addEventListener('lostpointercapture', event => {
     if (event.target === bar) endDrag(event);
   });
+  window.addEventListener('blur', () => { if (drag) endDrag({pointerId: drag.id}); });
   // Stop the synthesized click after dragging from a Refresh/page button.
   // The next real pointerdown resets the flag; keyboard clicks still work.
   bar.addEventListener('click', event => {
@@ -3949,7 +3975,7 @@ window.addEventListener('load', () => {
     apply(event.key === 'End' ? bounds().max : applied + (event.key === 'ArrowUp' ? 10 : -10));
     preferred = applied; save();
   });
-  const measure = () => apply(drag ? applied : preferred);
+  const measure = () => { if (!drag) apply(preferred); };
   measure();
   if ('ResizeObserver' in window) {
     const observer = new ResizeObserver(measure);
@@ -3969,12 +3995,31 @@ window.addEventListener('load', () => {
   let scrollFrame = 0;
   let accumulated = 0;
   const scrollThreshold = 10;
+  // A refresh replaces the list with short loading placeholders. Keep the
+  // footer visible during the resulting scroll clamp and layout changes.
+  let refreshCount = 0;
+  let refreshGraceUntil = 0;
+  function keepPaginationVisible() {
+    lastScroll = scrollPosition();
+    accumulated = 0;
+    bar.classList.remove('is-scroll-hidden');
+  }
+  document.addEventListener('pixhero:refresh-start', () => {
+    refreshCount++;
+    keepPaginationVisible();
+  });
+  document.addEventListener('pixhero:refresh-end', () => {
+    refreshCount = Math.max(0, refreshCount - 1);
+    // Allow the browser to finish applying the new list layout.
+    refreshGraceUntil = performance.now() + 350;
+    keepPaginationVisible();
+  });
   function updateVisibility() {
     scrollFrame = 0;
     const current = scrollPosition();
     const delta = current - lastScroll;
     lastScroll = current;
-    if (drag) {
+    if (drag || refreshCount > 0 || performance.now() < refreshGraceUntil) {
       accumulated = 0;
       bar.classList.remove('is-scroll-hidden');
       return;
