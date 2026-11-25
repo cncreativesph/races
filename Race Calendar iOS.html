@@ -2,28 +2,44 @@
 <html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Keep native WebView viewport scale separate from Calendar content scale. -->
+    <!-- Calendar layout v90.4: fixed CSS dimensions, independent of focus zoom. -->
     <script data-cfasync="false">
       (function () {
-        var touchWebKit = typeof CSS !== 'undefined' && CSS.supports('-webkit-touch-callout', 'none') &&
-          (navigator.maxTouchPoints > 0 || window.matchMedia('(pointer: coarse)').matches);
-        var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) ||
-          (/iPhone|iPad|iPod/i.test(navigator.platform || '')) ||
-          (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) || touchWebKit;
-        if (!isIOS) return;
-        document.documentElement.classList.add('ios-compact');
+        var root = document.documentElement;
+        var ua = navigator.userAgent || '';
+        var platform = navigator.platform || '';
+        var params = new URLSearchParams(window.location.search);
+        var forced = params.get('pixheroScale');
+        var android = /Android/i.test(ua + ' ' + platform);
+        var touch = navigator.maxTouchPoints > 0 || 'ontouchstart' in window ||
+          window.matchMedia('(pointer: coarse)').matches;
+        var appleMobile = /iPhone|iPad|iPod/i.test(ua + ' ' + platform) ||
+          (/Mac/i.test(ua + ' ' + platform) && touch);
+        var touchWebKit = touch && typeof CSS !== 'undefined' &&
+          CSS.supports('-webkit-touch-callout', 'none');
+        var compact = forced === '90' || (forced !== '100' && !android && (appleMobile || touchWebKit));
+        root.dataset.pixheroLayout = '90.4';
+        root.classList.toggle('ios-compact', compact);
+        root.classList.toggle('pixhero-full-size', !compact);
+        if (!compact) return;
+        // Set before the external scripts; protect against later stylesheet overrides.
+        root.style.setProperty('--pixhero-unit', '0.9px', 'important');
+        root.style.setProperty('font-size', '14.4px', 'important');
+        root.style.setProperty('-webkit-text-size-adjust', '100%', 'important');
+        root.style.setProperty('text-size-adjust', '100%', 'important');
         document.querySelector('meta[name="viewport"]').setAttribute('content',
           'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no');
       })();
     </script>
     <style id="pixhero-fixed-ios-content-scale">
-      /* Explicit layout sizing: independent of WebKit's CSS zoom and viewport scale. */
       :root { --pixhero-unit: 1px; }
-      html.ios-compact { --pixhero-unit: .9px; font-size: 90% !important; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-      /* CSS fallback for iOS WebKit if the host delays device detection. */
+      :root.ios-compact { --pixhero-unit: 0.9px !important; font-size: 14.4px !important;
+        -webkit-text-size-adjust: 100% !important; text-size-adjust: 100% !important; }
+      /* Equal-or-higher specificity than :root even if the early script is blocked. */
       @supports (-webkit-touch-callout: none) {
         @media (pointer: coarse) {
-          html { --pixhero-unit: .9px; font-size: 90% !important; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+          :root:not(.pixhero-full-size) { --pixhero-unit: 0.9px !important; font-size: 14.4px !important;
+            -webkit-text-size-adjust: 100% !important; text-size-adjust: 100% !important; }
         }
       }
     </style>
@@ -1358,10 +1374,10 @@ button:focus-visible, .filter-chip:focus-visible { outline: calc(2 * var(--pixhe
   html.ios-compact #searchInput::placeholder { font-size: 16.2px !important; }
   @supports (-webkit-touch-callout: none) {
     @media (pointer: coarse) {
-      #searchInput { font-size: 18px !important; }
-      #searchInput::placeholder { font-size: 16.2px !important; }
-      html { --native-nav-clearance: 20px; }
-      #stickyFooterBar { --footer-local-clearance: 20px; }
+      :root:not(.pixhero-full-size) #searchInput { font-size: 18px !important; }
+      :root:not(.pixhero-full-size) #searchInput::placeholder { font-size: 16.2px !important; }
+      :root:not(.pixhero-full-size) { --native-nav-clearance: 20px; }
+      :root:not(.pixhero-full-size) #stickyFooterBar { --footer-local-clearance: 20px; }
     }
   }
 </style>
@@ -4125,7 +4141,7 @@ updateFavoritesControl();
   const inner = document.getElementById('stickyFooterBarInner');
   const header = document.querySelector('.header');
   const mobile = window.matchMedia('(max-width: 768px), (pointer: coarse)');
-  const ios = root.classList.contains('ios-compact') || getComputedStyle(root).getPropertyValue('--pixhero-unit').trim() === '.9px';
+  const ios = root.classList.contains('ios-compact') || Math.abs(parseFloat(getComputedStyle(root).getPropertyValue('--pixhero-unit')) - 0.9) < 0.001;
   const documentScale = 1; // Layout dimensions are already scaled in CSS.
   const footerScale = documentScale;
   const storageKey = ios ? 'pixhero.calendar.pagination.clearance.v6' : 'pixhero.calendar.pagination.clearance.v5';
@@ -4305,4 +4321,30 @@ updateFavoritesControl();
 })();
 </script>
 
+
+<script data-cfasync="false">
+(function () {
+  if (new URLSearchParams(location.search).get('pixheroDebug') !== '1') return;
+  const root = document.documentElement;
+  const panel = document.createElement('div');
+  panel.setAttribute('role', 'status');
+  panel.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;pointer-events:none;background:#101010eF;color:#fff;padding:5px 8px;font:11px/1.35 monospace;white-space:pre-wrap;';
+  document.body.appendChild(panel);
+  const input = document.getElementById('searchInput');
+  function update() {
+    const css = getComputedStyle(root);
+    const factor = parseFloat(css.getPropertyValue('--pixhero-unit'));
+    const vv = window.visualViewport;
+    panel.textContent = 'Calendar v90.4 | Layout: ' + Math.round(factor * 100) + '% | root: ' + css.fontSize +
+      '\nViewport zoom: ' + (vv ? Math.round(vv.scale * 100) + '%' : 'unavailable') +
+      ' | input: ' + (input ? getComputedStyle(input).fontSize : 'n/a');
+  }
+  update();
+  window.addEventListener('pageshow', update);
+  window.addEventListener('resize', update);
+  if (window.visualViewport) window.visualViewport.addEventListener('resize', update);
+  document.addEventListener('focusin', update);
+  document.addEventListener('focusout', update);
+})();
+</script>
 </body></html>
