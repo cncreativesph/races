@@ -1561,16 +1561,32 @@ console.log(
             });
         }
 
-        // Normalize organizer names
+        // Organizer filter labels: RUNRIO first, alphabetical middle, OTHERS last.
+        const NAMED_ORGANIZERS = [
+            'RUNRIO', 'GREEN MEDIA', 'HYVESPORTS', 'MNL CITY RUN',
+            'ON YOUR MARK', 'PINOY FITNESS', 'RSRJ', 'SMOKE10', 'TV8 MEDIA'
+        ];
+        const ORGANIZER_FILTER_ORDER = [...NAMED_ORGANIZERS, 'OTHERS'];
+
         function normalizeOrganizerName(name) {
             if (!name) return '';
-            name = name.toUpperCase().trim();
-            if (name.includes('SMOKE10')) return 'SMOKE10';
-            if (name.includes('RUNRIO')) return 'RUNRIO';
-            if (name.includes('GREEN MEDIA')) return 'GREEN MEDIA';
-			if (name.includes('HYVESPORTS')) return 'HYVESPORTS';
-			if (name.includes('PINOY FITNESS')) return 'PINOY FITNESS';
-            return name;
+            const original = String(name).trim().toUpperCase();
+            const key = original.replace(/[^A-Z0-9]+/g, '');
+            if (key.includes('RUNRIO')) return 'RUNRIO';
+            if (key.includes('GREENMEDIA')) return 'GREEN MEDIA';
+            if (key.includes('HYVESPORTS')) return 'HYVESPORTS';
+            if (key.includes('MNLCITYRUN') || key.includes('RULERICHEVENTSMANAGEMENT') || key.includes('RULEANDRICHEVENTSMANAGEMENT')) return 'MNL CITY RUN';
+            if (key.includes('ONYOURMARK')) return 'ON YOUR MARK';
+            if (key.includes('PINOYFITNESS')) return 'PINOY FITNESS';
+            if (key.includes('RSRJ')) return 'RSRJ';
+            if (key.includes('SMOKE10')) return 'SMOKE10';
+            if (key.includes('TV8MEDIA')) return 'TV8 MEDIA';
+            return original;
+        }
+
+        function organizerFilterGroup(name) {
+            const normalized = normalizeOrganizerName(name);
+            return NAMED_ORGANIZERS.includes(normalized) ? normalized : 'OTHERS';
         }
 
 
@@ -1701,12 +1717,7 @@ console.log(
                 
                 // Process organizers (only for races)
                 if (!isPhotos && item.organizer) {
-                    const normalizedOrg = normalizeOrganizerName(item.organizer);
-                    if (['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA'].includes(normalizedOrg)) {
-                        organizers.add(normalizedOrg);
-                    } else {
-                        organizers.add('OTHERS');
-                    }
+                    organizers.add(organizerFilterGroup(item.organizer));
                 }
                 
                 // Process dates
@@ -1909,7 +1920,7 @@ console.log(
                 // Add "All" option first
                 const allChip = document.createElement('div');
                 allChip.className = `filter-chip ${state.filters.organizer.length === 0 ? 'active' : ''}`;
-                allChip.textContent = 'All';
+                allChip.textContent = 'ALL';
                 allChip.addEventListener('click', () => {
 					clearSearchOnFilterChange();
 					
@@ -1921,10 +1932,10 @@ console.log(
                 organizerFilters.appendChild(allChip);
                 
                 // Add specific organizers
-                ['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA', 'OTHERS'].forEach(organizer => {
+                ORGANIZER_FILTER_ORDER.forEach(organizer => {
                     const chip = document.createElement('div');
                     chip.className = `filter-chip ${state.filters.organizer.includes(organizer) ? 'active' : ''}`;
-                    chip.textContent = organizer.toUpperCase();
+                    chip.textContent = organizer;
                     chip.addEventListener('click', () => {
 						clearSearchOnFilterChange();
 						state.pagination.page = 1; 
@@ -3251,7 +3262,7 @@ return data.filter(item => {
 					  (!looksLikeDistance && name && name.toLowerCase().includes(searchLower)) ||
 
 					  (normalizeKey(normalizeLocation(location)).includes(normalizeKey(searchLower))) ||
-					  (organizer && organizer.toLowerCase().includes(searchLower)) ||
+					  (organizer && (organizer.toLowerCase().includes(searchLower) || normalizeOrganizerName(organizer).toLowerCase().includes(searchLower))) ||
 
 					  // ✅ Distance/category match (supports BOTH: numeric distances + text categories like 2-MAN RELAY)
 					  (() => {
@@ -3373,14 +3384,7 @@ return data.filter(item => {
                 
                 // Organizer filter
                 if (state.filters.organizer.length > 0) {
-                    const normalizedOrganizer = normalizeOrganizerName(organizer);
-                    
-                    if (state.filters.organizer.includes('OTHERS')) {
-                        if (['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA'].includes(normalizedOrganizer) && 
-                            !state.filters.organizer.includes(normalizedOrganizer)) {
-                            return false;
-                        }
-                    } else if (!state.filters.organizer.includes(normalizedOrganizer)) {
+                    if (!state.filters.organizer.includes(organizerFilterGroup(organizer))) {
                         return false;
                     }
                 }
