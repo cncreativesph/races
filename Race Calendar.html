@@ -1066,6 +1066,127 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   }
 </style>
 
+<style id="pixhero-stacked-floating-footer">
+  /* Native app navigation overlays the WebView. Tune this clearance if the
+     app builder changes the native tab bar height or bottom margin. */
+  :root {
+    --native-nav-clearance: 12px;
+    --pagination-height: 60px;
+  }
+  @media (max-width: 768px), (pointer: coarse) {
+    :root { --native-nav-clearance: 100px; }
+  }
+  /* Compensate for the 90% HTML zoom: 112px becomes about 101px. */
+  html.ios-compact { --native-nav-clearance: 112px; }
+  body.pb-20 {
+    padding-bottom: calc(var(--native-nav-clearance) + var(--pagination-height) + env(safe-area-inset-bottom, 0px) + 18px);
+  }
+  #stickyFooterBar {
+    left: 12px;
+    right: 12px;
+    bottom: calc(var(--native-nav-clearance) + env(safe-area-inset-bottom, 0px));
+    padding: 7px 9px;
+    background: #202020;
+    border: 1px solid #383838;
+    border-radius: 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.28);
+    box-sizing: border-box;
+  }
+  #stickyFooterBarInner {
+    gap: 8px;
+    justify-content: space-between;
+    overflow: visible;
+    flex-wrap: nowrap;
+  }
+  #stickyFooterBarInner .sticky-refresh-btn {
+    flex: 0 0 40px;
+    width: 40px; min-width: 40px; height: 40px;
+    padding: 0; border: 1px solid #484848; border-radius: 14px;
+  }
+  #stickyFooterBarInner .sticky-refresh-btn svg {
+    width: 18px; height: 18px; margin: 0;
+  }
+  #paginationContainer {
+    flex: 1 1 auto; min-width: 0; justify-content: flex-end;
+    flex-wrap: wrap; gap: 4px; align-items: center;
+  }
+  #paginationContainer .pagination-info {
+    flex: 0 0 auto; margin-right: auto; font-size: 11px;
+  }
+  #paginationContainer .pagination-button {
+    flex: 0 0 auto; min-width: 32px; height: 36px; padding: 0 6px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid transparent; border-radius: 10px;
+    font-size: 12px;
+  }
+  #paginationContainer .pagination-button.active {
+    background: #F3F3F3; color: #101010; border-color: #F3F3F3;
+  }
+  #paginationContainer .pagination-button svg { width: 17px; height: 17px; }
+  #paginationContainer .pagination-empty {
+    flex: 1 1 auto; max-width: none; min-width: 0; font-size: 12px; text-align: left; overflow-wrap: anywhere;
+  }
+  @media (max-width: 380px) {
+    #stickyFooterBar { left: 8px; right: 8px; padding: 6px; }
+    #stickyFooterBarInner { gap: 5px; }
+    #paginationContainer { gap: 2px; }
+    #paginationContainer .pagination-info { font-size: 10px; }
+    #paginationContainer .pagination-button { min-width: 28px; padding: 0 4px; }
+  }
+</style>
+
+
+<style id="pixhero-labeled-pagination-heart">
+  #favoritesLabelStar {
+    display: inline-flex; align-items: center; justify-content: center;
+    flex: 0 0 23px; width: 23px; height: 23px; line-height: 1;
+    color: #ff3b30;
+  }
+  #favoritesLabelStar svg {
+    display: block; width: 23px; height: 23px; flex-shrink: 0;
+    fill: none; stroke: currentColor; stroke-width: 1.5;
+    stroke-linecap: round; stroke-linejoin: round;
+    transition: fill .15s ease;
+  }
+  #favoritesLabelStar.is-filled svg { fill: currentColor; }
+  #stickyFooterBarInner { flex-wrap: wrap; gap: 6px; }
+  #stickyFooterBarInner .sticky-refresh-btn {
+    flex: 0 0 auto; width: auto; min-width: 0; height: 36px;
+    padding: 0 8px; gap: 4px; font-size: 11px; white-space: nowrap;
+  }
+  #stickyFooterBarInner .sticky-refresh-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+  #paginationContainer { flex: 1 1 215px; min-width: 0; gap: 4px; justify-content: space-between; }
+  #paginationContainer .pagination-info { flex: 0 0 auto; margin-right: 0; white-space: nowrap; }
+  #paginationContainer .pagination-controls { display: flex; flex: 0 0 auto; align-items: center; gap: 3px; margin-left: auto; }
+  #paginationContainer .pagination-button {
+    height: 36px; min-width: 28px; padding: 0 5px;
+    font-size: 11px; gap: 2px; white-space: nowrap;
+  }
+  #paginationContainer .pagination-button svg { width: 12px; height: 12px; flex-shrink: 0; }
+  #paginationContainer.pagination-single { flex: 1 1 0; }
+  @media (max-width: 380px) {
+    #paginationContainer { flex-basis: 205px; }
+    #paginationContainer .pagination-button { min-width: 26px; padding: 0 4px; }
+    #paginationContainer .pagination-controls { gap: 2px; }
+  }
+</style>
+
+<style id="pixhero-rounded-calendar-header">
+  /* Match the native floating navigation bar: charcoal, 24px rounded edges. */
+  .header {
+    top: 8px;
+    margin: 8px 12px 0;
+    background: #202020;
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.22);
+    overflow: visible;
+    padding: 1.25rem 1rem;
+  }
+  /* Keep the search dropdown above the rounded sticky header and race cards. */
+  .header .search-suggestions { z-index: 1100; }
+</style>
+
 </head>
 <body class="pb-20">
     <div class="header">
@@ -1095,7 +1216,7 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
 
         <!-- Show Favorite Races -->
         <div class="favorites-control">
-            <span id="favoritesLabelStar" class="favorites-label-star">♡</span>
+            <span id="favoritesLabelStar" class="favorites-label-star" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0 L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
             <span class="favorites-control-text">Show Favorite Races</span>
 
             <div class="favorites-segment" role="group"
@@ -1114,12 +1235,12 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
     </div>
 
     <div class="flex justify-between items-center px-4 py-2">
-        <button id="refreshButton" class="toggle-button refresh flex items-center">
+        <button id="refreshButton" class="toggle-button refresh flex items-center" aria-label="Refresh races" title="Refresh races">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
             </svg>
-            Refresh
-       	</button>
+            <span>Refresh</span>
+        </button>
 
 
 
@@ -2471,7 +2592,8 @@ console.log(
             const currentPage = Math.min(state.pagination.page, totalPages);
             state.pagination.page = currentPage;
 
-			if (totalItems <= perPage) {
+			paginationContainer.classList.toggle('pagination-single', totalItems <= perPage);
+            if (totalItems <= perPage) {
 			  paginationContainer.innerHTML = '';
 
 			  const label = document.createElement('div');
@@ -2502,13 +2624,18 @@ console.log(
             info.className = 'pagination-info';
             info.textContent = `Page ${currentPage} of ${totalPages}`;
             paginationContainer.appendChild(info);
+            const pageControls = document.createElement('div');
+            pageControls.className = 'pagination-controls';
+            paginationContainer.appendChild(pageControls);
 
             const prev = document.createElement('button');
             prev.className = 'pagination-button';
-            prev.textContent = 'Prev';
+            prev.innerHTML = '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg><span>PREV</span>';
+  prev.setAttribute('aria-label', 'Previous page');
+  prev.title = 'Previous page';
             prev.disabled = currentPage === 1;
             prev.onclick = () => setCalendarPage(currentPage - 1);
-            paginationContainer.appendChild(prev);
+            pageControls.appendChild(prev);
 
             // Show only 3 page buttons at a time
 			const windowSize = 3;
@@ -2527,17 +2654,21 @@ console.log(
 			  const b = document.createElement('button');
 			  b.className = 'pagination-button' + (i === currentPage ? ' active' : '');
 			  b.textContent = i;
+              b.setAttribute('aria-label', `Page ${i}`);
+              if (i === currentPage) b.setAttribute('aria-current', 'page');
 			  b.onclick = () => setCalendarPage(i);
-			  paginationContainer.appendChild(b);
+			  pageControls.appendChild(b);
 			}
 
 
             const next = document.createElement('button');
             next.className = 'pagination-button';
-            next.textContent = 'Next';
+            next.innerHTML = '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span>NEXT</span>';
+  next.setAttribute('aria-label', 'Next page');
+  next.title = 'Next page';
             next.disabled = currentPage === totalPages;
             next.onclick = () => setCalendarPage(currentPage + 1);
-            paginationContainer.appendChild(next);
+            pageControls.appendChild(next);
         }
     
 function normalizeLocation(raw) {
@@ -3583,9 +3714,8 @@ const favoritesLabelStar =
     document.getElementById('favoritesLabelStar');
 
 function updateFavoritesControl() {
-    // Solid yellow when Yes, outlined when No
-favoritesLabelStar.textContent =
-    favoritesOnly ? '♥' : '♡';
+    // Keep the same SVG geometry for both states; only change the fill.
+    favoritesLabelStar.classList.toggle('is-filled', favoritesOnly);
 
     // Update selected Yes / No button
     favoriteOptions.forEach(button => {
@@ -3779,5 +3909,17 @@ updateFavoritesControl();
         loadData();
     </script>
 
+
+<script>
+(function () {
+  const bar = document.getElementById('stickyFooterBar');
+  if (!bar) return;
+  // offsetHeight is in layout CSS pixels, before the 90% iOS zoom.
+  const measure = () => document.documentElement.style.setProperty('--pagination-height', Math.ceil(bar.offsetHeight) + 'px');
+  measure();
+  if ('ResizeObserver' in window) new ResizeObserver(measure).observe(bar);
+  window.addEventListener('resize', measure);
+})();
+</script>
 
 </body></html>
