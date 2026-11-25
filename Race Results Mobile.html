@@ -1123,7 +1123,7 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   @media (max-width: 768px), (pointer: coarse) {
     :root { --native-nav-clearance: 10px; --native-nav-content-reserve: 90px; }
   }
-  html.ios-compact { --native-nav-clearance: 10px; --native-nav-content-reserve: 90px; }
+  html.ios-compact { --native-nav-clearance: 25px; --native-nav-content-reserve: 90px; }
   body.pb-20 {
     padding-bottom: calc(max(var(--native-nav-clearance), var(--native-nav-content-reserve, 12px)) + var(--pagination-height) + env(safe-area-inset-bottom, 0px) + 18px);
   }
@@ -1213,7 +1213,7 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   #paginationContainer .pagination-empty { min-width: 0; overflow-wrap: anywhere; }
   html.ios-compact #stickyFooterBar {
     zoom: 1;
-    --footer-local-clearance: 10px;
+    --footer-local-clearance: 25px;
   }
 </style>
 
@@ -3880,9 +3880,9 @@ window.addEventListener('load', () => {
   const mobile = window.matchMedia('(max-width: 768px), (pointer: coarse)');
   const ios = root.classList.contains('ios-compact');
   const scale = 1;
-  const storageKey = 'pixhero.results.pagination.clearance.v5';
-  const minimumOffset = () => mobile.matches || ios ? 10 : 12;
-  const defaultOffset = () => mobile.matches || ios ? 10 : 12;
+  const storageKey = ios ? 'pixhero.results.pagination.clearance.v6' : 'pixhero.results.pagination.clearance.v5';
+  const minimumOffset = () => ios ? 25 : (mobile.matches ? 10 : 12);
+  const defaultOffset = () => ios ? 25 : (mobile.matches ? 10 : 12);
   let preferred = defaultOffset();
   try {
     const saved = localStorage.getItem(storageKey);
