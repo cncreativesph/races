@@ -1,7 +1,9 @@
+<!DOCTYPE html>
 <html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Philippines Race Calendar</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&amp;display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -533,22 +535,12 @@
             display: none;
         }
 
-        /* Category colors */
-        .cat-100km { background-color: #8e44ad; }
-        .cat-75km { background-color: #9b59b6; }
-        .cat-50km { background-color: #2980b9; }
-        .cat-42km { background-color: #ff2d55; }
-        .cat-32km { background-color: #5856d6; }
-        .cat-25km { background-color: #3498db; }
-        .cat-21km { background-color: #007aff; }
-        .cat-16km { background-color: #34c759; }
-        .cat-10km { background-color: #ff9500; }
-        .cat-5km { background-color: #af52de; }
-        .cat-3km { background-color: #ff3b30; }
-        .cat-2km { background-color: #5ac8fa; }
-        .cat-1km { background-color: #4cd964; }
-        .cat-other { background-color: #8e8e93; }
-    
+        /* Distance colors are assigned by applyDistanceColor() using exact labels. */
+        .category-chip {
+            background-color: var(--distance-bg, #8e8e93);
+            color: var(--distance-fg, #101010);
+        }
+
         .pagination-button {
             background-color: rgba(255,255,255,0.12);
             color: white;
@@ -716,6 +708,7 @@
 				transform: translateY(0);
 			  }
 			  
+			}
 			/* Extra animation variants */
 			.pixhero-slide-right {
 			  opacity: 0;
@@ -767,7 +760,6 @@
 			@keyframes blurIn {
 			  to { opacity: 1; filter: blur(0); }
 			}
-		}
 		
 /* FAVORITES CONTROL BELOW SEARCH */
 .favorites-control {
@@ -863,7 +855,218 @@
 
         </style>
         
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.relative{position:relative}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.ml-1{margin-left:0.25rem}.mr-1{margin-right:0.25rem}.mr-2{margin-right:0.5rem}.mt-2{margin-top:0.5rem}.mt-1{margin-top:0.25rem}.flex{display:flex}.hidden{display:none}.h-24{height:6rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-3{height:0.75rem}.w-16{width:4rem}.w-20{width:5rem}.w-24{width:6rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-full{width:100%}.w-3{width:0.75rem}.flex-1{flex:1 1 0%}.rotate-180{--tw-rotate:180deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.rounded-full{border-radius:9999px}.bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246 / var(--tw-bg-opacity, 1))}.bg-transparent{background-color:transparent}.p-2{padding:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.pb-20{padding-bottom:5rem}.pt-1{padding-top:0.25rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.text-black{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.outline-none{outline:2px solid transparent;outline-offset:2px}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}</style></head>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.relative{position:relative}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.ml-1{margin-left:0.25rem}.mr-1{margin-right:0.25rem}.mr-2{margin-right:0.5rem}.mt-2{margin-top:0.5rem}.mt-1{margin-top:0.25rem}.flex{display:flex}.hidden{display:none}.h-24{height:6rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-3{height:0.75rem}.w-16{width:4rem}.w-20{width:5rem}.w-24{width:6rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-full{width:100%}.w-3{width:0.75rem}.flex-1{flex:1 1 0%}.rotate-180{--tw-rotate:180deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.rounded-full{border-radius:9999px}.bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246 / var(--tw-bg-opacity, 1))}.bg-transparent{background-color:transparent}.p-2{padding:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.pb-20{padding-bottom:5rem}.pt-1{padding-top:0.25rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.text-black{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.outline-none{outline:2px solid transparent;outline-offset:2px}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}</style>
+<style id="pixhero-threads-dark">
+/* PixHero — Threads-inspired dark theme
+   Add after the existing styles. Race distance and registration status
+   colors remain unchanged. No changes to calendar JavaScript are needed. */
+:root {
+  color-scheme: dark;
+  --primary-color: #F3F3F3;
+  --secondary-color: #1C1C1C;
+  --accent-color: #F3F3F3;
+  --text-primary: #F3F3F3;
+  --text-secondary: #A8A8A8;
+  --background: #101010;
+  --card-bg: #181818;
+  --card-border: #303030;
+  --dark-green: #F3F3F3; /* legacy variable name */
+  --light-green: #202020; /* legacy variable name */
+  --surface-hover: #292929;
+  --control-border: #484848;
+  --on-accent: #101010;
+}
+html, body { background: var(--background); color: var(--text-primary); }
+*, .poppins-black, .poppins-regular, .pixhero-fallback {
+  font-family: 'Poppins', sans-serif;
+}
+
+.header {
+  background: var(--background);
+  color: var(--text-primary);
+  border-radius: 0;
+  border-bottom: 1px solid var(--card-border);
+  box-shadow: none;
+}
+
+.search-bar {
+  background: var(--secondary-color);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  box-shadow: none;
+}
+.search-bar:focus-within { border-color: #707070; }
+.search-bar.error { border-color: #F87171; }
+.search-bar input, #searchInput { color: var(--text-primary); caret-color: var(--text-primary); }
+#searchInput::placeholder {
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 1;
+}
+.search-bar .text-gray-500, .filter-header svg { color: var(--text-secondary); }
+.clear-search-btn { color: var(--text-secondary); }
+.search-suggestions {
+  background: var(--secondary-color);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 6px 16px #0005;
+}
+.suggestion-item { color: var(--text-primary); border-bottom-color: var(--card-border); }
+.suggestion-item:last-child { border-bottom: 0; }
+.suggestion-item:hover { background: var(--surface-hover); }
+.search-inline-error, .search-error-overlay { color: #F87171; }
+.favorites-control-text { color: var(--text-primary);  }
+.favorites-segment { background: var(--secondary-color); border: 1px solid var(--card-border); }
+.favorites-option { color: var(--text-secondary);  }
+.favorites-option.active { background: var(--accent-color); color: var(--on-accent); box-shadow: none; }
+.favorite-star svg { stroke: var(--text-secondary); }
+/* The original red favorite-heart fill/stroke is intentionally retained. */
+.filter-header { color: var(--text-primary); }
+.filter-chip { background: transparent; color: var(--text-secondary); }
+.filter-chip:hover { background: var(--surface-hover); color: var(--text-primary); }
+.filter-chip.active, .filter-chip.active:hover { background: var(--accent-color); color: var(--on-accent);  }
+#toggleFiltersButton, .toggle-button.refresh, .toggle-button.calendar, .toggle-button.photos {
+  background: var(--secondary-color);
+  border: 1px solid var(--control-border);
+  color: var(--text-primary);
+  box-shadow: none;
+}
+#toggleFiltersButton:hover, .toggle-button:hover { background: var(--surface-hover); }
+.race-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text-primary);
+  border-radius: 14px;
+  box-shadow: none;
+  will-change: auto;
+}
+.race-card:hover, .race-card:active { transform: none; box-shadow: none; }
+.race-name { color: var(--text-primary);   }
+.race-detail { color: var(--text-secondary); }
+.categories-section { background: var(--light-green); border-radius: 10px; gap: 6px; }
+
+/* Distance badges use their exact-category CSS variables. */
+.register-button {
+  background: var(--accent-color);
+  color: var(--on-accent);
+  border: 0;
+  box-shadow: none;
+  
+  flex-shrink: 0;
+}
+.register-button:hover, .register-button:active { transform: none; box-shadow: none; }
+/* Preserve original status colors, even during hover/press. */
+.register-button.register, .register-button.register:hover, .register-button.register:active {
+  background-color: #007aff; color: white;
+}
+.register-button.full, .register-button.full:hover, .register-button.full:active {
+  background-color: #faf31e; color: black;
+}
+.register-button.soon, .register-button.soon:hover, .register-button.soon:active {
+  background-color: #fc650c; color: black; opacity: 0.7;
+}
+/* Results and photographer buttons use the neutral theme. */
+.register-button.results, .register-button.results:hover, .register-button.results:active {
+  background-color: var(--accent-color); color: var(--on-accent);
+}
+.photographers-title { color: var(--text-primary);  }
+.photographers-instruct { color: var(--text-secondary); }
+.photographer-button {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--control-border);
+  border-radius: 999px;
+  
+}
+.photographer-button:hover { background: var(--surface-hover); }
+#stickyFooterBar { background: var(--background); border-top: 1px solid var(--card-border); }
+#paginationContainer, #paginationContainer .pagination-info,
+#paginationContainer .pagination-empty, .pixhero-fallback {
+  color: var(--text-secondary); 
+}
+#paginationContainer .pagination-button, #stickyFooterBarInner .sticky-refresh-btn, .go-top-btn,
+.pagination-button {
+  color: var(--text-primary);
+  border: 1px solid var(--control-border);
+  background: transparent;
+  border-radius: 8px;
+  
+}
+#paginationContainer .pagination-button:hover:not(.active):not(:disabled),
+#stickyFooterBarInner .sticky-refresh-btn:hover, .go-top-btn:hover { background: var(--surface-hover); }
+#paginationContainer .pagination-button.active, .pagination-button.active {
+  background: var(--accent-color); color: var(--on-accent); border-color: var(--accent-color);
+}
+#raceList .text-gray-500, #raceList .text-gray-700 { color: var(--text-secondary); }
+#retryButton { background: var(--accent-color); color: var(--on-accent); }
+.skeleton {
+  background: linear-gradient(90deg, #1C1C1C 25%, #303030 50%, #1C1C1C 75%);
+  background-size: 200% 100%;
+}
+button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; outline-offset: 2px; }
+/* Keep the existing compact mobile layout, allowing distance chips to wrap. */
+.categories-section > .flex-1 { min-width: 0; }
+
+</style>
+
+<!-- iOS / iPadOS compact display: 90% of the original interface size. -->
+<style id="pixhero-ios-compact">
+  html.ios-compact {
+    zoom: 0.9;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  /* Keep the search field at an effective 16px to reduce iOS focus zoom. */
+  html.ios-compact #searchInput {
+    font-size: 18px;
+  }
+</style>
+<script>
+  (function () {
+    var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (isIOS) document.documentElement.classList.add('ios-compact');
+  })();
+</script>
+
+<!-- Sticky header: title, search and favorite controls stay visible. -->
+<style id="pixhero-sticky-header">
+  .header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--background);
+    overflow: visible;
+  }
+</style>
+
+<!-- Vertically center search text and placeholder in the existing search bar. -->
+<style id="pixhero-search-alignment">
+  .search-input-wrap {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+  }
+  #searchInput {
+    display: block;
+    height: 100%;
+    min-width: 0;
+    padding: 0 32px 0 5px;
+    line-height: normal;
+  }
+  /* Match the input and placeholder font metrics while the empty field is idle. */
+  #searchInput:placeholder-shown:not(:focus),
+  html.ios-compact #searchInput:placeholder-shown:not(:focus) {
+    font-size: 14px;
+  }
+  #searchInput::placeholder {
+    font-size: 14px;
+    line-height: normal;
+  }
+</style>
+
+</head>
 <body class="pb-20">
     <div class="header">
         <div class="flex justify-between items-center mb-2">
@@ -1168,7 +1371,7 @@ console.log(
 		  span.textContent = value;
 
 		  document.body.appendChild(span);
-		  const textWidth = span.getBoundingClientRect().width;
+		  const textWidth = span.getBoundingClientRect().width / (parseFloat(getComputedStyle(document.documentElement).zoom) || 1);
 		  document.body.removeChild(span);
 
 		  searchInlineError.style.left = `${8 + textWidth}px`;
@@ -1275,6 +1478,7 @@ console.log(
                     try {
                         const data = await fetchData('https://raw.githubusercontent.com/cncreativesph/races/main/photogs.json');
                         state.photos = data;
+                        primeDistanceColors(data, 'distanceP');
                         renderPhotos();
                     } catch (error) {
                         showError(`Failed to load photo data: ${error.message}`);
@@ -1283,6 +1487,7 @@ console.log(
                     try {
                         const data = await fetchData('https://raw.githubusercontent.com/cncreativesph/races/main/racesphil.json');
                         state.races = data;
+                        primeDistanceColors(data, 'distance');
                         renderRaces();
                         setupFilters(data, false);
                     } catch (error) {
@@ -1328,6 +1533,7 @@ console.log(
                 
                 const data = await fetchData('https://raw.githubusercontent.com/cncreativesph/races/main/photogs.json');
                 state.photos = data;
+                        primeDistanceColors(data, 'distanceP');
                 renderPhotos();
             } catch (error) {
                 showError(`Failed to load photo data: ${error.message}`);
@@ -1355,16 +1561,32 @@ console.log(
             });
         }
 
-        // Normalize organizer names
+        // Organizer filter labels: RUNRIO first, alphabetical middle, OTHERS last.
+        const NAMED_ORGANIZERS = [
+            'RUNRIO', 'GREEN MEDIA', 'HYVESPORTS', 'MNL CITY RUN',
+            'ON YOUR MARK', 'PINOY FITNESS', 'RSRJ', 'SMOKE10', 'TV8 MEDIA'
+        ];
+        const ORGANIZER_FILTER_ORDER = [...NAMED_ORGANIZERS, 'OTHERS'];
+
         function normalizeOrganizerName(name) {
             if (!name) return '';
-            name = name.toUpperCase().trim();
-            if (name.includes('SMOKE10')) return 'SMOKE10';
-            if (name.includes('RUNRIO')) return 'RUNRIO';
-            if (name.includes('GREEN MEDIA')) return 'GREEN MEDIA';
-			if (name.includes('HYVESPORTS')) return 'HYVESPORTS';
-			if (name.includes('PINOY FITNESS')) return 'PINOY FITNESS';
-            return name;
+            const original = String(name).trim().toUpperCase();
+            const key = original.replace(/[^A-Z0-9]+/g, '');
+            if (key.includes('RUNRIO')) return 'RUNRIO';
+            if (key.includes('GREENMEDIA')) return 'GREEN MEDIA';
+            if (key.includes('HYVESPORTS')) return 'HYVESPORTS';
+            if (key.includes('MNLCITYRUN') || key.includes('RULERICHEVENTSMANAGEMENT') || key.includes('RULEANDRICHEVENTSMANAGEMENT')) return 'MNL CITY RUN';
+            if (key.includes('ONYOURMARK')) return 'ON YOUR MARK';
+            if (key.includes('PINOYFITNESS')) return 'PINOY FITNESS';
+            if (key.includes('RSRJ')) return 'RSRJ';
+            if (key.includes('SMOKE10')) return 'SMOKE10';
+            if (key.includes('TV8MEDIA')) return 'TV8 MEDIA';
+            return original;
+        }
+
+        function organizerFilterGroup(name) {
+            const normalized = normalizeOrganizerName(name);
+            return NAMED_ORGANIZERS.includes(normalized) ? normalized : 'OTHERS';
         }
 
 
@@ -1411,11 +1633,14 @@ console.log(
 
 			  // ✅ METERS FIRST: 711m, 711 m, 500m, 500 m -> 711M / 500M
 			  // (avoid catching km)
-			  const meterMatch = s.match(/^(\d+(?:\.\d+)?)\s*m\b/i);
+			  const meterMatch = s.match(/^(\d+(?:\.\d+)?)\s*m\b\s*(.*)$/i);
 			  if (meterMatch && !/\bkm\b/i.test(s)) {
 				// keep as meters, never convert to KM
 				const num = meterMatch[1];
-				return `${num}M`;
+				const rest = (meterMatch[2] || '').trim();
+                const label = rest.split(' ').filter(Boolean)
+                    .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+                return `${num}M${label ? ' ' + label : ''}`;
 			  }
 
 			  // ✅ KM forms (supports decimals): 21k, 21 km, 21, 2.5km, 1.5 k, etc.
@@ -1492,12 +1717,7 @@ console.log(
                 
                 // Process organizers (only for races)
                 if (!isPhotos && item.organizer) {
-                    const normalizedOrg = normalizeOrganizerName(item.organizer);
-                    if (['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA'].includes(normalizedOrg)) {
-                        organizers.add(normalizedOrg);
-                    } else {
-                        organizers.add('OTHERS');
-                    }
+                    organizers.add(organizerFilterGroup(item.organizer));
                 }
                 
                 // Process dates
@@ -1700,7 +1920,7 @@ console.log(
                 // Add "All" option first
                 const allChip = document.createElement('div');
                 allChip.className = `filter-chip ${state.filters.organizer.length === 0 ? 'active' : ''}`;
-                allChip.textContent = 'All';
+                allChip.textContent = 'ALL';
                 allChip.addEventListener('click', () => {
 					clearSearchOnFilterChange();
 					
@@ -1712,10 +1932,10 @@ console.log(
                 organizerFilters.appendChild(allChip);
                 
                 // Add specific organizers
-                ['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA', 'OTHERS'].forEach(organizer => {
+                ORGANIZER_FILTER_ORDER.forEach(organizer => {
                     const chip = document.createElement('div');
                     chip.className = `filter-chip ${state.filters.organizer.includes(organizer) ? 'active' : ''}`;
-                    chip.textContent = organizer.toUpperCase();
+                    chip.textContent = organizer;
                     chip.addEventListener('click', () => {
 						clearSearchOnFilterChange();
 						state.pagination.page = 1; 
@@ -1951,23 +2171,97 @@ console.log(
 			return `${formattedDate} (${dayName})`;
 		}
 
-        // Get category color class
-        function getCategoryColorClass(category) {
-            category = category.toLowerCase().trim();
-            if (category.includes('100km')) return 'cat-100km';
-            if (category.includes('75km')) return 'cat-75km';
-            if (category.includes('50km')) return 'cat-50km';
-            if (category.includes('42km')) return 'cat-42km';
-            if (category.includes('32km')) return 'cat-32km';
-            if (category.includes('25km')) return 'cat-25km';
-            if (category.includes('21km') || category.includes('half')) return 'cat-21km';
-            if (category.includes('16km')) return 'cat-16km';
-            if (category.includes('10km')) return 'cat-10km';
-            if (category.includes('5km')) return 'cat-5km';
-            if (category.includes('3km')) return 'cat-3km';
-            if (category.includes('2km')) return 'cat-2km';
-            if (category.includes('1km')) return 'cat-1km';
-            return 'cat-other';
+        // Exact distance/category colors. No substring matching.
+        // Keep familiar colors where possible, but separate easily confused distances.
+        const DISTANCE_COLORS = new Map(Object.entries({
+            '100KM': '#783C94',
+            '75KM': '#C58BD8',
+            '60KM': '#784B36',
+            '50KM': '#236B99',
+            '42KM': '#FF2D55',
+            '32KM': '#5856D6',
+            '30KM': '#A65A2B',
+            '25KM': '#92C7F5',
+            '24KM': '#785FBA',
+            '21KM': '#007AFF',
+            '20KM': '#B9C65A',
+            '16KM': '#237A3C',
+            '15KM': '#D8B895',
+            '12KM': '#B63E71',
+            '10KM': '#FF9500',
+            '8KM': '#C5B4FA',
+            '7KM': '#A8E08F',
+            '6KM': '#B05F00',
+            '5KM': '#AF52DE',
+            '4KM': '#687B99',
+            '3KM': '#FF3B30',
+            '2.5KM': '#D6A5F5',
+            '2KM': '#5AC8FA',
+            '1.5KM': '#F7D154',
+            '1KM': '#36D6C2',
+            '1KM DOG': '#F8A8C4',
+            '500M': '#A6A6A6',
+            '711M': '#EBA68C'
+        }));
+        const usedDistanceColors = new Set(DISTANCE_COLORS.values());
+
+        function distanceColorKey(category) {
+            const label = normalizeDistance(category).toUpperCase().trim();
+            // Normalize numeric aliases (5, 5K, 5.0KM), but retain every qualifier.
+            const match = label.match(/^(\d+(?:\.\d+)?)\s*(KM|M)\b\s*(.*)$/);
+            if (match) {
+                const suffix = match[3].trim().replace(/\s+/g, ' ');
+                return `${Number(match[1])}${match[2]}${suffix ? ' ' + suffix : ''}`;
+            }
+            if (/^HALF(?:[ -]MARATHON)?$/.test(label)) return '21KM';
+            return label || 'OTHER';
+        }
+
+        // Stable generated color for future distances, relays and special labels.
+        // Resolve exact RGB collisions rather than reusing another category's color.
+        function getDistanceColor(category) {
+            const key = distanceColorKey(category);
+            if (DISTANCE_COLORS.has(key)) return DISTANCE_COLORS.get(key);
+            let hash = 2166136261;
+            for (let i = 0; i < key.length; i++) {
+                hash = Math.imul(hash ^ key.charCodeAt(i), 16777619) >>> 0;
+            }
+            let color;
+            for (let attempt = 0; ; attempt++) {
+                const code = (hash + Math.imul(attempt, 0x9e3779b9)) >>> 0;
+                const h = (code % 360) / 60;
+                const sat = (55 + ((code >>> 9) % 26)) / 100;
+                const light = (38 + ((code >>> 17) % 36)) / 100;
+                const c = (1 - Math.abs(2 * light - 1)) * sat;
+                const x = c * (1 - Math.abs(h % 2 - 1));
+                const m = light - c / 2;
+                const rgb = [[c,x,0],[x,c,0],[0,c,x],[0,x,c],[x,0,c],[c,0,x]][Math.floor(h)];
+                color = '#' + rgb.map(v => Math.round((v + m) * 255).toString(16).padStart(2,'0')).join('').toUpperCase();
+                if (!usedDistanceColors.has(color)) break;
+            }
+            DISTANCE_COLORS.set(key, color);
+            usedDistanceColors.add(color);
+            return color;
+        }
+
+        function applyDistanceColor(chip, category) {
+            const color = getDistanceColor(category);
+            const rgb = color.slice(1).match(/../g).map(v => parseInt(v, 16) / 255);
+            const linear = rgb.map(v => v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
+            const luminance = linear[0] * 0.2126 + linear[1] * 0.7152 + linear[2] * 0.0722;
+            // Choose the higher-contrast foreground (white or black).
+            const foreground = 1.05 / (luminance + 0.05) >= (luminance + 0.05) / 0.05 ? '#FFFFFF' : '#000000';
+            chip.style.setProperty('--distance-bg', color);
+            chip.style.setProperty('--distance-fg', foreground);
+        }
+
+        // Allocate new colors in a consistent order before filtering or paginating.
+        function primeDistanceColors(data, field) {
+            const labels = new Set();
+            data.forEach(item => String(item[field] || '').split(',').forEach(label => {
+                if (label.trim()) labels.add(distanceColorKey(label));
+            }));
+            [...labels].sort().forEach(getDistanceColor);
         }
 
         // Get photographer class
@@ -2470,23 +2764,10 @@ if (s === 'vermosa' || s === 'vermosa cavite' || s === 'vermosa cavite city'|| s
 }
 
 function normalizeDistanceLabel(raw) {
-  let s = (raw || '').toString().trim().replace(/\s+/g, ' ');
-
-  // DOG category (force exact casing)
-  if (/dog/i.test(s)) return '1KM Dog';
-
-  // Get first number
-  const m = s.match(/(\d+)/);
-  if (!m) return s;
-
-  const n = parseInt(m[1], 10);
-  if (!Number.isFinite(n)) return s;
-
-  // Force: "21" / "21k" / "21 km" / "21KM" => "21KM"
-  return `${n}KM`;
+  return normalizeDistance(raw);
 }
 
-	
+
 function renderRaces() {
             const filteredRaces = filterData(state.races, false);
 			
@@ -2652,7 +2933,8 @@ detailsSection.appendChild(raceTitleRow);
 					  const normalized = normalizeDistance(category.trim());
 
 					  const chip = document.createElement('span');
-					  chip.className = `category-chip ${getCategoryColorClass(normalized)}`;
+					  chip.className = 'category-chip';
+                      applyDistanceColor(chip, normalized);
 					  chip.textContent = normalized;
 					  categoriesDiv.appendChild(chip);
 					});
@@ -2855,7 +3137,8 @@ detailsSection.appendChild(raceTitleRow);
                     
                     photo.distanceP.split(',').forEach(category => {
                         const chip = document.createElement('span');
-                        chip.className = `category-chip ${getCategoryColorClass(category)}`;
+                        chip.className = 'category-chip';
+                        applyDistanceColor(chip, category);
                         chip.textContent = normalizeDistanceLabel(category);
                         categoriesDiv.appendChild(chip);
                     });
@@ -2979,7 +3262,7 @@ return data.filter(item => {
 					  (!looksLikeDistance && name && name.toLowerCase().includes(searchLower)) ||
 
 					  (normalizeKey(normalizeLocation(location)).includes(normalizeKey(searchLower))) ||
-					  (organizer && organizer.toLowerCase().includes(searchLower)) ||
+					  (organizer && (organizer.toLowerCase().includes(searchLower) || normalizeOrganizerName(organizer).toLowerCase().includes(searchLower))) ||
 
 					  // ✅ Distance/category match (supports BOTH: numeric distances + text categories like 2-MAN RELAY)
 					  (() => {
@@ -3101,14 +3384,7 @@ return data.filter(item => {
                 
                 // Organizer filter
                 if (state.filters.organizer.length > 0) {
-                    const normalizedOrganizer = normalizeOrganizerName(organizer);
-                    
-                    if (state.filters.organizer.includes('OTHERS')) {
-                        if (['RUNRIO', 'HYVESPORTS', 'PINOY FITNESS', 'SMOKE10', 'GREEN MEDIA'].includes(normalizedOrganizer) && 
-                            !state.filters.organizer.includes(normalizedOrganizer)) {
-                            return false;
-                        }
-                    } else if (!state.filters.organizer.includes(normalizedOrganizer)) {
+                    if (!state.filters.organizer.includes(organizerFilterGroup(organizer))) {
                         return false;
                     }
                 }
@@ -3373,7 +3649,7 @@ updateFavoritesControl();
 		  temp.textContent = value;
 
 		  document.body.appendChild(temp);
-		  const width = temp.getBoundingClientRect().width;
+		  const width = temp.getBoundingClientRect().width / (parseFloat(getComputedStyle(document.documentElement).zoom) || 1);
 		  document.body.removeChild(temp);
 
 		  searchInlineError.style.left = `${16 + width}px`;
@@ -3502,18 +3778,6 @@ updateFavoritesControl();
         // Initialize
         loadData();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9405435a5773fee1',t:'MTc0NzMzOTY2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe>
+
 
 </body></html>
-
-
-
-
-
-
-
-
-
-
-
-
