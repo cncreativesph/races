@@ -535,22 +535,12 @@
             display: none;
         }
 
-        /* Category colors */
-        .cat-100km { background-color: #8e44ad; }
-        .cat-75km { background-color: #9b59b6; }
-        .cat-50km { background-color: #2980b9; }
-        .cat-42km { background-color: #ff2d55; }
-        .cat-32km { background-color: #5856d6; }
-        .cat-25km { background-color: #3498db; }
-        .cat-21km { background-color: #007aff; }
-        .cat-16km { background-color: #34c759; }
-        .cat-10km { background-color: #ff9500; }
-        .cat-5km { background-color: #af52de; }
-        .cat-3km { background-color: #ff3b30; }
-        .cat-2km { background-color: #5ac8fa; }
-        .cat-1km { background-color: #4cd964; }
-        .cat-other { background-color: #8e8e93; }
-    
+        /* Distance colors are assigned by applyDistanceColor() using exact labels. */
+        .category-chip {
+            background-color: var(--distance-bg, #8e8e93);
+            color: var(--distance-fg, #101010);
+        }
+
         .pagination-button {
             background-color: rgba(255,255,255,0.12);
             color: white;
@@ -955,7 +945,7 @@ html, body { background: var(--background); color: var(--text-primary); }
 .race-detail { color: var(--text-secondary); }
 .categories-section { background: var(--light-green); border-radius: 10px; gap: 6px; }
 
-/* Do not override the .cat-* distance color classes. */
+/* Distance badges use their exact-category CSS variables. */
 .register-button {
   background: var(--accent-color);
   color: var(--on-accent);
@@ -1019,7 +1009,7 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
 
 </style>
 
-<!-- iOS / iPadOS compact display: 80% of the original interface size. -->
+<!-- iOS / iPadOS compact display: 90% of the original interface size. -->
 <style id="pixhero-ios-compact">
   html.ios-compact {
     zoom: 0.9;
@@ -1028,7 +1018,7 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   }
   /* Keep the search field at an effective 16px to reduce iOS focus zoom. */
   html.ios-compact #searchInput {
-    font-size: 20px;
+    font-size: 18px;
   }
 </style>
 <script>
@@ -1488,6 +1478,7 @@ console.log(
                     try {
                         const data = await fetchData('https://raw.githubusercontent.com/cncreativesph/races/main/photogs.json');
                         state.photos = data;
+                        primeDistanceColors(data, 'distanceP');
                         renderPhotos();
                     } catch (error) {
                         showError(`Failed to load photo data: ${error.message}`);
@@ -1496,6 +1487,7 @@ console.log(
                     try {
                         const data = await fetchData('https://raw.githubusercontent.com/cncreativesph/races/main/racesphil.json');
                         state.races = data;
+                        primeDistanceColors(data, 'distance');
                         renderRaces();
                         setupFilters(data, false);
                     } catch (error) {
@@ -1541,6 +1533,7 @@ console.log(
                 
                 const data = await fetchData('https://raw.githubusercontent.com/cncreativesph/races/main/photogs.json');
                 state.photos = data;
+                        primeDistanceColors(data, 'distanceP');
                 renderPhotos();
             } catch (error) {
                 showError(`Failed to load photo data: ${error.message}`);
@@ -1624,11 +1617,14 @@ console.log(
 
 			  // ✅ METERS FIRST: 711m, 711 m, 500m, 500 m -> 711M / 500M
 			  // (avoid catching km)
-			  const meterMatch = s.match(/^(\d+(?:\.\d+)?)\s*m\b/i);
+			  const meterMatch = s.match(/^(\d+(?:\.\d+)?)\s*m\b\s*(.*)$/i);
 			  if (meterMatch && !/\bkm\b/i.test(s)) {
 				// keep as meters, never convert to KM
 				const num = meterMatch[1];
-				return `${num}M`;
+				const rest = (meterMatch[2] || '').trim();
+                const label = rest.split(' ').filter(Boolean)
+                    .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+                return `${num}M${label ? ' ' + label : ''}`;
 			  }
 
 			  // ✅ KM forms (supports decimals): 21k, 21 km, 21, 2.5km, 1.5 k, etc.
@@ -2164,23 +2160,97 @@ console.log(
 			return `${formattedDate} (${dayName})`;
 		}
 
-        // Get category color class
-        function getCategoryColorClass(category) {
-            category = category.toLowerCase().trim();
-            if (category.includes('100km')) return 'cat-100km';
-            if (category.includes('75km')) return 'cat-75km';
-            if (category.includes('50km')) return 'cat-50km';
-            if (category.includes('42km')) return 'cat-42km';
-            if (category.includes('32km')) return 'cat-32km';
-            if (category.includes('25km')) return 'cat-25km';
-            if (category.includes('21km') || category.includes('half')) return 'cat-21km';
-            if (category.includes('16km')) return 'cat-16km';
-            if (category.includes('10km')) return 'cat-10km';
-            if (category.includes('5km')) return 'cat-5km';
-            if (category.includes('3km')) return 'cat-3km';
-            if (category.includes('2km')) return 'cat-2km';
-            if (category.includes('1km')) return 'cat-1km';
-            return 'cat-other';
+        // Exact distance/category colors. No substring matching.
+        // Keep familiar colors where possible, but separate easily confused distances.
+        const DISTANCE_COLORS = new Map(Object.entries({
+            '100KM': '#783C94',
+            '75KM': '#C58BD8',
+            '60KM': '#784B36',
+            '50KM': '#236B99',
+            '42KM': '#FF2D55',
+            '32KM': '#5856D6',
+            '30KM': '#A65A2B',
+            '25KM': '#92C7F5',
+            '24KM': '#785FBA',
+            '21KM': '#007AFF',
+            '20KM': '#B9C65A',
+            '16KM': '#237A3C',
+            '15KM': '#D8B895',
+            '12KM': '#B63E71',
+            '10KM': '#FF9500',
+            '8KM': '#C5B4FA',
+            '7KM': '#A8E08F',
+            '6KM': '#B05F00',
+            '5KM': '#AF52DE',
+            '4KM': '#687B99',
+            '3KM': '#FF3B30',
+            '2.5KM': '#D6A5F5',
+            '2KM': '#5AC8FA',
+            '1.5KM': '#F7D154',
+            '1KM': '#36D6C2',
+            '1KM DOG': '#F8A8C4',
+            '500M': '#A6A6A6',
+            '711M': '#EBA68C'
+        }));
+        const usedDistanceColors = new Set(DISTANCE_COLORS.values());
+
+        function distanceColorKey(category) {
+            const label = normalizeDistance(category).toUpperCase().trim();
+            // Normalize numeric aliases (5, 5K, 5.0KM), but retain every qualifier.
+            const match = label.match(/^(\d+(?:\.\d+)?)\s*(KM|M)\b\s*(.*)$/);
+            if (match) {
+                const suffix = match[3].trim().replace(/\s+/g, ' ');
+                return `${Number(match[1])}${match[2]}${suffix ? ' ' + suffix : ''}`;
+            }
+            if (/^HALF(?:[ -]MARATHON)?$/.test(label)) return '21KM';
+            return label || 'OTHER';
+        }
+
+        // Stable generated color for future distances, relays and special labels.
+        // Resolve exact RGB collisions rather than reusing another category's color.
+        function getDistanceColor(category) {
+            const key = distanceColorKey(category);
+            if (DISTANCE_COLORS.has(key)) return DISTANCE_COLORS.get(key);
+            let hash = 2166136261;
+            for (let i = 0; i < key.length; i++) {
+                hash = Math.imul(hash ^ key.charCodeAt(i), 16777619) >>> 0;
+            }
+            let color;
+            for (let attempt = 0; ; attempt++) {
+                const code = (hash + Math.imul(attempt, 0x9e3779b9)) >>> 0;
+                const h = (code % 360) / 60;
+                const sat = (55 + ((code >>> 9) % 26)) / 100;
+                const light = (38 + ((code >>> 17) % 36)) / 100;
+                const c = (1 - Math.abs(2 * light - 1)) * sat;
+                const x = c * (1 - Math.abs(h % 2 - 1));
+                const m = light - c / 2;
+                const rgb = [[c,x,0],[x,c,0],[0,c,x],[0,x,c],[x,0,c],[c,0,x]][Math.floor(h)];
+                color = '#' + rgb.map(v => Math.round((v + m) * 255).toString(16).padStart(2,'0')).join('').toUpperCase();
+                if (!usedDistanceColors.has(color)) break;
+            }
+            DISTANCE_COLORS.set(key, color);
+            usedDistanceColors.add(color);
+            return color;
+        }
+
+        function applyDistanceColor(chip, category) {
+            const color = getDistanceColor(category);
+            const rgb = color.slice(1).match(/../g).map(v => parseInt(v, 16) / 255);
+            const linear = rgb.map(v => v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
+            const luminance = linear[0] * 0.2126 + linear[1] * 0.7152 + linear[2] * 0.0722;
+            // Choose the higher-contrast foreground (white or black).
+            const foreground = 1.05 / (luminance + 0.05) >= (luminance + 0.05) / 0.05 ? '#FFFFFF' : '#000000';
+            chip.style.setProperty('--distance-bg', color);
+            chip.style.setProperty('--distance-fg', foreground);
+        }
+
+        // Allocate new colors in a consistent order before filtering or paginating.
+        function primeDistanceColors(data, field) {
+            const labels = new Set();
+            data.forEach(item => String(item[field] || '').split(',').forEach(label => {
+                if (label.trim()) labels.add(distanceColorKey(label));
+            }));
+            [...labels].sort().forEach(getDistanceColor);
         }
 
         // Get photographer class
@@ -2683,23 +2753,10 @@ if (s === 'vermosa' || s === 'vermosa cavite' || s === 'vermosa cavite city'|| s
 }
 
 function normalizeDistanceLabel(raw) {
-  let s = (raw || '').toString().trim().replace(/\s+/g, ' ');
-
-  // DOG category (force exact casing)
-  if (/dog/i.test(s)) return '1KM Dog';
-
-  // Get first number
-  const m = s.match(/(\d+)/);
-  if (!m) return s;
-
-  const n = parseInt(m[1], 10);
-  if (!Number.isFinite(n)) return s;
-
-  // Force: "21" / "21k" / "21 km" / "21KM" => "21KM"
-  return `${n}KM`;
+  return normalizeDistance(raw);
 }
 
-	
+
 function renderRaces() {
             const filteredRaces = filterData(state.races, false);
 			
@@ -2865,7 +2922,8 @@ detailsSection.appendChild(raceTitleRow);
 					  const normalized = normalizeDistance(category.trim());
 
 					  const chip = document.createElement('span');
-					  chip.className = `category-chip ${getCategoryColorClass(normalized)}`;
+					  chip.className = 'category-chip';
+                      applyDistanceColor(chip, normalized);
 					  chip.textContent = normalized;
 					  categoriesDiv.appendChild(chip);
 					});
@@ -3068,7 +3126,8 @@ detailsSection.appendChild(raceTitleRow);
                     
                     photo.distanceP.split(',').forEach(category => {
                         const chip = document.createElement('span');
-                        chip.className = `category-chip ${getCategoryColorClass(category)}`;
+                        chip.className = 'category-chip';
+                        applyDistanceColor(chip, category);
                         chip.textContent = normalizeDistanceLabel(category);
                         categoriesDiv.appendChild(chip);
                     });
