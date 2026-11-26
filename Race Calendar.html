@@ -1345,34 +1345,6 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   #paginationContainer.pagination-single .pagination-empty { white-space: normal; }
 </style>
 
-
-<style id="pixhero-app-update-style">
-  #pixheroAppUpdate[hidden] { display: none !important; }
-  #pixheroAppUpdate {
-    position: fixed; inset: 0; z-index: 2147483647;
-    display: flex; align-items: center; justify-content: center;
-    padding: 24px 20px 92px; background: rgba(0,0,0,.88);
-    overscroll-behavior: contain; overflow: auto;
-    font-family: 'Poppins', sans-serif; color: #F3F3F3;
-  }
-  #pixheroAppUpdate .update-card {
-    width: 100%; max-width: 360px; padding: 28px 22px;
-    text-align: center; background: #202020; border: 1px solid #383838;
-    border-radius: 24px; box-shadow: 0 12px 40px rgba(0,0,0,.4);
-  }
-  #pixheroAppUpdate .update-symbol {
-    width: 64px; height: 64px; margin: 0 auto 18px; border-radius: 50%;
-    background: #303030; display: flex; align-items: center; justify-content: center;
-    color: #60A5FA;
-  }
-  #pixheroAppUpdate h2 { font-size: 23px; font-weight: 900; margin: 0 0 10px; }
-  #pixheroAppUpdate p { color: #A8A8A8; font-size: 14px; line-height: 1.6; margin: 0 0 16px; }
-  #pixheroAppUpdate .update-link { display: block; width: 100%; padding: 14px 12px;
-    color: white; background: #007AFF; border-radius: 999px; font-size: 16px;
-    font-weight: 900; text-decoration: none; text-align: center; }
-  #pixheroAppUpdate .update-link:focus-visible { outline: 3px solid #F3F3F3; outline-offset: 4px; }
-  html.pixhero-update-required, html.pixhero-update-required body { overflow: hidden !important; }
-</style>
 </head>
 <body class="pb-20">
     <div class="header">
@@ -2229,7 +2201,7 @@ console.log(
                 // Add "All" option first
                 const allChip = document.createElement('div');
                 allChip.className = `filter-chip ${state.filters.organizer.length === 0 ? 'active' : ''}`;
-                allChip.textContent = 'ALL';
+                allChip.textContent = 'All';
                 allChip.addEventListener('click', () => {
 					clearSearchOnFilterChange();
 					
@@ -4241,122 +4213,6 @@ updateFavoritesControl();
   }, { passive: true });
   window.addEventListener('resize', () => { lastScroll = scrollPosition(); accumulated = 0; });
   bar.addEventListener('focusin', () => bar.classList.remove('is-scroll-hidden'));
-})();
-</script>
-
-
-<div id="pixheroAppUpdate" role="dialog" aria-modal="true" aria-labelledby="pixheroUpdateTitle" aria-describedby="pixheroUpdateMessage" hidden>
-  <div class="update-card">
-    <div class="update-symbol" aria-hidden="true">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 16V8m-3 3 3-3 3 3"/><path d="M11 19h2"/></svg>
-    </div>
-    <h2 id="pixheroUpdateTitle">PixHero Just Got Better!</h2>
-    <p id="pixheroUpdateMessage">We've made some exciting improvements for you. Update your app to enjoy a better PixHero experience!</p>
-    <a class="update-link" id="pixheroUpdateLink" target="_blank" rel="noopener noreferrer">UPDATE NOW</a>
-  </div>
-</div>
-<script id="pixhero-app-update-script" data-cfasync="false">
-(function () {
-  'use strict';
-  // Set minimum supported public app versions here (not OS versions or build codes).
-  const REQUIRED = {
-    ios: { version: '11', store: 'https://apps.apple.com/ph/app/pixhero/id6749287330' },
-    android: { version: '4.0', store: 'https://play.google.com/store/apps/details?id=pixheroapp.com' }
-  };
-  const SDK = 'https://unpkg.com/webtonative@1.1.33/webtonative.min.js';
-  const overlay = document.getElementById('pixheroAppUpdate');
-  const link = document.getElementById('pixheroUpdateLink');
-  let checking = false;
-  let sdkPromise;
-  let inerted = [];
-  let locked = false;
-  let lastFocused = null;
-  function compareVersions(a, b) {
-    const valid = /^\d+(?:\.\d+)*$/;
-    if (!valid.test(String(a)) || !valid.test(String(b))) return null;
-    const x = String(a).split('.').map(Number), y = String(b).split('.').map(Number);
-    for (let i = 0; i < Math.max(x.length, y.length); i++) {
-      const diff = (x[i] || 0) - (y[i] || 0);
-      if (diff) return diff > 0 ? 1 : -1;
-    }
-    return 0;
-  }
-  function loadSdk() {
-    if (typeof window.WTN?.deviceInfo === 'function') return Promise.resolve(true);
-    if (sdkPromise) return sdkPromise;
-    sdkPromise = new Promise(resolve => {
-      const script = document.createElement('script');
-      script.src = SDK;
-      script.setAttribute('data-cfasync', 'false');
-      script.async = true;
-      const timer = setTimeout(() => resolve(false), 6000);
-      script.onload = () => { clearTimeout(timer); resolve(typeof window.WTN?.deviceInfo === 'function'); };
-      script.onerror = () => { clearTimeout(timer); resolve(false); };
-      document.head.appendChild(script);
-    });
-    return sdkPromise;
-  }
-  function showUpdate(platform) {
-    link.href = REQUIRED[platform].store;
-    if (locked) return;
-    lastFocused = document.activeElement;
-    locked = true;
-    inerted = Array.from(document.body.children).filter(el => el !== overlay && !['SCRIPT','STYLE','LINK'].includes(el.tagName) && !el.hasAttribute('inert'));
-    inerted.forEach(el => el.setAttribute('inert', ''));
-    document.documentElement.classList.add('pixhero-update-required');
-    overlay.hidden = false;
-    link.focus({preventScroll: true});
-  }
-  function clearUpdate() {
-    if (!locked) return;
-    locked = false;
-    overlay.hidden = true;
-    inerted.forEach(el => el.removeAttribute('inert'));
-    inerted = [];
-    document.documentElement.classList.remove('pixhero-update-required');
-    if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus({preventScroll: true});
-  }
-  document.addEventListener('keydown', event => {
-    if (!locked) return;
-    if (event.key === 'Escape' || event.key === 'Tab') {
-      event.preventDefault();
-      link.focus({preventScroll:true});
-    }
-  }, true);
-  document.addEventListener('focusin', event => {
-    if (locked && !overlay.contains(event.target)) link.focus({preventScroll:true});
-  });
-  async function checkVersion() {
-    if (checking) return;
-    const mobile = /Android|iPhone|iPad|iPod|WebToNative/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-    if (!mobile && typeof window.WTN?.deviceInfo !== 'function') return;
-    checking = true;
-    try {
-      if (!await loadSdk()) return;
-      let timer;
-      let info;
-      try {
-        info = await Promise.race([
-          Promise.resolve().then(() => window.WTN.deviceInfo()),
-          new Promise(resolve => { timer = setTimeout(() => resolve(null), 4500); })
-        ]);
-      } finally { clearTimeout(timer); }
-      // Only a successful native response can trigger a mandatory update.
-      const platform = String(info?.platform || '').toLowerCase();
-      const installed = String(info?.appVersion ?? '').trim();
-      if (!info?.appId || !Object.prototype.hasOwnProperty.call(REQUIRED, platform)) return;
-      const cmp = compareVersions(installed, REQUIRED[platform].version);
-      if (cmp === null) return;
-      if (cmp < 0) showUpdate(platform);
-      else clearUpdate();
-    } catch (_) {
-      // A failed native bridge or ordinary browser must not be mistaken for an old app.
-      // An already confirmed old app remains blocked until a valid newer version is detected.
-    } finally { checking = false; }
-  }
-  checkVersion();
-  window.addEventListener('pageshow', checkVersion);
-  document.addEventListener('visibilitychange', () => { if (!document.hidden) checkVersion(); });
 })();
 </script>
 
