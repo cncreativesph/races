@@ -4118,13 +4118,18 @@ window.addEventListener('load', () => {
 #pixheroKittyPopup .kitty-photo-hint .kitty-arrow {
   position: relative;
   display: inline-flex; align-items: center; justify-content: center;
-  min-width: 34px; height: 34px;
-  color: #ff7db3; font-size: 26px; font-weight: 900; line-height: 1;
-  text-shadow: 0 0 10px rgba(255, 105, 180, 0.85), 0 2px 4px rgba(0,0,0,.65);
+  flex: 0 0 34px; width: 34px; height: 34px;
+  color: #ff7db3;
+  filter: drop-shadow(0 0 5px rgba(255, 105, 180, .85)) drop-shadow(0 2px 2px rgba(0,0,0,.65));
   animation: pixheroArrowBounce 1s ease-in-out infinite;
 }
-#pixheroKittyPopup .kitty-photo-hint .kitty-arrow.left { animation-delay: 0s; }
-#pixheroKittyPopup .kitty-photo-hint .kitty-arrow.right { animation-delay: .18s; }
+#pixheroKittyPopup .kitty-photo-hint .kitty-arrow svg {
+  display: block; width: 28px; height: 28px; flex: 0 0 28px;
+  overflow: visible;
+}
+#pixheroKittyPopup .kitty-photo-hint .kitty-arrow.right svg { transform: scaleX(-1); }
+#pixheroKittyPopup .kitty-photo-hint .kitty-arrow.left,
+#pixheroKittyPopup .kitty-photo-hint .kitty-arrow.right { animation-delay: 0s; }
 #pixheroKittyPopup .kitty-photo-hint .kitty-arrow.left { transform-origin: center; }
 #pixheroKittyPopup .kitty-photo-hint .kitty-arrow.right { transform-origin: center; }
 #pixheroKittyPopup, #pixheroKittyPopup * { pointer-events: none !important; }
@@ -4153,6 +4158,9 @@ window.addEventListener('load', () => {
 }
 @media (prefers-reduced-motion: reduce) {
   #pixheroKittyPopup { animation: none; transform: translate(-50%, -50%); }
+  #pixheroKittyPopup .kitty-photo-hint,
+  #pixheroKittyPopup .kitty-photo-hint .photographer-button,
+  #pixheroKittyPopup .kitty-photo-hint .kitty-arrow { animation: none; }
 }
 </style>
 <div id="pixheroKittyPopup" aria-hidden="true">
@@ -4163,9 +4171,9 @@ window.addEventListener('load', () => {
   <div class="kitty-photo-hint photo-photographers">
     <span>Tap the</span>
     <div class="hint-button-row" aria-hidden="true">
-      <span class="kitty-arrow left">➜</span>
+      <span class="kitty-arrow left"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M5 16 H25 M17 8 L25 16 L17 24" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       <span class="photographer-button">Various Photographers</span>
-      <span class="kitty-arrow right">⬅</span>
+      <span class="kitty-arrow right"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M5 16 H25 M17 8 L25 16 L17 24" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
     </div>
     <span>button to see your photos!</span>
   </div>
