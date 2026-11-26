@@ -1344,6 +1344,53 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
     min-height: 38px;
   }
 </style>
+<style id="pixhero-card-mascot-layout">
+/* Running mascot spans the race details / photographer panel boundary. */
+#raceList .kitty-card-overlap {
+  --kitty-mascot-size: 126px;
+  --kitty-mascot-reserve: 116px;
+}
+#raceList .kitty-card-overlap .kitty-card-header {
+  min-height: 68px;
+  padding-right: var(--kitty-mascot-reserve);
+  box-sizing: border-box;
+}
+#raceList .kitty-card-overlap .kitty-card-anchor {
+  position: relative;
+  overflow: visible;
+}
+#raceList .kitty-card-overlap .kitty-card-anchor > .photo-photographers {
+  padding-right: var(--kitty-mascot-reserve);
+  min-height: 65px;
+  box-sizing: border-box;
+}
+#raceList .kitty-card-mascot {
+  position: absolute;
+  top: 0; right: 0; z-index: 2;
+  width: var(--kitty-mascot-size); height: var(--kitty-mascot-size);
+  display: block; margin: 0; padding: 0;
+  -webkit-transform: translateY(-46%); transform: translateY(-46%);
+  pointer-events: none !important;
+  -webkit-user-select: none; user-select: none;
+  background: transparent;
+  -webkit-animation: kittyCardFadeIn .45s ease-out both;
+  animation: kittyCardFadeIn .45s ease-out both;
+}
+#raceList .kitty-card-mascot img {
+  display: block; width: 100%; height: 100%; object-fit: contain;
+  pointer-events: none !important;
+}
+@media (max-width: 380px) {
+  #raceList .kitty-card-overlap { --kitty-mascot-size: 106px; --kitty-mascot-reserve: 96px; }
+  #raceList .kitty-card-overlap .kitty-card-header { min-height: 57px; }
+  #raceList .kitty-card-overlap .kitty-card-anchor > .photo-photographers { min-height: 55px; }
+}
+@-webkit-keyframes kittyCardFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes kittyCardFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  #raceList .kitty-card-mascot { -webkit-animation: none; animation: none; }
+}
+</style>
 </head>
 <body class="pb-20">
     <div class="header">
@@ -1554,18 +1601,9 @@ function showNavLoader(){
 }
 
 		
-		// SHOW loader on initial page load
-			document.addEventListener('DOMContentLoaded', () => {
-			  showNavLoader();
-			});
+        // The initial list uses skeletons only. The fullscreen loader is for
+        // outbound photo navigation, not for startup.
 
-			// HIDE loader when page fully loaded
-			window.addEventListener('load', () => {
-			  const navLoader = document.getElementById('navLoader');
-			  if (navLoader) {
-				navLoader.style.display = 'none';
-			  }
-			});
 
 
 		function toggleClearBtn(){
@@ -1665,14 +1703,15 @@ function showNavLoader(){
                     day: []
                 };
                 
-                // Show/hide filters based on view
-                filtersContainer.style.display = 'block';
+                // Reveal filters only after their options are prepared.
+                filtersContainer.style.display = 'none';
                 
                 if (state.view === 'photos') {
                     try {
                         const data = await fetchData('https://raw.githubusercontent.com/cncreativesph/races/main/photogs.json');
                         state.photos = data;
-						setupFilters(data, true); 
+						setupFilters(data, true);
+                        filtersContainer.style.display = 'block';
                         renderPhotos();
                     } catch (error) {
                         showError(`Failed to load photo data: ${error.message}`);
@@ -1683,6 +1722,7 @@ function showNavLoader(){
                         state.races = data;
                         renderRaces();
                         setupFilters(data, false);
+                        filtersContainer.style.display = 'block';
                     } catch (error) {
                         showError(`Failed to load race data: ${error.message}`);
                     }
@@ -3051,8 +3091,6 @@ function renderRaces() {
             }
 			
 
-            raceList.innerHTML = '';
-            
             // Filter photos if search term exists
 			let photosToDisplay = state.photos;
 
@@ -3377,11 +3415,14 @@ if (photographersNote) {
                   bottomSection.appendChild(resultsAction);
                 }
 
-				card.appendChild(bottomSection);
-
-                
-                
-                
+                // Reserve the mascot's footprint on the first render so
+                // the card does not resize when the intro ends.
+                if (/^HELLO\s+KITTY\s+RUN\b/i.test(raceName.textContent.trim()) && leftWrap.childElementCount) {
+                    card.classList.add('kitty-card-overlap');
+                    detailsSection.classList.add('kitty-card-header');
+                    bottomSection.classList.add('kitty-card-anchor');
+                }
+                card.appendChild(bottomSection);
                 raceList.appendChild(card);
 				
 
@@ -3789,18 +3830,9 @@ if (photographersNote) {
 
         // Initialize
         loadData();
-		
-function isIOS() {
-  return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-         (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-}
 
-// ✅ show initial loader ONLY if NOT iOS
-if (!isIOS()) {
-
-}
-
-window.addEventListener('load', () => {
+// Clear the navigation overlay if returning from an external album.
+window.addEventListener('pageshow', () => {
   const navLoader = document.getElementById('navLoader');
   if (navLoader) navLoader.style.display = 'none';
 });
@@ -3865,7 +3897,7 @@ window.addEventListener('load', () => {
 </div>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+
 
 
 <script>
@@ -4187,51 +4219,6 @@ window.addEventListener('load', () => {
   #pixheroKittyPopup .kitty-photo-hint .photographer-button,
   #pixheroKittyPopup .kitty-photo-hint .kitty-arrow,
   #pixheroKittyPopup .kitty-photo-hint .kitty-arrow.right { -webkit-animation: none; animation: none; }
-}
-/* Running mascot spans the race details / photographer panel boundary. */
-#raceList .kitty-card-overlap {
-  --kitty-mascot-size: 126px;
-  --kitty-mascot-reserve: 116px;
-}
-#raceList .kitty-card-overlap .kitty-card-header {
-  min-height: 68px;
-  padding-right: var(--kitty-mascot-reserve);
-  box-sizing: border-box;
-}
-#raceList .kitty-card-overlap .kitty-card-anchor {
-  position: relative;
-  overflow: visible;
-}
-#raceList .kitty-card-overlap .kitty-card-anchor > .photo-photographers {
-  padding-right: var(--kitty-mascot-reserve);
-  min-height: 65px;
-  box-sizing: border-box;
-}
-#raceList .kitty-card-mascot {
-  position: absolute;
-  top: 0; right: 0; z-index: 2;
-  width: var(--kitty-mascot-size); height: var(--kitty-mascot-size);
-  display: block; margin: 0; padding: 0;
-  -webkit-transform: translateY(-46%); transform: translateY(-46%);
-  pointer-events: none !important;
-  -webkit-user-select: none; user-select: none;
-  background: transparent;
-  -webkit-animation: kittyCardFadeIn .45s ease-out both;
-  animation: kittyCardFadeIn .45s ease-out both;
-}
-#raceList .kitty-card-mascot img {
-  display: block; width: 100%; height: 100%; object-fit: contain;
-  pointer-events: none !important;
-}
-@media (max-width: 380px) {
-  #raceList .kitty-card-overlap { --kitty-mascot-size: 106px; --kitty-mascot-reserve: 96px; }
-  #raceList .kitty-card-overlap .kitty-card-header { min-height: 57px; }
-  #raceList .kitty-card-overlap .kitty-card-anchor > .photo-photographers { min-height: 55px; }
-}
-@-webkit-keyframes kittyCardFadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes kittyCardFadeIn { from { opacity: 0; } to { opacity: 1; } }
-@media (prefers-reduced-motion: reduce) {
-  #raceList .kitty-card-mascot { -webkit-animation: none; animation: none; }
 }
 </style>
 <div id="pixheroKittyPopup" aria-hidden="true">
