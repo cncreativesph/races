@@ -1,6 +1,45 @@
 <!DOCTYPE html>
 <html lang="en"><head>
     <meta charset="UTF-8">
+<script id="pixhero-load-diagnostic" data-cfasync="false">
+(function () {
+  if (window.__pixheroLoadDiagnostic) return;
+  var key = 'pixhero-results-diagnostic-loads-v1';
+  var start = new Date();
+  var id = start.getTime().toString(36) + '-' + Math.random().toString(36).slice(2,6);
+  var history = [], storage = 'unavailable', saved = false;
+  var nav = 'unknown';
+  try { var n = performance.getEntriesByType('navigation')[0]; if(n) nav = n.type; } catch(e) {}
+  ['localStorage','sessionStorage'].some(function(type) {
+    try {
+      var store = window[type];
+      var previous = JSON.parse(store.getItem(key) || '[]');
+      history = (Array.isArray(previous) ? previous : []).slice(-3);
+      history.push({id:id, time:start.toLocaleTimeString()});
+      store.setItem(key, JSON.stringify(history));
+      storage = type; saved = true; return true;
+    } catch(e) { return false; }
+  });
+  if (!saved) history = [{id:id,time:start.toLocaleTimeString()}];
+  var counts = {init:0, fetch:0, render:0, show:0};
+  var badge;
+  function paint() {
+    if (!document.body) return;
+    if (!badge) {
+      badge = document.createElement('div');
+      badge.id = 'pixhero-load-debug-badge';
+      badge.style.cssText = 'position:fixed!important;top:6px!important;right:6px!important;z-index:2147483647!important;background:#101820!important;color:#b9fbc0!important;border:1px solid #78c99a!important;border-radius:8px!important;padding:8px!important;font:11px/1.4 monospace!important;white-space:pre-wrap!important;max-width:90vw!important;pointer-events:none!important;';
+      document.body.appendChild(badge);
+    }
+    badge.textContent = 'RESULTS LOAD TEST\nID: '+id+' | '+nav+'\nInit: '+counts.init+' | JSON: '+counts.fetch+' | Render: '+counts.render+'\nPage show: '+counts.show+' | '+storage+'\nRecent document starts:\n'+history.map(function(x){return x.time+' '+x.id;}).join('\n');
+  }
+  window.__pixheroLoadDiagnostic = function(k) { if(k in counts) counts[k]++; paint(); };
+  document.addEventListener('DOMContentLoaded',paint);
+  window.addEventListener('pageshow',function(){window.__pixheroLoadDiagnostic('show');});
+  paint();
+})();
+</script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="referrer" content="no-referrer">
     <title>Race Results & Photos</title>
@@ -1655,6 +1694,7 @@ function showNavLoader(){
 		}
 
         async function fetchData(url) {
+            if(window.__pixheroLoadDiagnostic && /photogs\.json(?:[?#]|$)/i.test(url)) window.__pixheroLoadDiagnostic('fetch');
             try {
                 const response = await fetch(url);
                 if (!response.ok) {
@@ -1685,6 +1725,7 @@ function showNavLoader(){
 
         // Load data based on current view
         async function loadData() {
+            if(window.__pixheroLoadDiagnostic) window.__pixheroLoadDiagnostic('init');
             try {
                 raceList.innerHTML = `
 					
@@ -3078,6 +3119,7 @@ function renderRaces() {
 
         // Render photos - show all data without filtering
         function renderPhotos() {
+            if(window.__pixheroLoadDiagnostic) window.__pixheroLoadDiagnostic('render');
             if (!Array.isArray(state.photos) || state.photos.length === 0) {
                 raceList.innerHTML = `
                     <div class="p-4 text-center text-gray-500">
