@@ -1674,7 +1674,6 @@ function showNavLoader(){
                         state.photos = data;
 						setupFilters(data, true); 
                         renderPhotos();
-						resetToDefault();
                     } catch (error) {
                         showError(`Failed to load photo data: ${error.message}`);
                     }
