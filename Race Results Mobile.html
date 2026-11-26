@@ -4078,6 +4078,92 @@ window.addEventListener('load', () => {
   tryPlay();
 })();
 </script>
+<!-- PixHero: transparent Hello Kitty welcome animation (no text or controls). -->
+<style id="pixhero-kitty-animation-style">
+#pixheroKittyPopup {
+  position: fixed; top: 50%; left: 50%; z-index: 2147483000;
+  width: min(220px, 62vw); aspect-ratio: 250 / 260;
+  margin: 0; padding: 0; border: 0; background: transparent;
+  pointer-events: none; user-select: none; -webkit-user-select: none;
+  animation: pixheroKittyEntrance 5.5s both;
+}
+#pixheroKittyPopup svg { display: block; width: 100%; height: 100%; overflow: visible; }
+#pixheroKittyPopup .kitty-character {
+  transform-box: view-box; transform-origin: 125px 220px;
+  animation: pixheroKittyBounce 1.15s ease-in-out infinite;
+}
+#pixheroKittyPopup .kitty-wave {
+  transform-box: view-box; transform-origin: 178px 167px;
+  animation: pixheroKittyWave .65s ease-in-out infinite alternate;
+}
+@keyframes pixheroKittyEntrance {
+  0% { opacity: 0; transform: translate(-50%, -38%) scale(.65); }
+  10% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+  16%, 85% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -60%) scale(.86); }
+}
+@keyframes pixheroKittyBounce {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+@keyframes pixheroKittyWave {
+  from { transform: rotate(-9deg); }
+  to { transform: rotate(17deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  #pixheroKittyPopup { animation: none; transform: translate(-50%, -50%); }
+  #pixheroKittyPopup .kitty-character, #pixheroKittyPopup .kitty-wave { animation: none; }
+}
+</style>
+<div id="pixheroKittyPopup" aria-hidden="true">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 260" fill="none" focusable="false">
+    <g class="kitty-character" stroke="#292229" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Feet and classic blue overalls. -->
+      <path d="M83 211 C70 215 65 226 72 234 C78 241 104 241 116 235 L120 220Z" fill="#fff"/>
+      <path d="M136 220 L140 236 C151 242 176 241 182 234 C189 225 181 215 169 212Z" fill="#fff"/>
+      <path d="M89 145 C74 150 68 168 72 189 L81 218 Q102 231 124 220 Q144 231 169 219 L178 187 C182 167 171 149 157 145Z" fill="#ef554f"/>
+      <path d="M94 150 L112 150 L112 175 L142 175 L142 150 L159 150 L166 181 L169 218 Q146 230 125 220 Q103 230 81 218 L86 180Z" fill="#267bca"/>
+      <circle cx="104" cy="179" r="4.5" fill="#ffd75e" stroke-width="2"/>
+      <circle cx="150" cy="179" r="4.5" fill="#ffd75e" stroke-width="2"/>
+      <path d="M110 196 Q125 206 140 196" stroke="#145a9a" stroke-width="2.5"/>
+      <!-- Left paw. -->
+      <path d="M83 158 Q64 158 54 178 Q49 191 59 196 Q70 201 85 183" fill="#fff"/>
+      <path d="M82 151 Q69 151 64 161 L77 176 L89 170" fill="#ef554f"/>
+      <!-- Waving right paw. -->
+      <g class="kitty-wave">
+        <path d="M166 156 Q181 155 193 137 C199 128 210 128 215 136 C223 147 209 162 197 171 Q186 180 172 177" fill="#fff"/>
+        <path d="M164 151 Q177 151 183 159 L181 177 Q173 181 166 175" fill="#ef554f"/>
+      </g>
+      <!-- Oversized white head and pointed ears. -->
+      <path d="M52 66 Q48 49 50 27 Q51 17 59 20 Q80 25 96 39 Q127 29 155 39 Q174 21 193 20 Q201 19 202 30 Q205 49 201 65 Q215 85 214 106 C213 140 179 155 126 155 C72 155 37 139 37 106 Q35 84 52 66Z" fill="#fff"/>
+      <!-- Signature three whiskers on either side. -->
+      <g stroke-width="3.4">
+        <path d="M29 96 L57 103 M25 111 L56 113 M29 129 L58 122"/>
+        <path d="M194 102 L222 94 M195 113 L227 111 M193 123 L221 130"/>
+      </g>
+      <!-- Eyes and yellow oval nose; no mouth. -->
+      <ellipse cx="88" cy="108" rx="5.8" ry="8.2" fill="#292229" stroke="none"/>
+      <ellipse cx="162" cy="108" rx="5.8" ry="8.2" fill="#292229" stroke="none"/>
+      <ellipse cx="125" cy="120" rx="9" ry="5.7" fill="#ffd34e" stroke-width="2.7"/>
+      <!-- Red bow over her left ear (viewer right). -->
+      <g transform="translate(173 46) rotate(16)">
+        <path d="M-9 -7 C-26 -26 -43 -23 -43 -7 C-43 8 -27 17 -10 8Z" fill="#ee3453"/>
+        <path d="M9 -7 C26 -25 43 -23 43 -7 C43 8 27 17 10 8Z" fill="#ee3453"/>
+        <path d="M-12 -3 Q-22 -8 -27 -5 M12 -3 Q22 -8 27 -5" stroke="#b71f3d" stroke-width="2.3"/>
+        <ellipse cx="0" cy="0" rx="11" ry="10" fill="#ee3453"/>
+      </g>
+    </g>
+  </svg>
+</div>
+<script id="pixhero-kitty-animation-script">
+(function () {
+  var popup = document.getElementById('pixheroKittyPopup');
+  if (!popup) return;
+  function removePopup() { if (popup.parentNode) popup.parentNode.removeChild(popup); }
+  // The animation is decorative and never blocks the results page.
+  window.setTimeout(removePopup, 5500);
+})();
+</script>
 </body></html>
 
 
