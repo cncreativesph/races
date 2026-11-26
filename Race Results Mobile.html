@@ -1345,46 +1345,11 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   }
 </style>
 
-<style id="pixhero-registration-style">
-  #pixheroRegistration { position:fixed; inset:0; margin:auto; width:calc(100% - 32px); max-width:420px; max-height:calc(100% - 32px); max-height:calc(100dvh - 32px); overflow:auto; overscroll-behavior:contain; border:1px solid #383838; border-radius:24px; background:#202020; color:#F3F3F3; padding:24px; box-shadow:0 16px 60px #0009; z-index:2147483647; font-family:'Poppins',sans-serif; }
-  #pixheroRegistration:not([open]) { display:none; }
-  #pixheroRegistration::backdrop { background:rgba(0,0,0,.78); }
-  html.pixhero-registration-open, html.pixhero-registration-open body { overflow:hidden !important; overscroll-behavior:none; }
-  #pixheroRegistration * { box-sizing:border-box; }
-  #pixheroRegistration .ph-reg-icon { display:grid; place-items:center; margin:0 auto 12px; width:54px; height:54px; border-radius:50%; background:#303030; color:#F3F3F3; }
-  #pixheroRegistration h2 { font-size:22px; font-weight:900; line-height:1.3; text-align:center; margin:0 0 8px; outline:none; }
-  #pixheroRegistration .ph-reg-intro { text-align:center; font-size:13px; line-height:1.55; color:#A8A8A8; margin:0 0 20px; }
-  #pixheroRegistration .ph-reg-label { display:block; font-size:13px; margin:12px 0 6px; color:#F3F3F3; }
-  #pixheroRegistration input:not([type=checkbox]) { display:block; width:100%; min-height:48px; padding:12px 14px; border:1px solid #484848; border-radius:12px; background:#181818; color:#F3F3F3; font-family:inherit; font-size:16px !important; outline:none; }
-  #pixheroRegistration input::placeholder { color:#A8A8A8; opacity:1; font-size:13px; }
-  #pixheroRegistration input:focus-visible, #pixheroRegistration button:focus-visible, #pixheroRegistration a:focus-visible { outline:2px solid #60A5FA; outline-offset:2px; }
-  #pixheroRegistration .ph-reg-consent { display:flex; align-items:flex-start; gap:9px; font-size:12px; color:#C4C4C4; line-height:1.5; margin:16px 0; }
-  #pixheroRegistration input[type=checkbox] { appearance:auto; flex:none; width:17px; height:17px; margin-top:2px; accent-color:#60A5FA; }
-  #pixheroRegistration a { color:#93C5FD; text-decoration:underline; }
-  #pixheroRegistration button { display:block; width:100%; min-height:46px; border-radius:999px; font:inherit; font-size:14px; cursor:pointer; }
-  #pixheroRegistration #phRegSubmit { background:#F3F3F3; color:#101010; font-weight:900; }
-  #pixheroRegistration button:disabled { opacity:.5; cursor:wait; }
-  #pixheroRegistration #phRegSkip { background:transparent; color:#A8A8A8; margin-top:6px; }
-  #pixheroRegistration [hidden] { display:none !important; }
-  #pixheroRegistration #phRegStatus { color:#FCA5A5; text-align:center; font-size:12px; margin-top:10px; overflow-wrap:anywhere; }
-  #pixheroRegistration .ph-reg-footer { color:#A8A8A8; font-size:11px; text-align:center; margin-top:12px; }
-</style>
-<style id="pixhero-music-style">
-#pixheroMusicButton { flex:0 0 34px; width:34px; height:34px; margin-left:8px; display:inline-flex; align-items:center; justify-content:center; background:#202020; color:#F3F3F3; border:1px solid #383838; border-radius:50%; cursor:pointer; }
-#pixheroMusicButton[aria-pressed="true"] { color:#60A5FA; }
-#pixheroMusicButton:focus-visible { outline:2px solid #60A5FA; outline-offset:2px; }
-#pixheroMusicButton svg { width:18px; height:18px; }
-#pixheroMusicButton [hidden] { display:none !important; }
-</style>
 </head>
 <body class="pb-20">
     <div class="header">
         <div class="flex justify-between items-center mb-2">
             <h1 class="text-xl poppins-black">Race Results &amp; Photos</h1>
-            <button type="button" id="pixheroMusicButton" aria-label="Play background music" title="Play background music" aria-pressed="false">
-                <svg id="pixheroMusicOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m16 9 6 6m0-6-6 6"/></svg>
-                <svg id="pixheroMusicOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>
-            </button>
         </div>
         
         <div class="search-bar flex items-center p-2 mb-2 relative">
@@ -4086,162 +4051,42 @@ window.addEventListener('load', () => {
 </script>
 
 
-<dialog id="pixheroRegistration" aria-labelledby="phRegTitle" aria-describedby="phRegIntro">
-  <div class="ph-reg-icon" aria-hidden="true"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></svg></div>
-  <h2 id="phRegTitle" tabindex="-1" autofocus>Welcome to PixHero!</h2>
-  <p id="phRegIntro" class="ph-reg-intro">Please complete your one-time registration to continue.</p>
-  <form id="phRegForm">
-    <label class="ph-reg-label" for="phRegName">Full name</label>
-    <input id="phRegName" name="full_name" type="text" autocomplete="name" maxlength="120" placeholder="Enter your full name" required>
-    <label class="ph-reg-label" for="phRegEmail">Email address</label>
-    <input id="phRegEmail" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" maxlength="254" placeholder="Enter your email address" required>
-    <label class="ph-reg-consent"><input id="phRegConsent" type="checkbox" required><span>I agree to provide my name and email to CN Creatives for PixHero registration records.</span></label>
-    <p class="ph-reg-intro" id="phRegPrivacyRow" hidden><a id="phRegPrivacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></p>
-    <button id="phRegSubmit" type="submit">CONTINUE</button>
-    <button id="phRegSkip" type="button" hidden>Not now</button>
-    <p id="phRegStatus" role="status" aria-live="polite" hidden></p>
-  </form>
-  <p class="ph-reg-footer">One-time registration only.</p>
-</dialog>
-<script id="pixhero-registration-script">
-(() => {
-  'use strict';
-  // Set REQUIRED to false for an optional prompt. Configure the actual privacy-policy URL before publishing.
-  const REQUIRED = true;
-  const PRIVACY_POLICY_URL = '';
-  const ENDPOINT = '/api/pixhero/register';
-  const KEY = 'pixhero.registration.completed.v1';
-  const dialog = document.getElementById('pixheroRegistration');
-  const form = document.getElementById('phRegForm');
-  const name = document.getElementById('phRegName');
-  const email = document.getElementById('phRegEmail');
-  const consent = document.getElementById('phRegConsent');
-  const submit = document.getElementById('phRegSubmit');
-  const skip = document.getElementById('phRegSkip');
-  const status = document.getElementById('phRegStatus');
-  let busy = false;
-  function readFlag() {
-    for (const kind of ['localStorage','sessionStorage']) {
-      try { const value = window[kind].getItem(KEY); if (value === 'registered' || (!REQUIRED && value === 'skipped')) return true; } catch (_) {}
-    }
-    return false;
-  }
-  function storeFlag(value) {
-    for (const kind of ['localStorage','sessionStorage']) {
-      try { window[kind].setItem(KEY, value); return; } catch (_) {}
-    }
-  }
-  function close(value) {
-    storeFlag(value);
-    dialog.close();
-    document.documentElement.classList.remove('pixhero-registration-open');
-  }
-  function message(text) { status.textContent = text; status.hidden = !text; }
-  if (PRIVACY_POLICY_URL) {
-    document.getElementById('phRegPrivacy').href = PRIVACY_POLICY_URL;
-    document.getElementById('phRegPrivacyRow').hidden = false;
-  }
-  if (!REQUIRED) { skip.hidden = false; document.getElementById('phRegIntro').textContent = 'You can register with PixHero using your name and email.'; }
-  if (readFlag()) return;
-  dialog.addEventListener('cancel', e => { e.preventDefault(); if (!REQUIRED && !busy) close('skipped'); });
-  skip.addEventListener('click', () => { if (!busy && !REQUIRED) close('skipped'); });
-  name.addEventListener('input', () => name.setCustomValidity(''));
-  form.addEventListener('submit', async e => {
-    e.preventDefault();
-    if (busy) return;
-    name.value = name.value.trim();
-    email.value = email.value.trim();
-    name.setCustomValidity(name.value ? '' : 'Please enter your full name.');
-    if (!form.reportValidity() || !consent.checked) return;
-    busy = true; submit.disabled = true; skip.disabled = true; submit.textContent = 'SAVING…'; message('');
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 15000);
-    try {
-      const response = await fetch(ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({full_name:name.value,email:email.value,consent:true}), signal:controller.signal, cache:'no-store' });
-      const data = await response.json();
-      if (!response.ok || data.ok !== true) throw new Error(response.status === 429 ? 'Too many attempts. Please try again in a minute.' : 'Registration could not be saved. Please try again.');
-      form.reset();
-      close('registered');
-    } catch (err) {
-      message(err.name === 'AbortError' ? 'The connection timed out. Please try again.' : 'Registration could not be saved. Please check your connection and try again.');
-    } finally {
-      clearTimeout(timeout); busy = false; submit.disabled = false; skip.disabled = false; submit.textContent = 'CONTINUE';
-    }
-  });
-  document.documentElement.classList.add('pixhero-registration-open');
-  dialog.showModal();
-})();
-</script>
 
-<audio id="pixheroBackgroundMusic" preload="none" playsinline></audio>
+<audio id="pixheroBackgroundMusic" src="https://raw.githubusercontent.com/cncreativesph/races/main/run-bts-10s.mp3" autoplay loop playsinline preload="auto" hidden></audio>
 <script id="pixhero-music-script">
 (() => {
   'use strict';
-  // Host your authorized 10-second audio clip at this path, or change it to its URL.
-  const MUSIC_URL = 'https://raw.githubusercontent.com/cncreativesph/races/main/run-bts-10s.mp3';
-  const LIMIT = 10;
-  const MUTE_KEY = 'pixhero.results.music.muted.v1';
   const audio = document.getElementById('pixheroBackgroundMusic');
-  const button = document.getElementById('pixheroMusicButton');
-  const off = document.getElementById('pixheroMusicOff');
-  const on = document.getElementById('pixheroMusicOn');
-  let timer, attempt = 0;
-  let muted = false;
-  try { muted = localStorage.getItem(MUTE_KEY) === '1'; } catch (_) {}
-  function setPreference(value) {
-    muted = value;
-    try { localStorage.setItem(MUTE_KEY, value ? '1' : '0'); } catch (_) {}
+  audio.volume = 0.35;
+  let starting = false;
+  const gestures = ['pointerdown', 'pointerup', 'touchend', 'click', 'keydown'];
+  function clearRetries() {
+    gestures.forEach(type => document.removeEventListener(type, start, true));
   }
-  function paint() {
-    const playing = !audio.paused && !audio.ended;
-    button.setAttribute('aria-pressed', String(playing));
-    button.setAttribute('aria-label', playing ? 'Stop background music' : 'Play background music');
-    button.title = playing ? 'Stop background music' : 'Play background music';
-    off.toggleAttribute('hidden', playing);
-    on.toggleAttribute('hidden', !playing);
+  function armRetries() {
+    gestures.forEach(type => document.addEventListener(type, start, {capture:true, passive:true}));
   }
-  function stop() {
-    ++attempt;
-    clearTimeout(timer);
-    audio.pause();
-    try { audio.currentTime = 0; } catch (_) {}
-    paint();
-  }
-  async function play() {
-    if (document.hidden) return;
-    const current = ++attempt;
-    clearTimeout(timer);
+  async function start() {
+    if (document.hidden || starting || !audio.paused) return;
+    starting = true;
     try {
-      if (!audio.getAttribute('src')) audio.src = MUSIC_URL;
-      audio.currentTime = 0;
-      // Some mobile WebViews ignore the volume setting.
-      audio.volume = 0.35;
       await audio.play();
-      if (current !== attempt) return;
-      timer = setTimeout(stop, LIMIT * 1000);
-      paint();
+      if (document.hidden) audio.pause();
+      else clearRetries();
     } catch (_) {
-      if (current === attempt) { stop(); }
-      // Autoplay may be blocked. The user can tap the sound button to play.
-    }
+      // Mobile autoplay policies may require a normal user interaction.
+      armRetries();
+    } finally { starting = false; }
   }
-  button.addEventListener('click', () => {
-    if (!audio.paused && !audio.ended) { setPreference(true); stop(); }
-    else { setPreference(false); play(); }
+  audio.addEventListener('playing', clearRetries);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) audio.pause();
+    else start();
   });
-  audio.addEventListener('timeupdate', () => { if (audio.currentTime >= LIMIT) stop(); });
-  audio.addEventListener('ended', stop);
-  audio.addEventListener('pause', paint);
-  audio.addEventListener('playing', paint);
-  audio.addEventListener('error', stop);
-  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
-  window.addEventListener('pagehide', stop);
-  const registration = document.getElementById('pixheroRegistration');
-  if (!muted) {
-    if (registration && registration.open) registration.addEventListener('close', () => { if (!muted) play(); }, {once:true});
-    else play();
-  }
-  paint();
+  window.addEventListener('pagehide', () => audio.pause());
+  window.addEventListener('pageshow', start);
+  armRetries();
+  start();
 })();
 </script>
 </body></html>
