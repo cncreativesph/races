@@ -1345,29 +1345,15 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   }
 </style>
 <style id="pixhero-card-mascot-layout">
-/* Running mascot spans the race details / photographer panel boundary. */
-#raceList .kitty-card-overlap {
-  --kitty-mascot-size: 126px;
-  --kitty-mascot-reserve: 116px;
-}
-#raceList .kitty-card-overlap .kitty-card-header {
-  min-height: 68px;
-  padding-right: var(--kitty-mascot-reserve);
-  box-sizing: border-box;
-}
-#raceList .kitty-card-overlap .kitty-card-anchor {
+/* Decorative overlay only: never reserve space or change card dimensions. */
+#raceList .kitty-card-anchor {
   position: relative;
   overflow: visible;
 }
-#raceList .kitty-card-overlap .kitty-card-anchor > .photo-photographers {
-  padding-right: var(--kitty-mascot-reserve);
-  min-height: 65px;
-  box-sizing: border-box;
-}
 #raceList .kitty-card-mascot {
-  position: absolute;
+  position: absolute !important;
   top: 0; right: 0; z-index: 2;
-  width: var(--kitty-mascot-size); height: var(--kitty-mascot-size);
+  width: 126px; height: 126px;
   display: block; margin: 0; padding: 0;
   -webkit-transform: translateY(-46%); transform: translateY(-46%);
   pointer-events: none !important;
@@ -1381,9 +1367,7 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
   pointer-events: none !important;
 }
 @media (max-width: 380px) {
-  #raceList .kitty-card-overlap { --kitty-mascot-size: 106px; --kitty-mascot-reserve: 96px; }
-  #raceList .kitty-card-overlap .kitty-card-header { min-height: 57px; }
-  #raceList .kitty-card-overlap .kitty-card-anchor > .photo-photographers { min-height: 55px; }
+  #raceList .kitty-card-mascot { width: 106px; height: 106px; }
 }
 @-webkit-keyframes kittyCardFadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes kittyCardFadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -3415,13 +3399,6 @@ if (photographersNote) {
                   bottomSection.appendChild(resultsAction);
                 }
 
-                // Reserve the mascot's footprint on the first render so
-                // the card does not resize when the intro ends.
-                if (/^HELLO\s+KITTY\s+RUN\b/i.test(raceName.textContent.trim()) && leftWrap.childElementCount) {
-                    card.classList.add('kitty-card-overlap');
-                    detailsSection.classList.add('kitty-card-header');
-                    bottomSection.classList.add('kitty-card-anchor');
-                }
                 card.appendChild(bottomSection);
                 raceList.appendChild(card);
 				
@@ -4251,15 +4228,12 @@ window.addEventListener('pageshow', () => {
       var title = cards[i].querySelector('.race-name');
       if (!title || !/^HELLO\s+KITTY\s+RUN\b/i.test(title.textContent.trim())) continue;
       var card = cards[i];
-      var header = title.parentElement;
       var panel = card.querySelector('.photo-results-section');
       var photographers = panel && panel.querySelector('.photo-photographers');
-      if (!header || !panel || !photographers || !photographers.children.length || card.querySelector('.kitty-card-mascot')) continue;
+      if (!panel || !photographers || !photographers.children.length || card.querySelector('.kitty-card-mascot')) continue;
       var mascot = mascotTemplate.cloneNode(true);
       mascot.className = 'kitty-card-mascot';
       mascot.setAttribute('aria-hidden', 'true');
-      card.classList.add('kitty-card-overlap');
-      header.classList.add('kitty-card-header');
       panel.classList.add('kitty-card-anchor');
       panel.appendChild(mascot);
     }
