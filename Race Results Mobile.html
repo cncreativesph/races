@@ -4078,79 +4078,96 @@ window.addEventListener('load', () => {
   tryPlay();
 })();
 </script>
-<!-- PixHero: transparent Hello Kitty welcome animation (no text or controls). -->
+<!-- PixHero: transparent sporty Hello Kitty running animation. -->
 <style id="pixhero-kitty-animation-style">
 #pixheroKittyPopup {
   position: fixed; top: 50%; left: 50%; z-index: 2147483000;
-  width: min(220px, 62vw); aspect-ratio: 250 / 260;
+  width: min(220px, 62vw); aspect-ratio: 250 / 270;
   margin: 0; padding: 0; border: 0; background: transparent;
   pointer-events: none; user-select: none; -webkit-user-select: none;
   animation: pixheroKittyEntrance 5.5s both;
 }
 #pixheroKittyPopup svg { display: block; width: 100%; height: 100%; overflow: visible; }
-#pixheroKittyPopup .kitty-character {
-  transform-box: view-box; transform-origin: 125px 220px;
-  animation: pixheroKittyBounce 1.15s ease-in-out infinite;
-}
-#pixheroKittyPopup .kitty-wave {
-  transform-box: view-box; transform-origin: 178px 167px;
-  animation: pixheroKittyWave .65s ease-in-out infinite alternate;
-}
+#pixheroKittyPopup .kitty-run-body { transform-box: view-box; transform-origin: 125px 195px; animation: pixheroKittyRunBounce .34s ease-in-out infinite; }
+#pixheroKittyPopup .kitty-leg-left { transform-box: view-box; transform-origin: 105px 201px; animation: pixheroKittyRunLeg .68s ease-in-out infinite; }
+#pixheroKittyPopup .kitty-leg-right { transform-box: view-box; transform-origin: 145px 201px; animation: pixheroKittyRunLeg .68s -.34s ease-in-out infinite; }
+#pixheroKittyPopup .kitty-arm-left { transform-box: view-box; transform-origin: 86px 153px; animation: pixheroKittyRunArm .68s -.34s ease-in-out infinite; }
+#pixheroKittyPopup .kitty-arm-right { transform-box: view-box; transform-origin: 165px 153px; animation: pixheroKittyRunArm .68s ease-in-out infinite; }
 @keyframes pixheroKittyEntrance {
   0% { opacity: 0; transform: translate(-50%, -38%) scale(.65); }
   10% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
   16%, 85% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
   100% { opacity: 0; transform: translate(-50%, -60%) scale(.86); }
 }
-@keyframes pixheroKittyBounce {
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50% { transform: translateY(-8px) rotate(2deg); }
+@keyframes pixheroKittyRunBounce {
+  0%,100% { transform: translateY(1px) rotate(-1deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
 }
-@keyframes pixheroKittyWave {
-  from { transform: rotate(-9deg); }
-  to { transform: rotate(17deg); }
+@keyframes pixheroKittyRunLeg {
+  0%,100% { transform: translateY(-12px) rotate(-25deg) scale(1.12); }
+  25% { transform: translateY(1px) rotate(-5deg) scale(1.01); }
+  50% { transform: translateY(-3px) rotate(22deg) scale(.84); }
+  75% { transform: translateY(-13px) rotate(8deg) scale(.95); }
+}
+@keyframes pixheroKittyRunArm {
+  0%,100% { transform: rotate(-22deg) translateY(2px); }
+  50% { transform: rotate(24deg) translateY(-3px); }
 }
 @media (prefers-reduced-motion: reduce) {
   #pixheroKittyPopup { animation: none; transform: translate(-50%, -50%); }
-  #pixheroKittyPopup .kitty-character, #pixheroKittyPopup .kitty-wave { animation: none; }
+  #pixheroKittyPopup .kitty-run-body, #pixheroKittyPopup .kitty-leg-left,
+  #pixheroKittyPopup .kitty-leg-right, #pixheroKittyPopup .kitty-arm-left,
+  #pixheroKittyPopup .kitty-arm-right { animation: none; }
 }
 </style>
 <div id="pixheroKittyPopup" aria-hidden="true">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 260" fill="none" focusable="false">
-    <g class="kitty-character" stroke="#292229" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-      <!-- Feet and classic blue overalls. -->
-      <path d="M83 211 C70 215 65 226 72 234 C78 241 104 241 116 235 L120 220Z" fill="#fff"/>
-      <path d="M136 220 L140 236 C151 242 176 241 182 234 C189 225 181 215 169 212Z" fill="#fff"/>
-      <path d="M89 145 C74 150 68 168 72 189 L81 218 Q102 231 124 220 Q144 231 169 219 L178 187 C182 167 171 149 157 145Z" fill="#ef554f"/>
-      <path d="M94 150 L112 150 L112 175 L142 175 L142 150 L159 150 L166 181 L169 218 Q146 230 125 220 Q103 230 81 218 L86 180Z" fill="#267bca"/>
-      <circle cx="104" cy="179" r="4.5" fill="#ffd75e" stroke-width="2"/>
-      <circle cx="150" cy="179" r="4.5" fill="#ffd75e" stroke-width="2"/>
-      <path d="M110 196 Q125 206 140 196" stroke="#145a9a" stroke-width="2.5"/>
-      <!-- Left paw. -->
-      <path d="M83 158 Q64 158 54 178 Q49 191 59 196 Q70 201 85 183" fill="#fff"/>
-      <path d="M82 151 Q69 151 64 161 L77 176 L89 170" fill="#ef554f"/>
-      <!-- Waving right paw. -->
-      <g class="kitty-wave">
-        <path d="M166 156 Q181 155 193 137 C199 128 210 128 215 136 C223 147 209 162 197 171 Q186 180 172 177" fill="#fff"/>
-        <path d="M164 151 Q177 151 183 159 L181 177 Q173 181 166 175" fill="#ef554f"/>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 270" fill="none" focusable="false">
+    <g class="kitty-run-body" stroke="#43261e" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Alternating running legs and blue sneakers. -->
+      <g class="kitty-leg-right">
+        <path d="M132 197 Q147 194 157 202 L156 231 Q147 239 133 233 L128 216Z" fill="#f8d2a0"/>
+        <path d="M131 228 Q147 222 158 230 L166 243 Q168 252 158 255 L135 255 Q125 252 126 243Z" fill="#f9f2e5"/>
+        <path d="M131 226 Q145 220 157 228 L164 240 Q166 246 156 247 L133 247 Q124 245 128 237Z" fill="#74afd4"/>
+        <path d="M136 232 L150 232 M134 237 L148 237" stroke-width="2.6"/>
       </g>
-      <!-- Oversized white head and pointed ears. -->
-      <path d="M52 66 Q48 49 50 27 Q51 17 59 20 Q80 25 96 39 Q127 29 155 39 Q174 21 193 20 Q201 19 202 30 Q205 49 201 65 Q215 85 214 106 C213 140 179 155 126 155 C72 155 37 139 37 106 Q35 84 52 66Z" fill="#fff"/>
-      <!-- Signature three whiskers on either side. -->
-      <g stroke-width="3.4">
-        <path d="M29 96 L57 103 M25 111 L56 113 M29 129 L58 122"/>
-        <path d="M194 102 L222 94 M195 113 L227 111 M193 123 L221 130"/>
+      <g class="kitty-leg-left">
+        <path d="M91 201 Q104 194 118 202 L121 225 Q112 237 98 232 L89 217Z" fill="#f8d2a0"/>
+        <path d="M97 224 Q110 219 119 226 Q128 235 122 245 Q114 254 97 252 Q84 249 86 239Z" fill="#faf5e9"/>
+        <path d="M96 222 Q108 217 117 223 Q125 229 123 237 Q114 245 96 242 Q87 241 88 234Z" fill="#74afd4"/>
+        <path d="M96 229 L110 229 M95 234 L108 234" stroke-width="2.6"/>
       </g>
-      <!-- Eyes and yellow oval nose; no mouth. -->
-      <ellipse cx="88" cy="108" rx="5.8" ry="8.2" fill="#292229" stroke="none"/>
-      <ellipse cx="162" cy="108" rx="5.8" ry="8.2" fill="#292229" stroke="none"/>
-      <ellipse cx="125" cy="120" rx="9" ry="5.7" fill="#ffd34e" stroke-width="2.7"/>
-      <!-- Red bow over her left ear (viewer right). -->
-      <g transform="translate(173 46) rotate(16)">
-        <path d="M-9 -7 C-26 -26 -43 -23 -43 -7 C-43 8 -27 17 -10 8Z" fill="#ee3453"/>
-        <path d="M9 -7 C26 -25 43 -23 43 -7 C43 8 27 17 10 8Z" fill="#ee3453"/>
-        <path d="M-12 -3 Q-22 -8 -27 -5 M12 -3 Q22 -8 27 -5" stroke="#b71f3d" stroke-width="2.3"/>
-        <ellipse cx="0" cy="0" rx="11" ry="10" fill="#ee3453"/>
+      <!-- Red running shorts and blue race singlet. -->
+      <path d="M88 183 L162 183 Q174 197 164 212 Q150 225 126 212 Q105 225 87 211 Q79 200 88 183Z" fill="#ed282c"/>
+      <path d="M99 139 Q124 133 151 139 L166 160 L161 190 Q125 198 89 190 L83 160Z" fill="#69acd5"/>
+      <path d="M109 139 Q124 152 140 139" stroke-width="3"/>
+      <!-- White race bib with a small apple emblem. -->
+      <path d="M99 156 L151 156 L150 180 L100 180Z" fill="#fffdf7" stroke-width="3.1"/>
+      <path d="M125 164 C117 158 112 164 115 172 Q119 181 125 175 Q132 181 136 172 C139 164 131 159 125 164Z" fill="#ee292f" stroke-width="1.9"/>
+      <path d="M125 164 Q124 159 128 158 M126 161 Q131 157 134 160" stroke="#416d35" stroke-width="1.8"/>
+      <!-- Pumping arms, including a bent fist near the cheek. -->
+      <g class="kitty-arm-left">
+        <path d="M87 151 Q71 149 57 164 Q49 176 60 184 Q71 189 80 174 L92 166" fill="#f8d2a0"/>
+      </g>
+      <g class="kitty-arm-right">
+        <path d="M159 157 Q169 151 176 143 Q172 134 181 129 Q193 124 201 134 Q207 145 193 153 Q185 173 169 174Z" fill="#f8d2a0"/>
+      </g>
+      <!-- Tan face with classic rounded head and ears. -->
+      <path d="M48 62 Q43 46 49 24 Q51 14 61 17 Q82 21 99 34 Q125 28 150 34 Q171 20 191 20 Q202 20 205 34 L206 61 Q221 83 216 108 Q211 138 182 147 Q126 162 69 146 Q37 135 34 108 Q30 84 48 62Z" fill="#f8d2a0"/>
+      <!-- Red-and-white sports headband. -->
+      <path d="M45 64 Q124 42 206 61 L213 78 Q128 58 38 81Z" fill="#ef292e" stroke-width="3.7"/>
+      <path d="M43 72 Q126 50 210 70" stroke="#fffdf5" stroke-width="5.4"/>
+      <!-- Three whiskers on each cheek. -->
+      <path d="M17 96 L53 101 M17 114 L53 113 M24 135 L58 123 M196 100 L231 94 M196 113 L233 115 M191 123 L225 136" stroke-width="3.8"/>
+      <!-- Winking face, yellow nose, no mouth. -->
+      <ellipse cx="87" cy="102" rx="6" ry="8" fill="#43261e" stroke="none"/>
+      <path d="M155 108 Q165 96 175 108" stroke-width="4.6"/>
+      <ellipse cx="126" cy="115" rx="8.6" ry="5.4" fill="#ffe14f" stroke-width="2.7"/>
+      <!-- Signature tied bow on her left ear (viewer right). -->
+      <g transform="translate(180 48) rotate(15)">
+        <path d="M-10 -8 C-23 -27 -37 -26 -41 -14 Q-47 0 -39 15 Q-31 26 -10 9Z" fill="#ee252c"/>
+        <path d="M10 -8 C27 -25 43 -22 44 -7 Q46 8 35 20 Q27 25 10 9Z" fill="#ee252c"/>
+        <path d="M-11 -4 Q-23 -11 -26 -3 Q-26 3 -16 6 M11 -4 Q23 -11 26 -3 Q26 3 16 6" stroke-width="2.9"/>
+        <ellipse cx="0" cy="0" rx="12" ry="11" fill="#ee252c"/>
       </g>
     </g>
   </svg>
@@ -4159,9 +4176,7 @@ window.addEventListener('load', () => {
 (function () {
   var popup = document.getElementById('pixheroKittyPopup');
   if (!popup) return;
-  function removePopup() { if (popup.parentNode) popup.parentNode.removeChild(popup); }
-  // The animation is decorative and never blocks the results page.
-  window.setTimeout(removePopup, 5500);
+  window.setTimeout(function () { if (popup.parentNode) popup.parentNode.removeChild(popup); }, 5500);
 })();
 </script>
 </body></html>
