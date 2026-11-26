@@ -1344,7 +1344,6 @@ button:focus-visible, .filter-chip:focus-visible { outline: 2px solid #BDBDBD; o
     min-height: 38px;
   }
 </style>
-
 </head>
 <body class="pb-20">
     <div class="header">
@@ -4051,42 +4050,32 @@ window.addEventListener('load', () => {
 </script>
 
 
-
-<audio id="pixheroBackgroundMusic" src="https://raw.githubusercontent.com/cncreativesph/races/main/run-bts-10s.mp3" autoplay loop playsinline preload="auto" hidden></audio>
-<script id="pixhero-music-script">
-(() => {
-  'use strict';
-  const audio = document.getElementById('pixheroBackgroundMusic');
-  audio.volume = 0.35;
-  let starting = false;
-  const gestures = ['pointerdown', 'pointerup', 'touchend', 'click', 'keydown'];
-  function clearRetries() {
-    gestures.forEach(type => document.removeEventListener(type, start, true));
+<!-- Invisible one-time background audio -->
+<audio id="pixheroBackgroundAudio" autoplay preload="auto" playsinline hidden aria-hidden="true" style="display:none" src="https://raw.githubusercontent.com/cncreativesph/races/main/run-bts-10s.mp3"></audio>
+<script>
+(function () {
+  const audio = document.getElementById('pixheroBackgroundAudio');
+  if (!audio) return;
+  const events = ['touchend', 'click', 'keydown'];
+  function removeFallback() {
+    events.forEach(function (type) {
+      document.removeEventListener(type, tryPlay, true);
+    });
   }
-  function armRetries() {
-    gestures.forEach(type => document.addEventListener(type, start, {capture:true, passive:true}));
-  }
-  async function start() {
-    if (document.hidden || starting || !audio.paused) return;
-    starting = true;
+  function tryPlay() {
+    if (audio.ended || !audio.paused) { removeFallback(); return; }
     try {
-      await audio.play();
-      if (document.hidden) audio.pause();
-      else clearRetries();
-    } catch (_) {
-      // Mobile autoplay policies may require a normal user interaction.
-      armRetries();
-    } finally { starting = false; }
+      const result = audio.play();
+      if (result && typeof result.then === 'function') {
+        result.then(removeFallback).catch(function () {});
+      }
+    } catch (_) {}
   }
-  audio.addEventListener('playing', clearRetries);
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) audio.pause();
-    else start();
+  events.forEach(function (type) {
+    document.addEventListener(type, tryPlay, { capture: true, passive: true });
   });
-  window.addEventListener('pagehide', () => audio.pause());
-  window.addEventListener('pageshow', start);
-  armRetries();
-  start();
+  audio.addEventListener('playing', removeFallback, { once: true });
+  tryPlay();
 })();
 </script>
 </body></html>
