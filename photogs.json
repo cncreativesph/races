@@ -1,9 +1,23 @@
 
 [
 	{
+    "nameP": "PalawanPay Trilogy Marathon MANILA",
+    "locationP": "Mall of Asia",
+    "dateP": "November 28, 2026",
+    "listOfPhotogs": [
+		"Various Photographers"
+      ],
+      "photogsURL": [
+		"https://cncreatives.com/subscribe"
+	  ],
+	"notesP": "Upload In-Progress. Enter your email & we'll let you know once done.", 
+	"resultsStatus": "Pending",
+	 "resultsURL": ""
+  }, 	
+	{
     "nameP": "Run BGC",
     "locationP": "Bonifacio High Street, Taguig City",
-    "dateP": "November 26, 2026",
+    "dateP": "November 27, 2026",
     "listOfPhotogs": [
 		"Various Photographers"
       ],
@@ -17,7 +31,7 @@
 	{
     "nameP": "HELLO KITTY RUN",
     "locationP": "Mall of Asia",
-    "dateP": "November 26, 2026",
+    "dateP": "November 27, 2026",
     "listOfPhotogs": [
 		"Various Photographers"
       ],
