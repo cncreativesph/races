@@ -5,14 +5,16 @@
     "locationP": "Mall of Asia",
     "dateP": "November 28, 2026",
     "listOfPhotogs": [
-		"Various Photographers"
+		"Humble Runner",
+		"Genuine Sole"
       ],
       "photogsURL": [
-		"https://cncreatives.com/subscribe"
+		"https://humblerunnerphoto.com/palawanpay",
+		  "https://findmyshots.com/s/palawanpay-trilogy-manila-2026-genuinesole"
 	  ],
-	"notesP": "Upload In-Progress. Enter your email & we'll let you know once done.", 
+	"notesP": "Use bib number or facial recognition, whichever displays more photos", 
 	"resultsStatus": "Pending",
-	 "resultsURL": ""
+	 "resultsURL": "https://results.raceroster.com/v3/events/y9jmbfyeqkme9yew"
   }, 	
 	{
     "nameP": "Run BGC",
