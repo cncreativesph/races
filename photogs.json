@@ -21,12 +21,14 @@
     "locationP": "Bonifacio High Street, Taguig City",
     "dateP": "November 28, 2026",
     "listOfPhotogs": [
-		"Various Photographers"
+		"Race Day Photos",
+		"Race Kit Claiming Photos"
       ],
       "photogsURL": [
-		"https://cncreatives.com/subscribe2"
+		"https://cncreatives.com/subscribe2",
+		"https://humblerunnerphoto.com/runbgc"
 	  ],
-	"notesP": "Race Expo - Pending Upload", 
+	"notesP": "Race Day Photos - Pending Upload", 
 	"resultsStatus": "Pending",
 	 "resultsURL": ""
   }, 	
